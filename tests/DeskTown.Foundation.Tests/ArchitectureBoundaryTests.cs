@@ -20,10 +20,10 @@ public sealed class ArchitectureBoundaryTests
         var references = ProjectReferences(project);
 
         var reference = Assert.Single(references);
-        Assert.True(
-            reference.Replace('\\', '/').EndsWith(
-                "DeskTown.Domain/DeskTown.Domain.csproj",
-                StringComparison.Ordinal));
+        Assert.EndsWith(
+            "DeskTown.Domain/DeskTown.Domain.csproj",
+            reference.Replace('\\', '/'),
+            StringComparison.Ordinal);
     }
 
     [Fact]
@@ -41,10 +41,10 @@ public sealed class ArchitectureBoundaryTests
             foreach (var file in Directory.EnumerateFiles(root, "*.cs", SearchOption.AllDirectories))
             {
                 var source = File.ReadAllText(file);
-                Assert.False(source.Contains("using Godot", StringComparison.Ordinal));
-                Assert.False(source.Contains("global::Godot", StringComparison.Ordinal));
-                Assert.False(source.Contains("DllImport", StringComparison.Ordinal));
-                Assert.False(source.Contains("LibraryImport", StringComparison.Ordinal));
+                Assert.DoesNotContain("using Godot", source, StringComparison.Ordinal);
+                Assert.DoesNotContain("global::Godot", source, StringComparison.Ordinal);
+                Assert.DoesNotContain("DllImport", source, StringComparison.Ordinal);
+                Assert.DoesNotContain("LibraryImport", source, StringComparison.Ordinal);
             }
         }
     }
