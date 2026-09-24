@@ -14,7 +14,7 @@ public partial class AppRoot : Node
         var validation = _options.Validate();
         if (!validation.IsValid)
         {
-            throw new InvalidOperationException(string.Join(Environment.NewLine, validation.Errors));
+            throw new InvalidOperationException(string.Join(System.Environment.NewLine, validation.Errors));
         }
 
         Engine.MaxFps = _options.VisibleMaxFramesPerSecond;

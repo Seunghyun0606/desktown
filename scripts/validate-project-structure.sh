@@ -27,9 +27,22 @@ grep -Fq '"version": "8.0.425"' global.json
 grep -Fq '../DeskTown.Domain/DeskTown.Domain.csproj' \
   src/DeskTown.Application/DeskTown.Application.csproj
 
-if rg -n 'Godot|DllImport|LibraryImport' src/DeskTown.Domain src/DeskTown.Application \
-  --glob '*.cs' \
-  --glob '!**/PrivacyFieldPolicy.cs'; then
+if command -v rg >/dev/null 2>&1; then
+  forbidden_references="$(
+    rg -n 'Godot|DllImport|LibraryImport' src/DeskTown.Domain src/DeskTown.Application \
+      --glob '*.cs' \
+      --glob '!**/PrivacyFieldPolicy.cs' || true
+  )"
+else
+  forbidden_references="$(
+    find src/DeskTown.Domain src/DeskTown.Application -type f -name '*.cs' \
+      ! -name 'PrivacyFieldPolicy.cs' -print0 \
+      | xargs -0 grep -En 'Godot|DllImport|LibraryImport' || true
+  )"
+fi
+
+if [[ -n "$forbidden_references" ]]; then
+  printf '%s\n' "$forbidden_references"
   printf '%s\n' "Forbidden framework/native reference found in inner layers." >&2
   exit 1
 fi
