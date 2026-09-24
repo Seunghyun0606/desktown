@@ -1,0 +1,31 @@
+# Godot
+.godot/
+.import/
+export.cfg
+export_credentials.cfg
+
+# .NET
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userprefs
+
+# Editors and OS
+.idea/
+.vscode/
+.vs/
+.DS_Store
+Thumbs.db
+
+# Build and test output
+build/
+TestResults/
+coverage/
+*.trx
+
+# Runtime-local data
+logs/
+save.json
+save.backup.json
+save.tmp

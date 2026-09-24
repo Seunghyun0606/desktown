@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>DeskTown.Platform.Windows</RootNamespace>
+    <AssemblyName>DeskTown.Platform.Windows</AssemblyName>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../DeskTown.Application/DeskTown.Application.csproj" />
+    <ProjectReference Include="../DeskTown.Domain/DeskTown.Domain.csproj" />
+  </ItemGroup>
+</Project>

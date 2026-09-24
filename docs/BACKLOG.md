@@ -2,6 +2,15 @@
 
 Status at creation: all tasks `TODO`. Total: **34 tasks**.
 
+Current Foundation status:
+
+| Task | Status | Note |
+| --- | --- | --- |
+| DT-E0-001 | IN REVIEW | Scaffold created; CI/editor execution required |
+| DT-E0-002 | IN REVIEW | Boundaries and composition root created; build required |
+| DT-E0-003 | IN REVIEW | CI/export workflow created; first run required |
+| DT-E0-004 | IN REVIEW | Config/log privacy policy and tests created; test run required |
+
 Conventions: `Automated` lists the minimum test; `Manual` is `Yes` only where a
 human/exported environment adds information. Expected files are forecasts and
 may be adjusted to the final scaffold without changing task responsibility.
@@ -513,4 +522,3 @@ may be adjusted to the final scaffold without changing task responsibility.
 | E8 Persistence | 3 | M0–M4 |
 | E9 Funding Polish | 3 | M5 |
 | **Total** | **34** | |
-

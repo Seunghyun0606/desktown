@@ -1,0 +1,14 @@
+<Project Sdk="Godot.NET.Sdk/4.7.2">
+  <PropertyGroup>
+    <RootNamespace>DeskTown</RootNamespace>
+    <AssemblyName>DeskTown</AssemblyName>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="src/DeskTown.Godot/**/*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="src/DeskTown.Application/DeskTown.Application.csproj" />
+    <ProjectReference Include="src/DeskTown.Platform.Windows/DeskTown.Platform.Windows.csproj" />
+  </ItemGroup>
+</Project>

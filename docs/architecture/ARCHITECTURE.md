@@ -2,7 +2,8 @@
 
 ## 1. Decision summary
 
-- Engine: current stable Godot 4.x .NET build, exact patch pinned in E0
+- Engine: Godot 4.7.2 .NET, pinned in `DeskTown.csproj`
+- Runtime/toolchain: `net8.0`, .NET SDK 8.0.425, pinned in `global.json`
 - Language: C#; pure domain projects avoid `Godot.*` dependencies
 - Platform: Windows 11 x64 first
 - Process model: one process, one authoritative simulation, multiple native
@@ -12,6 +13,11 @@
 - Energy policy: elapsed non-paused session time; activity data is descriptive,
   not punitive
 - Platform APIs: adapters around Win32; no P/Invoke in domain/presentation code
+
+`.NET 8` was selected because it is the documented baseline for the pinned Godot
+line. Its support ends on 2026-11-10, so migration to .NET 10 LTS must be tested
+before M2 and adopted if the Godot editor/export pipeline passes unchanged. The
+framework change must not be mixed with Ghost native integration work.
 
 ## 2. Architecture boundaries
 
@@ -267,4 +273,3 @@ form values.
 - No platform API calls outside `DeskTown.Platform.Windows`
 - No asset filesystem paths in C# gameplay logic
 - No second FocusSession created during mode switching
-

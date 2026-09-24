@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>DeskTown.Application</RootNamespace>
+    <AssemblyName>DeskTown.Application</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../DeskTown.Domain/DeskTown.Domain.csproj" />
+  </ItemGroup>
+</Project>

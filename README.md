@@ -4,8 +4,9 @@ DeskTown is a Windows-first cozy desktop companion game. A real focus session
 moves Mina and a small town forward without turning activity tracking into
 employee monitoring or a productivity score.
 
-This repository currently contains the implementation-ready design for
-Prototype v0.1. Feature implementation has intentionally not started.
+This repository contains the implementation-ready design and the M0 foundation
+for Prototype v0.1. Gameplay feature implementation has intentionally not
+started beyond the walking-skeleton bootstrap.
 
 ## Prototype invariant
 
@@ -27,6 +28,7 @@ rewards.
 - [Test strategy](docs/architecture/TEST_STRATEGY.md)
 - [Implementation plan](docs/IMPLEMENTATION_PLAN.md)
 - [Development backlog](docs/BACKLOG.md)
+- [M0 foundation status](docs/implementation/M0_FOUNDATION_STATUS.md)
 
 ## Fixed scope
 
@@ -35,3 +37,44 @@ rewards.
 - Local-only persistence
 - No AI NPCs, economy, inventory, cloud, accounts, multiplayer, mobile, or macOS
 
+## Development prerequisites
+
+- Windows 11 x64 for the product/manual platform gates
+- [Godot 4.7.2 .NET](https://godotengine.org/download/archive/4.7.2-stable/)
+- .NET SDK 8.0.425 x64
+
+The engine and SDK are pinned in `DeskTown.csproj` and `global.json`. Use the
+.NET-enabled Godot editor; the standard editor cannot build C# scripts.
+
+## Quick start
+
+```powershell
+git clone https://github.com/Seunghyun0606/desktown.git
+cd desktown
+dotnet restore DeskTown.sln
+dotnet build DeskTown.sln
+dotnet test DeskTown.sln
+```
+
+Open `project.godot` with Godot 4.7.2 .NET and run the main scene. The current
+visible result is a deliberately plain `DeskTown / Foundation ready` shell.
+
+On Bash-compatible environments, the repository-only validation does not need
+Godot or .NET:
+
+```bash
+bash scripts/validate-project-structure.sh
+```
+
+## Current implementation boundary
+
+The repository currently provides:
+
+- a five-project C# solution with one-way dependency boundaries;
+- an empty Godot AppRoot and Windows export preset;
+- typed prototype configuration and privacy-safe structured logging;
+- xUnit foundation/architecture tests;
+- CI for build, tests, headless import, and Windows export.
+
+Focus sessions, simulation, display modes, persistence, Town content, and
+production assets remain subsequent backlog work.
