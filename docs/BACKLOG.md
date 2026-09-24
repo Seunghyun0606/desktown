@@ -6,10 +6,10 @@ Current Foundation status:
 
 | Task | Status | Note |
 | --- | --- | --- |
-| DT-E0-001 | IN REVIEW | Scaffold created; CI/editor execution required |
-| DT-E0-002 | IN REVIEW | Boundaries and composition root created; build required |
-| DT-E0-003 | IN REVIEW | CI/export workflow created; first run required |
-| DT-E0-004 | IN REVIEW | Config/log privacy policy and tests created; test run required |
+| DT-E0-001 | IN REVIEW | Build/import/export pass; exported `.exe` launch pending on Windows |
+| DT-E0-002 | DONE | Boundaries, composition root, architecture tests, and solution build pass |
+| DT-E0-003 | IN REVIEW | CI and Windows artifact pass; manual artifact launch pending |
+| DT-E0-004 | DONE | Typed defaults, visible safe fallback, privacy policy, and tests pass |
 
 Conventions: `Automated` lists the minimum test; `Manual` is `Yes` only where a
 human/exported environment adds information. Expected files are forecasts and

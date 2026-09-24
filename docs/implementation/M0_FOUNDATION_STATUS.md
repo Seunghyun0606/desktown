@@ -33,6 +33,8 @@ Godot baseline for this first build. Because .NET 8 reaches end of support on
 - central prototype thresholds: 60s short idle, 180s long idle, 1s logical tick,
   15s checkpoint, 30 FPS maximum
 - structured logging boundary that rejects prohibited privacy field names
+- invalid prototype options fall back to safe defaults and display a recovery
+  message in the foundation shell
 - architecture, configuration, and privacy policy tests
 - Windows export preset
 - CI jobs for .NET build/test and Godot headless Windows export
@@ -40,17 +42,20 @@ Godot baseline for this first build. Because .NET 8 reaches end of support on
 
 ## Validation state
 
-The current agent environment does not provide a .NET SDK or Godot binary, and
-network policy prevents downloading them directly. Therefore:
+GitHub Actions run `36038376125` passed on commit `8f7bfcf`:
 
-- repository structure validation can run locally;
-- C# compile/test and Godot import/export must be confirmed by GitHub Actions;
-- Windows `.exe` launch remains the manual part of DT-E0-001 acceptance.
+- repository structure validation;
+- clean restore and Release solution build;
+- foundation, architecture, configuration, and privacy tests;
+- Godot 4.7.2 .NET headless import;
+- Windows x86_64 release export;
+- test result and Windows build artifact upload.
 
-Tasks DT-E0-001 through DT-E0-004 remain `IN REVIEW` until those checks pass.
+The current agent environment does not provide a Windows desktop, so launching
+the exported `.exe` remains the manual gate for DT-E0-001 and DT-E0-003.
+DT-E0-002 and DT-E0-004 are complete.
 
 ## Next task after Foundation acceptance
 
 `DT-E1-001 — Create FocusSession domain model` is the next implementation task.
 It must remain independent of Godot, Win32, DisplayMode, and persistence DTOs.
-
