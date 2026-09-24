@@ -51,3 +51,21 @@ public sealed record OptionsValidationResult(IReadOnlyList<string> Errors)
 {
     public bool IsValid => Errors.Count == 0;
 }
+
+public sealed record PrototypeOptionsResolution(
+    PrototypeOptions Options,
+    bool UsedFallback,
+    IReadOnlyList<string> ValidationErrors);
+
+public static class PrototypeOptionsResolver
+{
+    public static PrototypeOptionsResolution Resolve(PrototypeOptions candidate)
+    {
+        ArgumentNullException.ThrowIfNull(candidate);
+
+        var validation = candidate.Validate();
+        return validation.IsValid
+            ? new PrototypeOptionsResolution(candidate, false, validation.Errors)
+            : new PrototypeOptionsResolution(PrototypeOptions.Default, true, validation.Errors);
+    }
+}

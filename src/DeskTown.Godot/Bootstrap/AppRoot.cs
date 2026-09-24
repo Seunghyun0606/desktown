@@ -6,27 +6,37 @@ namespace DeskTown.Presentation.Bootstrap;
 
 public partial class AppRoot : Node
 {
-    private readonly PrototypeOptions _options = PrototypeOptions.Default;
+    private readonly PrototypeOptions _configuredOptions = PrototypeOptions.Default;
     private readonly IStructuredLogger _logger = new GodotStructuredLogger();
 
     public override void _Ready()
     {
-        var validation = _options.Validate();
-        if (!validation.IsValid)
+        var resolution = PrototypeOptionsResolver.Resolve(_configuredOptions);
+        var options = resolution.Options;
+
+        if (resolution.UsedFallback)
         {
-            throw new InvalidOperationException(string.Join(System.Environment.NewLine, validation.Errors));
+            GetNode<Label>("MainShell/Center/Message").Text =
+                "DeskTown\nFoundation ready\nDefault configuration restored";
+
+            _logger.Information(
+                "prototype_options_fallback",
+                new Dictionary<string, object?>
+                {
+                    ["validation_error_count"] = resolution.ValidationErrors.Count
+                });
         }
 
-        Engine.MaxFps = _options.VisibleMaxFramesPerSecond;
+        Engine.MaxFps = options.VisibleMaxFramesPerSecond;
 
         _logger.Information(
             "application_started",
             new Dictionary<string, object?>
             {
                 ["engine_version"] = Engine.GetVersionInfo()["string"].AsString(),
-                ["visible_fps_cap"] = _options.VisibleMaxFramesPerSecond,
-                ["logical_tick_seconds"] = _options.LogicalTickInterval.TotalSeconds,
-                ["checkpoint_seconds"] = _options.CheckpointInterval.TotalSeconds
+                ["visible_fps_cap"] = options.VisibleMaxFramesPerSecond,
+                ["logical_tick_seconds"] = options.LogicalTickInterval.TotalSeconds,
+                ["checkpoint_seconds"] = options.CheckpointInterval.TotalSeconds
             });
     }
 }

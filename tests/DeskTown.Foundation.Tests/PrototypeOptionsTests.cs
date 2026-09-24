@@ -44,4 +44,35 @@ public sealed class PrototypeOptionsTests
 
         Assert.False(options.Validate().IsValid);
     }
+
+    [Fact]
+    public void Invalid_options_fall_back_to_safe_defaults()
+    {
+        var invalid = PrototypeOptions.Default with
+        {
+            ShortIdleThreshold = TimeSpan.Zero,
+            VisibleMaxFramesPerSecond = 60
+        };
+
+        var resolution = PrototypeOptionsResolver.Resolve(invalid);
+
+        Assert.True(resolution.UsedFallback);
+        Assert.Equal(PrototypeOptions.Default, resolution.Options);
+        Assert.Equal(2, resolution.ValidationErrors.Count);
+    }
+
+    [Fact]
+    public void Valid_options_are_preserved()
+    {
+        var valid = PrototypeOptions.Default with
+        {
+            CheckpointInterval = TimeSpan.FromSeconds(30)
+        };
+
+        var resolution = PrototypeOptionsResolver.Resolve(valid);
+
+        Assert.False(resolution.UsedFallback);
+        Assert.Same(valid, resolution.Options);
+        Assert.Empty(resolution.ValidationErrors);
+    }
 }
