@@ -17,9 +17,9 @@ Current Focus Core status:
 | --- | --- | --- |
 | DT-E1-001 | DONE | Display-independent aggregate and 21 domain tests pass |
 | DT-E1-002 | DONE | Monotonic/wall clocks, single-active rule, lifecycle events, and 15 tests pass |
-| DT-E1-003 | TODO | Windows foreground and idle tracker |
-| DT-E1-004 | TODO | Next critical-path task: session ledger and elapsed-time Energy policy |
-| DT-E1-005 | TODO | Process catalog and Focus orchestration |
+| DT-E1-003 | IN REVIEW | Adapter/privacy tests implemented; CI and exported Windows manual test pending |
+| DT-E1-004 | IN REVIEW | Tick-precise idempotent ledger/Energy tests implemented; CI pending |
+| DT-E1-005 | TODO | Next task after E1-003/E1-004 verification: process catalog and Focus orchestration |
 
 Conventions: `Automated` lists the minimum test; `Manual` is `Yes` only where a
 human/exported environment adds information. Expected files are forecasts and
@@ -132,8 +132,9 @@ may be adjusted to the final scaffold without changing task responsibility.
 - **Expected files:** `Domain/Focus/SessionLedger.cs`, `IEnergyPolicy.cs`,
   `ElapsedTimeEnergyPolicy.cs`, tests.
 - **Dependencies:** DT-E1-002.
-- **Implementation:** retain seconds internally; show whole-minute Focus; idle and
-  process choice do not penalize.
+- **Implementation:** retain tick-precise elapsed time internally; show
+  whole-minute Focus; idle and process choice do not penalize; expose cumulative
+  total and unapplied delta explicitly.
 - **Acceptance:** equal elapsed sessions produce equal Energy in all modes and
   activity patterns; no rounding drift.
 - **Automated:** property/boundary tests.
