@@ -2,23 +2,23 @@ using System.Runtime.InteropServices;
 
 namespace DeskTown.Platform.Windows.Ghost;
 
-internal static partial class NativeMethods
+internal static class NativeMethods
 {
-    [LibraryImport("user32.dll", SetLastError = true)]
+    [DllImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
-    internal static partial bool IsWindow(nint window);
+    internal static extern bool IsWindow(nint window);
 
-    [LibraryImport("user32.dll", SetLastError = true)]
-    internal static partial uint GetWindowThreadProcessId(nint window, out uint processId);
+    [DllImport("user32.dll", SetLastError = true)]
+    internal static extern uint GetWindowThreadProcessId(nint window, out uint processId);
 
-    [LibraryImport("user32.dll", EntryPoint = "GetWindowLongPtrW", SetLastError = true)]
-    internal static partial nint GetWindowLongPtr(nint window, int index);
+    [DllImport("user32.dll", EntryPoint = "GetWindowLongPtrW", SetLastError = true)]
+    internal static extern nint GetWindowLongPtr(nint window, int index);
 
-    [LibraryImport("user32.dll", EntryPoint = "SetWindowLongPtrW", SetLastError = true)]
-    internal static partial nint SetWindowLongPtr(nint window, int index, nint value);
+    [DllImport("user32.dll", EntryPoint = "SetWindowLongPtrW", SetLastError = true)]
+    internal static extern nint SetWindowLongPtr(nint window, int index, nint value);
 
-    [LibraryImport("user32.dll", SetLastError = true)]
+    [DllImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
-    internal static partial bool SetWindowPos(nint window, nint insertAfter,
+    internal static extern bool SetWindowPos(nint window, nint insertAfter,
         int x, int y, int width, int height, uint flags);
 }
