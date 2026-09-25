@@ -39,11 +39,28 @@ public partial class PrototypeAppController : Node
         tray.OpenRequested += OpenTown;
         tray.ModeRequested += mode => _ = RunAsync(() => ChangeModeAsync(mode));
         tray.CompanionScaleRequested += scale => _ = RunAsync(() => ChangeScaleAsync(scale));
-        tray.GhostPositionRequested += anchor => _ = RunAsync(() =>
-            _game!.ChangeSettingsAsync(_game.Settings with
-            { Ghost = _game.Settings.Ghost with { Anchor = anchor } }));
-        tray.GhostOpacityRequested += opacity => _ = RunAsync(() =>
-            _game!.ChangeSettingsAsync(_game.Settings with { GhostOpacityPercent = opacity }));
+        tray.GhostPositionRequested += anchor => _ = RunAsync(async () =>
+        {
+            if (_game is null) return;
+            await _game.ChangeSettingsAsync(_game.Settings with
+            { Ghost = _game.Settings.Ghost with { Anchor = anchor } });
+            ConfigureGhostPreview();
+        });
+        tray.GhostOpacityRequested += opacity => _ = RunAsync(async () =>
+        {
+            if (_game is null) return;
+            await _game.ChangeSettingsAsync(_game.Settings with { GhostOpacityPercent = opacity });
+            ConfigureGhostPreview();
+        });
+        tray.GhostMonitorRequested += screen => _ = RunAsync(async () =>
+        {
+            if (_game is null) return;
+            var monitors = CompanionWindowHost.WorkAreas();
+            if (screen < 0 || screen >= monitors.Count) return;
+            await _game.ChangeSettingsAsync(_game.Settings with
+            { Ghost = _game.Settings.Ghost with { MonitorId = monitors[screen].Id } });
+            ConfigureGhostPreview();
+        });
         tray.AudioToggleRequested += () => _ = RunAsync(() =>
             _game!.ChangeSettingsAsync(_game.Settings with
             { AudioEnabled = !_game.Settings.AudioEnabled }));
@@ -103,6 +120,7 @@ public partial class PrototypeAppController : Node
                 _activity, new SystemWallClock(), new StopwatchMonotonicClock(), _checkpointInterval);
             Root<CompanionWindowHost>("CompanionWindow").Configure(
                 _game.Settings.Companion, _game.Settings.CompanionScalePercent);
+            ConfigureGhostPreview();
             Root<Label>("MainShell/Center/Message").Visible = false;
             Root<TownScene>("MainShell/Town").Bind(_game.World.Town, _game.TodayFocus);
             Root<FirstLaunch>("MainShell/FirstLaunch").Visible = !_game.OnboardingCompleted;
@@ -201,6 +219,13 @@ public partial class PrototypeAppController : Node
         Root<CompanionWindowHost>("CompanionWindow")
             .Configure(_game.Settings.Companion, scale);
         await _game.ChangeSettingsAsync(_game.Settings with { CompanionScalePercent = scale });
+    }
+
+    private void ConfigureGhostPreview()
+    {
+        if (_game is null) return;
+        Root<GhostWindowHost>("GhostWindow").Configure(
+            _game.Settings.Ghost, _game.Settings.GhostOpacityPercent);
     }
 
     private async Task ResolveRecoveryAsync(RecoveryChoice choice)

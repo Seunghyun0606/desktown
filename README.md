@@ -4,9 +4,8 @@ DeskTown is a Windows-first cozy desktop companion game. A real focus session
 moves Mina and a small town forward without turning activity tracking into
 employee monitoring or a productivity score.
 
-This repository contains the implementation-ready design and the M0 foundation
-for Prototype v0.1. Gameplay feature implementation has intentionally not
-started beyond the walking-skeleton bootstrap.
+This repository contains the Prototype v0.1 design and a playable placeholder
+vertical slice. Exported Windows behavior and final art still require review.
 
 ## Prototype invariant
 
@@ -41,6 +40,8 @@ rewards.
 - [Atomic save and recovery](docs/implementation/DT-E8-002_ATOMIC_SAVE.md)
 - [Workshop and Railway event contract](docs/implementation/DT-E2-004_EVENT_SYSTEM.md)
 - [Checkpoint and restart recovery contract](docs/implementation/DT-E8-003_LIFECYCLE_RECOVERY.md)
+- [Focus UI and runtime integration](docs/implementation/FOCUS_UI_RUNTIME_SLICE.md)
+- [Reward and Ghost Windows handoff](docs/implementation/REWARD_GHOST_HANDOFF.md)
 
 ## Fixed scope
 
@@ -68,8 +69,11 @@ dotnet build DeskTown.sln
 dotnet test DeskTown.sln
 ```
 
-Open `project.godot` with Godot 4.7.2 .NET and run the main scene. The current
-visible result is a deliberately plain `DeskTown / Foundation ready` shell.
+Open `project.godot` with Godot 4.7.2 .NET and run the main scene. A new save
+opens First Launch, then the placeholder Town and Focus Setup. Start a Focus
+session in Companion or Hidden; the Tray can reopen the Town or end Focus.
+The F10 Ghost preview is for isolated QA outside a session. Ghost remains
+unavailable in Focus Setup and the Tray until exported Windows input testing.
 
 On Bash-compatible environments, the repository-only validation does not need
 Godot or .NET:
@@ -83,18 +87,18 @@ bash scripts/validate-project-structure.sh
 The repository currently provides:
 
 - a six-project C# solution with one-way dependency boundaries;
-- an empty Godot AppRoot and Windows export preset;
+- a Godot AppRoot, Town/Focus Setup, Companion/Hidden presentation, and Windows export preset;
 - typed prototype configuration and privacy-safe structured logging;
-- a display-independent FocusSession aggregate and transition tests;
-- a monotonic-time FocusSessionManager with typed lifecycle events;
-- a privacy-minimal Windows foreground/idle activity adapter;
-- an idempotent session ledger and elapsed-time Focus Energy policy;
-- a privacy-minimal process catalog and Focus command coordinator;
-- deterministic, replay-safe Restore Workshop progression;
-- xUnit foundation/architecture tests;
-- CI for build, tests, headless import, and Windows export.
+- a display-independent FocusSession, privacy-minimal Windows activity tracking,
+  process catalog, and elapsed-time Focus Energy;
+- deterministic Mina/Town simulation and replay-safe Workshop/Railway events;
+- versioned atomic JSON save, checkpoints, backup recovery, and restart prompts;
+- passive completion notice, on-demand Workshop reveal and Railway teaser;
+- an isolated native Windows Ghost QA adapter and saved preview placement/opacity;
+- CI for build, tests, headless main-scene launch, and Windows export.
 
-Mina/Town simulation, display modes, persistence, Town presentation, and
-production assets remain subsequent backlog work. The current Godot scene is
-still the Foundation shell; these domain/application features have not yet
-been wired into a playable UI.
+The exported `.exe` still needs Windows 11 QA for focus/input behavior, Tray,
+sleep/crash recovery, mixed-DPI placement, and the Ghost click-through matrix.
+Passing CI export does not certify those interactions. Visuals are placeholders;
+the custom Mina, Workshop and core prop assets and funding-build polish remain
+open in [the backlog](docs/BACKLOG.md).
