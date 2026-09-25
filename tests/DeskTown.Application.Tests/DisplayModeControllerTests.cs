@@ -50,12 +50,34 @@ public sealed class DisplayModeControllerTests
         Assert.True(companion.Visible);
     }
 
+    [Fact]
+    public void Partially_shown_ghost_fails_closed_and_remains_unavailable()
+    {
+        var companion = new Surface();
+        var ghost = new Surface { FailOnShow = true };
+        var controller = new DisplayModeController(companion, ghost);
+        controller.SetDisplayMode(DisplayMode.Companion);
+
+        Assert.Equal(DisplayMode.Hidden, controller.SetDisplayMode(DisplayMode.Ghost));
+        Assert.False(companion.Visible);
+        Assert.False(ghost.Visible);
+        Assert.False(controller.GhostAvailable);
+        Assert.Equal(DisplayMode.Hidden, controller.SetDisplayMode(DisplayMode.Ghost));
+        Assert.Equal(1, ghost.ShowCount);
+    }
+
     private sealed class Surface : IFocusDisplaySurface
     {
         public bool Visible { get; private set; }
         public int ShowCount { get; private set; }
         public int HideCount { get; private set; }
-        public void Show() { Visible = true; ShowCount++; }
+        public bool FailOnShow { get; set; }
+        public void Show()
+        {
+            Visible = true;
+            ShowCount++;
+            if (FailOnShow) throw new InvalidOperationException("Native apply failed");
+        }
         public void Hide() { Visible = false; HideCount++; }
     }
 }
