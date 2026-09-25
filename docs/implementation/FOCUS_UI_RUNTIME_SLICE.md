@@ -20,7 +20,7 @@ The stage's temporary geometry and Town layout still require visual review.
 
 Current limits: the menu's Ghost command remains disabled. A passive, unfocusable
 completion window now appears with Tray status as fallback, and the saved Reward
-Reveal and Railway discovery are bound to the Town. Notification activation is
-not implemented. Native window, process-picker, tray and sleep/lock checks remain
+Reveal and Railway discovery are bound to the Town. Its Open button explicitly
+opens the existing Town instance. Native window, process-picker, tray and sleep/lock checks remain
 exported Windows gates. F8 and F10 are opt-in visual QA shortcuts when no session
 is active; neither changes gameplay or records progress.

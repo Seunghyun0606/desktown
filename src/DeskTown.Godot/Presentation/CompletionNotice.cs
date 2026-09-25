@@ -2,17 +2,27 @@ using global::Godot;
 
 namespace DeskTown.Presentation;
 
-/// <summary>A short passive window; it never opens the Town or owns Focus.</summary>
+/// <summary>A short unfocusable notice; Town opens only after an explicit click.</summary>
 public partial class CompletionNotice : Window
 {
     private int _generation;
+    public event Action? OpenRequested;
 
-    public override void _Ready() => Visible = false;
+    public override void _Ready()
+    {
+        Visible = false;
+        GetNode<Button>("Panel/Content/Open").Pressed += () =>
+        {
+            _generation++;
+            Visible = false;
+            OpenRequested?.Invoke();
+        };
+    }
 
     public async void ShowMessage(string message)
     {
         var current = ++_generation;
-        GetNode<Label>("Panel/Message").Text = message;
+        GetNode<Label>("Panel/Content/Message").Text = message;
         var usable = DisplayServer.ScreenGetUsableRect();
         Position = usable.Position + usable.Size - Size - new Vector2I(24, 24);
         Visible = true;
