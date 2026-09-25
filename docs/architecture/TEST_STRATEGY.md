@@ -7,7 +7,8 @@
 | Domain unit | `dotnet test` | deterministic focus, energy, project, Mina, events |
 | Application unit | `dotnet test` with fakes | orchestration, mode switching, save policy |
 | Integration | Godot/headless where possible | scene binding, JSON store, lifecycle adapters |
-| Windows system | exported `.exe` | HWND flags, tray, notification, activity APIs |
+| Windows export smoke | CI Windows runner, exported `.exe` | headless startup and fatal script errors |
+| Windows system | exported `.exe` on Windows 11 | HWND flags, tray, notification, activity APIs |
 | Manual visual | exported `.exe` | pixel scaling, cozy hierarchy, reward timing |
 
 Core tests use xUnit (or NUnit if chosen once in E0) and no running Godot editor.
@@ -154,4 +155,3 @@ result with the candidate build.
 - Performance target met: visible ≤30 FPS, Hidden no active rendering surface,
   logical tick stable over a 60-minute soak
 - Privacy inspection of persisted data passes
-

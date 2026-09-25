@@ -97,3 +97,33 @@ jobs:
           name: desktown-windows-foundation
           path: build/windows/**
           if-no-files-found: error
+
+  windows-export-smoke:
+    name: Launch exported Windows build
+    needs: godot-windows-export
+    runs-on: windows-latest
+    timeout-minutes: 8
+
+    steps:
+      - name: Download exported build
+        uses: actions/download-artifact@v4
+        with:
+          name: desktown-windows-foundation
+          path: build/windows
+
+      - name: Launch executable headlessly
+        shell: pwsh
+        run: |
+          $exe = (Resolve-Path 'build/windows/DeskTown.exe').Path
+          $stdout = Join-Path $PWD 'build/windows/stdout.log'
+          $stderr = Join-Path $PWD 'build/windows/stderr.log'
+          $process = Start-Process -FilePath $exe -ArgumentList @('--headless', '--quit-after', '120') -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          if (-not $process.WaitForExit(45000)) {
+            $process.Kill()
+            throw 'Exported DeskTown.exe did not exit within 45 seconds.'
+          }
+          $log = (Get-Content $stdout -Raw) + "`n" + (Get-Content $stderr -Raw)
+          Write-Output $log
+          if ($process.ExitCode -ne 0 -or $log -match '(?m)^(ERROR:|SCRIPT ERROR:)') {
+            throw "Exported DeskTown.exe smoke failed with exit code $($process.ExitCode)."
+          }

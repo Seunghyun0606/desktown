@@ -7,9 +7,9 @@ Current Foundation status:
 
 | Task | Status | Note |
 | --- | --- | --- |
-| DT-E0-001 | IN REVIEW | Build/import/export pass; exported `.exe` launch pending on Windows |
+| DT-E0-001 | IN REVIEW | Build/import/export and CI Windows `.exe` headless launch; interactive Windows 11 launch pending |
 | DT-E0-002 | DONE | Boundaries, composition root, architecture tests, and solution build pass |
-| DT-E0-003 | IN REVIEW | CI and Windows artifact pass; manual artifact launch pending |
+| DT-E0-003 | IN REVIEW | CI exports and launches the Windows artifact headlessly; manual interactive launch pending |
 | DT-E0-004 | DONE | Typed defaults, visible safe fallback, privacy policy, and tests pass |
 
 Current Focus Core status:
