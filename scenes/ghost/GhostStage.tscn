@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/DeskTown.Godot/Display/MinaPlaceholderView.cs" id="1_mina"]
+
+[node name="GhostStage" type="Node2D"]
+modulate = Color(1, 1, 1, 0.65)
+
+[node name="Shadow" type="Polygon2D" parent="."]
+color = Color(0.160784, 0.137255, 0.12549, 0.27)
+polygon = PackedVector2Array(80, 138, 164, 138, 154, 144, 90, 144)
+
+[node name="WorkProp" type="Polygon2D" parent="."]
+color = Color(0.584314, 0.384314, 0.282353, 1)
+polygon = PackedVector2Array(118, 115, 169, 115, 169, 132, 118, 132)
+
+[node name="MinaView" type="Node2D" parent="."]
+position = Vector2(75, 88)
+script = ExtResource("1_mina")

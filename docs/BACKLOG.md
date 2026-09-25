@@ -246,6 +246,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E3-002 — Build CompanionStage and Mina animator
 
+- **Status:** IN REVIEW — state/clip binding and placeholder stage are automated;
+  animation and visual QA plus custom Mina production art pending.
 - **Purpose:** present Work/Rest/Stretch/Walk in the diorama.
 - **Expected files:** `scenes/companion/CompanionStage.tscn`, shared Mina view,
   placeholder catalog.
@@ -260,6 +262,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E3-003 — Persist Companion scale and monitor position
 
+- **Status:** IN PROGRESS — four presets, capture, clamp and tests exist; durable
+  save binding, stable monitor identifier and mixed-DPI QA pending.
 - **Purpose:** restore a usable window across DPI/monitor changes.
 - **Expected files:** `Platform.Windows/WindowsWindowPlacementService.cs`,
   Companion settings/view tests.
@@ -276,6 +280,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E4-001 — Implement Hidden surface lifecycle
 
+- **Status:** IN PROGRESS — presentation lifecycle/parity tests exist; runtime
+  Focus/Tray wiring and Windows performance QA pending.
 - **Purpose:** provide a zero-visual normal play mode with minimal resources.
 - **Expected files:** `Godot/Display/HiddenDisplaySurface.cs`, lifecycle tests.
 - **Dependencies:** DT-E2-003, DT-E3-001.
@@ -305,6 +311,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E5-001 — Build Godot Ghost overlay spike
 
+- **Status:** IN REVIEW — hidden transparent QA scene and static interaction
+  contract exist; exported Windows transparency/focus/passthrough gate pending.
 - **Purpose:** prove transparent, topmost, no-focus, mouse-passthrough basics
   before full UI work.
 - **Expected files:** `scenes/ghost/GhostWindow.tscn`, `GhostStage.tscn`,
@@ -365,6 +373,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E6-001 — Build Main Town scene and world-first HUD
 
+- **Status:** IN REVIEW — snapshot-bound placeholder scene exists; layout/DPI
+  review and saved-world binding pending.
 - **Purpose:** create the place where progress becomes emotionally visible.
 - **Expected files:** `scenes/town/TownScene.tscn`, TileMap layers, Town snapshot
   binder, placeholder catalog entries.

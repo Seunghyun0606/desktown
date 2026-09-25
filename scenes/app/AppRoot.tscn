@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://src/DeskTown.Godot/Bootstrap/AppRoot.cs" id="1_app_root"]
 [ext_resource type="PackedScene" path="res://scenes/companion/CompanionWindow.tscn" id="2_companion"]
+[ext_resource type="PackedScene" path="res://scenes/ghost/GhostWindow.tscn" id="3_ghost"]
+[ext_resource type="PackedScene" path="res://scenes/town/TownScene.tscn" id="4_town"]
 
 [node name="AppRoot" type="Node"]
 script = ExtResource("1_app_root")
@@ -38,4 +40,9 @@ theme_override_font_sizes/font_size = 28
 text = "DeskTown\nFoundation ready"
 horizontal_alignment = 1
 
+[node name="TownPreview" parent="MainShell" instance=ExtResource("4_town")]
+visible = false
+
 [node name="CompanionWindow" parent="." instance=ExtResource("2_companion")]
+
+[node name="GhostWindow" parent="." instance=ExtResource("3_ghost")]
