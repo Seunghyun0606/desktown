@@ -106,7 +106,7 @@ Its state-changing methods are `Start`, `Accumulate`, `Suspend`, `Resume`,
 at the target; Idle remains descriptive metadata within Counted time.
 
 `FocusSession` contains no `DisplayMode`. Mode-change logs reference the session
-from outside the aggregate. `FocusSessionManager` will enforce that only one
+from outside the aggregate. `FocusSessionManager` enforces that only one
 session may be Running or Suspended; that cross-aggregate rule is not owned by
 the session entity.
 
@@ -143,7 +143,7 @@ again. Idle and process samples do not reduce Energy.
 by elapsed delta after resume; it does not require rendered frames.
 
 - `ProjectSystem`: applies Energy to Restore Workshop, clamps at target, emits
-  `ProjectCompleted` exactly once
+  `ProjectCompleted` as a one-shot result at the completion boundary
 - `MinaStateMachine`: derives logical activity from session/activity state
 - `EventSystem`: creates pending Workshop reveal and Railway discovery
 - `NpcAmbientSystem`: deterministic, low-frequency positions/actions for visible
@@ -204,7 +204,8 @@ IAssetCatalog
 
 Key services:
 
-- `FocusSessionCoordinator`: orchestrates manager, activity tracker, energy, save
+- `FocusSessionCoordinator`: orchestrates manager, activity tracker, terminal
+  ledger, Energy, and checkpoint/finalization seams; E8 owns actual save writes
 - `DisplayModeController`: switches surfaces and records debug events
 - `RewardRevealCoordinator`: consumes pending presentation without owning state
 - `ApplicationLifecycleCoordinator`: startup recovery, single-instance behavior,
@@ -243,11 +244,12 @@ selected `DisplayMode`.
 ```mermaid
 flowchart LR
     API["Win32 sampler"] --> SAMPLE["ActivitySample"]
-    SAMPLE --> LEDGER["Session ledger"]
-    LEDGER --> MINA["Mina variation"]
-    LEDGER --> SAVE["Session summary"]
-    CLOCK["Monotonic clock"] --> ENERGY["Energy policy"]
-    ENERGY --> PROJECT["Project system"]
+    SAMPLE --> SUMMARY["Activity summary"]
+    SUMMARY --> MINA["Mina variation"]
+    SUMMARY --> SAVE["Future save"]
+    CLOCK["Monotonic session"] --> LEDGER["Terminal ledger"]
+    LEDGER --> ENERGY["Energy total"]
+    ENERGY --> PROJECT["Workshop progress"]
 ```
 
 Sampling at 1 Hz records process name and activity bucket only during an active

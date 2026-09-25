@@ -62,3 +62,10 @@ integration: Release build with zero warnings/errors, 109 tests, Godot headless
 import, and Windows export all passed. DT-E1-004 is complete. DT-E1-003 remains
 in review only for its exported-build manual activity/idle check. The next
 critical-path task is `DT-E1-005 — Add process catalog and Focus orchestration`.
+
+GitHub Actions run `36103534355` verified DT-E1-005 and DT-E2-001 together:
+Release build, 155 tests, Godot headless import, and Windows export passed.
+Focus-to-Workshop progression is covered by an application integration test.
+DT-E2-001 is complete. DT-E1-005 still requires real Windows process-picker and
+Focus QA after UI wiring. The next independent domain task is DT-E2-002 Mina
+logical state; persistence and display integration remain separate backlog work.

@@ -33,6 +33,8 @@ rewards.
 - [FocusSessionManager contract](docs/implementation/DT-E1-002_FOCUS_SESSION_MANAGER.md)
 - [Windows activity tracker contract](docs/implementation/DT-E1-003_WINDOWS_ACTIVITY_TRACKER.md)
 - [Session ledger and Energy contract](docs/implementation/DT-E1-004_SESSION_LEDGER_ENERGY.md)
+- [Focus orchestration contract](docs/implementation/DT-E1-005_FOCUS_ORCHESTRATION.md)
+- [Workshop progression contract](docs/implementation/DT-E2-001_PROJECT_SYSTEM.md)
 
 ## Fixed scope
 
@@ -81,8 +83,12 @@ The repository currently provides:
 - a monotonic-time FocusSessionManager with typed lifecycle events;
 - a privacy-minimal Windows foreground/idle activity adapter;
 - an idempotent session ledger and elapsed-time Focus Energy policy;
+- a privacy-minimal process catalog and Focus command coordinator;
+- deterministic, replay-safe Restore Workshop progression;
 - xUnit foundation/architecture tests;
 - CI for build, tests, headless import, and Windows export.
 
-Focus orchestration, project progression, simulation, display modes, persistence,
-Town content, and production assets remain subsequent backlog work.
+Mina/Town simulation, display modes, persistence, Town presentation, and
+production assets remain subsequent backlog work. The current Godot scene is
+still the Foundation shell; these domain/application features have not yet
+been wired into a playable UI.

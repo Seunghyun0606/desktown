@@ -19,7 +19,16 @@ Current Focus Core status:
 | DT-E1-002 | DONE | Monotonic/wall clocks, single-active rule, lifecycle events, and 15 tests pass |
 | DT-E1-003 | IN REVIEW | 17 adapter/privacy tests and export pass; real Windows app/idle manual test pending |
 | DT-E1-004 | DONE | Tick-precise cumulative/delta Energy contract and 28 domain tests pass |
-| DT-E1-005 | TODO | Next critical-path task: process catalog and Focus orchestration |
+| DT-E1-005 | IN REVIEW | Coordinator/catalog tests and export pass; Windows process picker and real-session QA await UI wiring |
+
+Current Town Simulation status:
+
+| Task | Status | Note |
+| --- | --- | --- |
+| DT-E2-001 | DONE | Restore Workshop 25-Focus progression, replay guard, completion-once tests pass |
+| DT-E2-002 | TODO | Next parallel task: Mina logical state machine |
+| DT-E2-003 | TODO | Depends on E2-001 and E2-002 logical contracts |
+| DT-E2-004 | TODO | Workshop completion → pending Railway discovery |
 
 Conventions: `Automated` lists the minimum test; `Manual` is `Yes` only where a
 human/exported environment adds information. Expected files are forecasts and
