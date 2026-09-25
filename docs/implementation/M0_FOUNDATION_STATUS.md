@@ -89,3 +89,10 @@ remains in review until its exported Windows filesystem/recovery inspection;
 the recovery banner is an upcoming UI integration. The next domain task is
 DT-E2-004 pending reveals and Railway discovery. Checkpoint scheduling and
 startup recovery UI remain DT-E8-003.
+
+GitHub Actions run `36111663245` verified DT-E2-004: Release build and 200
+tests passed. Workshop completion queues a pending reveal; its acknowledgement
+queues the Old Railway Map event and unlocks the non-playable 45-Focus teaser.
+Save/restart tests cover all three boundaries, including interruption between
+the project commit and event creation. The actual reward animation, Rumi/map
+presentation, and passive notification remain E7 tasks.

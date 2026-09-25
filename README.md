@@ -39,6 +39,7 @@ rewards.
 - [V1 JSON save contract](docs/implementation/DT-E8-001_JSON_SAVE_CONTRACT.md)
 - [Town logical simulation](docs/implementation/DT-E2-003_TOWN_SIMULATION.md)
 - [Atomic save and recovery](docs/implementation/DT-E8-002_ATOMIC_SAVE.md)
+- [Workshop and Railway event contract](docs/implementation/DT-E2-004_EVENT_SYSTEM.md)
 
 ## Fixed scope
 

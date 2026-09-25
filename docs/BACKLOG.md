@@ -28,7 +28,7 @@ Current Town Simulation status:
 | DT-E2-001 | DONE | Restore Workshop 25-Focus progression, replay guard, completion-once tests pass |
 | DT-E2-002 | DONE | Logical state, presentation intent, one-shot cues, and restore tests pass |
 | DT-E2-003 | DONE | Headless absolute-time advancement, immutable mode projections, 60-minute parity test pass |
-| DT-E2-004 | TODO | Next Town task: pending Workshop reveal → Railway discovery |
+| DT-E2-004 | DONE | Pending Workshop reveal, Railway discovery/teaser unlock, restart reconciliation tests pass |
 
 Current Persistence status:
 
