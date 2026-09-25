@@ -42,6 +42,7 @@ required_files=(
   "src/DeskTown.Persistence/ISaveMigration.cs"
   "src/DeskTown.Platform.Windows/Lifecycle/WindowsSingleInstanceGate.cs"
   "scenes/app/RecoveryPrompt.tscn"
+  "scenes/app/CompletionNotice.tscn"
   "scenes/companion/CompanionWindow.tscn"
   "scenes/companion/CompanionStage.tscn"
   "scenes/ghost/GhostWindow.tscn"

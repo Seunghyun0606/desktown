@@ -262,8 +262,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E3-003 — Persist Companion scale and monitor position
 
-- **Status:** IN PROGRESS — four presets, capture, clamp and settings save binding
-  exist; stable monitor identifier and mixed-DPI QA pending.
+- **Status:** IN REVIEW — four presets, capture, clamp, settings save binding,
+  and hashed Windows monitor identity exist; mixed-DPI restore QA pending.
 - **Purpose:** restore a usable window across DPI/monitor changes.
 - **Expected files:** `Platform.Windows/WindowsWindowPlacementService.cs`,
   Companion settings/view tests.
@@ -427,8 +427,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E7-001 — Complete session passively and notify
 
-- **Status:** IN REVIEW — Town stays hidden, Windows toast request has Tray
-  fallback, and completion persists first; exported notification/action QA pending.
+- **Status:** IN REVIEW — Town stays hidden, short non-focusing passive window
+  has Tray fallback, and completion persists first; exported notification QA pending.
 - **Purpose:** finish work without forcing DeskTown over the user's app.
 - **Expected files:** `Application/Sessions/CompletionCoordinator.cs`,
   `Platform.Windows/Notifications/**`, Tray status integration.

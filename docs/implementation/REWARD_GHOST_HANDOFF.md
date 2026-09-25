@@ -9,8 +9,9 @@ disabled until the exported Windows interaction matrix passes.
 
 1. The Focus tick or End command commits elapsed time, project progress, and
    pending presentation to the JSON save.
-2. The Companion window is hidden. Windows requests a passive notification;
-   the Tray tooltip is the fallback. The Town window is not opened.
+2. The Companion window is hidden. A small passive, unfocusable notification
+   appears for six seconds; the Tray tooltip is the fallback. The Town window
+   is not opened.
 3. Open DeskTown binds the committed state with a temporary Repairing visual.
    Mina's final Work beat runs for two seconds (or 0.1 seconds with reduced
    motion), then the visual becomes Complete. The Continue action acknowledges

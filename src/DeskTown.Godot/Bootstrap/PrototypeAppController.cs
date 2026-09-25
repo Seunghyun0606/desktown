@@ -173,20 +173,17 @@ public partial class PrototypeAppController : Node
         _display?.SetDisplayMode(DisplayMode.Hidden);
         Root<TrayHost>("TrayHost").SetStatus(false, true);
         // The main window stays hidden until the user opens it.
-        if (OperatingSystem.IsWindows())
+        try
         {
-            try
-            {
-                var message = _game?.World.Town.Workshop == WorkshopState.Complete
-                    ? "Mina finished her work. The Workshop has changed."
-                    : "Mina finished her work.";
-                DisplayServer.SendToastNotification("DeskTown", message, null!, default);
-            }
-            catch (Exception error)
-            {
-                GD.PrintErr($"DeskTown notification unavailable: {error.GetType().Name}");
-                // Tray tooltip already holds the passive fallback.
-            }
+            var message = _game?.World.Town.Workshop == WorkshopState.Complete
+                ? "Mina finished her work. The Workshop has changed."
+                : "Mina finished her work.";
+            Root<CompletionNotice>("CompletionNotice").ShowMessage(message);
+        }
+        catch (Exception error)
+        {
+            GD.PrintErr($"DeskTown notification unavailable: {error.GetType().Name}");
+            // Tray tooltip already holds the passive fallback.
         }
     }
 

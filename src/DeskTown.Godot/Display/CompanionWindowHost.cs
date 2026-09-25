@@ -1,6 +1,7 @@
 using DeskTown.Application.Display;
 using DeskTown.Application.Persistence;
 using DeskTown.Domain.Simulation;
+using DeskTown.Platform.Windows.Windows;
 using global::Godot;
 
 namespace DeskTown.Presentation.Display;
@@ -57,8 +58,9 @@ public partial class CompanionWindowHost : Window, IFocusDisplaySurface
     {
         if (Visible)
         {
-            var monitor = WorkAreas().FirstOrDefault(m => m.Id == $"screen:{CurrentScreen}")
-                ?? WorkAreas()[0];
+            var monitors = WorkAreas();
+            var monitor = CurrentScreen >= 0 && CurrentScreen < monitors.Count
+                ? monitors[CurrentScreen] : monitors[0];
             _placement = CompanionPlacement.Capture(Position.X, Position.Y, monitor);
             PlacementChanged?.Invoke(_placement);
         }
@@ -88,7 +90,10 @@ public partial class CompanionWindowHost : Window, IFocusDisplaySurface
         for (var i = 0; i < DisplayServer.GetScreenCount(); i++)
         {
             var rect = DisplayServer.ScreenGetUsableRect(i);
-            result.Add(new MonitorWorkArea($"screen:{i}", rect.Position.X,
+            var monitorId = WindowsMonitorIdentity.AtOrFallback(
+                rect.Position.X + rect.Size.X / 2,
+                rect.Position.Y + rect.Size.Y / 2, $"screen:{i}");
+            result.Add(new MonitorWorkArea(monitorId, rect.Position.X,
                 rect.Position.Y, rect.Size.X, rect.Size.Y));
         }
         if (result.Count == 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://src/DeskTown.Godot/Bootstrap/AppRoot.cs" id="1_app_root"]
 [ext_resource type="PackedScene" path="res://scenes/companion/CompanionWindow.tscn" id="2_companion"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://src/DeskTown.Godot/Display/TrayHost.cs" id="8_tray"]
 [ext_resource type="PackedScene" path="res://scenes/town/RewardReveal.tscn" id="9_reveal"]
 [ext_resource type="PackedScene" path="res://scenes/town/DiscoveryEvent.tscn" id="10_discovery"]
+[ext_resource type="PackedScene" path="res://scenes/app/CompletionNotice.tscn" id="11_notice"]
 
 [node name="AppRoot" type="Node"]
 script = ExtResource("1_app_root")
@@ -65,3 +66,5 @@ visible = false
 
 [node name="TrayHost" type="Node" parent="."]
 script = ExtResource("8_tray")
+
+[node name="CompletionNotice" parent="." instance=ExtResource("11_notice")]
