@@ -67,5 +67,15 @@ GitHub Actions run `36103534355` verified DT-E1-005 and DT-E2-001 together:
 Release build, 155 tests, Godot headless import, and Windows export passed.
 Focus-to-Workshop progression is covered by an application integration test.
 DT-E2-001 is complete. DT-E1-005 still requires real Windows process-picker and
-Focus QA after UI wiring. The next independent domain task is DT-E2-002 Mina
-logical state; persistence and display integration remain separate backlog work.
+Focus QA after UI wiring. At that point, DT-E2-002 Mina logical state and
+persistence remained separate backlog work.
+
+GitHub Actions run `36105654826` verified DT-E2-002 and DT-E8-001 together:
+Release build, 180 tests, Godot headless import, and Windows export passed. Mina's
+logical transitions and one-shot reveal latch are independent of display mode
+and rewards. The V1 JSON repository restores exact session ticks and project
+high-watermark, rejects altered or future-schema saves, and stores only
+allowlisted activity data. Both tasks are complete. Next independent tasks are
+DT-E2-003 (headless Town simulation) and DT-E8-002 (atomic save, backup, and
+migration). Exported Windows interaction still needs the planned manual gates;
+the V1 repository's direct file write is not crash-safe until DT-E8-002.

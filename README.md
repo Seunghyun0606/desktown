@@ -35,6 +35,8 @@ rewards.
 - [Session ledger and Energy contract](docs/implementation/DT-E1-004_SESSION_LEDGER_ENERGY.md)
 - [Focus orchestration contract](docs/implementation/DT-E1-005_FOCUS_ORCHESTRATION.md)
 - [Workshop progression contract](docs/implementation/DT-E2-001_PROJECT_SYSTEM.md)
+- [Mina logical state contract](docs/implementation/DT-E2-002_MINA_STATE_MACHINE.md)
+- [V1 JSON save contract](docs/implementation/DT-E8-001_JSON_SAVE_CONTRACT.md)
 
 ## Fixed scope
 

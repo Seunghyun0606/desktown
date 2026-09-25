@@ -26,9 +26,17 @@ Current Town Simulation status:
 | Task | Status | Note |
 | --- | --- | --- |
 | DT-E2-001 | DONE | Restore Workshop 25-Focus progression, replay guard, completion-once tests pass |
-| DT-E2-002 | TODO | Next parallel task: Mina logical state machine |
-| DT-E2-003 | TODO | Depends on E2-001 and E2-002 logical contracts |
+| DT-E2-002 | DONE | Logical state, presentation intent, one-shot cues, and restore tests pass |
+| DT-E2-003 | TODO | Next Town task: headless logical tick and mode-independent snapshots |
 | DT-E2-004 | TODO | Workshop completion → pending Railway discovery |
+
+Current Persistence status:
+
+| Task | Status | Note |
+| --- | --- | --- |
+| DT-E8-001 | DONE | V1 JSON schema/repository, hash, exact restore, privacy tests pass |
+| DT-E8-002 | TODO | Next Persistence task: atomic write, backup recovery, migrations |
+| DT-E8-003 | TODO | Depends on E8-002; checkpoint scheduling and restart recovery |
 
 Conventions: `Automated` lists the minimum test; `Manual` is `Yes` only where a
 human/exported environment adds information. Expected files are forecasts and
