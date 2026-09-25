@@ -12,11 +12,18 @@ required_files=(
   "export_presets.cfg"
   "scenes/app/AppRoot.tscn"
   "src/DeskTown.Domain/DeskTown.Domain.csproj"
+  "src/DeskTown.Domain/Focus/FocusEnergy.cs"
+  "src/DeskTown.Domain/Focus/SessionLedger.cs"
+  "src/DeskTown.Domain/Focus/IEnergyPolicy.cs"
+  "src/DeskTown.Domain/Focus/ElapsedTimeEnergyPolicy.cs"
   "src/DeskTown.Application/DeskTown.Application.csproj"
   "src/DeskTown.Platform.Windows/DeskTown.Platform.Windows.csproj"
   "tests/DeskTown.Foundation.Tests/DeskTown.Foundation.Tests.csproj"
   "tests/DeskTown.Domain.Tests/DeskTown.Domain.Tests.csproj"
+  "tests/DeskTown.Domain.Tests/FocusEnergyTests.cs"
+  "tests/DeskTown.Domain.Tests/SessionLedgerEnergyPolicyTests.cs"
   "tests/DeskTown.Application.Tests/DeskTown.Application.Tests.csproj"
+  "tests/DeskTown.Platform.Windows.Tests/DeskTown.Platform.Windows.Tests.csproj"
 )
 
 for required_file in "${required_files[@]}"; do
@@ -28,6 +35,7 @@ grep -Fq '<Project Sdk="Godot.NET.Sdk/4.7.2">' DeskTown.csproj
 grep -Fq '"version": "8.0.425"' global.json
 grep -Fq '../DeskTown.Domain/DeskTown.Domain.csproj' \
   src/DeskTown.Application/DeskTown.Application.csproj
+grep -Fq 'tests\DeskTown.Domain.Tests\DeskTown.Domain.Tests.csproj' DeskTown.sln
 
 if command -v rg >/dev/null 2>&1; then
   forbidden_references="$(
@@ -48,5 +56,32 @@ if [[ -n "$forbidden_references" ]]; then
   printf '%s\n' "Forbidden framework/native reference found in inner layers." >&2
   exit 1
 fi
+
+if command -v rg >/dev/null 2>&1; then
+  activity_native_leaks="$(
+    rg -n 'DllImport|LibraryImport' src/DeskTown.Platform.Windows/Activity \
+      --glob '*.cs' \
+      --glob '!NativeMethods.cs' || true
+  )"
+else
+  activity_native_leaks="$(
+    find src/DeskTown.Platform.Windows/Activity -type f -name '*.cs' \
+      ! -name 'NativeMethods.cs' -print0 \
+      | xargs -0 grep -En 'DllImport|LibraryImport' || true
+  )"
+fi
+
+if [[ -n "$activity_native_leaks" ]]; then
+  printf '%s\n' "$activity_native_leaks"
+  printf '%s\n' "Activity P/Invoke must remain in Activity/NativeMethods.cs." >&2
+  exit 1
+fi
+
+grep -Fq 'GetForegroundWindow' \
+  src/DeskTown.Platform.Windows/Activity/NativeMethods.cs
+grep -Fq 'GetWindowThreadProcessId' \
+  src/DeskTown.Platform.Windows/Activity/NativeMethods.cs
+grep -Fq 'GetLastInputInfo' \
+  src/DeskTown.Platform.Windows/Activity/NativeMethods.cs
 
 printf '%s\n' "DeskTown project structure validation passed."
