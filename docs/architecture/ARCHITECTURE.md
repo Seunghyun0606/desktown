@@ -89,19 +89,26 @@ This is a target structure, not a scaffold created in the design phase.
 
 ### Focus session
 
-```csharp
-public sealed record FocusSession(
-    Guid Id,
-    DateTimeOffset StartedAtUtc,
-    TimeSpan TargetDuration,
-    SessionStatus Status,
-    TimeSpan CountedDuration,
-    TimeSpan IdleDuration,
-    IReadOnlySet<string> IntendedProcessNames);
+The implemented aggregate owns these domain values:
+
+```text
+FocusSession
+  Id: FocusSessionId
+  StartedAtUtc / EndedAtUtc
+  TargetDuration
+  Status: Ready | Running | Suspended | Completed | Stopped
+  CountedDuration / IdleDuration
+  IntendedProcessNames
 ```
 
+Its state-changing methods are `Start`, `Accumulate`, `Suspend`, `Resume`,
+`Complete`, and `Stop`. Counted time accumulates only while Running and clamps
+at the target; Idle remains descriptive metadata within Counted time.
+
 `FocusSession` contains no `DisplayMode`. Mode-change logs reference the session
-from outside the aggregate. Only one session may be Running or Suspended.
+from outside the aggregate. `FocusSessionManager` will enforce that only one
+session may be Running or Suspended; that cross-aggregate rule is not owned by
+the session entity.
 
 `FocusSessionManager` responsibilities:
 

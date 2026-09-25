@@ -11,6 +11,16 @@ Current Foundation status:
 | DT-E0-003 | IN REVIEW | CI and Windows artifact pass; manual artifact launch pending |
 | DT-E0-004 | DONE | Typed defaults, visible safe fallback, privacy policy, and tests pass |
 
+Current Focus Core status:
+
+| Task | Status | Note |
+| --- | --- | --- |
+| DT-E1-001 | DONE | Display-independent aggregate and 21 domain tests pass |
+| DT-E1-002 | TODO | Next task: manager with injectable monotonic/wall clocks |
+| DT-E1-003 | TODO | Windows foreground and idle tracker |
+| DT-E1-004 | TODO | Session ledger and elapsed-time Energy policy |
+| DT-E1-005 | TODO | Process catalog and Focus orchestration |
+
 Conventions: `Automated` lists the minimum test; `Manual` is `Yes` only where a
 human/exported environment adds information. Expected files are forecasts and
 may be adjusted to the final scaffold without changing task responsibility.

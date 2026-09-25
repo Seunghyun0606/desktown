@@ -55,7 +55,8 @@ The current agent environment does not provide a Windows desktop, so launching
 the exported `.exe` remains the manual gate for DT-E0-001 and DT-E0-003.
 DT-E0-002 and DT-E0-004 are complete.
 
-## Next task after Foundation acceptance
+## Work after Foundation
 
-`DT-E1-001 — Create FocusSession domain model` is the next implementation task.
-It must remain independent of Godot, Win32, DisplayMode, and persistence DTOs.
+`DT-E1-001 — Create FocusSession domain model` is complete. The aggregate
+remains independent of Godot, Win32, DisplayMode, and persistence DTOs. The next
+task is `DT-E1-002 — Implement FocusSessionManager with injectable clocks`.

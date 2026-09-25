@@ -29,6 +29,7 @@ rewards.
 - [Implementation plan](docs/IMPLEMENTATION_PLAN.md)
 - [Development backlog](docs/BACKLOG.md)
 - [M0 foundation status](docs/implementation/M0_FOUNDATION_STATUS.md)
+- [FocusSession domain contract](docs/implementation/DT-E1-001_FOCUS_SESSION.md)
 
 ## Fixed scope
 
@@ -73,8 +74,10 @@ The repository currently provides:
 - a five-project C# solution with one-way dependency boundaries;
 - an empty Godot AppRoot and Windows export preset;
 - typed prototype configuration and privacy-safe structured logging;
+- a display-independent FocusSession aggregate and transition tests;
 - xUnit foundation/architecture tests;
 - CI for build, tests, headless import, and Windows export.
 
-Focus sessions, simulation, display modes, persistence, Town content, and
-production assets remain subsequent backlog work.
+FocusSession orchestration, activity tracking, simulation, display modes,
+persistence, Town content, and production assets remain subsequent backlog
+work.
