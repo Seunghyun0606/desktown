@@ -9,9 +9,9 @@ disabled until the exported Windows interaction matrix passes.
 
 1. The Focus tick or End command commits elapsed time, project progress, and
    pending presentation to the JSON save.
-2. The Companion window is hidden. A small passive, unfocusable notification
-   appears for six seconds; the Tray tooltip is the fallback. The Town window
-   is not opened.
+2. The Companion window is hidden. A small unfocusable notification appears
+   for six seconds; the Tray tooltip is the fallback. The Town window is not
+   opened unless the user clicks `Open DeskTown`.
 3. Open DeskTown binds the committed state with a temporary Repairing visual.
    Mina's final Work beat runs for two seconds (or 0.1 seconds with reduced
    motion), then the visual becomes Complete. The Continue action acknowledges
@@ -24,7 +24,9 @@ If the process exits during the reveal, the project remains complete and its
 pending reveal is replayed at next Town open. If it exits after Workshop
 acknowledgement, the pending discovery resumes instead. Placeholder labels and
 colors stand in for the final camera, spark, smoke, sound, and authored assets.
-Notification activation into the existing instance is not yet implemented.
+The notice's explicit Open button routes to the current instance's Town. It
+does not start a second process or change the saved reward. Exported Windows
+focus and click behavior still needs manual validation.
 
 ## Ghost QA preview boundary
 

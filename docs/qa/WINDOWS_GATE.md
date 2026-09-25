@@ -29,6 +29,7 @@ award progress. F8 cycles placeholder Companion clips under the same condition.
 | First run | Complete onboarding; open Focus Setup | Tracking starts only after Start; process selection is optional | |
 | Shared session | Start 25-minute Companion Focus; switch to Hidden and back from Tray | Same elapsed Focus, Energy, and Workshop progress; no duplicate session | |
 | Passive completion | Finish 25 minutes while another app is active | Town stays hidden; notice or Tray status appears without stealing focus | |
+| Notice Open action | Click `Open DeskTown` on the completion notice | Existing Town opens once, without another process or reward | |
 | Deferred reward | Open DeskTown from Tray after completion | Workshop reveal and Railway teaser appear once, in order | |
 | Restart at reveal | Exit after completion notice, during reveal, and during discovery in separate runs | Saved state resumes the correct pending step once | |
 | Recovery | Start Focus, wait for a checkpoint, terminate process; relaunch | Resume/End choice appears; time away is excluded | |
@@ -37,7 +38,8 @@ award progress. F8 cycles placeholder Companion clips under the same condition.
 | Hidden resources | Switch to Hidden and inspect windows and Task Manager | No Companion/Ghost surface or active visual effects; timer continues | |
 
 Record the exact elapsed times and save observations for any discrepancy.
-Notification click activation is not implemented; use **Tray → Open DeskTown**.
+If the notice cannot be shown or clicked, use **Tray → Open DeskTown** and record
+the failure; the saved reward must remain intact.
 
 ## 2. Companion and placement
 

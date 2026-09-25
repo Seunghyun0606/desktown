@@ -66,6 +66,7 @@ public partial class PrototypeAppController : Node
             { AudioEnabled = !_game.Settings.AudioEnabled }));
         tray.EndFocusRequested += () => _ = RunAsync(EndFocusAsync);
         tray.QuitRequested += RequestQuit;
+        Root<CompletionNotice>("CompletionNotice").OpenRequested += OpenTown;
 
         Root<FirstLaunch>("MainShell/FirstLaunch").ContinueRequested += () =>
             _ = RunAsync(CompleteOnboardingAsync);

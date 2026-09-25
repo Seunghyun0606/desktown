@@ -439,7 +439,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 ### DT-E7-001 — Complete session passively and notify
 
 - **Status:** IN REVIEW — Town stays hidden, short non-focusing passive window
-  has Tray fallback, and completion persists first; exported notification QA pending.
+  has an explicit Open action and Tray fallback, and completion persists first;
+  exported notification click/focus QA pending.
 - **Purpose:** finish work without forcing DeskTown over the user's app.
 - **Expected files:** `Application/Sessions/CompletionCoordinator.cs`,
   `Platform.Windows/Notifications/**`, Tray status integration.

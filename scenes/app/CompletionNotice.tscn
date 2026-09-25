@@ -4,13 +4,13 @@
 
 [node name="CompletionNotice" type="Window"]
 title = "DeskTown"
-size = Vector2i(340, 100)
+size = Vector2i(360, 110)
 visible = false
 unresizable = true
 borderless = true
 always_on_top = true
 unfocusable = true
-mouse_passthrough = true
+mouse_passthrough = false
 force_native = true
 script = ExtResource("1_notice")
 
@@ -21,8 +21,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Message" type="Label" parent="Panel"]
+[node name="Content" type="VBoxContainer" parent="Panel"]
 layout_mode = 2
+
+[node name="Message" type="Label" parent="Panel/Content"]
+layout_mode = 2
+size_flags_vertical = 3
 text = "Mina finished her work."
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Open" type="Button" parent="Panel/Content"]
+layout_mode = 2
+focus_mode = 0
+text = "Open DeskTown"
