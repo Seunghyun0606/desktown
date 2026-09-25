@@ -32,6 +32,14 @@ It owns no session or reward state. The Town binds a `TownProjection` to distinc
 Broken/Repairing/Complete Workshop visuals and a minimal HUD; the later Focus UI
 slice connects the saved world and real session.
 
+The follow-up Town pass replaces name-only NPCs with three geometric character
+views. Mina reuses the Companion clip clock and moves between Home and Workshop
+from the immutable Town snapshot. Noah's reading prop and Noah/Rumi positions
+follow the deterministic ambient schedule; their presentation does not change
+Focus, project progress or save data. These shapes are replaceable placeholders,
+not the production character sheets. Town is hidden while Focus is presented;
+its ambient timer stops until the user opens Town again.
+
 ## Remaining manual gates
 
 - Companion animation appearance, scale/pixel quality, mixed DPI and position

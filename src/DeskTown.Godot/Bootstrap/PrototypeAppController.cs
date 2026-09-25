@@ -156,6 +156,7 @@ public partial class PrototypeAppController : Node
         if (_game is null || IsFocusActive || mode == DisplayMode.Ghost) return;
         await _game.StartAsync(duration, apps, mode);
         Root<FocusSetup>("MainShell/FocusSetup").Visible = false;
+        Root<TownScene>("MainShell/Town").Visible = false;
         Root<CompanionWindowHost>("CompanionWindow").Bind(_game.World.Companion);
         _display!.SetDisplayMode(mode);
         GetWindow().Visible = false;
@@ -209,7 +210,11 @@ public partial class PrototypeAppController : Node
     {
         if (_game is null || mode == DisplayMode.Ghost) return;
         _display!.SetDisplayMode(mode);
-        if (IsFocusActive) GetWindow().Visible = false;
+        if (IsFocusActive)
+        {
+            Root<TownScene>("MainShell/Town").Visible = false;
+            GetWindow().Visible = false;
+        }
         await _game.ChangeModeAsync(mode);
     }
 
@@ -303,6 +308,7 @@ public partial class PrototypeAppController : Node
             && selected != DisplayMode.Ghost ? selected : DisplayMode.Hidden;
         Root<CompanionWindowHost>("CompanionWindow").Bind(_game.World.Companion);
         _display!.SetDisplayMode(mode);
+        Root<TownScene>("MainShell/Town").Visible = false;
         GetWindow().Visible = false;
     }
 
