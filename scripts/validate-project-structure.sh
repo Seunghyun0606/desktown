@@ -49,6 +49,8 @@ required_files=(
   "scenes/town/TownScene.tscn"
   "scenes/app/FirstLaunch.tscn"
   "scenes/focus/FocusSetup.tscn"
+  "scenes/town/RewardReveal.tscn"
+  "scenes/town/DiscoveryEvent.tscn"
   "src/DeskTown.Application/Runtime/PrototypeRuntime.cs"
   "src/DeskTown.Godot/Display/TrayHost.cs"
   "src/DeskTown.Godot/Display/CompanionWindowHost.cs"

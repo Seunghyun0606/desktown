@@ -63,6 +63,10 @@ public sealed class PrototypeRuntime
     public FocusActivitySummary Activity => _focus.CurrentActivity;
     public MinaTransition? LastMinaTransition { get; private set; }
     public TimeSpan TotalFocus => _ledger.TotalCountedDuration;
+    public TimeSpan TodayFocus => TimeSpan.FromTicks(_ledger.Entries
+        .Where(entry => DateOnly.FromDateTime(entry.EndedAtUtc.UtcDateTime) ==
+            DateOnly.FromDateTime(_wallClock.UtcNow.UtcDateTime))
+        .Sum(entry => entry.CountedDuration.Ticks));
     public bool OnboardingCompleted => _settings.OnboardingCompleted;
 
     public async Task CompleteOnboardingAsync()
@@ -164,9 +168,7 @@ public sealed class PrototypeRuntime
         var project = ProjectSystem.RestoreWorkshop(checkpoint.ProjectProgress,
             checkpoint.LastObservedEnergy);
         var today = DateOnly.FromDateTime(_wallClock.UtcNow.UtcDateTime);
-        var todayTicks = _ledger.Entries
-            .Where(entry => DateOnly.FromDateTime(entry.EndedAtUtc.UtcDateTime) == today)
-            .Sum(entry => entry.CountedDuration.Ticks);
+        var todayTicks = TodayFocus.Ticks;
         return new GameStateSnapshot(_settings,
             new FocusSnapshot(_ledger, _focus.ActiveSession is null ? null : _lastFocusCheckpoint,
                 _modeChanges.ToArray()),
