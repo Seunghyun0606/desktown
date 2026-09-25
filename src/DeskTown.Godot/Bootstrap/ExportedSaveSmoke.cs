@@ -21,7 +21,7 @@ internal static class ExportedSaveSmoke
                     "--desktown-ci-save-smoke=check"))
                 throw new ArgumentException("An explicit CI save smoke phase is required.");
 
-            var path = Environment.GetEnvironmentVariable("DESKTOWN_CI_SMOKE_SAVE");
+            var path = System.Environment.GetEnvironmentVariable("DESKTOWN_CI_SMOKE_SAVE");
             if (string.IsNullOrWhiteSpace(path) || !Path.IsPathFullyQualified(path))
                 throw new ArgumentException("An absolute isolated CI save path is required.");
 

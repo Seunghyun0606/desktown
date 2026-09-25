@@ -21,7 +21,7 @@ public partial class AppRoot : Node
 
     public override void _Ready()
     {
-        if (Environment.GetEnvironmentVariable("DESKTOWN_CI_SMOKE") == "1")
+        if (System.Environment.GetEnvironmentVariable("DESKTOWN_CI_SMOKE") == "1")
         {
             _ = ExportedSaveSmoke.RunAsync(GetTree());
             return;
