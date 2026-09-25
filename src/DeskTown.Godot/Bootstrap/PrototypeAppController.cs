@@ -209,13 +209,13 @@ public partial class PrototypeAppController : Node
     private async Task ChangeModeAsync(DisplayMode mode)
     {
         if (_game is null || mode == DisplayMode.Ghost) return;
-        _display!.SetDisplayMode(mode);
+        var activeMode = _display!.SetDisplayMode(mode);
         if (IsFocusActive)
         {
             Root<TownScene>("MainShell/Town").Visible = false;
             GetWindow().Visible = false;
         }
-        await _game.ChangeModeAsync(mode);
+        await _game.ChangeModeAsync(activeMode);
     }
 
     private async Task ChangeScaleAsync(int scale)

@@ -35,6 +35,10 @@ without activation, verifies those bits, and removes only bits it introduced.
 F10 uses this adapter outside Focus. A failed apply hides the preview. The
 adapter cannot verify cross-application mouse or keyboard behavior, and its
 style-bit check must not be used as a release capability verdict.
+The display controller has a separate forced-failure test: a partially shown
+Ghost surface is hidden, the active presentation becomes Hidden, and Focus
+remains active. Normal Focus still has no Ghost surface attached; this test is
+the fail-closed integration seam, not exported input certification.
 The preview reads the saved Ghost corner, monitor and opacity preferences; Tray
 changes update it while visible. Display selection is populated at startup;
 relaunch after changing the monitor configuration. Missing monitors fall back to the first work

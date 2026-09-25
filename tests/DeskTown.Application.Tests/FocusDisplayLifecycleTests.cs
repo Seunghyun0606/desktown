@@ -27,10 +27,34 @@ public sealed class FocusDisplayLifecycleTests
         Assert.True(main.Visible);
     }
 
+    [Fact]
+    public void Ghost_surface_failure_keeps_focus_presentation_active_and_town_hidden()
+    {
+        var main = new Surface();
+        var companion = new Surface();
+        var ghost = new Surface { FailOnShow = true };
+        var modes = new DisplayModeController(companion, ghost);
+        var display = new FocusDisplayLifecycle(modes, main);
+
+        display.EnterFocus(DisplayMode.Companion);
+        display.ChangeMode(DisplayMode.Ghost);
+
+        Assert.True(display.FocusPresentationActive);
+        Assert.Equal(DisplayMode.Hidden, modes.Mode);
+        Assert.False(main.Visible);
+        Assert.False(companion.Visible);
+        Assert.False(ghost.Visible);
+    }
+
     private sealed class Surface : IFocusDisplaySurface
     {
         public bool Visible { get; private set; }
-        public void Show() => Visible = true;
+        public bool FailOnShow { get; set; }
+        public void Show()
+        {
+            Visible = true;
+            if (FailOnShow) throw new InvalidOperationException("Native apply failed");
+        }
         public void Hide() => Visible = false;
     }
 }
