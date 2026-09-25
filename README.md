@@ -40,6 +40,7 @@ rewards.
 - [Town logical simulation](docs/implementation/DT-E2-003_TOWN_SIMULATION.md)
 - [Atomic save and recovery](docs/implementation/DT-E8-002_ATOMIC_SAVE.md)
 - [Workshop and Railway event contract](docs/implementation/DT-E2-004_EVENT_SYSTEM.md)
+- [Checkpoint and restart recovery contract](docs/implementation/DT-E8-003_LIFECYCLE_RECOVERY.md)
 
 ## Fixed scope
 

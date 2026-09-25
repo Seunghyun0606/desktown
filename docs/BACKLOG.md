@@ -36,7 +36,7 @@ Current Persistence status:
 | --- | --- | --- |
 | DT-E8-001 | DONE | V1 JSON schema/repository, hash, exact restore, privacy tests pass |
 | DT-E8-002 | IN REVIEW | Atomic replace, validated backup recovery, migration and concurrency tests pass; Windows file/recovery UI check pending |
-| DT-E8-003 | TODO | Depends on E8-002; checkpoint scheduling and restart recovery |
+| DT-E8-003 | IN REVIEW | 15s scheduler, suspended recovery, JSON restart and single-instance forwarding pass; UI binding and Windows sleep/lock/crash gate pending |
 
 Conventions: `Automated` lists the minimum test; `Manual` is `Yes` only where a
 human/exported environment adds information. Expected files are forecasts and

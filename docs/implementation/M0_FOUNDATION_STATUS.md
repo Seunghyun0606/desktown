@@ -96,3 +96,11 @@ queues the Old Railway Map event and unlocks the non-playable 45-Focus teaser.
 Save/restart tests cover all three boundaries, including interruption between
 the project commit and event creation. The actual reward animation, Rumi/map
 presentation, and passive notification remain E7 tasks.
+
+GitHub Actions run `36113437515` verified the DT-E8-003 recovery code: Release
+build and 207 tests passed. Active checkpoints restore Suspended, so shutdown
+wall time is excluded before Resume or End at the saved duration. Monotonic
+15-second/event saves, a single-instance Open request, and a reusable recovery
+prompt are present. DT-E8-003 remains in review because the Foundation shell
+does not yet bind the prompt to the Focus UI, and exported Windows sleep/lock,
+crash/restart, and duplicate-launch checks remain manual gates.
