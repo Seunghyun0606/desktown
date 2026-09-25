@@ -42,6 +42,7 @@ rewards.
 - [Checkpoint and restart recovery contract](docs/implementation/DT-E8-003_LIFECYCLE_RECOVERY.md)
 - [Focus UI and runtime integration](docs/implementation/FOCUS_UI_RUNTIME_SLICE.md)
 - [Reward and Ghost Windows handoff](docs/implementation/REWARD_GHOST_HANDOFF.md)
+- [Exported Windows gate and result sheet](docs/qa/WINDOWS_GATE.md)
 
 ## Fixed scope
 
