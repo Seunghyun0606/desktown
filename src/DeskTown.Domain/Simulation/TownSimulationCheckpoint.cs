@@ -1,4 +1,5 @@
 using DeskTown.Domain.Focus;
+using DeskTown.Domain.Events;
 
 namespace DeskTown.Domain.Simulation;
 
@@ -7,4 +8,5 @@ public sealed record TownSimulationCheckpoint(
     TimeSpan LogicalTime,
     FocusEnergy ProjectProgress,
     FocusEnergy LastObservedEnergy,
-    MinaStateCheckpoint Mina);
+    MinaStateCheckpoint Mina,
+    EventSystemCheckpoint Events);

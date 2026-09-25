@@ -17,6 +17,12 @@ public static class SaveStateMapper
 
         var ledger = snapshot.Focus.Ledger;
         var checkpoint = snapshot.Focus.ActiveCheckpoint;
+        var eventState = EventSaveMapper.Restore(snapshot.Town.Project,
+            snapshot.Town.UnlockedProjectIds, snapshot.Town.PendingEventIds,
+            snapshot.Town.ConsumedEventIds, snapshot.PendingPresentation.PendingIds,
+            snapshot.PendingPresentation.ConsumedIds).State;
+        var savedTown = EventSaveMapper.Town(snapshot.Town.Project, eventState);
+        var savedPresentation = EventSaveMapper.Presentation(eventState);
         if (snapshot.Town.Project.LastObservedCumulativeEnergy.CountedDuration > ledger.TotalCountedDuration
             || snapshot.Player.TotalFocusTicks != ledger.TotalCountedDuration.Ticks
             || (checkpoint is not null
@@ -67,9 +73,9 @@ public static class SaveStateMapper
                 ProjectProgressTicks = snapshot.Town.Project.Progress.CountedDuration.Ticks,
                 LastObservedCumulativeEnergyTicks = snapshot.Town.Project.LastObservedCumulativeEnergy.CountedDuration.Ticks,
                 WorkshopState = snapshot.Town.Project.WorkshopState.ToString(),
-                UnlockedProjectIds = snapshot.Town.UnlockedProjectIds.ToList(),
-                PendingEventIds = snapshot.Town.PendingEventIds.ToList(),
-                ConsumedEventIds = snapshot.Town.ConsumedEventIds.ToList()
+                UnlockedProjectIds = savedTown.UnlockedProjectIds.ToList(),
+                PendingEventIds = savedTown.PendingEventIds.ToList(),
+                ConsumedEventIds = savedTown.ConsumedEventIds.ToList()
             },
             Mina = new MinaDto
             {
@@ -87,8 +93,8 @@ public static class SaveStateMapper
             },
             PendingPresentation = new PendingPresentationDto
             {
-                PendingIds = snapshot.PendingPresentation.PendingIds.ToList(),
-                ConsumedIds = snapshot.PendingPresentation.ConsumedIds.ToList()
+                PendingIds = savedPresentation.PendingIds.ToList(),
+                ConsumedIds = savedPresentation.ConsumedIds.ToList()
             }
         };
 
@@ -170,6 +176,11 @@ public static class SaveStateMapper
             throw new InvalidDataException("Inconsistent project, ledger, or player totals.");
         }
 
+        var eventState = EventSaveMapper.Restore(project,
+            Identifiers(town.UnlockedProjectIds), Identifiers(town.PendingEventIds),
+            Identifiers(town.ConsumedEventIds), Identifiers(presentation.PendingIds),
+            Identifiers(presentation.ConsumedIds)).State;
+
         // Match MinaStateMachine.Restore's V1 logical invariants. Animation clips
         // (Walk/Stretch) are transient presentation state and are not serialized.
         if (mina.Activity is not ("Idle" or "Work" or "Rest" or "Celebrate")
@@ -195,12 +206,11 @@ public static class SaveStateMapper
                 settings.CompanionScalePercent, settings.GhostOpacityPercent, settings.AudioEnabled,
                 settings.OnboardingCompleted, settings.ReducedMotion),
             new FocusSnapshot(ledger, activeCheckpoint, modeChanges),
-            new TownSnapshot(project, Identifiers(town.UnlockedProjectIds),
-                Identifiers(town.PendingEventIds), Identifiers(town.ConsumedEventIds)),
+            EventSaveMapper.Town(project, eventState),
             new MinaSnapshot(mina.Activity, mina.Location, mina.ProjectId,
                 mina.ShortIdleStretchPlayed, mina.WorkshopCelebrated),
             new PlayerSnapshot(player.TotalFocusTicks, player.TodayUtcDate, player.TodayFocusTicks),
-            new PendingPresentationSnapshot(Identifiers(presentation.PendingIds), Identifiers(presentation.ConsumedIds)));
+            EventSaveMapper.Presentation(eventState));
         return new StoredGameState(envelope.SaveRevision, envelope.SavedAtUtc, snapshot);
     }
 

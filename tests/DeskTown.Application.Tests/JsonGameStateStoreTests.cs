@@ -5,6 +5,7 @@ using System.Text.Json.Nodes;
 using DeskTown.Application.Persistence;
 using DeskTown.Application.Sessions;
 using DeskTown.Domain.Focus;
+using DeskTown.Domain.Events;
 using DeskTown.Domain.Projects;
 using DeskTown.Persistence;
 
@@ -37,10 +38,67 @@ public sealed class JsonGameStateStoreTests
         Assert.Equal("Work", restored.Snapshot.Mina.Activity);
         Assert.True(restored.Snapshot.Mina.ShortIdleStretchPlayed);
         Assert.False(restored.Snapshot.Mina.WorkshopCelebrated);
-        Assert.Equal("workshop_complete", Assert.Single(restored.Snapshot.PendingPresentation.PendingIds));
+        Assert.Empty(restored.Snapshot.PendingPresentation.PendingIds);
         Assert.Equal(17, restored.Snapshot.Focus.ActiveCheckpoint!.CountedDuration.Ticks);
         Assert.Equal(3, restored.Snapshot.Focus.ActiveCheckpoint.Activity.UnknownDuration.Ticks);
         Assert.Equal("code.exe", Assert.Single(restored.Snapshot.Focus.ActiveCheckpoint.Activity.Processes).ProcessName);
+    }
+
+    [Fact]
+    public void Completed_project_survives_three_restart_boundaries_without_duplicate_reveal()
+    {
+        var initial = CompletedExample();
+        // Simulate a crash between ProjectSystem completion and event dispatch.
+        var first = JsonSaveCodec.Decode(JsonSaveCodec.Encode(initial, 1, StartedAt.AddMinutes(25)));
+        Assert.Equal(EventSystem.WorkshopRevealId,
+            Assert.Single(first.Snapshot.PendingPresentation.PendingIds));
+        Assert.Empty(first.Snapshot.Town.PendingEventIds);
+
+        var state = first.Snapshot;
+        var events = EventSaveMapper.Restore(state.Town.Project,
+            state.Town.UnlockedProjectIds, state.Town.PendingEventIds,
+            state.Town.ConsumedEventIds, state.PendingPresentation.PendingIds,
+            state.PendingPresentation.ConsumedIds);
+        Assert.False(events.ReconcileCompletion().Changed);
+        Assert.True(events.AcknowledgeWorkshopReveal().Changed);
+        var afterReveal = state with
+        {
+            Town = EventSaveMapper.Town(state.Town.Project, events.State),
+            PendingPresentation = EventSaveMapper.Presentation(events.State)
+        };
+        var second = JsonSaveCodec.Decode(JsonSaveCodec.Encode(afterReveal, 2, StartedAt.AddMinutes(26)));
+        Assert.Equal(nameof(ProjectId.ExploreOldRailway),
+            second.Snapshot.Town.UnlockedProjectIds.Last());
+        Assert.Equal(EventSystem.RailwayDiscoveryId,
+            Assert.Single(second.Snapshot.Town.PendingEventIds));
+        Assert.Empty(second.Snapshot.PendingPresentation.PendingIds);
+
+        var resumed = EventSaveMapper.Restore(second.Snapshot.Town.Project,
+            second.Snapshot.Town.UnlockedProjectIds, second.Snapshot.Town.PendingEventIds,
+            second.Snapshot.Town.ConsumedEventIds, second.Snapshot.PendingPresentation.PendingIds,
+            second.Snapshot.PendingPresentation.ConsumedIds);
+        Assert.False(resumed.ObserveCompletion(new ProjectCompleted(ProjectId.RestoreWorkshop)).Changed);
+        Assert.True(resumed.AcknowledgeRailwayDiscovery().Changed);
+        var afterDiscovery = second.Snapshot with
+        {
+            Town = EventSaveMapper.Town(second.Snapshot.Town.Project, resumed.State),
+            PendingPresentation = EventSaveMapper.Presentation(resumed.State)
+        };
+        var third = JsonSaveCodec.Decode(JsonSaveCodec.Encode(afterDiscovery, 3,
+            StartedAt.AddMinutes(27)));
+        Assert.Equal(EventSystem.RailwayDiscoveryId,
+            Assert.Single(third.Snapshot.Town.ConsumedEventIds));
+        Assert.Empty(third.Snapshot.Town.PendingEventIds);
+        Assert.Equal(FocusEnergy.Zero, third.Snapshot.Town.Project.ApplyCumulativeEnergy(
+            FocusEnergy.FromCountedDuration(TimeSpan.FromMinutes(25))).ObservedDelta);
+    }
+
+    [Fact]
+    public void Inconsistent_event_order_is_rejected_even_with_a_valid_hash()
+    {
+        var root = Parse(JsonSaveCodec.Encode(CompletedExample(), 1, StartedAt.AddMinutes(25)));
+        root["town"]!["pendingEventIds"] = new JsonArray(EventSystem.RailwayDiscoveryId);
+        Assert.Throws<InvalidDataException>(() => JsonSaveCodec.Decode(Rehash(root)));
     }
 
     [Fact]
@@ -349,10 +407,33 @@ public sealed class JsonGameStateStoreTests
             new FocusSnapshot(ledger, active,
                 [new DisplayModeChangeSnapshot(StartedAt, "Companion"),
                     new DisplayModeChangeSnapshot(StartedAt.AddMinutes(1), "Ghost")]),
-            new TownSnapshot(project, ["RestoreWorkshop"], ["railway_map"], []),
+            new TownSnapshot(project, ["RestoreWorkshop"], [], []),
             new MinaSnapshot("Work", "Workshop", "RestoreWorkshop", true, false),
             new PlayerSnapshot(Counted.Ticks, DateOnly.FromDateTime(StartedAt.UtcDateTime), Counted.Ticks),
-            new PendingPresentationSnapshot(["workshop_complete"], [])), finalized);
+            new PendingPresentationSnapshot([], [])), finalized);
+    }
+
+    private static GameStateSnapshot CompletedExample()
+    {
+        var old = Example().Snapshot;
+        var completed = FocusSession.Create(FocusSessionId.From(
+            Guid.Parse("9a85aeda-2d29-4f1d-a2db-b8408c366b55")), TimeSpan.FromMinutes(25));
+        completed.Start(StartedAt);
+        completed.Accumulate(TimeSpan.FromMinutes(25), TimeSpan.Zero);
+        completed.Complete(StartedAt.AddMinutes(25));
+        var ledger = new SessionLedger();
+        ledger.TryRecord(completed);
+        var project = ProjectSystem.CreateRestoreWorkshop();
+        project.ApplyCumulativeEnergy(new ElapsedTimeEnergyPolicy().CalculateTotal(ledger));
+        return old with
+        {
+            Focus = new FocusSnapshot(ledger, null, []),
+            Town = new TownSnapshot(project, [nameof(ProjectId.RestoreWorkshop)], [], []),
+            Mina = new MinaSnapshot("Idle", "Home", nameof(ProjectId.RestoreWorkshop), false, false),
+            Player = new PlayerSnapshot(TimeSpan.FromMinutes(25).Ticks,
+                DateOnly.FromDateTime(StartedAt.UtcDateTime), TimeSpan.FromMinutes(25).Ticks),
+            PendingPresentation = new PendingPresentationSnapshot([], [])
+        };
     }
 
     private static JsonObject Parse(byte[] data) =>

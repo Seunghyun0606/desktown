@@ -25,6 +25,7 @@ public sealed class TownSimulationTests
         Assert.Equal(WorkshopState.Complete, jumped.Snapshot.Town.Workshop);
         Assert.Equal(TimeSpan.FromMinutes(25), jumped.Snapshot.Town.Progress.CountedDuration);
         Assert.NotNull(jumped.Project.Completion);
+        Assert.True(jumped.Snapshot.Town.Events.WorkshopRevealPending);
         Assert.Null(restored.AdvanceTo(TimeSpan.FromMinutes(60), Energy(3600),
             FocusSessionStatus.Running, TimeSpan.Zero).Project.Completion);
     }
@@ -52,6 +53,7 @@ public sealed class TownSimulationTests
             FocusSessionStatus.Completed, TimeSpan.Zero);
         Assert.NotNull(first.Project.Completion);
         Assert.Equal(MinaLogicalActivity.Idle, first.Snapshot.Town.Mina.Activity);
+        Assert.True(first.Events.Changed);
 
         var restored = TownSimulation.Restore(simulation.CaptureCheckpoint());
         Assert.Null(restored.AdvanceTo(TimeSpan.FromMinutes(30), Energy(1800),
@@ -62,6 +64,11 @@ public sealed class TownSimulationTests
         Assert.False(duringReveal.RevealWorkshopCompletion().Changed);
         duringReveal.AcknowledgeCelebration();
         Assert.Equal(MinaLogicalActivity.Idle, duringReveal.Snapshot.Town.Mina.Activity);
+        Assert.True(duringReveal.Snapshot.Town.Events.RailwayDiscoveryPending);
+        Assert.True(duringReveal.Snapshot.Town.Events.RailwayTeaserUnlocked);
+        var afterReveal = TownSimulation.Restore(duringReveal.CaptureCheckpoint());
+        Assert.True(afterReveal.AcknowledgeRailwayDiscovery().Changed);
+        Assert.False(afterReveal.AcknowledgeRailwayDiscovery().Changed);
     }
 
     [Fact]
