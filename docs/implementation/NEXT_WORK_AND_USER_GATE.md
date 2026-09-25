@@ -11,6 +11,9 @@ The [backlog](../BACKLOG.md) remains the task inventory, and the
   exported `.exe` headlessly, and creates/recovers/reloads an isolated save in
   three separate processes. This verifies a real process boundary, not only
   in-memory serialization.
+- CI validates the 46-entry asset contract, generates byte-identical demo saves
+  for a fixed date, opens all three states in the exported app, and creates an
+  unsigned versioned Windows ZIP with a file manifest and SHA-256 checksum.
 - Focus simulation, Energy, Workshop, and pending reveal are independent of
   the presentation. The Town ambient timer and Mina placeholder frame processing
   stop while their views are hidden.
@@ -24,14 +27,16 @@ input, mixed DPI, sleep/lock, normal `user://` save placement, or visual quality
 
 | Order | Work | Done when | Dependency |
 | --- | --- | --- | --- |
-| 1 | Package an unsigned prototype ZIP from the complete Windows export folder, including managed sidecars; add SHA-256, commit, Godot/.NET versions, and short release notes | A clean Windows 11 machine extracts it, launches it, quits, and relaunches without the editor or SDK | Manual clean-machine gate |
-| 2 | Define stable Asset Catalog records for the 46 manifest IDs, mapping sprite/audio paths, origin, license, pivot, frame grid, and fallback | Validator rejects missing/invalid dimensions and metadata; scene binding uses IDs and missing assets fall back without changing saves or Energy | Can build schema/validator now; approved production art later |
+| 1 | Validate the versioned unsigned ZIP on a clean Windows 11 machine | Extract, launch, quit, and relaunch without the editor or SDK; verify save location and update/rollback | ZIP, checksum, manifest and extracted CI startup now automated; manual clean-machine gate |
+| 2 | Deliver and approve production art/audio for the 46 Asset Catalog entries | Validator accepts the files, provenance and dimensions; art gates sign off pivots, animation and mix | Contract/validator implemented; Mina uses catalog with geometric fallback; other scene binders and assets remain |
 | 3 | Replace geometric Town buildings and `MinaPlaceholderView`/`TownNpcPlaceholderView` through presentation adapters and catalog resources | All existing snapshot/clip states render without altering domain, events, save schema, or Windows behavior; test each view at target scale | Catalog contract and art gates |
-| 4 | Add deterministic demo saves for pre-Workshop, completed Workshop pending reveal, and Railway teaser | Each state opens reproducibly on a clean test account and does not contaminate a personal save | Automated fixture work now; visual sign-off later |
+| 4 | Visually sign off deterministic pre-Workshop, completed Workshop pending reveal, and Railway teaser demos | Each state opens reproducibly without a personal save and the capture matches the narrative/art intent | Generator, byte comparison, isolated launch and exported headless smoke implemented |
 | 5 | Run the Windows and user task matrix below, record issues by build SHA, then address P0/P1 first | Reproduction, severity, owner, fix, regression result, and re-test evidence exist for every issue | Exported Windows environment and users |
 | 6 | Decide installer/signing/update path after prototype ZIP validation | Installer or update cannot overwrite the local save; uninstall offers an explicit save-retention choice; rollback is documented | Distribution decision and manual install test |
 
-The current artifact name `desktown-windows-foundation` is historical. Do not
+The CI artifact `desktown-windows-prototype-package` contains the versioned
+ZIP, `SHA256SUMS.txt`, `build-manifest.json`, and `RELEASE-NOTES.txt`. The older
+`desktown-windows-foundation` artifact remains a raw export for QA. Do not
 distribute only `DeskTown.exe`; keep the exported directory intact. A ZIP is the
 smallest prototype handoff. Do not enable auto-start, background update, or
 startup notifications as a packaging shortcut. Version and hash the ZIP; keep
@@ -44,7 +49,9 @@ must be checked on a clean machine rather than inferred from CI.
 
 The simulation/persistence boundary is suitable for replacing visuals: scene
 views receive Town/Companion/Ghost projections and have no authority to award
-Focus Energy. The visual binding is **not yet a plug-in catalog**. Town building
+Focus Energy. The 46-entry catalog now validates the manifest and Mina's six
+clips can use the same sheet in all three display views with a geometric
+fallback. The **other scene art still needs catalog binders**. Town building
 states and positions are currently hard-coded in `TownScene.cs` and its scene;
 Mina and ambient NPCs draw geometric rectangles in C#. Replacing sprites today
 requires edits to those presentation classes, scene node paths, and possibly
@@ -58,6 +65,26 @@ props, and shared Mina rendering across Town/Companion/Ghost. Confirm nearest
 scaling and hit regions at 75/100/125/150% Companion scale and 40/65/85% Ghost
 opacity. Ghost must remain visually test-only until input passthrough is signed.
 No art replacement should change a save field or gameplay threshold.
+
+## Reproducible demo saves
+
+The `desktown-demo-saves` CI artifact contains three scenarios. The generator
+uses a fixed date and session ID, domain transitions, and the production save
+codec. Run `dotnet run --project tools/DeskTown.DemoSaves -- <output-dir>
+<yyyy-MM-dd>` to generate for a chosen UTC day; without a date it uses
+2026-09-25. To inspect one on Windows after extracting both artifacts:
+
+```powershell
+./scripts/qa/launch-demo.ps1 -Scenario workshop-reveal-pending `
+  -WindowsExport ./build/windows -DemoSaves ./build/demo-saves
+```
+
+Close any existing DeskTown instance first. The script copies the fixture into
+a fresh temporary directory and passes `--desktown-demo` to the app. The app
+marks its title as an isolated demo, reads/writes only that copy, and refuses to
+forward a demo launch to a running personal instance. A fixture generated for
+a different UTC day still loads; the Today HUD may then show zero. Do not copy
+demo `save.json` into the normal `user://` location.
 
 ## Work-interruption assessment and user test
 

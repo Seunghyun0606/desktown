@@ -7,7 +7,7 @@
 | Domain unit | `dotnet test` | deterministic focus, energy, project, Mina, events |
 | Application unit | `dotnet test` with fakes | orchestration, mode switching, save policy |
 | Integration | Godot/headless where possible | scene binding, JSON store, lifecycle adapters |
-| Windows export smoke | CI Windows runner, exported `.exe` | headless startup, isolated save, restart and recovery |
+| Windows export smoke | CI Windows runner, exported `.exe` | headless startup, isolated save, restart/recovery, three demo states and unpacked ZIP startup |
 | Windows system | exported `.exe` on Windows 11 | HWND flags, tray, notification, activity APIs |
 | Manual visual | exported `.exe` | pixel scaling, cozy hierarchy, reward timing |
 
@@ -128,7 +128,8 @@ PR / push
   3. persistence fixture tests
   4. Godot project import/headless smoke test
   5. Windows export build
-  6. Windows exported `.exe` startup and three-process save/recovery smoke
+  6. catalog validation, deterministic demo save generation, Windows exported
+     `.exe` startup, three-process save/recovery, demo load, and ZIP smoke
 
 Release candidate (Windows runner)
   7. signed manual Ghost/DPI/monitor checklist

@@ -533,6 +533,9 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E9-001 — Integrate production Asset Catalog
 
+- **Status:** IN REVIEW — all 46 manifest IDs have a validated unassigned catalog
+  contract and Mina's six runtime clips have catalog/fallback binding. Production
+  art, other scene binders, and visual/provenance approval remain open.
 - **Purpose:** replace placeholders without changing gameplay code.
 - **Expected files:** `assets/catalogs/production/**`, imported art/audio, catalog
   validation tool/report.
@@ -561,6 +564,10 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E9-003 — Run release matrix and prepare funding capture build
 
+- **Status:** IN REVIEW — CI creates a versioned unsigned ZIP with hash/build
+  manifest and deterministic isolated demo saves; it opens each demo headlessly
+  in the exported executable. Windows UI, funding art, and final release review
+  remain open.
 - **Purpose:** certify feature completeness and reproduce trailer scenes A/B/C.
 - **Expected files:** `docs/qa/releases/<build>/`, demo save/launch config, release
   notes/checklists.

@@ -1,0 +1,1124 @@
+{
+  "manifestRevision": "v0.1",
+  "assets": [
+    {
+      "id": "CHR-MIN-001",
+      "key": "character.mina.idle",
+      "filename": "chr_mina_idle.png",
+      "kind": "visual",
+      "frames": 4,
+      "fps": 2,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P0",
+      "size": [
+        192,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": [
+        24,
+        44
+      ],
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CHR-MIN-002",
+      "key": "character.mina.walk",
+      "filename": "chr_mina_walk.png",
+      "kind": "visual",
+      "frames": 6,
+      "fps": 8,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P0",
+      "size": [
+        288,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": [
+        24,
+        44
+      ],
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CHR-MIN-003",
+      "key": "character.mina.work",
+      "filename": "chr_mina_work.png",
+      "kind": "visual",
+      "frames": 6,
+      "fps": 6,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P0",
+      "size": [
+        288,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": [
+        24,
+        44
+      ],
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CHR-MIN-004",
+      "key": "character.mina.rest",
+      "filename": "chr_mina_rest.png",
+      "kind": "visual",
+      "frames": 4,
+      "fps": 2,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P0",
+      "size": [
+        192,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": [
+        24,
+        44
+      ],
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CHR-MIN-005",
+      "key": "character.mina.stretch",
+      "filename": "chr_mina_stretch.png",
+      "kind": "visual",
+      "frames": 4,
+      "fps": 4,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P0",
+      "size": [
+        192,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": [
+        24,
+        44
+      ],
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CHR-MIN-006",
+      "key": "character.mina.celebrate",
+      "filename": "chr_mina_celebrate.png",
+      "kind": "visual",
+      "frames": 6,
+      "fps": 8,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P0",
+      "size": [
+        288,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": [
+        24,
+        44
+      ],
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CHR-NOA-001",
+      "key": "character.noah.idle",
+      "filename": "chr_noah_idle.png",
+      "kind": "visual",
+      "frames": 4,
+      "fps": 2,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        192,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": [
+        24,
+        44
+      ],
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CHR-NOA-002",
+      "key": "character.noah.walk",
+      "filename": "chr_noah_walk.png",
+      "kind": "visual",
+      "frames": 6,
+      "fps": 8,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        288,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": [
+        24,
+        44
+      ],
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CHR-NOA-003",
+      "key": "character.noah.read",
+      "filename": "chr_noah_read.png",
+      "kind": "visual",
+      "frames": 4,
+      "fps": 2,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        192,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": [
+        24,
+        44
+      ],
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CHR-RUM-001",
+      "key": "character.rumi.idle",
+      "filename": "chr_rumi_idle.png",
+      "kind": "visual",
+      "frames": 4,
+      "fps": 2,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        192,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": [
+        24,
+        44
+      ],
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CHR-RUM-002",
+      "key": "character.rumi.walk",
+      "filename": "chr_rumi_walk.png",
+      "kind": "visual",
+      "frames": 6,
+      "fps": 8,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        288,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": [
+        24,
+        44
+      ],
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "BLD-HOU-001",
+      "key": "building.house",
+      "filename": "bld_house.png",
+      "kind": "visual",
+      "frames": 1,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        128,
+        128
+      ],
+      "frameSize": [
+        128,
+        128
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "BLD-WRK-001",
+      "key": "building.workshop.states",
+      "filename": "bld_workshop_states.png",
+      "kind": "visual",
+      "frames": 3,
+      "fps": null,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P0",
+      "size": [
+        480,
+        128
+      ],
+      "frameSize": [
+        160,
+        128
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "BLD-LCK-001",
+      "key": "building.library.locked",
+      "filename": "bld_library_locked.png",
+      "kind": "visual",
+      "frames": 1,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        128,
+        128
+      ],
+      "frameSize": [
+        128,
+        128
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "ENV-GRA-001",
+      "key": "environment.grass.tiles",
+      "filename": "env_grass_tiles.png",
+      "kind": "visual",
+      "frames": 2,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        64,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": false
+    },
+    {
+      "id": "ENV-DIR-001",
+      "key": "environment.dirt.tile",
+      "filename": "env_dirt_tile.png",
+      "kind": "visual",
+      "frames": 1,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        32,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": false
+    },
+    {
+      "id": "ENV-PTH-001",
+      "key": "environment.path.tiles",
+      "filename": "env_path_tiles.png",
+      "kind": "visual",
+      "frames": 3,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        96,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "ENV-TRE-001",
+      "key": "environment.tree.variants",
+      "filename": "env_tree_variants.png",
+      "kind": "visual",
+      "frames": 2,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        128,
+        96
+      ],
+      "frameSize": [
+        64,
+        96
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "ENV-BUS-001",
+      "key": "environment.bush.variants",
+      "filename": "env_bush_variants.png",
+      "kind": "visual",
+      "frames": 2,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        64,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "ENV-FLW-001",
+      "key": "environment.flower.variants",
+      "filename": "env_flower_variants.png",
+      "kind": "visual",
+      "frames": 2,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        64,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "ENV-FEN-001",
+      "key": "environment.fence.variants",
+      "filename": "env_fence_variants.png",
+      "kind": "visual",
+      "frames": 2,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        64,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "ENV-ROC-001",
+      "key": "environment.rock.variants",
+      "filename": "env_rock_variants.png",
+      "kind": "visual",
+      "frames": 2,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        64,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "FX-SMK-001",
+      "key": "effect.workshop.smoke",
+      "filename": "fx_workshop_smoke.png",
+      "kind": "visual",
+      "frames": 4,
+      "fps": 4,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        128,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "FX-FIR-001",
+      "key": "effect.campfire",
+      "filename": "fx_campfire.png",
+      "kind": "visual",
+      "frames": 4,
+      "fps": 6,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        128,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "FX-GRS-001",
+      "key": "effect.grass.movement",
+      "filename": "fx_grass_movement.png",
+      "kind": "visual",
+      "frames": 2,
+      "fps": 2,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        64,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "FX-SPK-001",
+      "key": "effect.work.spark",
+      "filename": "fx_work_spark.png",
+      "kind": "visual",
+      "frames": 4,
+      "fps": 8,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        64,
+        16
+      ],
+      "frameSize": [
+        16,
+        16
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "FX-TEA-001",
+      "key": "effect.tea.steam",
+      "filename": "fx_tea_steam.png",
+      "kind": "visual",
+      "frames": 4,
+      "fps": 4,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        64,
+        16
+      ],
+      "frameSize": [
+        16,
+        16
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CMP-FLR-001",
+      "key": "prop.companion.floor",
+      "filename": "prop_companion_floor.png",
+      "kind": "visual",
+      "frames": 1,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        360,
+        64
+      ],
+      "frameSize": [
+        360,
+        64
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CMP-WRK-001",
+      "key": "prop.workbench",
+      "filename": "prop_workbench.png",
+      "kind": "visual",
+      "frames": 1,
+      "fps": null,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P0",
+      "size": [
+        96,
+        64
+      ],
+      "frameSize": [
+        96,
+        64
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CMP-STL-001",
+      "key": "prop.stool",
+      "filename": "prop_stool.png",
+      "kind": "visual",
+      "frames": 1,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        32,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CMP-LMP-001",
+      "key": "prop.lamp.states",
+      "filename": "prop_lamp_states.png",
+      "kind": "visual",
+      "frames": 2,
+      "fps": null,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P0",
+      "size": [
+        64,
+        48
+      ],
+      "frameSize": [
+        32,
+        48
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CMP-WIN-001",
+      "key": "prop.small.window",
+      "filename": "prop_small_window.png",
+      "kind": "visual",
+      "frames": 1,
+      "fps": null,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P0",
+      "size": [
+        96,
+        80
+      ],
+      "frameSize": [
+        96,
+        80
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CMP-DEC-001",
+      "key": "prop.companion.decor",
+      "filename": "prop_companion_decor.png",
+      "kind": "visual",
+      "frames": 2,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "size": [
+        64,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CMP-TOL-001",
+      "key": "prop.mina.tool",
+      "filename": "prop_mina_tool.png",
+      "kind": "visual",
+      "frames": 2,
+      "fps": null,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P0",
+      "size": [
+        64,
+        32
+      ],
+      "frameSize": [
+        32,
+        32
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "CMP-SHD-001",
+      "key": "prop.character.shadow",
+      "filename": "prop_character_shadow.png",
+      "kind": "visual",
+      "frames": 1,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        32,
+        16
+      ],
+      "frameSize": [
+        32,
+        16
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "UI-LOG-001",
+      "key": "ui.logo.desktown",
+      "filename": "ui_logo_desktown.png",
+      "kind": "visual",
+      "frames": 1,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        256,
+        96
+      ],
+      "frameSize": [
+        256,
+        96
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "UI-ICO-001",
+      "key": "ui.icons.core",
+      "filename": "ui_icons_core.png",
+      "kind": "visual",
+      "frames": 9,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "size": [
+        144,
+        16
+      ],
+      "frameSize": [
+        16,
+        16
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "ITM-MAP-001",
+      "key": "item.old.railway.map",
+      "filename": "item_old_railway_map.png",
+      "kind": "visual",
+      "frames": 1,
+      "fps": null,
+      "placeholderAllowed": false,
+      "replaceBeforeFunding": false,
+      "priority": "P1",
+      "size": [
+        96,
+        64
+      ],
+      "frameSize": [
+        96,
+        64
+      ],
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": true
+    },
+    {
+      "id": "SND-AMB-001",
+      "key": "audio.town.ambient",
+      "filename": "snd_town_ambient.ogg",
+      "kind": "audio",
+      "frames": null,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": null
+    },
+    {
+      "id": "SND-BRD-001",
+      "key": "audio.bird",
+      "filename": "snd_bird.ogg",
+      "kind": "audio",
+      "frames": null,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": null
+    },
+    {
+      "id": "SND-STP-001",
+      "key": "audio.footstep",
+      "filename": "snd_footstep.ogg",
+      "kind": "audio",
+      "frames": null,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": null
+    },
+    {
+      "id": "SND-HMR-001",
+      "key": "audio.hammer",
+      "filename": "snd_hammer.ogg",
+      "kind": "audio",
+      "frames": null,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": null
+    },
+    {
+      "id": "SND-FIR-001",
+      "key": "audio.fire.loop",
+      "filename": "snd_fire_loop.ogg",
+      "kind": "audio",
+      "frames": null,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": null
+    },
+    {
+      "id": "SND-UI-001",
+      "key": "audio.ui.click",
+      "filename": "snd_ui_click.ogg",
+      "kind": "audio",
+      "frames": null,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P2",
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": null
+    },
+    {
+      "id": "SND-CMP-001",
+      "key": "audio.project.complete",
+      "filename": "snd_project_complete.ogg",
+      "kind": "audio",
+      "frames": null,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": null
+    },
+    {
+      "id": "SND-DSC-001",
+      "key": "audio.discovery",
+      "filename": "snd_discovery.ogg",
+      "kind": "audio",
+      "frames": null,
+      "fps": null,
+      "placeholderAllowed": true,
+      "replaceBeforeFunding": true,
+      "priority": "P1",
+      "status": "unassigned",
+      "resource": null,
+      "provenance": null,
+      "pivot": null,
+      "events": [],
+      "alpha": null
+    }
+  ]
+}

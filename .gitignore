@@ -23,6 +23,7 @@ build/
 TestResults/
 coverage/
 *.trx
+__pycache__/
 
 # Runtime-local data
 logs/

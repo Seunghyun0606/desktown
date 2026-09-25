@@ -32,12 +32,21 @@ public partial class AppRoot : Node
             _singleInstance = WindowsSingleInstanceGate.Acquire();
             if (!_singleInstance.IsPrimary)
             {
+                if (GameStatePathResolver.IsDemoRequested)
+                {
+                    GD.PrintErr("Close the running DeskTown instance before launching an isolated demo.");
+                    GetTree().Quit(2);
+                    return;
+                }
                 _ = RequestOpenAndQuitAsync();
                 return;
             }
             _openRequestCancellation = new CancellationTokenSource();
             _ = ListenForOpenRequestsAsync(_openRequestCancellation.Token);
         }
+
+        if (GameStatePathResolver.IsDemoRequested)
+            GetWindow().Title = "DeskTown [Demo — isolated save]";
 
         var resolution = PrototypeOptionsResolver.Resolve(_configuredOptions);
         var options = resolution.Options;

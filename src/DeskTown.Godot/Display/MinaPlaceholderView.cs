@@ -28,6 +28,24 @@ public partial class MinaPlaceholderView : Node2D
     public override void _Draw()
     {
         var frame = _playback.Frame;
+        var assetId = _playback.Clip switch
+        {
+            MinaAnimationClip.Idle => "CHR-MIN-001",
+            MinaAnimationClip.Walk => "CHR-MIN-002",
+            MinaAnimationClip.Work => "CHR-MIN-003",
+            MinaAnimationClip.Rest => "CHR-MIN-004",
+            MinaAnimationClip.Stretch => "CHR-MIN-005",
+            MinaAnimationClip.Celebrate => "CHR-MIN-006",
+            _ => "CHR-MIN-001"
+        };
+        if (VisualAssetCatalog.Texture(assetId) is { } sheet && sheet.GetWidth() >= 48)
+        {
+            var cell = Math.Min(frame, sheet.GetWidth() / 48 - 1);
+            DrawTextureRectRegion(sheet, new Rect2(0, 0, 48, 48),
+                new Rect2(cell * 48, 0, 48, 48));
+            return;
+        }
+
         var bob = _playback.Clip == MinaAnimationClip.Walk ? frame % 2 : 0;
         var apron = Color.FromHtml("947361");
         var face = Color.FromHtml("e9b28b");

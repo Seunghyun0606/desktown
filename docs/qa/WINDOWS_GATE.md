@@ -12,9 +12,10 @@ visible window behavior, the normal Windows save directory, or real sleep/lock.
 
 1. On the [CI Actions page](https://github.com/Seunghyun0606/desktown/actions/workflows/ci.yml),
    open the latest **successful `main`** run. Record its commit SHA and run URL.
-2. Download the `desktown-windows-foundation` artifact from that run. Despite
-   its historical name, this is the current prototype export. Extract the ZIP
-   and launch `DeskTown.exe` on Windows 11. Do not run the executable from the ZIP.
+2. Download `desktown-windows-prototype-package`, verify the versioned ZIP with
+   `SHA256SUMS.txt`, extract it, and launch `DeskTown.exe` on Windows 11. The
+   older `desktown-windows-foundation` artifact is the raw export. Do not run
+   the executable from inside the ZIP.
 3. Use a separate Windows test account or back up the existing local DeskTown
    save before destructive recovery tests. Record the Windows version, monitor
    resolutions/layout, and DPI scaling. Keep one artifact and one save baseline
