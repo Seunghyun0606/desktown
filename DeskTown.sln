@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskTown.Domain", "src\Desk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskTown.Application", "src\DeskTown.Application\DeskTown.Application.csproj", "{693A3738-59C5-4C2A-9A81-F2D710F8E102}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskTown.Persistence", "src\DeskTown.Persistence\DeskTown.Persistence.csproj", "{038BD467-A07A-4CDD-BE76-901A58B8BB02}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskTown.Platform.Windows", "src\DeskTown.Platform.Windows\DeskTown.Platform.Windows.csproj", "{8D08D3D9-28CE-4973-B4BB-69E190157103}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskTown", "DeskTown.csproj", "{29A792D6-75C7-4C4A-97AA-8916435C7104}"
@@ -32,6 +34,10 @@ Global
 		{693A3738-59C5-4C2A-9A81-F2D710F8E102}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{693A3738-59C5-4C2A-9A81-F2D710F8E102}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{693A3738-59C5-4C2A-9A81-F2D710F8E102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{038BD467-A07A-4CDD-BE76-901A58B8BB02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{038BD467-A07A-4CDD-BE76-901A58B8BB02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{038BD467-A07A-4CDD-BE76-901A58B8BB02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{038BD467-A07A-4CDD-BE76-901A58B8BB02}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D08D3D9-28CE-4973-B4BB-69E190157103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8D08D3D9-28CE-4973-B4BB-69E190157103}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D08D3D9-28CE-4973-B4BB-69E190157103}.Release|Any CPU.ActiveCfg = Release|Any CPU

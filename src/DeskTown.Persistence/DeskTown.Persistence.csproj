@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>DeskTown.Persistence</RootNamespace>
+    <AssemblyName>DeskTown.Persistence</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../DeskTown.Application/DeskTown.Application.csproj" />
+  </ItemGroup>
+</Project>
