@@ -32,6 +32,17 @@ public partial class MinaPlaceholderView : Node2D
         DrawRect(new Rect2(17, 11 - bob, 16, 7), hair);
         DrawRect(new Rect2(19, 40 - bob, 5, 4), hair);
         DrawRect(new Rect2(27, 40 - bob, 5, 4), hair);
+        if (_playback.Clip is MinaAnimationClip.Stretch or MinaAnimationClip.Celebrate)
+        {
+            var reach = frame % 2 == 0 ? 9 : 12;
+            DrawRect(new Rect2(11, reach, 6, 4), face);
+            DrawRect(new Rect2(32, reach, 6, 4), face);
+        }
+        else
+        {
+            DrawRect(new Rect2(12, 27 - bob, 5, 10), face);
+            DrawRect(new Rect2(32, 27 - bob, 5, 10), face);
+        }
         if (_playback.Clip == MinaAnimationClip.Work)
             DrawRect(new Rect2(34, 17 + frame % 3 * 2, 3, 17), Color.FromHtml("c7a46c"));
         if (_playback.Clip == MinaAnimationClip.Rest)

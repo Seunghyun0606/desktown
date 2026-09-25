@@ -247,8 +247,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E3-002 — Build CompanionStage and Mina animator
 
-- **Status:** IN REVIEW — state/clip binding and placeholder stage are automated;
-  animation and visual QA plus custom Mina production art pending.
+- **Status:** IN REVIEW — state/clip binding and geometric Work/Rest/Stretch/Walk
+  placeholder motion are automated; visual QA and custom Mina art pending.
 - **Purpose:** present Work/Rest/Stretch/Walk in the diorama.
 - **Expected files:** `scenes/companion/CompanionStage.tscn`, shared Mina view,
   placeholder catalog.
@@ -282,7 +282,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 ### DT-E4-001 — Implement Hidden surface lifecycle
 
 - **Status:** IN REVIEW — presentation lifecycle/parity and runtime Focus/Tray
-  wiring exist; Windows zero-window/performance QA pending.
+  wiring exist; Town ambient timer stops while hidden. Windows zero-window/
+  performance QA pending.
 - **Purpose:** provide a zero-visual normal play mode with minimal resources.
 - **Expected files:** `Godot/Display/HiddenDisplaySurface.cs`, lifecycle tests.
 - **Dependencies:** DT-E2-003, DT-E3-001.
@@ -400,8 +401,9 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E6-002 — Add Mina, Noah, Rumi ambient presentation
 
-- **Status:** IN REVIEW — deterministic visual schedule, three placeholder
-  characters and snapshot-bound Mina exist; sprite and visual QA pending.
+- **Status:** IN REVIEW — Town now draws three geometric character stand-ins;
+  Mina follows the saved logical location and Noah/Rumi follow a deterministic
+  visual schedule. Authored sprites and visual QA remain pending.
 - **Purpose:** make Town feel alive without AI NPCs.
 - **Expected files:** shared character views, `NpcAmbientPresenter.cs`, Town scene
   instances.
