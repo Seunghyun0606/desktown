@@ -18,8 +18,9 @@ time away is excluded. The integration tests cover 25 Focus with mode changes,
 Workshop completion/reveal after restart, and recovery after a long shutdown.
 The stage's temporary geometry and Town layout still require visual review.
 
-Current limits: the menu's Ghost command remains disabled, the notification is
-Tray status only pending Windows toast validation, and the Reward Reveal scene
-is not connected yet. Native window, process-picker, tray and sleep/lock checks
-remain exported Windows gates. F8 and F10 are opt-in visual QA shortcuts when no
-session is active; neither changes gameplay or records progress.
+Current limits: the menu's Ghost command remains disabled. A passive, unfocusable
+completion window now appears with Tray status as fallback, and the saved Reward
+Reveal and Railway discovery are bound to the Town. Notification activation is
+not implemented. Native window, process-picker, tray and sleep/lock checks remain
+exported Windows gates. F8 and F10 are opt-in visual QA shortcuts when no session
+is active; neither changes gameplay or records progress.

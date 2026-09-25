@@ -16,6 +16,7 @@ public partial class TrayHost : Node
     public event Action<int>? CompanionScaleRequested;
     public event Action<int>? GhostOpacityRequested;
     public event Action<string>? GhostPositionRequested;
+    public event Action<int>? GhostMonitorRequested;
     public event Action? AudioToggleRequested;
 
     public override void _Ready()
@@ -39,6 +40,9 @@ public partial class TrayHost : Node
         _menu.AddItem("Bottom Right", 31);
         _menu.AddItem("Top Left", 32);
         _menu.AddItem("Top Right", 33);
+        _menu.AddSeparator("Ghost Monitor");
+        for (var screen = 0; screen < DisplayServer.GetScreenCount(); screen++)
+            _menu.AddItem($"Display {screen + 1}", 100 + screen);
         _menu.AddSeparator("Ghost Opacity");
         _menu.AddItem("40%", 40);
         _menu.AddItem("65%", 41);
@@ -85,6 +89,7 @@ public partial class TrayHost : Node
                 GhostPositionRequested?.Invoke(new[] { "BottomLeft", "BottomRight", "TopLeft", "TopRight" }[id - 30]);
                 break;
             case >= 40 and <= 42: GhostOpacityRequested?.Invoke(new[] { 40, 65, 85 }[id - 40]); break;
+            case >= 100: GhostMonitorRequested?.Invoke(id - 100); break;
             case 50: AudioToggleRequested?.Invoke(); break;
             case 60: EndFocusRequested?.Invoke(); break;
             case 90: QuitRequested?.Invoke(); break;

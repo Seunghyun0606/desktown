@@ -84,7 +84,7 @@ public partial class CompanionWindowHost : Window, IFocusDisplaySurface
         }
     }
 
-    private static IReadOnlyList<MonitorWorkArea> WorkAreas()
+    internal static IReadOnlyList<MonitorWorkArea> WorkAreas()
     {
         var result = new List<MonitorWorkArea>();
         for (var i = 0; i < DisplayServer.GetScreenCount(); i++)

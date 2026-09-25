@@ -1,5 +1,7 @@
 using DeskTown.Domain.Simulation;
 using DeskTown.Application.Ports;
+using DeskTown.Application.Display;
+using DeskTown.Application.Persistence;
 using DeskTown.Platform.Windows.Ghost;
 using global::Godot;
 
@@ -11,6 +13,8 @@ public partial class GhostWindowHost : Window
     private Node2D? _stage;
     private readonly IGhostWindowPlatform _platform = new WindowsGhostWindowPlatform();
     private nint _nativeWindow;
+    private WindowPlacementSnapshot _placement = new("screen:0", "BottomRight", 48, 48);
+    private int _opacityPercent = 65;
 
     public override void _Ready()
     {
@@ -25,12 +29,29 @@ public partial class GhostWindowHost : Window
         GetNode<MinaPlaceholderView>("GhostStage/MinaView").Bind(snapshot.Mina);
     }
 
+    public void Configure(WindowPlacementSnapshot placement, int opacityPercent)
+    {
+        if (opacityPercent is not (40 or 55 or 65 or 70 or 85))
+            throw new ArgumentOutOfRangeException(nameof(opacityPercent));
+        _placement = placement ?? throw new ArgumentNullException(nameof(placement));
+        _opacityPercent = opacityPercent;
+        if (_stage is not null)
+            _stage.Modulate = new Color(1, 1, 1, _opacityPercent / 100f);
+        if (Visible) RestorePosition();
+    }
+
+    private void RestorePosition()
+    {
+        var bounds = GhostPlacement.Restore(_placement, Size.X, Size.Y,
+            CompanionWindowHost.WorkAreas());
+        Position = new Vector2I(bounds.X, bounds.Y);
+    }
+
     public void Preview(bool enabled)
     {
         if (enabled)
         {
-            var usable = DisplayServer.ScreenGetUsableRect();
-            Position = usable.Position + usable.Size - Size - new Vector2I(48, 48);
+            RestorePosition();
             Bind(new GhostProjection(new MinaSimulationState(
                 MinaLogicalActivity.Work, MinaLocation.Workshop)));
             Visible = true;

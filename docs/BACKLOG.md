@@ -1,6 +1,7 @@
 # DeskTown Prototype v0.1 Backlog
 
-Status at creation: all tasks `TODO`. Total: **34 tasks**.
+Total: **34 tasks**. The tables and task-level notes below track implementation
+separately from exported Windows and production-art review.
 
 Current Foundation status:
 
@@ -19,7 +20,7 @@ Current Focus Core status:
 | DT-E1-002 | DONE | Monotonic/wall clocks, single-active rule, lifecycle events, and 15 tests pass |
 | DT-E1-003 | IN REVIEW | 17 adapter/privacy tests and export pass; real Windows app/idle manual test pending |
 | DT-E1-004 | DONE | Tick-precise cumulative/delta Energy contract and 28 domain tests pass |
-| DT-E1-005 | IN REVIEW | Coordinator/catalog tests and export pass; Windows process picker and real-session QA await UI wiring |
+| DT-E1-005 | IN REVIEW | Process picker and real-session UI are wired; exported Windows QA pending |
 
 Current Town Simulation status:
 
@@ -36,7 +37,7 @@ Current Persistence status:
 | --- | --- | --- |
 | DT-E8-001 | DONE | V1 JSON schema/repository, hash, exact restore, privacy tests pass |
 | DT-E8-002 | IN REVIEW | Atomic replace, validated backup recovery, migration and concurrency tests pass; Windows file/recovery UI check pending |
-| DT-E8-003 | IN REVIEW | 15s scheduler, suspended recovery, JSON restart and single-instance forwarding pass; UI binding and Windows sleep/lock/crash gate pending |
+| DT-E8-003 | IN REVIEW | 15s scheduler, recovery prompt and single-instance forwarding are wired; Windows sleep/lock/crash gate pending |
 
 Conventions: `Automated` lists the minimum test; `Manual` is `Yes` only where a
 human/exported environment adds information. Expected files are forecasts and
@@ -361,6 +362,9 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E5-004 — Add Ghost opacity, corner, DPI, and monitor persistence
 
+- **Status:** IN REVIEW — saved opacity/corner/monitor settings now apply live to the F10
+  QA preview; pure placement tests cover negative coordinates and missing-monitor
+  fallback. Exported mixed-DPI QA and normal Ghost-mode enablement await DT-E5-003.
 - **Purpose:** make a noninteractive overlay configurable from Tray.
 - **Expected files:** Ghost settings, placement service additions, Tray bindings,
   tests.

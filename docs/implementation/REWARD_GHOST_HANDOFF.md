@@ -35,6 +35,11 @@ without activation, verifies those bits, and removes only bits it introduced.
 F10 uses this adapter outside Focus. A failed apply hides the preview. The
 adapter cannot verify cross-application mouse or keyboard behavior, and its
 style-bit check must not be used as a release capability verdict.
+The preview reads the saved Ghost corner, monitor and opacity preferences; Tray
+changes update it while visible. Display selection is populated at startup;
+relaunch after changing the monitor configuration. Missing monitors fall back to the first work
+area and placement is clamped to its edges. This is still a QA preview, not a
+certified Focus display mode.
 
 Before enabling Ghost in Focus Setup or Tray, use the **exported `.exe`** on
 Windows 11. Repeat at 100%, 125%, and 150% DPI, single and dual monitors,
