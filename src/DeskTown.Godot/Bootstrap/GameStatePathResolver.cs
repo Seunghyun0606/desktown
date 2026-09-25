@@ -14,8 +14,9 @@ public static class GameStatePathResolver
         var path = IsDemoRequested
             ? System.Environment.GetEnvironmentVariable("DESKTOWN_DEMO_SAVE")
             : ProjectSettings.GlobalizePath("user://desktown/save.json");
-        if (IsDemoRequested && (string.IsNullOrWhiteSpace(path) ||
-            !Path.IsPathFullyQualified(path) || !File.Exists(path)))
+        if (string.IsNullOrWhiteSpace(path))
+            throw new InvalidOperationException("A save path is required.");
+        if (IsDemoRequested && (!Path.IsPathFullyQualified(path) || !File.Exists(path)))
             throw new InvalidOperationException("Demo requires an existing isolated absolute save path.");
         return new JsonGameStateStore(path);
     }
