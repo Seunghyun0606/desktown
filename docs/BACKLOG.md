@@ -262,8 +262,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E3-003 — Persist Companion scale and monitor position
 
-- **Status:** IN PROGRESS — four presets, capture, clamp and tests exist; durable
-  save binding, stable monitor identifier and mixed-DPI QA pending.
+- **Status:** IN REVIEW — four presets, capture, clamp, settings save binding,
+  and hashed Windows monitor identity exist; mixed-DPI restore QA pending.
 - **Purpose:** restore a usable window across DPI/monitor changes.
 - **Expected files:** `Platform.Windows/WindowsWindowPlacementService.cs`,
   Companion settings/view tests.
@@ -280,8 +280,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E4-001 — Implement Hidden surface lifecycle
 
-- **Status:** IN PROGRESS — presentation lifecycle/parity tests exist; runtime
-  Focus/Tray wiring and Windows performance QA pending.
+- **Status:** IN REVIEW — presentation lifecycle/parity and runtime Focus/Tray
+  wiring exist; Windows zero-window/performance QA pending.
 - **Purpose:** provide a zero-visual normal play mode with minimal resources.
 - **Expected files:** `Godot/Display/HiddenDisplaySurface.cs`, lifecycle tests.
 - **Dependencies:** DT-E2-003, DT-E3-001.
@@ -330,6 +330,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E5-002 — Implement isolated Windows Ghost adapter
 
+- **Status:** IN REVIEW — isolated HWND style adapter, fake-native tests and F10
+  QA preview binding exist; exported focus/taskbar/Alt+Tab validation pending.
 - **Purpose:** reinforce and verify native behavior without coupling Godot/domain
   code to Win32.
 - **Expected files:** `Application/Ports/IGhostWindowPlatform.cs`,
@@ -375,8 +377,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E6-001 — Build Main Town scene and world-first HUD
 
-- **Status:** IN REVIEW — snapshot-bound placeholder scene exists; layout/DPI
-  review and saved-world binding pending.
+- **Status:** IN REVIEW — saved-world placeholder scene exists; layout/DPI
+  review and authored art pending.
 - **Purpose:** create the place where progress becomes emotionally visible.
 - **Expected files:** `scenes/town/TownScene.tscn`, TileMap layers, Town snapshot
   binder, placeholder catalog entries.
@@ -391,6 +393,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E6-002 — Add Mina, Noah, Rumi ambient presentation
 
+- **Status:** IN REVIEW — deterministic visual schedule, three placeholder
+  characters and snapshot-bound Mina exist; sprite and visual QA pending.
 - **Purpose:** make Town feel alive without AI NPCs.
 - **Expected files:** shared character views, `NpcAmbientPresenter.cs`, Town scene
   instances.
@@ -423,6 +427,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E7-001 — Complete session passively and notify
 
+- **Status:** IN REVIEW — Town stays hidden, short non-focusing passive window
+  has Tray fallback, and completion persists first; exported notification QA pending.
 - **Purpose:** finish work without forcing DeskTown over the user's app.
 - **Expected files:** `Application/Sessions/CompletionCoordinator.cs`,
   `Platform.Windows/Notifications/**`, Tray status integration.
@@ -437,6 +443,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E7-002 — Implement crash-safe Workshop reward reveal
 
+- **Status:** IN REVIEW — pending reveal replays after restart and the placeholder
+  two-second beat swaps the saved Workshop visual; final motion/effect/art QA pending.
 - **Purpose:** present the first meaningful world transformation.
 - **Expected files:** `scenes/town/RewardReveal.tscn`,
   `Presentation/RewardRevealCoordinator.cs`, timeline resources/tests.
@@ -451,6 +459,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E7-003 — Implement Railway discovery and teaser unlock
 
+- **Status:** IN REVIEW — saved one-shot event, Rumi copy, 0/45 teaser and disabled
+  play state exist; narrative/art review pending.
 - **Purpose:** close the loop with a reason for the next Focus.
 - **Expected files:** `scenes/town/DiscoveryEvent.tscn`, project definition for
   Railway, Old Map catalog binding.

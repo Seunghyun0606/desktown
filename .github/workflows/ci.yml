@@ -78,6 +78,14 @@ jobs:
       - name: Import project headlessly
         run: godot --headless --editor --path . --quit-after 5
 
+      - name: Launch main scene headlessly
+        run: |
+          mkdir -p build
+          godot --headless --path . --quit-after 120 2>&1 | tee build/runtime-smoke.log
+          if rg -n '^ERROR:|SCRIPT ERROR:' build/runtime-smoke.log; then
+            exit 1
+          fi
+
       - name: Export Windows prototype
         run: |
           mkdir -p build/windows

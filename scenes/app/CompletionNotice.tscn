@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/DeskTown.Godot/Presentation/CompletionNotice.cs" id="1_notice"]
+
+[node name="CompletionNotice" type="Window"]
+title = "DeskTown"
+size = Vector2i(340, 100)
+visible = false
+unresizable = true
+borderless = true
+always_on_top = true
+unfocusable = true
+mouse_passthrough = true
+force_native = true
+script = ExtResource("1_notice")
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Message" type="Label" parent="Panel"]
+layout_mode = 2
+text = "Mina finished her work."
+horizontal_alignment = 1
+vertical_alignment = 1

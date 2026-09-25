@@ -42,8 +42,18 @@ public sealed class PrototypeRuntimeTests
             Assert.Equal(WorkshopState.Complete, restarted.World.Town.Workshop);
             Assert.True(restarted.World.Town.Events.WorkshopRevealPending);
             await restarted.RevealWorkshopAsync();
-            await restarted.AcknowledgeWorkshopAsync();
-            Assert.True(restarted.World.Town.Events.RailwayDiscoveryPending);
+            var interruptedReveal = await PrototypeRuntime.OpenAsync(store,
+                new FakeActivityTracker(), wall, new FakeMonotonicClock(),
+                TimeSpan.FromSeconds(15));
+            Assert.True(interruptedReveal.World.Town.Events.WorkshopRevealPending);
+            await interruptedReveal.RevealWorkshopAsync();
+            await interruptedReveal.AcknowledgeWorkshopAsync();
+            Assert.True(interruptedReveal.World.Town.Events.RailwayDiscoveryPending);
+            await interruptedReveal.AcknowledgeRailwayAsync();
+            var finalRestart = await PrototypeRuntime.OpenAsync(store, new FakeActivityTracker(),
+                wall, new FakeMonotonicClock(), TimeSpan.FromSeconds(15));
+            Assert.True(finalRestart.World.Town.Events.RailwayTeaserUnlocked);
+            Assert.False(finalRestart.World.Town.Events.RailwayDiscoveryPending);
         }
         finally { Directory.Delete(directory, recursive: true); }
     }

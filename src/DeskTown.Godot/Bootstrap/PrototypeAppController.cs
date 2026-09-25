@@ -3,6 +3,7 @@ using DeskTown.Application.Lifecycle;
 using DeskTown.Application.Persistence;
 using DeskTown.Application.Runtime;
 using DeskTown.Domain.Focus;
+using DeskTown.Domain.Projects;
 using DeskTown.Platform.Windows.Activity;
 using DeskTown.Platform.Windows.Processes;
 using DeskTown.Presentation.Display;
@@ -21,6 +22,7 @@ public partial class PrototypeAppController : Node
     private TimeSpan _tickInterval;
     private TimeSpan _checkpointInterval;
     private bool _busy;
+    private bool _revealing;
 
     public bool IsFocusActive => _game?.ActiveSession is not null;
 
@@ -56,6 +58,16 @@ public partial class PrototypeAppController : Node
         Root<FocusSetup>("MainShell/FocusSetup").BackRequested += OpenTown;
         Root<RecoveryPrompt>("MainShell/RecoveryPrompt").ChoiceSelected += choice =>
             _ = RunAsync(() => ResolveRecoveryAsync(choice));
+        Root<RewardReveal>("MainShell/RewardReveal").Finished += () =>
+            _ = RunAsync(FinishRevealAsync);
+        Root<RewardReveal>("MainShell/RewardReveal").WorkshopChanged += () =>
+        {
+            if (_game is not null)
+                Root<TownScene>("MainShell/Town").Bind(_game.World.Town,
+                    _game.TodayFocus);
+        };
+        Root<DiscoveryEvent>("MainShell/DiscoveryEvent").Acknowledged += () =>
+            _ = RunAsync(AcknowledgeDiscoveryAsync);
         GetWindow().CloseRequested += () =>
         {
             if (IsFocusActive) ReturnToFocus();
@@ -92,11 +104,15 @@ public partial class PrototypeAppController : Node
             Root<CompanionWindowHost>("CompanionWindow").Configure(
                 _game.Settings.Companion, _game.Settings.CompanionScalePercent);
             Root<Label>("MainShell/Center/Message").Visible = false;
-            Root<TownScene>("MainShell/Town").Bind(_game.World.Town);
+            Root<TownScene>("MainShell/Town").Bind(_game.World.Town, _game.TodayFocus);
             Root<FirstLaunch>("MainShell/FirstLaunch").Visible = !_game.OnboardingCompleted;
             Root<TownScene>("MainShell/Town").Visible = _game.OnboardingCompleted;
             if (_game.PendingRecovery is { } checkpoint)
                 Root<RecoveryPrompt>("MainShell/RecoveryPrompt").ShowCheckpoint(checkpoint);
+            else if (_game.OnboardingCompleted &&
+                (_game.World.Town.Events.WorkshopRevealPending ||
+                 _game.World.Town.Events.RailwayDiscoveryPending))
+                OpenTown();
         }
         catch (Exception error) { ShowError(error); }
     }
@@ -157,6 +173,18 @@ public partial class PrototypeAppController : Node
         _display?.SetDisplayMode(DisplayMode.Hidden);
         Root<TrayHost>("TrayHost").SetStatus(false, true);
         // The main window stays hidden until the user opens it.
+        try
+        {
+            var message = _game?.World.Town.Workshop == WorkshopState.Complete
+                ? "Mina finished her work. The Workshop has changed."
+                : "Mina finished her work.";
+            Root<CompletionNotice>("CompletionNotice").ShowMessage(message);
+        }
+        catch (Exception error)
+        {
+            GD.PrintErr($"DeskTown notification unavailable: {error.GetType().Name}");
+            // Tray tooltip already holds the passive fallback.
+        }
     }
 
     private async Task ChangeModeAsync(DisplayMode mode)
@@ -190,7 +218,7 @@ public partial class PrototypeAppController : Node
         }
         else
         {
-            Root<TownScene>("MainShell/Town").Bind(_game.World.Town);
+            Root<TownScene>("MainShell/Town").Bind(_game.World.Town, _game.TodayFocus);
             Root<TrayHost>("TrayHost").SetStatus(false, true);
         }
     }
@@ -199,11 +227,48 @@ public partial class PrototypeAppController : Node
     {
         if (_game is null) return;
         _display?.SetDisplayMode(DisplayMode.Hidden);
-        Root<TownScene>("MainShell/Town").Bind(_game.World.Town);
+        var pendingReveal = _game.World.Town.Events.WorkshopRevealPending;
+        Root<TownScene>("MainShell/Town").Bind(_game.World.Town,
+            _game.TodayFocus, visualWorkshop: pendingReveal ? WorkshopState.Repairing : null);
         Root<TownScene>("MainShell/Town").Visible = true;
         Root<FocusSetup>("MainShell/FocusSetup").Visible = false;
         GetWindow().Visible = true;
         GetWindow().GrabFocus();
+        if (pendingReveal && !_revealing)
+            _ = RunAsync(StartRevealAsync);
+        else if (_game.World.Town.Events.RailwayDiscoveryPending)
+            Root<DiscoveryEvent>("MainShell/DiscoveryEvent").Visible = true;
+    }
+
+    private async Task StartRevealAsync()
+    {
+        if (_game is null || _revealing) return;
+        _revealing = true;
+        await _game.RevealWorkshopAsync();
+        Root<CompanionWindowHost>("CompanionWindow").Play(
+            new DeskTown.Domain.Simulation.MinaPresentationIntent(
+                DeskTown.Domain.Simulation.MinaAnimationClip.Work,
+                DeskTown.Domain.Simulation.MinaAnimationClip.Celebrate));
+        await Root<RewardReveal>("MainShell/RewardReveal")
+            .PlayAsync(_game.Settings.ReducedMotion);
+    }
+
+    private async Task FinishRevealAsync()
+    {
+        if (_game is null || !_revealing) return;
+        Root<TownScene>("MainShell/Town").Bind(_game.World.Town, _game.TodayFocus);
+        await _game.AcknowledgeWorkshopAsync();
+        _revealing = false;
+        if (_game.World.Town.Events.RailwayDiscoveryPending)
+            Root<DiscoveryEvent>("MainShell/DiscoveryEvent").Visible = true;
+    }
+
+    private async Task AcknowledgeDiscoveryAsync()
+    {
+        if (_game is null || !_game.World.Town.Events.RailwayDiscoveryPending) return;
+        await _game.AcknowledgeRailwayAsync();
+        Root<DiscoveryEvent>("MainShell/DiscoveryEvent").Visible = false;
+        Root<TownScene>("MainShell/Town").Bind(_game.World.Town, _game.TodayFocus);
     }
 
     private void ReturnToFocus()
