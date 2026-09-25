@@ -268,7 +268,7 @@ public static class SaveStateMapper
     private static void ValidatePlacement(WindowPlacementDto placement)
     {
         if (placement.MonitorId is null || placement.Anchor is not
-            ("BottomLeft" or "BottomRight" or "TopLeft" or "TopRight"))
+            ("BottomLeft" or "BottomRight" or "TopLeft" or "TopRight" or "Free"))
         {
             throw new InvalidDataException("Invalid window placement.");
         }

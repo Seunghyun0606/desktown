@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/DeskTown.Godot/Presentation/FocusSetup.cs" id="1_setup"]
+
+[node name="FocusSetup" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_setup")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -200.0
+offset_right = 210.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "RESTORE WORKSHOP"
+
+[node name="Npc" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "Mina wants to restore the abandoned workshop."
+
+[node name="Progress" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "0 / 25 Focus"
+
+[node name="DurationLabel" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "Duration"
+
+[node name="Duration" type="OptionButton" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="AppLabel" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "App for this session (optional)"
+
+[node name="App" type="OptionButton" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="ModeLabel" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "How would you like Mina nearby?"
+
+[node name="Mode" type="OptionButton" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="Equal" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "Every display choice builds the same Workshop."
+
+[node name="Start" type="Button" parent="Panel/Content"]
+layout_mode = 2
+text = "START FOCUS"
+
+[node name="Back" type="Button" parent="Panel/Content"]
+layout_mode = 2
+text = "Back to Town"

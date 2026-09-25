@@ -1,17 +1,16 @@
 # Automated display and Town preview slice
 
-This slice prepares DT-E3-002/003, DT-E4-001, DT-E5-001 and DT-E6-001 without
-claiming their Windows and art gates. The current Foundation executable has no
-Focus Setup; its keyboard shortcuts exercise presentation only:
+This slice prepared DT-E3-002/003, DT-E4-001, DT-E5-001 and DT-E6-001 without
+claiming their Windows and art gates. The later Focus UI slice replaced its
+temporary Town/Companion shortcuts with actual UI and Tray commands. The two
+remaining visual inspection shortcuts work only outside a Focus session:
 
 | Shortcut in main window | QA action |
 | --- | --- |
-| F7 | Toggle the placeholder Town scene (fresh simulation snapshot) |
 | F8 | Cycle Mina's six presentation clips in the Companion window |
-| F9 | Show/hide Companion |
 | F10 | Opt in/out of experimental Ghost overlay |
 
-F7–F10 do not start Focus, accrue Energy, or write progress. Ghost is not yet a
+F8/F10 do not start Focus, accrue Energy, or write progress. Ghost is not yet a
 selectable gameplay mode: cross-application passthrough and keyboard focus must
 be checked on an exported Windows build before enabling it. Its stage contains
 only a character, work prop and shadow, with no controls, text or input code.
@@ -28,10 +27,9 @@ stable Windows monitor identifier remain DT-E3-003 integration work.
 
 `FocusDisplayLifecycle` models hiding the Main Town during focus, switching
 surfaces, and keeping the Town closed after completion until explicitly opened.
-It owns no session or reward state. Connecting it to the actual Focus Setup and
-Tray is later UI work. The Town preview binds a `TownProjection` to distinct
-Broken/Repairing/Complete Workshop visuals and a minimal HUD; its current
-snapshot is intentionally fresh test data, not the user's saved world.
+It owns no session or reward state. The Town binds a `TownProjection` to distinct
+Broken/Repairing/Complete Workshop visuals and a minimal HUD; the later Focus UI
+slice connects the saved world and real session.
 
 ## Remaining manual gates
 

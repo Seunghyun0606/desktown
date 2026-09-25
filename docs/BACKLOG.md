@@ -295,6 +295,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E4-002 — Implement Tray menu and focus status
 
+- **Status:** IN REVIEW — native menu, Open/End/Quit and settings commands are
+  wired; exported Windows tray and quit-confirmation QA pending.
 - **Purpose:** control a hidden or noninteractive app.
 - **Expected files:** `scenes/app/TrayMenu.tres`, `Platform.Windows/Tray/**`, command
   bindings.
@@ -403,6 +405,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E6-003 — Implement First Launch, Main shell, and Focus Setup UX
 
+- **Status:** IN REVIEW — privacy screen, process/duration/mode Setup and
+  real-session runtime binding exist; exported end-to-end UX QA pending.
 - **Purpose:** expose trust, project, duration, apps, and equal modes to users.
 - **Expected files:** `scenes/app/FirstLaunch.tscn`, `MainShell.tscn`,
   `scenes/focus/FocusSetup.tscn`, controllers.

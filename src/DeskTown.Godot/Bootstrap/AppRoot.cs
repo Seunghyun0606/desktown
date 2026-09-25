@@ -16,6 +16,7 @@ public partial class AppRoot : Node
     private WindowsSingleInstanceGate? _singleInstance;
     private CancellationTokenSource? _openRequestCancellation;
     private DisplayModeController? _display;
+    private PrototypeAppController? _controller;
     private int _previewClipIndex;
 
     public override void _Ready()
@@ -52,8 +53,13 @@ public partial class AppRoot : Node
 
         var companion = GetNode<CompanionWindowHost>("CompanionWindow");
         _display = new DisplayModeController(companion);
-        companion.HideRequested += _display.CompanionCloseRequested;
-        GetNode<TownScene>("MainShell/TownPreview").Bind(TownSimulation.Create().Snapshot.Town);
+        _controller = new PrototypeAppController();
+        _controller.Configure(_display, options.LogicalTickInterval,
+            options.CheckpointInterval);
+        AddChild(_controller);
+        companion.HideRequested += _controller.CompanionClosed;
+        companion.PlacementChanged += _controller.CompanionMoved;
+        _controller.Start();
 
         _logger.Information(
             "application_started",
@@ -75,20 +81,12 @@ public partial class AppRoot : Node
 
     public override void _Input(InputEvent input)
     {
-        // Temporary exported-build QA entry point while Focus Setup is not wired.
-        if (_display is null || input is not InputEventKey key
+        // Opt-in visual inspection shortcuts; never run during an active session.
+        if (_controller?.IsFocusActive == true || input is not InputEventKey key
             || !key.Pressed || key.Echo)
             return;
 
-        if (key.Keycode == Key.F7)
-        {
-            var town = GetNode<TownScene>("MainShell/TownPreview");
-            town.Visible = !town.Visible;
-        }
-        else if (key.Keycode == Key.F9)
-            _display.SetDisplayMode(_display.Mode == DisplayMode.Companion
-                ? DisplayMode.Hidden : DisplayMode.Companion);
-        else if (key.Keycode == Key.F8)
+        if (key.Keycode == Key.F8)
         {
             var clips = new[] { MinaAnimationClip.Idle, MinaAnimationClip.Walk,
                 MinaAnimationClip.Work, MinaAnimationClip.Rest,
@@ -128,7 +126,11 @@ public partial class AppRoot : Node
         }
     }
 
-    private void OpenExistingInstance() => GetWindow().GrabFocus();
+    private void OpenExistingInstance()
+    {
+        if (_controller is not null) _controller.OpenTown();
+        else GetWindow().GrabFocus();
+    }
 
     private void QuitSecondary() => GetTree().Quit();
 }

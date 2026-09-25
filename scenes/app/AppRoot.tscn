@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://src/DeskTown.Godot/Bootstrap/AppRoot.cs" id="1_app_root"]
 [ext_resource type="PackedScene" path="res://scenes/companion/CompanionWindow.tscn" id="2_companion"]
 [ext_resource type="PackedScene" path="res://scenes/ghost/GhostWindow.tscn" id="3_ghost"]
 [ext_resource type="PackedScene" path="res://scenes/town/TownScene.tscn" id="4_town"]
+[ext_resource type="PackedScene" path="res://scenes/app/FirstLaunch.tscn" id="5_first"]
+[ext_resource type="PackedScene" path="res://scenes/focus/FocusSetup.tscn" id="6_setup"]
+[ext_resource type="PackedScene" path="res://scenes/app/RecoveryPrompt.tscn" id="7_recovery"]
+[ext_resource type="Script" path="res://src/DeskTown.Godot/Display/TrayHost.cs" id="8_tray"]
 
 [node name="AppRoot" type="Node"]
 script = ExtResource("1_app_root")
@@ -40,9 +44,18 @@ theme_override_font_sizes/font_size = 28
 text = "DeskTown\nFoundation ready"
 horizontal_alignment = 1
 
-[node name="TownPreview" parent="MainShell" instance=ExtResource("4_town")]
+[node name="Town" parent="MainShell" instance=ExtResource("4_town")]
 visible = false
+
+[node name="FocusSetup" parent="MainShell" instance=ExtResource("6_setup")]
+
+[node name="FirstLaunch" parent="MainShell" instance=ExtResource("5_first")]
+
+[node name="RecoveryPrompt" parent="MainShell" instance=ExtResource("7_recovery")]
 
 [node name="CompanionWindow" parent="." instance=ExtResource("2_companion")]
 
 [node name="GhostWindow" parent="." instance=ExtResource("3_ghost")]
+
+[node name="TrayHost" type="Node" parent="."]
+script = ExtResource("8_tray")
