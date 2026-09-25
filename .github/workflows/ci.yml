@@ -42,7 +42,7 @@ jobs:
           dotnet test DeskTown.sln
           --configuration Release
           --no-build
-          --logger "trx;LogFileName=foundation.trx"
+          --logger "trx;LogFileName=tests.trx"
           --collect "XPlat Code Coverage"
 
       - name: Upload test results

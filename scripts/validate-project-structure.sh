@@ -15,6 +15,7 @@ required_files=(
   "src/DeskTown.Application/DeskTown.Application.csproj"
   "src/DeskTown.Platform.Windows/DeskTown.Platform.Windows.csproj"
   "tests/DeskTown.Foundation.Tests/DeskTown.Foundation.Tests.csproj"
+  "tests/DeskTown.Domain.Tests/DeskTown.Domain.Tests.csproj"
 )
 
 for required_file in "${required_files[@]}"; do

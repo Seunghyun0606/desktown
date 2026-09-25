@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskTown", "DeskTown.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskTown.Foundation.Tests", "tests\DeskTown.Foundation.Tests\DeskTown.Foundation.Tests.csproj", "{6F16BC73-039C-47AD-A6AE-5E6B09754105}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskTown.Domain.Tests", "tests\DeskTown.Domain.Tests\DeskTown.Domain.Tests.csproj", "{A3C1B566-796D-4A86-AF63-23DC15E81D06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{6F16BC73-039C-47AD-A6AE-5E6B09754105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F16BC73-039C-47AD-A6AE-5E6B09754105}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F16BC73-039C-47AD-A6AE-5E6B09754105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3C1B566-796D-4A86-AF63-23DC15E81D06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3C1B566-796D-4A86-AF63-23DC15E81D06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3C1B566-796D-4A86-AF63-23DC15E81D06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3C1B566-796D-4A86-AF63-23DC15E81D06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
