@@ -155,6 +155,173 @@ public sealed class JsonGameStateStoreTests
         }
     }
 
+    [Fact]
+    public async Task Interrupted_temp_write_keeps_primary_and_cleans_temp()
+    {
+        var (directory, path) = TestPath();
+        var (snapshot, _) = Example();
+        try
+        {
+            await new JsonGameStateStore(path).SaveAsync(snapshot, 1, StartedAt);
+            var original = await File.ReadAllBytesAsync(path);
+            var failing = new JsonGameStateStore(path, null,
+                () => throw new IOException("Injected failure before atomic replacement."));
+
+            await Assert.ThrowsAsync<IOException>(() => failing.SaveAsync(snapshot, 2, StartedAt));
+            Assert.Equal(original, await File.ReadAllBytesAsync(path));
+            Assert.False(File.Exists(Path.Combine(directory, "save.tmp")));
+        }
+        finally { Directory.Delete(directory, recursive: true); }
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task Corrupt_primary_recovers_valid_backup_and_preserves_bad_bytes(bool badHash)
+    {
+        var (directory, path) = TestPath();
+        var (snapshot, _) = Example();
+        var store = new JsonGameStateStore(path);
+        try
+        {
+            await store.SaveAsync(snapshot, 1, StartedAt);
+            await store.SaveAsync(snapshot, 2, StartedAt.AddSeconds(1));
+            Assert.Equal(1, JsonSaveCodec.Decode(await File.ReadAllBytesAsync(
+                Path.Combine(directory, "save.backup.json"))).Revision);
+            byte[] corrupted;
+            if (badHash)
+            {
+                var altered = Parse(await File.ReadAllBytesAsync(path));
+                altered["town"]!["projectProgressTicks"] = 0;
+                corrupted = JsonSerializer.SerializeToUtf8Bytes(altered);
+            }
+            else corrupted = Encoding.UTF8.GetBytes("{truncated");
+            await File.WriteAllBytesAsync(path, corrupted);
+
+            var restored = await store.LoadAsync();
+
+            Assert.Equal(1, restored!.Revision);
+            Assert.Equal(SaveLoadStatus.RecoveredFromBackup, store.LastLoadStatus);
+            Assert.Equal(1, JsonSaveCodec.Decode(await File.ReadAllBytesAsync(path)).Revision);
+            Assert.Equal(corrupted, await File.ReadAllBytesAsync(
+                Assert.Single(Directory.GetFiles(directory, "save.json.corrupt-*"))));
+        }
+        finally { Directory.Delete(directory, recursive: true); }
+    }
+
+    [Fact]
+    public async Task Both_invalid_copies_are_preserved_for_manual_recovery()
+    {
+        var (directory, path) = TestPath();
+        var (snapshot, _) = Example();
+        var store = new JsonGameStateStore(path);
+        try
+        {
+            await store.SaveAsync(snapshot, 1, StartedAt);
+            await store.SaveAsync(snapshot, 2, StartedAt);
+            var brokenPrimary = Encoding.UTF8.GetBytes("{broken-primary");
+            var brokenBackup = Encoding.UTF8.GetBytes("{broken-backup");
+            var backupPath = Path.Combine(directory, "save.backup.json");
+            await File.WriteAllBytesAsync(path, brokenPrimary);
+            await File.WriteAllBytesAsync(backupPath, brokenBackup);
+
+            await Assert.ThrowsAsync<InvalidDataException>(() => store.LoadAsync());
+            Assert.Equal(brokenPrimary, await File.ReadAllBytesAsync(path));
+            Assert.Equal(brokenBackup, await File.ReadAllBytesAsync(backupPath));
+        }
+        finally { Directory.Delete(directory, recursive: true); }
+    }
+
+    [Fact]
+    public async Task Future_version_is_preserved_and_cannot_be_overwritten_by_old_binary()
+    {
+        var (directory, path) = TestPath();
+        var (snapshot, _) = Example();
+        var store = new JsonGameStateStore(path);
+        try
+        {
+            await store.SaveAsync(snapshot, 1, StartedAt);
+            await store.SaveAsync(snapshot, 2, StartedAt);
+            var future = Parse(await File.ReadAllBytesAsync(path));
+            future["schemaVersion"] = 9;
+            var bytes = Rehash(future);
+            await File.WriteAllBytesAsync(path, bytes);
+
+            await Assert.ThrowsAsync<UnsupportedSaveSchemaException>(() => store.LoadAsync());
+            await Assert.ThrowsAsync<UnsupportedSaveSchemaException>(() =>
+                store.SaveAsync(snapshot, 3, StartedAt));
+            Assert.Equal(bytes, await File.ReadAllBytesAsync(path));
+        }
+        finally { Directory.Delete(directory, recursive: true); }
+    }
+
+    [Fact]
+    public async Task Sequential_pure_migration_creates_new_revision_and_keeps_old_fixture()
+    {
+        var (directory, path) = TestPath();
+        var (snapshot, _) = Example();
+        try
+        {
+            Directory.CreateDirectory(directory);
+            var old = Parse(JsonSaveCodec.Encode(snapshot, 3, StartedAt));
+            old["schemaVersion"] = 0;
+            var oldBytes = JsonSerializer.SerializeToUtf8Bytes(old);
+            await File.WriteAllBytesAsync(path, oldBytes);
+            var store = new JsonGameStateStore(path, [new V0ToV1Migration()]);
+
+            var restored = await store.LoadAsync();
+
+            Assert.Equal(4, restored!.Revision);
+            Assert.Equal(SaveLoadStatus.Migrated, store.LastLoadStatus);
+            Assert.Equal(4, JsonSaveCodec.Decode(await File.ReadAllBytesAsync(path)).Revision);
+            Assert.Equal(oldBytes, await File.ReadAllBytesAsync(
+                Path.Combine(directory, "save.backup.json")));
+        }
+        finally { Directory.Delete(directory, recursive: true); }
+    }
+
+    [Fact]
+    public async Task Concurrent_stores_cannot_overwrite_a_higher_revision()
+    {
+        var (directory, path) = TestPath();
+        var (snapshot, _) = Example();
+        try
+        {
+            await new JsonGameStateStore(path).SaveAsync(snapshot, 1, StartedAt);
+            var low = new JsonGameStateStore(path);
+            var high = new JsonGameStateStore(path);
+            async Task TrySave(JsonGameStateStore store, int revision)
+            {
+                try { await store.SaveAsync(snapshot, revision, StartedAt); }
+                catch (InvalidDataException) { /* The higher revision won first. */ }
+            }
+            await Task.WhenAll(TrySave(low, 2), TrySave(high, 3));
+
+            Assert.Equal(3, (await high.LoadAsync())!.Revision);
+            await Assert.ThrowsAsync<InvalidDataException>(() =>
+                low.SaveAsync(snapshot, 2, StartedAt));
+        }
+        finally { Directory.Delete(directory, recursive: true); }
+    }
+
+    private static (string Directory, string Path) TestPath()
+    {
+        var directory = System.IO.Path.Combine(System.IO.Path.GetTempPath(),
+            "desktown-save-test-" + Guid.NewGuid().ToString("N"));
+        return (directory, System.IO.Path.Combine(directory, "save.json"));
+    }
+
+    private sealed class V0ToV1Migration : ISaveMigration
+    {
+        public int FromVersion => 0;
+        public int ToVersion => 1;
+        public JsonNode Apply(JsonNode source)
+        {
+            source["schemaVersion"] = 1;
+            return source;
+        }
+    }
+
     private static (GameStateSnapshot Snapshot, FocusSession Finalized) Example()
     {
         var finalized = FocusSession.Create(FocusSessionId.From(Guid.Parse("9773f4a3-8f60-435d-81c3-c99c3e4e0f9a")),
