@@ -87,6 +87,28 @@ public static class JsonSaveCodec
         }
     }
 
+    internal static int ReadSchemaVersion(ReadOnlySpan<byte> bytes)
+    {
+        try
+        {
+            var root = JsonNode.Parse(bytes) as JsonObject
+                ?? throw new InvalidDataException("Save payload is not an object.");
+            return root["schemaVersion"]?.GetValue<int>()
+                ?? throw new InvalidDataException("Save schema version is missing.");
+        }
+        catch (Exception error) when (error is JsonException or InvalidOperationException or FormatException)
+        {
+            throw new InvalidDataException("Save schema version is invalid.", error);
+        }
+    }
+
+    internal static byte[] SealMigratedPayload(JsonObject payload)
+    {
+        payload.Remove("integrity");
+        payload["integrity"] = new JsonObject { ["payloadSha256"] = ComputeHash(payload) };
+        return JsonSerializer.SerializeToUtf8Bytes(payload, Options);
+    }
+
     private static string ComputeHash(JsonObject payload)
     {
         var bytes = JsonSerializer.SerializeToUtf8Bytes(payload, CanonicalOptions);
