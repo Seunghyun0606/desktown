@@ -18,5 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="../../src/DeskTown.Application/DeskTown.Application.csproj" />
     <ProjectReference Include="../../src/DeskTown.Domain/DeskTown.Domain.csproj" />
+    <ProjectReference Include="../../src/DeskTown.Persistence/DeskTown.Persistence.csproj" />
   </ItemGroup>
 </Project>
