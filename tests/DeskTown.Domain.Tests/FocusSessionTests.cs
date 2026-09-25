@@ -4,6 +4,21 @@ namespace DeskTown.Domain.Tests;
 
 public sealed class FocusSessionTests
 {
+    [Fact]
+    public void Restored_session_is_suspended_at_exact_checkpoint_and_rejects_invalid_durations()
+    {
+        var started = new DateTimeOffset(2026, 9, 25, 8, 0, 0, TimeSpan.Zero);
+        var id = FocusSessionId.From(Guid.Parse("239b80a4-b9e5-4e87-8356-188eb2a7e5a0"));
+        var session = FocusSession.RestoreSuspended(id, started,
+            TimeSpan.FromMinutes(25), TimeSpan.FromMinutes(7), TimeSpan.FromMinutes(2), ["code.exe"]);
+
+        Assert.Equal(FocusSessionStatus.Suspended, session.Status);
+        Assert.Equal(TimeSpan.FromMinutes(7), session.CountedDuration);
+        Assert.Equal(TimeSpan.FromMinutes(2), session.IdleDuration);
+        Assert.Equal(started, session.StartedAtUtc);
+        Assert.Throws<ArgumentOutOfRangeException>(() => FocusSession.RestoreSuspended(
+            id, started, TimeSpan.FromMinutes(25), TimeSpan.FromMinutes(26), TimeSpan.Zero));
+    }
     private static readonly DateTimeOffset StartTime =
         new(2026, 9, 25, 9, 0, 0, TimeSpan.Zero);
 

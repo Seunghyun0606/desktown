@@ -58,6 +58,26 @@ public sealed class FocusSession
         return new FocusSession(id, targetDuration, NormalizeProcessNames(intendedProcessNames));
     }
 
+    /// <summary>
+    /// Recover only the last durable interval. A saved Running session resumes
+    /// as Suspended until the user explicitly chooses Resume.
+    /// </summary>
+    public static FocusSession RestoreSuspended(
+        FocusSessionId id, DateTimeOffset startedAtUtc, TimeSpan targetDuration,
+        TimeSpan countedDuration, TimeSpan idleDuration,
+        IEnumerable<string>? intendedProcessNames = null)
+    {
+        if (countedDuration < TimeSpan.Zero || countedDuration > targetDuration
+            || idleDuration < TimeSpan.Zero || idleDuration > countedDuration)
+            throw new ArgumentOutOfRangeException(nameof(countedDuration));
+
+        var session = Create(id, targetDuration, intendedProcessNames);
+        session.Start(startedAtUtc);
+        session.Accumulate(countedDuration, idleDuration);
+        session.Suspend();
+        return session;
+    }
+
     public void Start(DateTimeOffset startedAtUtc)
     {
         EnsureStatus(FocusSessionStatus.Ready, "start");

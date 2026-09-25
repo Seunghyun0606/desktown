@@ -1,5 +1,6 @@
 using DeskTown.Application.Configuration;
 using DeskTown.Application.Ports;
+using DeskTown.Platform.Windows.Lifecycle;
 using global::Godot;
 
 namespace DeskTown.Presentation.Bootstrap;
@@ -8,9 +9,23 @@ public partial class AppRoot : Node
 {
     private readonly PrototypeOptions _configuredOptions = PrototypeOptions.Default;
     private readonly IStructuredLogger _logger = new GodotStructuredLogger();
+    private WindowsSingleInstanceGate? _singleInstance;
+    private CancellationTokenSource? _openRequestCancellation;
 
     public override void _Ready()
     {
+        if (OperatingSystem.IsWindows())
+        {
+            _singleInstance = WindowsSingleInstanceGate.Acquire();
+            if (!_singleInstance.IsPrimary)
+            {
+                _ = RequestOpenAndQuitAsync();
+                return;
+            }
+            _openRequestCancellation = new CancellationTokenSource();
+            _ = ListenForOpenRequestsAsync(_openRequestCancellation.Token);
+        }
+
         var resolution = PrototypeOptionsResolver.Resolve(_configuredOptions);
         var options = resolution.Options;
 
@@ -39,4 +54,38 @@ public partial class AppRoot : Node
                 ["checkpoint_seconds"] = options.CheckpointInterval.TotalSeconds
             });
     }
+
+    public override void _ExitTree()
+    {
+        _openRequestCancellation?.Cancel();
+        _singleInstance?.Dispose();
+        _openRequestCancellation?.Dispose();
+    }
+
+    private async Task RequestOpenAndQuitAsync()
+    {
+        try { await _singleInstance!.RequestOpenAsync(); }
+        finally { Callable.From(QuitSecondary).CallDeferred(); }
+    }
+
+    private async Task ListenForOpenRequestsAsync(CancellationToken cancellationToken)
+    {
+        try
+        {
+            await _singleInstance!.ListenAsync(() =>
+            {
+                Callable.From(OpenExistingInstance).CallDeferred();
+                return Task.CompletedTask;
+            }, cancellationToken);
+        }
+        catch (IOException error)
+        {
+            _logger.Information("single_instance_listener_failed",
+                new Dictionary<string, object?> { ["reason"] = error.GetType().Name });
+        }
+    }
+
+    private void OpenExistingInstance() => GetWindow().GrabFocus();
+
+    private void QuitSecondary() => GetTree().Quit();
 }
