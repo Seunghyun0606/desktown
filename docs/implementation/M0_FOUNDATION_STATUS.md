@@ -57,8 +57,8 @@ DT-E0-002 and DT-E0-004 are complete.
 
 ## Work after Foundation
 
-DT-E1-003 and DT-E1-004 are implemented and under automated verification. The
-Windows activity adapter keeps native identifiers inside the platform boundary;
-the session ledger and Energy policy remain independent of Godot, Win32, and
-DisplayMode. After verification, the next critical-path task is `DT-E1-005 — Add
-process catalog and Focus orchestration`.
+GitHub Actions run `36085319041` verified the parallel DT-E1-003/DT-E1-004
+integration: Release build with zero warnings/errors, 109 tests, Godot headless
+import, and Windows export all passed. DT-E1-004 is complete. DT-E1-003 remains
+in review only for its exported-build manual activity/idle check. The next
+critical-path task is `DT-E1-005 — Add process catalog and Focus orchestration`.

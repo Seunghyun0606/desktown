@@ -17,9 +17,9 @@ Current Focus Core status:
 | --- | --- | --- |
 | DT-E1-001 | DONE | Display-independent aggregate and 21 domain tests pass |
 | DT-E1-002 | DONE | Monotonic/wall clocks, single-active rule, lifecycle events, and 15 tests pass |
-| DT-E1-003 | IN REVIEW | Adapter/privacy tests implemented; CI and exported Windows manual test pending |
-| DT-E1-004 | IN REVIEW | Tick-precise idempotent ledger/Energy tests implemented; CI pending |
-| DT-E1-005 | TODO | Next task after E1-003/E1-004 verification: process catalog and Focus orchestration |
+| DT-E1-003 | IN REVIEW | 17 adapter/privacy tests and export pass; real Windows app/idle manual test pending |
+| DT-E1-004 | DONE | Tick-precise cumulative/delta Energy contract and 28 domain tests pass |
+| DT-E1-005 | TODO | Next critical-path task: process catalog and Focus orchestration |
 
 Conventions: `Automated` lists the minimum test; `Manual` is `Yes` only where a
 human/exported environment adds information. Expected files are forecasts and

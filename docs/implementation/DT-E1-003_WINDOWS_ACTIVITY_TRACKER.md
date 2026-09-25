@@ -74,3 +74,6 @@ session history, not Productivity scoring or reduced rewards.
 Manual Windows verification remains required: run an exported build, switch
 between common applications, wait across the configured idle threshold, and
 inspect the eventual session JSON for forbidden content.
+
+Automated verification passed in GitHub Actions run `36085319041`: Release
+build, 17 platform adapter tests, Godot headless import, and Windows export.

@@ -71,3 +71,7 @@ and avoids per-session rounding loss.
 - bounded session-history retention;
 - FocusSessionCoordinator integration;
 - activity/process aggregate persistence.
+
+Automated verification passed in GitHub Actions run `36085319041`: all 49
+Domain tests pass, including 28 ledger/Energy cases added by this task. The
+solution build completed with zero warnings and zero errors.
