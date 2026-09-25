@@ -16,9 +16,9 @@ Current Focus Core status:
 | Task | Status | Note |
 | --- | --- | --- |
 | DT-E1-001 | DONE | Display-independent aggregate and 21 domain tests pass |
-| DT-E1-002 | TODO | Next task: manager with injectable monotonic/wall clocks |
+| DT-E1-002 | DONE | Monotonic/wall clocks, single-active rule, lifecycle events, and 15 tests pass |
 | DT-E1-003 | TODO | Windows foreground and idle tracker |
-| DT-E1-004 | TODO | Session ledger and elapsed-time Energy policy |
+| DT-E1-004 | TODO | Next critical-path task: session ledger and elapsed-time Energy policy |
 | DT-E1-005 | TODO | Process catalog and Focus orchestration |
 
 Conventions: `Automated` lists the minimum test; `Manual` is `Yes` only where a

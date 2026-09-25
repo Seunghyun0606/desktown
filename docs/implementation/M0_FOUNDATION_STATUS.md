@@ -57,6 +57,8 @@ DT-E0-002 and DT-E0-004 are complete.
 
 ## Work after Foundation
 
-`DT-E1-001 — Create FocusSession domain model` is complete. The aggregate
-remains independent of Godot, Win32, DisplayMode, and persistence DTOs. The next
-task is `DT-E1-002 — Implement FocusSessionManager with injectable clocks`.
+`DT-E1-001 — Create FocusSession domain model` and `DT-E1-002 — Implement
+FocusSessionManager with injectable clocks` are complete. Both remain
+independent of Godot, Win32, DisplayMode, and persistence DTOs. The next
+critical-path task is `DT-E1-004 — Implement session ledger and Energy policy`;
+the Windows activity tracker can proceed separately as DT-E1-003.

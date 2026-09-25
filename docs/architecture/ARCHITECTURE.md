@@ -113,10 +113,14 @@ the session entity.
 `FocusSessionManager` responsibilities:
 
 - enforce one active session
-- start, tick, end, complete, and recover a session
+- start, tick, suspend, resume, stop, and complete a session
 - use a monotonic clock for elapsed time and wall clock for audit timestamps
-- checkpoint periodically and on lifecycle/mode transitions
 - publish typed events; never manipulate Windows or Scene nodes directly
+
+The implemented manager removes its monotonic baseline while Suspended and
+creates a new one on Resume, so sleep/lock time is excluded even when the clock
+source advances. Recovery and checkpoint policy belong to the later lifecycle,
+persistence, and coordinator tasks rather than this manager.
 
 ### Energy
 
