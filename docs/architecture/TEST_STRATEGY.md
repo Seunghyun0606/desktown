@@ -7,7 +7,7 @@
 | Domain unit | `dotnet test` | deterministic focus, energy, project, Mina, events |
 | Application unit | `dotnet test` with fakes | orchestration, mode switching, save policy |
 | Integration | Godot/headless where possible | scene binding, JSON store, lifecycle adapters |
-| Windows export smoke | CI Windows runner, exported `.exe` | headless startup and fatal script errors |
+| Windows export smoke | CI Windows runner, exported `.exe` | headless startup, isolated save, restart and recovery |
 | Windows system | exported `.exe` on Windows 11 | HWND flags, tray, notification, activity APIs |
 | Manual visual | exported `.exe` | pixel scaling, cozy hierarchy, reward timing |
 
@@ -128,13 +128,17 @@ PR / push
   3. persistence fixture tests
   4. Godot project import/headless smoke test
   5. Windows export build
+  6. Windows exported `.exe` startup and three-process save/recovery smoke
 
 Release candidate (Windows runner)
-  6. automated launch/save smoke
   7. signed manual Ghost/DPI/monitor checklist
 ```
 
-Windows UI behavior cannot be certified by a Linux CI job or Godot editor run.
+The save/recovery smoke uses an isolated temporary file and three separate
+exported-app processes: create an active checkpoint, end it after restart, then
+verify the decision remains saved. It does not exercise actual sleep, input,
+visible Windows UI, or the normal `user://` directory. Windows UI behavior
+cannot be certified by headless CI or a Godot editor run.
 Store the manual test matrix, build hash, Windows version, GPU, monitor/DPI, and
 result with the candidate build.
 

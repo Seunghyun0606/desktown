@@ -9,6 +9,12 @@ public partial class MinaPlaceholderView : Node2D
 {
     private readonly MinaClipPlayback _playback = new();
 
+    public override void _Ready()
+    {
+        VisibilityChanged += () => SetProcess(IsVisibleInTree());
+        SetProcess(IsVisibleInTree());
+    }
+
     public void Bind(MinaSimulationState state) => _playback.Apply(MinaClipPlayback.ForState(state));
 
     public void Play(MinaPresentationIntent intent) => _playback.Apply(intent);
