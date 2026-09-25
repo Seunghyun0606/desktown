@@ -3,7 +3,9 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DeskTown.Application.Persistence;
+using DeskTown.Application.Lifecycle;
 using DeskTown.Application.Sessions;
+using DeskTown.Application.Tests.Fakes;
 using DeskTown.Domain.Focus;
 using DeskTown.Domain.Events;
 using DeskTown.Domain.Projects;
@@ -211,6 +213,57 @@ public sealed class JsonGameStateStoreTests
         {
             if (Directory.Exists(directory)) Directory.Delete(directory, recursive: true);
         }
+    }
+
+    [Fact]
+    public async Task Restart_end_at_checkpoint_records_once_and_persists_no_active_session()
+    {
+        var (directory, path) = TestPath();
+        var store = new JsonGameStateStore(path);
+        var (original, _) = Example();
+        try
+        {
+            await store.SaveAsync(original, 1, StartedAt.AddMinutes(3));
+            var wall = new FakeWallClock(StartedAt.AddHours(2));
+            var mono = new FakeMonotonicClock();
+            var lifecycle = new ApplicationLifecycleCoordinator(store, wall, mono,
+                TimeSpan.FromSeconds(15));
+            var loaded = (await lifecycle.InitializeAsync())!.Snapshot;
+            var ledger = loaded.Focus.Ledger;
+            var coordinator = new FocusSessionCoordinator(
+                new FocusSessionManager(wall, mono), new FakeActivityTracker(), ledger,
+                new ElapsedTimeEnergyPolicy());
+
+            var resolved = lifecycle.ResolveRecovery(RecoveryChoice.EndAtCheckpoint, coordinator);
+            Assert.True(resolved.Finalized!.NewlyRecorded);
+            Assert.Equal(Counted + TimeSpan.FromTicks(17), ledger.TotalCountedDuration);
+            loaded.Town.Project.ApplyCumulativeEnergy(
+                new ElapsedTimeEnergyPolicy().CalculateTotal(ledger));
+            var saved = loaded with
+            {
+                Focus = loaded.Focus with { ActiveCheckpoint = null },
+                Mina = loaded.Mina with { Activity = "Idle", Location = "Home",
+                    ShortIdleStretchPlayed = false },
+                Player = loaded.Player with { TotalFocusTicks = ledger.TotalCountedDuration.Ticks,
+                    TodayFocusTicks = ledger.TotalCountedDuration.Ticks }
+            };
+            Assert.True(await lifecycle.SaveAsync(saved, CheckpointReason.RecoveryDecision));
+
+            var reopened = await new JsonGameStateStore(path).LoadAsync();
+            Assert.Equal(2, reopened!.Revision);
+            Assert.Null(reopened.Snapshot.Focus.ActiveCheckpoint);
+            Assert.Equal(Counted + TimeSpan.FromTicks(17),
+                reopened.Snapshot.Focus.Ledger.TotalCountedDuration);
+            var replay = FocusSession.RestoreSuspended(resolved.Finalized.Checkpoint.SessionId,
+                resolved.Finalized.Checkpoint.StartedAtUtc!.Value,
+                resolved.Finalized.Checkpoint.TargetDuration,
+                resolved.Finalized.Checkpoint.CountedDuration,
+                resolved.Finalized.Checkpoint.IdleDuration,
+                resolved.Finalized.Checkpoint.IntendedProcessNames);
+            replay.Stop(resolved.Finalized.Checkpoint.EndedAtUtc!.Value);
+            Assert.False(reopened.Snapshot.Focus.Ledger.TryRecord(replay));
+        }
+        finally { Directory.Delete(directory, recursive: true); }
     }
 
     [Fact]

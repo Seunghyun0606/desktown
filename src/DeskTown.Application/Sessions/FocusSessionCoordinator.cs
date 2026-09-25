@@ -60,6 +60,24 @@ public sealed class FocusSessionCoordinator
         return session;
     }
 
+    public FocusSession RestoreSuspended(FocusSessionCheckpoint checkpoint)
+    {
+        ArgumentNullException.ThrowIfNull(checkpoint);
+        if (checkpoint.Status is not (FocusSessionStatus.Running or FocusSessionStatus.Suspended)
+            || checkpoint.StartedAtUtc is null || checkpoint.EndedAtUtc is not null
+            || checkpoint.TotalRecordedEnergy != TotalEnergy)
+            throw new ArgumentException("Invalid recoverable Focus checkpoint.", nameof(checkpoint));
+
+        var session = FocusSession.RestoreSuspended(checkpoint.SessionId,
+            checkpoint.StartedAtUtc.Value, checkpoint.TargetDuration,
+            checkpoint.CountedDuration, checkpoint.IdleDuration,
+            checkpoint.IntendedProcessNames);
+        _manager.RestoreSuspended(session);
+        _activity.Restore(checkpoint.Activity);
+        PublishCheckpoint(session);
+        return session;
+    }
+
     public FocusSessionTickResult Tick()
     {
         var session = RequireActiveSession();
@@ -221,6 +239,25 @@ public sealed class FocusSessionCoordinator
             _activeDuration = TimeSpan.Zero;
             _idleDuration = TimeSpan.Zero;
             _unknownDuration = TimeSpan.Zero;
+        }
+
+        public void Restore(FocusActivitySummary summary)
+        {
+            ArgumentNullException.ThrowIfNull(summary);
+            if (summary.ActiveDuration < TimeSpan.Zero || summary.IdleDuration < TimeSpan.Zero
+                || summary.UnknownDuration < TimeSpan.Zero || summary.Processes is null
+                || summary.Processes.Any(p => p.Duration < TimeSpan.Zero))
+                throw new ArgumentException("Invalid activity summary.", nameof(summary));
+
+            Reset();
+            _activeDuration = summary.ActiveDuration;
+            _idleDuration = summary.IdleDuration;
+            _unknownDuration = summary.UnknownDuration;
+            foreach (var process in summary.Processes)
+            {
+                _processDurations.TryGetValue(process.ProcessName, out var duration);
+                _processDurations[process.ProcessName] = duration + process.Duration;
+            }
         }
 
         public void Record(

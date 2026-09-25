@@ -43,6 +43,17 @@ public sealed class FocusSessionManager
         return session;
     }
 
+    public FocusSession RestoreSuspended(FocusSession session)
+    {
+        ArgumentNullException.ThrowIfNull(session);
+        if (ActiveSession is not null || session.Status != FocusSessionStatus.Suspended)
+            throw new FocusSessionManagerException("Cannot restore another or non-suspended session.");
+
+        CurrentSession = session;
+        _lastMonotonicElapsed = null;
+        return session;
+    }
+
     public FocusSessionTickResult Tick(TimeSpan idleSinceLastTick)
     {
         var session = RequireActiveSession();
