@@ -1,6 +1,8 @@
 using DeskTown.Application.Configuration;
+using DeskTown.Application.Display;
 using DeskTown.Application.Ports;
 using DeskTown.Platform.Windows.Lifecycle;
+using DeskTown.Presentation.Display;
 using global::Godot;
 
 namespace DeskTown.Presentation.Bootstrap;
@@ -11,6 +13,7 @@ public partial class AppRoot : Node
     private readonly IStructuredLogger _logger = new GodotStructuredLogger();
     private WindowsSingleInstanceGate? _singleInstance;
     private CancellationTokenSource? _openRequestCancellation;
+    private DisplayModeController? _display;
 
     public override void _Ready()
     {
@@ -44,6 +47,10 @@ public partial class AppRoot : Node
 
         Engine.MaxFps = options.VisibleMaxFramesPerSecond;
 
+        var companion = GetNode<CompanionWindowHost>("CompanionWindow");
+        _display = new DisplayModeController(companion);
+        companion.HideRequested += _display.CompanionCloseRequested;
+
         _logger.Information(
             "application_started",
             new Dictionary<string, object?>
@@ -60,6 +67,18 @@ public partial class AppRoot : Node
         _openRequestCancellation?.Cancel();
         _singleInstance?.Dispose();
         _openRequestCancellation?.Dispose();
+    }
+
+    public override void _Input(InputEvent input)
+    {
+        // Temporary exported-build QA entry point while Focus Setup is not wired.
+        if (_display is null || input is not InputEventKey key
+            || !key.Pressed || key.Echo || key.Keycode != Key.F9)
+            return;
+
+        _display.SetDisplayMode(_display.Mode == DisplayMode.Companion
+            ? DisplayMode.Hidden : DisplayMode.Companion);
+        GetViewport().SetInputAsHandled();
     }
 
     private async Task RequestOpenAndQuitAsync()

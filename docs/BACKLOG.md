@@ -230,6 +230,8 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E3-001 — Create Companion native window
 
+- **Status:** IN REVIEW — native exported Windows topmost/drag/focus QA pending;
+  see `docs/implementation/DT-E3-001_COMPANION_WINDOW.md`.
 - **Purpose:** host a quiet 360×200 always-on-top coworker view.
 - **Expected files:** `scenes/companion/CompanionWindow.tscn`,
   `Godot/Display/CompanionWindowHost.cs`.
