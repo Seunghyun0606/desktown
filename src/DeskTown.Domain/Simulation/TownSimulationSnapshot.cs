@@ -1,4 +1,5 @@
 using DeskTown.Domain.Focus;
+using DeskTown.Domain.Events;
 using DeskTown.Domain.Projects;
 
 namespace DeskTown.Domain.Simulation;
@@ -15,7 +16,8 @@ public sealed record TownProjection(
     WorkshopState Workshop,
     FocusEnergy Progress,
     FocusEnergy Target,
-    MinaSimulationState Mina);
+    MinaSimulationState Mina,
+    EventSystemCheckpoint Events);
 
 public sealed record CompanionProjection(MinaSimulationState Mina);
 

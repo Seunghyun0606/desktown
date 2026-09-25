@@ -1,4 +1,5 @@
 using DeskTown.Domain.Focus;
+using DeskTown.Domain.Events;
 using DeskTown.Domain.Projects;
 
 namespace DeskTown.Domain.Simulation;
@@ -11,17 +12,24 @@ public sealed class TownSimulation
 {
     private readonly ProjectSystem _project;
     private readonly MinaStateMachine _mina;
+    private readonly EventSystem _events;
     private TimeSpan _logicalTime;
 
-    private TownSimulation(ProjectSystem project, MinaStateMachine mina, TimeSpan logicalTime)
+    private TownSimulation(ProjectSystem project, MinaStateMachine mina,
+        EventSystem events, TimeSpan logicalTime)
     {
         _project = project;
         _mina = mina;
+        _events = events;
         _logicalTime = logicalTime;
     }
 
-    public static TownSimulation Create(MinaThresholds? thresholds = null) =>
-        new(ProjectSystem.CreateRestoreWorkshop(), new MinaStateMachine(thresholds), TimeSpan.Zero);
+    public static TownSimulation Create(MinaThresholds? thresholds = null)
+    {
+        var project = ProjectSystem.CreateRestoreWorkshop();
+        return new TownSimulation(project, new MinaStateMachine(thresholds),
+            EventSystem.Create(project), TimeSpan.Zero);
+    }
 
     public static TownSimulation Restore(
         TownSimulationCheckpoint checkpoint, MinaThresholds? thresholds = null)
@@ -30,19 +38,22 @@ public sealed class TownSimulation
         if (checkpoint.LogicalTime < TimeSpan.Zero)
             throw new ArgumentOutOfRangeException(nameof(checkpoint));
 
-        return new TownSimulation(
-            ProjectSystem.RestoreWorkshop(checkpoint.ProjectProgress, checkpoint.LastObservedEnergy),
-            MinaStateMachine.Restore(checkpoint.Mina, thresholds), checkpoint.LogicalTime);
+        var project = ProjectSystem.RestoreWorkshop(
+            checkpoint.ProjectProgress, checkpoint.LastObservedEnergy);
+        var events = EventSystem.Restore(project, checkpoint.Events);
+        events.ReconcileCompletion();
+        return new TownSimulation(project, MinaStateMachine.Restore(checkpoint.Mina, thresholds),
+            events, checkpoint.LogicalTime);
     }
 
     public TownSimulationCheckpoint CaptureCheckpoint() =>
         new(_logicalTime, _project.Progress, _project.LastObservedCumulativeEnergy,
-            _mina.CaptureCheckpoint());
+            _mina.CaptureCheckpoint(), _events.State);
 
     public TownSimulationSnapshot Snapshot => new(
         _logicalTime,
         new TownProjection(_project.CurrentProjectId, _project.WorkshopState,
-            _project.Progress, _project.Target, _mina.State),
+            _project.Progress, _project.Target, _mina.State, _events.State),
         new CompanionProjection(_mina.State),
         new GhostProjection(_mina.State));
 
@@ -64,18 +75,28 @@ public sealed class TownSimulation
             throw new ArgumentOutOfRangeException(nameof(sessionStatus));
 
         var project = _project.ApplyCumulativeEnergy(cumulativeEnergy);
+        var events = project.Completion is null
+            ? _events.ReconcileCompletion()
+            : _events.ObserveCompletion(project.Completion);
         var mina = _mina.Observe(sessionStatus, consecutiveIdle);
         _logicalTime = logicalTime;
-        return new TownSimulationStep(Snapshot, project, mina);
+        return new TownSimulationStep(Snapshot, project, mina, events);
     }
 
     /// <summary>Only the later pending-reveal flow calls this when Town opens.</summary>
     public MinaTransition RevealWorkshopCompletion()
     {
-        if (!_project.IsComplete)
-            throw new InvalidOperationException("The Workshop has not been completed.");
+        if (!_events.State.WorkshopRevealPending)
+            throw new InvalidOperationException("There is no pending Workshop reveal.");
         return _mina.CelebrateProject(new ProjectCompleted(_project.CurrentProjectId));
     }
 
-    public MinaTransition AcknowledgeCelebration() => _mina.AcknowledgeCelebration();
+    public MinaTransition AcknowledgeCelebration()
+    {
+        _events.AcknowledgeWorkshopReveal();
+        return _mina.AcknowledgeCelebration();
+    }
+
+    public EventTransition AcknowledgeRailwayDiscovery() =>
+        _events.AcknowledgeRailwayDiscovery();
 }
