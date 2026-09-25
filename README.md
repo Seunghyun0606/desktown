@@ -43,6 +43,7 @@ rewards.
 - [Focus UI and runtime integration](docs/implementation/FOCUS_UI_RUNTIME_SLICE.md)
 - [Reward and Ghost Windows handoff](docs/implementation/REWARD_GHOST_HANDOFF.md)
 - [Exported Windows gate and result sheet](docs/qa/WINDOWS_GATE.md)
+- [Packaging, art integration and user test follow-up](docs/implementation/NEXT_WORK_AND_USER_GATE.md)
 
 ## Fixed scope
 
@@ -96,7 +97,8 @@ The repository currently provides:
 - versioned atomic JSON save, checkpoints, backup recovery, and restart prompts;
 - passive completion notice, on-demand Workshop reveal and Railway teaser;
 - an isolated native Windows Ghost QA adapter and saved preview placement/opacity;
-- CI for build, tests, headless main-scene launch, and Windows export.
+- CI for build, tests, headless main-scene launch, Windows export, and exported
+  `.exe` save/restart/recovery smoke in an isolated temporary directory.
 
 The exported `.exe` still needs Windows 11 QA for focus/input behavior, Tray,
 sleep/crash recovery, mixed-DPI placement, and the Ghost click-through matrix.

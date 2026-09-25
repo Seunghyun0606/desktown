@@ -9,7 +9,7 @@ Current Foundation status:
 | --- | --- | --- |
 | DT-E0-001 | IN REVIEW | Build/import/export and CI Windows `.exe` headless launch; interactive Windows 11 launch pending |
 | DT-E0-002 | DONE | Boundaries, composition root, architecture tests, and solution build pass |
-| DT-E0-003 | IN REVIEW | CI exports and launches the Windows artifact headlessly; manual interactive launch pending |
+| DT-E0-003 | IN REVIEW | CI exports and launches the Windows artifact, then checks isolated save/restart/recovery; manual interactive launch pending |
 | DT-E0-004 | DONE | Typed defaults, visible safe fallback, privacy policy, and tests pass |
 
 Current Focus Core status:
@@ -37,7 +37,7 @@ Current Persistence status:
 | --- | --- | --- |
 | DT-E8-001 | DONE | V1 JSON schema/repository, hash, exact restore, privacy tests pass |
 | DT-E8-002 | IN REVIEW | Atomic replace, validated backup recovery, migration and concurrency tests pass; Windows file/recovery UI check pending |
-| DT-E8-003 | IN REVIEW | 15s scheduler, recovery prompt and single-instance forwarding are wired; Windows sleep/lock/crash gate pending |
+| DT-E8-003 | IN REVIEW | 15s scheduler, recovery prompt, single-instance forwarding and exported save/restart smoke; Windows sleep/lock/crash gate pending |
 
 Conventions: `Automated` lists the minimum test; `Manual` is `Yes` only where a
 human/exported environment adds information. Expected files are forecasts and
@@ -282,7 +282,7 @@ may be adjusted to the final scaffold without changing task responsibility.
 ### DT-E4-001 — Implement Hidden surface lifecycle
 
 - **Status:** IN REVIEW — presentation lifecycle/parity and runtime Focus/Tray
-  wiring exist; Town ambient timer stops while hidden. Windows zero-window/
+  wiring exist; Town ambient timer and Mina placeholder processing stop while hidden. Windows zero-window/
   performance QA pending.
 - **Purpose:** provide a zero-visual normal play mode with minimal resources.
 - **Expected files:** `Godot/Display/HiddenDisplaySurface.cs`, lifecycle tests.

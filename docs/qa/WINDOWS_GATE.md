@@ -4,7 +4,9 @@ Use the exported build. Godot editor behavior, Linux headless CI, and a successf
 Windows export do not establish native window/input behavior. Keep Ghost disabled
 for normal Focus until the interaction matrix below has been recorded and reviewed.
 CI also launches the exported executable headlessly on a Windows runner. That
-checks bootstrap and script errors, but cannot certify visible window behavior.
+checks bootstrap and script errors, and uses three separate exported-app
+processes to create, recover, and reload an isolated save. It cannot certify
+visible window behavior, the normal Windows save directory, or real sleep/lock.
 
 ## Obtain and launch the build
 

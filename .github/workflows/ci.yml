@@ -127,3 +127,31 @@ jobs:
           if ($process.ExitCode -ne 0 -or $log -match '(?m)^(ERROR:|SCRIPT ERROR:)') {
             throw "Exported DeskTown.exe smoke failed with exit code $($process.ExitCode)."
           }
+
+      - name: Save, restart, and recover in exported executable
+        shell: pwsh
+        run: |
+          $exe = (Resolve-Path 'build/windows/DeskTown.exe').Path
+          $env:DESKTOWN_CI_SMOKE = '1'
+          $smokeDirectory = Join-Path $env:RUNNER_TEMP ('desktown-save-smoke-' + [guid]::NewGuid().ToString('N'))
+          New-Item -ItemType Directory -Path $smokeDirectory | Out-Null
+          $env:DESKTOWN_CI_SMOKE_SAVE = Join-Path $smokeDirectory 'save.json'
+
+          foreach ($phase in @('write', 'recover', 'check')) {
+            $stdout = Join-Path $smokeDirectory "$phase.stdout.log"
+            $stderr = Join-Path $smokeDirectory "$phase.stderr.log"
+            $process = Start-Process -FilePath $exe -ArgumentList @('--headless', '--', "--desktown-ci-save-smoke=$phase") -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+            if (-not $process.WaitForExit(45000)) {
+              $process.Kill()
+              throw "Exported DeskTown.exe $phase phase did not exit within 45 seconds."
+            }
+            $log = (Get-Content $stdout -Raw) + "`n" + (Get-Content $stderr -Raw)
+            Write-Output $log
+            if ($process.ExitCode -ne 0 -or $log -match '(?m)^(ERROR:|SCRIPT ERROR:)' -or
+                $log -notmatch "DESKTOWN_CI_SAVE_SMOKE_OK:$phase") {
+              throw "Exported DeskTown.exe $phase phase failed with exit code $($process.ExitCode)."
+            }
+          }
+          if (-not (Test-Path $env:DESKTOWN_CI_SMOKE_SAVE)) {
+            throw 'The exported app did not create its isolated save file.'
+          }
