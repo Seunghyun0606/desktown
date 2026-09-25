@@ -348,6 +348,9 @@ may be adjusted to the final scaffold without changing task responsibility.
 
 ### DT-E5-003 — Verify click-through matrix and Hidden fallback
 
+- **Status:** READY FOR WINDOWS QA — the exported-build procedure and result
+  sheet are in `docs/qa/WINDOWS_GATE.md`. F10 is a preview only; normal Ghost
+  Focus remains disabled until the matrix and end-to-end fallback pass.
 - **Purpose:** enforce interaction-zero as a release gate.
 - **Expected files:** Windows QA checklist/results, Ghost capability probe,
   display-controller fallback tests.
