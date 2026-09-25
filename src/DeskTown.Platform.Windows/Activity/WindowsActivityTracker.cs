@@ -34,13 +34,18 @@ public sealed class WindowsActivityTracker : IActivityTracker
 
     public TimeSpan SampleInterval => _options.SampleInterval;
 
+    /// <summary>Ephemeral continuous idle age for Mina presentation only.</summary>
+    public TimeSpan LastIdleAge { get; private set; }
+
     public ActivitySample Sample()
     {
         if (!TryReadIdleDuration(out var idleDuration))
         {
+            LastIdleAge = TimeSpan.Zero;
             return ActivitySample.Unknown;
         }
 
+        LastIdleAge = idleDuration;
         var processName = ReadProcessName();
         return idleDuration >= _options.IdleThreshold
             ? ActivitySample.Idle(processName, _options.SampleInterval)

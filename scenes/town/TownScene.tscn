@@ -156,3 +156,11 @@ offset_top = 22.0
 offset_right = 1264.0
 offset_bottom = 51.0
 text = "Today  0 min"
+
+[node name="Focus" type="Button" parent="Hud"]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 645.0
+offset_right = 1250.0
+offset_bottom = 691.0
+text = "Focus"

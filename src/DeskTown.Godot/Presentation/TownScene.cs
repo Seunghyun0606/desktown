@@ -8,9 +8,11 @@ namespace DeskTown.Presentation;
 public partial class TownScene : Control
 {
     private TownProjection? _pending;
+    public event Action? FocusRequested;
 
     public override void _Ready()
     {
+        GetNode<Button>("Hud/Focus").Pressed += () => FocusRequested?.Invoke();
         if (_pending is not null) Bind(_pending);
     }
 

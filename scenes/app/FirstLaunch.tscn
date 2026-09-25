@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/DeskTown.Godot/Presentation/FirstLaunch.cs" id="1_first"]
+
+[node name="FirstLaunch" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_first")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -210.0
+offset_right = 300.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "DeskTown"
+
+[node name="Intro" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "Focus in your world. Mina works alongside you."
+
+[node name="Privacy" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "Activity tracking starts only when you start Focus.\nDeskTown records app process names and active/idle time.\nThis helps Mina vary her animation and keeps a session record."
+
+[node name="NotCollected" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "DeskTown does not read typed text, screenshots, files,\nbrowser URLs, passwords, forms, or document contents.\nIdle time does not reduce Focus Energy."
+
+[node name="Continue" type="Button" parent="Panel/Content"]
+layout_mode = 2
+text = "Continue"
