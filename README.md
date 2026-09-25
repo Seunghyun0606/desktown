@@ -37,6 +37,8 @@ rewards.
 - [Workshop progression contract](docs/implementation/DT-E2-001_PROJECT_SYSTEM.md)
 - [Mina logical state contract](docs/implementation/DT-E2-002_MINA_STATE_MACHINE.md)
 - [V1 JSON save contract](docs/implementation/DT-E8-001_JSON_SAVE_CONTRACT.md)
+- [Town logical simulation](docs/implementation/DT-E2-003_TOWN_SIMULATION.md)
+- [Atomic save and recovery](docs/implementation/DT-E8-002_ATOMIC_SAVE.md)
 
 ## Fixed scope
 

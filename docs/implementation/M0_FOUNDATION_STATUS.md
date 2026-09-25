@@ -78,4 +78,14 @@ high-watermark, rejects altered or future-schema saves, and stores only
 allowlisted activity data. Both tasks are complete. Next independent tasks are
 DT-E2-003 (headless Town simulation) and DT-E8-002 (atomic save, backup, and
 migration). Exported Windows interaction still needs the planned manual gates;
-the V1 repository's direct file write is not crash-safe until DT-E8-002.
+at this stage the V1 repository's direct file write was not crash-safe.
+
+GitHub Actions run `36108359127` verified the DT-E2-003 and DT-E8-002 code:
+Release build and 191 tests passed, including a 60-minute headless Town parity
+test and save fault/recovery tests. Town simulation advances without a renderer
+or display-mode input and DT-E2-003 is complete. Atomic replacement, backup
+recovery, revision serialization, and a migration seam are implemented. DT-E8-002
+remains in review until its exported Windows filesystem/recovery inspection;
+the recovery banner is an upcoming UI integration. The next domain task is
+DT-E2-004 pending reveals and Railway discovery. Checkpoint scheduling and
+startup recovery UI remain DT-E8-003.
