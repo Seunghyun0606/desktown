@@ -3,6 +3,8 @@ using DeskTown.Application.Display;
 using DeskTown.Application.Ports;
 using DeskTown.Platform.Windows.Lifecycle;
 using DeskTown.Presentation.Display;
+using DeskTown.Domain.Simulation;
+using DeskTown.Presentation;
 using global::Godot;
 
 namespace DeskTown.Presentation.Bootstrap;
@@ -14,6 +16,7 @@ public partial class AppRoot : Node
     private WindowsSingleInstanceGate? _singleInstance;
     private CancellationTokenSource? _openRequestCancellation;
     private DisplayModeController? _display;
+    private int _previewClipIndex;
 
     public override void _Ready()
     {
@@ -50,6 +53,7 @@ public partial class AppRoot : Node
         var companion = GetNode<CompanionWindowHost>("CompanionWindow");
         _display = new DisplayModeController(companion);
         companion.HideRequested += _display.CompanionCloseRequested;
+        GetNode<TownScene>("MainShell/TownPreview").Bind(TownSimulation.Create().Snapshot.Town);
 
         _logger.Information(
             "application_started",
@@ -73,11 +77,31 @@ public partial class AppRoot : Node
     {
         // Temporary exported-build QA entry point while Focus Setup is not wired.
         if (_display is null || input is not InputEventKey key
-            || !key.Pressed || key.Echo || key.Keycode != Key.F9)
+            || !key.Pressed || key.Echo)
             return;
 
-        _display.SetDisplayMode(_display.Mode == DisplayMode.Companion
-            ? DisplayMode.Hidden : DisplayMode.Companion);
+        if (key.Keycode == Key.F7)
+        {
+            var town = GetNode<TownScene>("MainShell/TownPreview");
+            town.Visible = !town.Visible;
+        }
+        else if (key.Keycode == Key.F9)
+            _display.SetDisplayMode(_display.Mode == DisplayMode.Companion
+                ? DisplayMode.Hidden : DisplayMode.Companion);
+        else if (key.Keycode == Key.F8)
+        {
+            var clips = new[] { MinaAnimationClip.Idle, MinaAnimationClip.Walk,
+                MinaAnimationClip.Work, MinaAnimationClip.Rest,
+                MinaAnimationClip.Stretch, MinaAnimationClip.Celebrate };
+            GetNode<CompanionWindowHost>("CompanionWindow")
+                .Play(new MinaPresentationIntent(clips[_previewClipIndex++ % clips.Length]));
+        }
+        else if (key.Keycode == Key.F10)
+        {
+            var ghost = GetNode<GhostWindowHost>("GhostWindow");
+            ghost.Preview(!ghost.Visible);
+        }
+        else return;
         GetViewport().SetInputAsHandled();
     }
 
