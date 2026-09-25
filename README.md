@@ -31,6 +31,8 @@ rewards.
 - [M0 foundation status](docs/implementation/M0_FOUNDATION_STATUS.md)
 - [FocusSession domain contract](docs/implementation/DT-E1-001_FOCUS_SESSION.md)
 - [FocusSessionManager contract](docs/implementation/DT-E1-002_FOCUS_SESSION_MANAGER.md)
+- [Windows activity tracker contract](docs/implementation/DT-E1-003_WINDOWS_ACTIVITY_TRACKER.md)
+- [Session ledger and Energy contract](docs/implementation/DT-E1-004_SESSION_LEDGER_ENERGY.md)
 
 ## Fixed scope
 
@@ -72,14 +74,15 @@ bash scripts/validate-project-structure.sh
 
 The repository currently provides:
 
-- a five-project C# solution with one-way dependency boundaries;
+- a six-project C# solution with one-way dependency boundaries;
 - an empty Godot AppRoot and Windows export preset;
 - typed prototype configuration and privacy-safe structured logging;
 - a display-independent FocusSession aggregate and transition tests;
 - a monotonic-time FocusSessionManager with typed lifecycle events;
+- a privacy-minimal Windows foreground/idle activity adapter;
+- an idempotent session ledger and elapsed-time Focus Energy policy;
 - xUnit foundation/architecture tests;
 - CI for build, tests, headless import, and Windows export.
 
-Activity tracking, Energy/project orchestration, simulation, display modes,
-persistence, Town content, and production assets remain subsequent backlog
-work.
+Focus orchestration, project progression, simulation, display modes, persistence,
+Town content, and production assets remain subsequent backlog work.

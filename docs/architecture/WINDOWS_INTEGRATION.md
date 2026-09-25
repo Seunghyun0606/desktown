@@ -44,6 +44,10 @@ SessionActivitySummary
   UnknownDurationSeconds
 ```
 
+`UnknownDurationSeconds` is inferred by the coordinator when a scheduled sample
+contains zero active and idle durations; it is not an extra collected field.
+The monotonic Focus clock remains the authority for counted time.
+
 Raw HWND, PID, and per-second samples are ephemeral. Process names are retained
 only in that session's aggregate. Prototype code must not call `GetWindowText`,
 inspect browser accessibility trees, install input hooks, or capture screens.
@@ -220,4 +224,3 @@ Every row is tested against an exported `.exe`, not only the editor.
 - [Godot DisplayServer](https://docs.godotengine.org/en/stable/classes/class_displayserver.html)
 - [Microsoft Winuser APIs](https://learn.microsoft.com/en-us/windows/win32/api/winuser/)
 - [Microsoft Extended Window Styles](https://learn.microsoft.com/en-us/windows/win32/winmsg/extended-window-styles)
-

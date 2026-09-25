@@ -127,13 +127,15 @@ persistence, and coordinator tasks rather than this manager.
 ```csharp
 public interface IEnergyPolicy
 {
-    FocusEnergy Calculate(SessionLedger ledger);
+    FocusEnergy CalculateTotal(SessionLedger ledger);
 }
 ```
 
 `ElapsedTimeEnergyPolicy` is v0.1: every counted 60 seconds becomes one displayed
-Focus unit. Seconds are retained internally, so early end and crash recovery do
-not accumulate rounding error. Idle and process samples do not reduce Energy.
+Focus unit. Tick precision is retained internally, so short sessions, early end,
+and crash recovery do not accumulate rounding error. A project applies only
+`currentTotal.DeltaSince(previouslyAppliedTotal)`, never the cumulative total
+again. Idle and process samples do not reduce Energy.
 
 ### Simulation
 
