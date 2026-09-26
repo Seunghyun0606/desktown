@@ -1,148 +1,60 @@
-# DeskTown v0.1 — packaging, design integration, and user follow-up
+# DeskTown v0.1 — 패키징, 디자인 적용, 사용자 검증 후속 작업
 
-This is an actionable handoff for work after the automated placeholder slice.
-An `IN REVIEW` task is not release-complete until its Windows or art gate passes.
-The [backlog](../BACKLOG.md) remains the task inventory, and the
-[Windows gate](../qa/WINDOWS_GATE.md) records actual exported-build results.
+이 문서는 플레이스홀더 기반 자동 검증을 마친 뒤 수행할 작업을 정리한다. `IN REVIEW` 작업은 Windows 또는 아트 검증 게이트를 통과하기 전까지 출시 완료로 보지 않는다. 작업 목록의 기준은 [백로그](../BACKLOG.md)이며 실제 내보낸 빌드의 결과는 [Windows 검증 게이트](../qa/WINDOWS_GATE.md)에 기록한다.
 
-## What the current build proves
+## 현재 빌드가 검증한 범위
 
-- CI builds/tests, imports Godot, exports the Windows folder, launches the
-  exported `.exe` headlessly, and creates/recovers/reloads an isolated save in
-  three separate processes. This verifies a real process boundary, not only
-  in-memory serialization.
-- CI validates the 46-entry asset contract, generates byte-identical demo saves
-  for a fixed date, opens all three states in the exported app, and creates an
-  unsigned versioned Windows ZIP with a file manifest and SHA-256 checksum.
-- CI assembles a laptop QA kit, runs its isolated PowerShell preflight on
-  Windows, and tests assigned synthetic art in Town and Companion in a
-  separate checkout from the production export.
-- Focus simulation, Energy, Workshop, and pending reveal are independent of
-  the presentation. Windows session/power events suspend Focus at the last
-  observed tick; the Town ambient timer and Mina placeholder frame processing
-  stop while their views are hidden.
-- During Focus the main Town window is hidden. Hidden removes the Companion
-  surface. Ghost is disabled for normal Focus until the Windows input gate.
+- CI는 빌드와 테스트를 수행하고 Godot 프로젝트를 가져와 Windows 폴더로 내보낸다. 내보낸 `.exe`를 헤드리스로 실행하며 분리된 세 프로세스에서 임시 저장 데이터의 생성·복구·재읽기를 확인한다. 메모리 안의 직렬화만 검사하는 것이 아니다.
+- CI는 46개 항목의 에셋 계약을 검사하고, 고정 날짜에 대해 바이트가 일치하는 데모 저장 데이터를 생성한다. 내보낸 앱에서 세 상태를 열고 파일 목록과 SHA-256 체크섬이 포함된 버전별 미서명 Windows ZIP을 만든다.
+- CI는 노트북 QA 키트를 구성하고 Windows에서 분리된 PowerShell 사전 검사를 실행한다. 배정된 합성 아트는 실제 배포용 빌드와 분리된 체크아웃에서 Town과 Companion 장면에 적용해 검사한다.
+- Focus 시뮬레이션, Energy, Workshop, 대기 중인 보상 연출은 화면 표시와 독립적이다. Windows 세션·전원 이벤트가 들어오면 마지막으로 관측한 tick에서 Focus를 중단한다. Town 주변 연출 타이머와 Mina 플레이스홀더 프레임 처리는 해당 화면이 숨겨지면 멈춘다.
+- Focus 중에는 Main Town 창이 숨겨진다. Hidden에서는 Companion 창이 사라진다. Windows 입력 검증 게이트를 통과하기 전까지 일반 Focus에서 Ghost는 비활성화된다.
 
-These checks do **not** prove visible focus behavior, cross-application pointer
-input, mixed DPI, real Windows sleep/lock delivery, normal `user://` save
-placement, or visual quality.
+위 검사는 화면 포커스의 실제 동작, 다른 앱을 향한 포인터 입력, 서로 다른 DPI, 실제 Windows 잠금·절전 이벤트 전달, 일반 `user://` 저장 위치, 시각적 품질을 증명하지 않는다.
 
-The HUD's `Completed today` total uses the computer's local calendar day and
-assigns a completed session to its end date. The V1 save's UTC daily summary
-stays unchanged for compatibility. Exact splitting of a session across midnight
-would require persisting counted intervals and belongs to a later schema.
+HUD의 `Completed today`는 컴퓨터의 현지 날짜를 기준으로 완료된 세션을 종료 날짜에 합산한다. 호환성을 위해 V1 저장 데이터의 UTC 일일 요약은 그대로 둔다. 자정을 가로지르는 세션 시간을 날짜별로 정확히 나누려면 집계 구간을 저장하는 후속 스키마가 필요하다.
 
-## Prioritized TODO
+## 우선순위 TODO
 
-| Order | Work | Done when | Dependency |
+| 순서 | 작업 | 완료 조건 | 의존 사항 |
 | --- | --- | --- | --- |
-| 1 | Validate the versioned unsigned ZIP on a clean Windows 11 machine | Extract, launch, quit, and relaunch without the editor or SDK; verify save location and update/rollback | ZIP, checksum, manifest and extracted CI startup now automated; manual clean-machine gate |
-| 2 | Deliver and approve production art/audio for the 46 Asset Catalog entries | Validator accepts the files, provenance and dimensions; art gates sign off pivots, animation and mix | Contract/validator and main Town/Companion binders implemented; assets remain unassigned |
-| 3 | Visually verify the Town/Companion art replacements, then bind remaining scene art as needed | Workshop states and character clips render at target scale; remaining walking/environment/effect/tool usage is approved | Assigned assets and art review |
-| 4 | Visually sign off deterministic pre-Workshop, completed Workshop pending reveal, and Railway teaser demos | Each state opens reproducibly without a personal save and the capture matches the narrative/art intent | Generator, byte comparison, isolated launch and exported headless smoke implemented |
-| 5 | Run the Windows and user task matrix below, record issues by build SHA, then address P0/P1 first | Reproduction, severity, owner, fix, regression result, and re-test evidence exist for every issue | Exported Windows environment and users |
-| 6 | Decide installer/signing/update path after prototype ZIP validation | Installer or update cannot overwrite the local save; uninstall offers an explicit save-retention choice; rollback is documented | Distribution decision and manual install test |
+| 1 | 깨끗한 Windows 11 환경에서 버전별 미서명 ZIP 검증 | 편집기·SDK 없이 압축 해제, 실행, 종료, 재실행하고 저장 위치와 업데이트·롤백 확인 | ZIP·체크섬·파일 목록과 분리된 CI 실행 검사는 완료, 깨끗한 PC에서 수동 검증 필요 |
+| 2 | 46개 에셋 카탈로그 항목의 실제 아트·음향 납품 및 승인 | 검증기가 파일·출처·크기를 승인하고 아트 게이트에서 피벗·동작·믹스 확인 | 계약·검증기와 Town/Companion 바인더는 구현, 실제 에셋은 아직 미배정 |
+| 3 | Town/Companion 아트 교체를 눈으로 확인하고 필요한 나머지 장면 아트 연결 | 목표 배율에서 Workshop 상태·캐릭터 클립을 확인하고 남은 걷기·환경·효과·도구 사용을 승인 | 배정된 에셋과 아트 검토 |
+| 4 | Workshop 완성 전, 완료 후 연출 대기, Railway 예고 데모를 눈으로 승인 | 개인 저장 데이터 없이 각 상태를 재현하고 캡처가 연출·스토리 의도와 일치 | 생성기·바이트 비교·분리 실행·내보낸 빌드의 헤드리스 검사는 구현 |
+| 5 | 아래 Windows·사용자 작업 매트릭스를 실행하고 빌드 SHA별 문제를 기록한 뒤 P0/P1부터 수정 | 문제마다 재현, 심각도, 담당자, 수정, 회귀 결과, 재검사 근거 기록 | 실제 Windows 환경과 사용자 |
+| 6 | 프로토타입 ZIP 검증 후 설치·서명·업데이트 방식 결정 | 설치·업데이트가 로컬 저장 데이터를 덮어쓰지 않음, 제거 시 저장 데이터 유지 선택 제공, 롤백 절차 문서화 | 배포 방식 결정과 실제 설치 검사 |
 
-The `desktown-windows-qa-kit` artifact contains the versioned ZIP/checksum,
-demo saves, scripts, build manifest, and Windows result sheet. Run its
-`preflight.ps1 -RunSmoke` before interactive QA; it never uses the personal
-save. The CI artifact `desktown-windows-prototype-package` contains the versioned
-ZIP, `SHA256SUMS.txt`, `build-manifest.json`, and `RELEASE-NOTES.txt`. The older
-`desktown-windows-foundation` artifact remains a raw export for QA. Do not
-distribute only `DeskTown.exe`; keep the exported directory intact. A ZIP is the
-smallest prototype handoff. Do not enable auto-start, background update, or
-startup notifications as a packaging shortcut. Version and hash the ZIP; keep
-the `user://` save outside the extracted folder. Verify actual save location,
-permissions, backup recovery, update-in-place, and deletion on Windows before
-an installer is offered. Code signing/reputation and required runtime behavior
-must be checked on a clean machine rather than inferred from CI.
+`desktown-windows-qa-kit` 아티팩트에는 버전별 ZIP·체크섬, 데모 저장 데이터, 스크립트, 빌드 파일 목록, Windows 결과 양식이 있다. 상호작용 검사 전 `preflight.ps1 -RunSmoke`를 실행한다. 개인 저장 데이터에는 접근하지 않는다. CI 아티팩트 `desktown-windows-prototype-package`에는 버전별 ZIP, `SHA256SUMS.txt`, `build-manifest.json`, `RELEASE-NOTES.txt`가 있다. 기존 `desktown-windows-foundation`은 QA용 원본 내보내기 폴더다. `DeskTown.exe` 하나만 배포하지 말고 내보낸 폴더 전체를 유지한다. 프로토타입 전달에는 ZIP이면 충분하다. 패키징을 이유로 자동 시작, 백그라운드 업데이트, 시작 알림을 켜지 않는다. ZIP 버전과 해시를 기록하고 `user://` 저장 데이터는 압축 해제 폴더 밖에 둔다. 설치 프로그램을 제공하기 전 Windows에서 실제 저장 위치, 권한, 백업 복구, 기존 위치에서의 업데이트, 삭제 동작을 확인한다. 코드 서명·평판과 필요한 런타임 동작도 CI 결과만 추정하지 말고 깨끗한 PC에서 검사한다.
 
-## Design replacement assessment
+## 디자인 교체 가능성 평가
 
-The simulation/persistence boundary is suitable for replacing visuals: scene
-views receive Town/Companion/Ghost projections and have no authority to award
-Focus Energy. The 46-entry catalog validates the manifest. Mina's six clips
-resolve from one shared catalog in all three views; Town buildings, Noah/Rumi
-idle/read art, and six Companion props also resolve through scene binders with
-geometric fallback. All production files are currently unassigned. CI checks
-several assigned synthetic sheets in actual Godot scenes in a separate checkout
-from the unmodified prototype export. Frame size and count are checked at
-runtime, while placement and pivots still need visual sign-off.
-Walking sheets, remaining environment/effects/tool art, and audio do not yet
-have runtime placement. The scene node bounds are still fixed, so a valid PNG
-can be off-center, obscure text, or appear too small at a chosen scale.
+시뮬레이션과 저장 경계는 화면 교체에 적합하다. 장면 뷰는 Town/Companion/Ghost 상태를 전달받으며 Focus Energy를 부여할 권한이 없다. 46개 항목의 카탈로그가 파일 목록을 검증한다. Mina의 클립 6개는 세 뷰에서 하나의 공통 카탈로그로 찾아 쓴다. Town 건물, Noah/Rumi 대기·읽기 아트, Companion 소품 6개도 장면 바인더를 통해 연결되며 파일이 없으면 기하학적 플레이스홀더를 보여준다. 실제 제작 파일은 현재 모두 미배정이다. CI는 별도 체크아웃에서 합성 스프라이트 시트를 Godot 장면에 연결해 검사하며, 기존 프로토타입 내보내기는 수정하지 않는다. 프레임 크기와 개수는 실행 중 검사하지만 배치와 피벗은 눈으로 승인해야 한다. 걷기 시트와 남은 환경·효과·도구 아트, 음향의 실행 중 배치는 아직 없다. 장면 노드 경계가 고정돼 있으므로 형식상 유효한 PNG도 중심에서 벗어나거나 글자를 가리거나 선택한 배율에서 너무 작게 보일 수 있다.
 
-Keep logical state/clip names and stable manifest IDs; put paths, frame counts,
-FPS, pivots, and fallback assets in catalog resources. Swap one visual family at
-a time. Validate Mina's six clips/30 frames, Workshop's three states, Companion
-props, and shared Mina rendering across Town/Companion/Ghost. Confirm nearest
-scaling and hit regions at 75/100/125/150% Companion scale and 40/65/85% Ghost
-opacity. Ghost must remain visually test-only until input passthrough is signed.
-No art replacement should change a save field or gameplay threshold.
+논리 상태·클립 이름과 안정적인 파일 목록 ID를 유지하고, 경로·프레임 수·FPS·피벗·대체 에셋은 카탈로그 리소스에 둔다. 시각 요소 묶음을 하나씩 교체한다. Mina의 클립 6개/30프레임, Workshop 세 상태, Companion 소품, Town/Companion/Ghost 공통 Mina 표시를 검사한다. Companion 75/100/125/150% 배율과 Ghost 40/65/85% 불투명도에서 최근접 확대와 입력 영역을 확인한다. Ghost는 입력 통과가 승인되기 전까지 시각적 QA 미리보기로만 사용한다. 아트 교체가 저장 필드나 게임 진행 기준을 바꾸면 안 된다.
 
-## Reproducible demo saves
+## 재현 가능한 데모 저장 데이터
 
-The QA kit includes three isolated demo scenarios; the separate
-`desktown-demo-saves` CI artifact contains the same fixtures. The generator
-uses a fixed date and session ID, domain transitions, and the production save
-codec. Run `dotnet run --project tools/DeskTown.DemoSaves -- <output-dir>
-<yyyy-MM-dd>` to generate for a chosen UTC day; without a date it uses
-2026-09-25. From the extracted QA kit, after `preflight.ps1`, run:
+QA 키트에는 분리된 데모 시나리오 세 개가 들어 있다. 별도 CI 아티팩트 `desktown-demo-saves`에도 같은 샘플이 있다. 생성기는 고정 날짜·세션 ID, 도메인 상태 전이, 실제 저장 코덱을 사용한다. 지정한 UTC 날짜의 샘플은 `dotnet run --project tools/DeskTown.DemoSaves -- <output-dir> <yyyy-MM-dd>`로 생성한다. 날짜를 생략하면 2026-09-25를 사용한다. 압축을 푼 QA 키트에서는 `preflight.ps1` 실행 후 다음 명령을 사용한다.
 
 ```powershell
 ./launch-demo.ps1 -Scenario workshop-reveal-pending `
   -WindowsExport ./app -DemoSaves ./demo-saves
 ```
 
-Close any existing DeskTown instance first. The script copies the fixture into
-a fresh temporary directory and passes `--desktown-demo` to the app. The app
-marks its title as an isolated demo, reads/writes only that copy, and refuses to
-forward a demo launch to a running personal instance. A fixture generated for
-a different UTC day still loads; the Today HUD may then show zero. Do not copy
-demo `save.json` into the normal `user://` location.
+기존 DeskTown 인스턴스를 먼저 닫는다. 스크립트는 샘플을 새 임시 폴더로 복사하고 앱에 `--desktown-demo`를 전달한다. 앱은 분리된 데모임을 제목에 표시하고 해당 복사본만 읽고 쓰며, 실행 중인 개인 인스턴스에 데모 실행 요청을 전달하지 않는다. 다른 UTC 날짜에 생성한 샘플도 열리지만 Today HUD 값이 0일 수 있다. 데모 `save.json`을 일반 `user://` 위치로 복사하지 않는다.
 
-## Work-interruption assessment and user test
+## 작업 방해 가능성 평가와 사용자 테스트
 
-Current protections: the Town does not open at Focus completion; a short
-completion notice offers explicit Open, with Tray status as fallback; Hidden
-does not show Companion/Ghost; the F10 Ghost preview cannot run during Focus.
-These are code observations, not proof that real PC work is uninterrupted.
-Catalog sprites are draw-only nodes beneath the existing window boundary and
-introduce no pointer controls; the Windows input checks remain necessary.
+현재 코드의 보호 동작: Focus 완료 시 Town을 자동으로 열지 않는다. 짧은 완료 알림에서만 명시적으로 열 수 있고 트레이 상태가 대체 수단이다. Hidden에서는 Companion/Ghost가 표시되지 않는다. F10 Ghost 미리보기는 Focus 중 실행할 수 없다. 이는 코드에서 확인한 동작이며 실제 PC에서 방해받지 않는다는 증거는 아니다. 카탈로그 스프라이트는 기존 창 경계 안에 그리기 전용 노드로 배치되며 포인터 컨트롤을 추가하지 않는다. Windows 입력 검사는 여전히 필요하다.
 
-The native completion notice is topmost, 360×110, and visible for six seconds
-when its setting is on (the existing-save and new-save default).
-It is marked unfocusable but **can receive pointer input** so its Open button
-works. It may cover or intercept a click in an underlying app. Companion is
-always on top with a draggable strip, and real focus restoration is unverified.
-The Tray offers `Completion notice (otherwise Tray only)` and saves that
-preference. Tray-only completion keeps the Work complete status and explicit
-Open command without a notice window. Treat notice pointer interception,
-Companion focus theft, and any Ghost input interception as release-blocking
-until observed on the exported build. Test Hidden with no visible surfaces
-and low idle CPU/GPU usage.
+네이티브 완료 알림은 360×110 크기의 최상단 창이며 설정이 켜진 경우 6초 동안 보인다. 새 저장 데이터와 기존 저장 데이터의 기본값은 켜짐이다. 키보드 포커스는 받지 않지만 Open 버튼 때문에 **포인터 입력은 받을 수 있다**. 따라서 아래 앱을 가리거나 클릭을 막을 수 있다. Companion은 최상단이고 드래그 영역이 있으며 실제 포커스 복원은 검증되지 않았다. 트레이의 `Completion notice (otherwise Tray only)` 설정으로 알림을 끌 수 있고 선택은 저장된다. 트레이만 사용하는 완료 방식에서도 완료 상태와 명시적인 Open 명령은 유지된다. 알림의 포인터 가로채기, Companion의 포커스 탈취, Ghost의 모든 입력 가로채기는 내보낸 빌드에서 확인되기 전까지 출시 차단 문제로 취급한다. Hidden에서는 보이는 창이 없는지와 유휴 CPU/GPU 사용량이 낮은지 검사한다.
 
-User test protocol after the Windows system gate:
+Windows 시스템 검증 게이트를 통과한 뒤의 사용자 테스트 절차:
 
-1. Recruit a small set of Windows 11 users with different DPI/monitor layouts.
-   Ask each to complete a normal 25-minute writing/coding/spreadsheet task in
-   Companion and Hidden, then try Ghost only as an isolated QA preview.
-2. Observe startup/onboarding, optional process selection, mode changes, Tray
-   discovery, completion while another app is active, Open action, reveal, and
-   quit/restart. Do not record window titles, document contents, typed text, or
-   screenshots of private work without explicit consent.
-3. Record each unwanted focus change, blocked click/drag/scroll/typing action,
-   obscured work area, unexpected sound, and recovery failure with time, mode,
-   app category, monitor/DPI, build SHA, and reproduction steps. Ask whether
-   Mina was pleasant or distracting and whether Hidden felt truly invisible.
-4. Triage P0 for lost progress/input interception; P1 for repeatable focus theft,
-   off-screen views, or interruption; P2 for visual/copy polish. Fix one issue,
-   add a regression check where feasible, and repeat the affected real-work
-   task. Keep a short before/after note; do not collect work content.
+1. DPI·모니터 구성이 서로 다른 소수의 Windows 11 사용자를 모집한다. 각자 Companion과 Hidden에서 평소의 25분짜리 글쓰기·코딩·스프레드시트 작업을 하고, Ghost는 분리된 QA 미리보기로만 시험한다.
+2. 시작·온보딩, 선택적 프로세스 지정, 모드 전환, 트레이 발견, 다른 앱 사용 중 완료, Open 동작, 보상 연출, 종료·재시작을 관찰한다. 명시적 동의 없이 창 제목, 문서 내용, 입력한 글, 개인 작업 화면을 수집하지 않는다.
+3. 원치 않는 포커스 변경, 막힌 클릭·드래그·스크롤·타이핑, 가려진 작업 영역, 예상치 못한 소리, 복구 실패를 기록한다. 시각, 모드, 앱 종류, 모니터/DPI, 빌드 SHA, 재현 단계를 함께 남긴다. Mina가 즐거웠는지 또는 방해됐는지, Hidden이 실제로 보이지 않았는지 묻는다.
+4. 진행 손실·입력 가로채기는 P0, 반복되는 포커스 탈취·화면 밖 표시·작업 중단은 P1, 시각·문구 다듬기는 P2로 분류한다. 문제 하나를 수정하고 가능하면 회귀 검사를 추가한 뒤 해당 실제 작업을 다시 수행한다. 전후 변화는 짧게 기록하되 업무 내용은 수집하지 않는다.
 
-Acceptance for the no-interruption claim requires the exported-build matrix:
-underlying apps retain typing focus and pointer actions, Town never raises on
-passive completion, Companion can be moved/closed without stopping Focus,
-Hidden has no DeskTown visual window, and the Ghost QA preview passes every
-specified app/input/DPI combination before normal Ghost mode is considered.
+'작업을 방해하지 않는다'는 주장은 내보낸 빌드의 다음 매트릭스를 통과해야 수용할 수 있다. 아래 앱의 타이핑 포커스와 포인터 동작이 유지되고, 완료만으로 Town이 앞에 나오지 않으며, Companion 이동·닫기가 Focus를 끝내지 않고, Hidden에 DeskTown 시각 창이 없어야 한다. 일반 Ghost 모드를 검토하려면 QA 미리보기가 지정된 모든 앱·입력·DPI 조합을 통과해야 한다.
