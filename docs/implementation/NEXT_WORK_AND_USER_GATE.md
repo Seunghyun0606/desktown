@@ -28,8 +28,8 @@ input, mixed DPI, sleep/lock, normal `user://` save placement, or visual quality
 | Order | Work | Done when | Dependency |
 | --- | --- | --- | --- |
 | 1 | Validate the versioned unsigned ZIP on a clean Windows 11 machine | Extract, launch, quit, and relaunch without the editor or SDK; verify save location and update/rollback | ZIP, checksum, manifest and extracted CI startup now automated; manual clean-machine gate |
-| 2 | Deliver and approve production art/audio for the 46 Asset Catalog entries | Validator accepts the files, provenance and dimensions; art gates sign off pivots, animation and mix | Contract/validator implemented; Mina uses catalog with geometric fallback; other scene binders and assets remain |
-| 3 | Replace geometric Town buildings and `MinaPlaceholderView`/`TownNpcPlaceholderView` through presentation adapters and catalog resources | All existing snapshot/clip states render without altering domain, events, save schema, or Windows behavior; test each view at target scale | Catalog contract and art gates |
+| 2 | Deliver and approve production art/audio for the 46 Asset Catalog entries | Validator accepts the files, provenance and dimensions; art gates sign off pivots, animation and mix | Contract/validator and main Town/Companion binders implemented; assets remain unassigned |
+| 3 | Visually verify the Town/Companion art replacements, then bind remaining scene art as needed | Workshop states and character clips render at target scale; remaining walking/environment/effect/tool usage is approved | Assigned assets and art review |
 | 4 | Visually sign off deterministic pre-Workshop, completed Workshop pending reveal, and Railway teaser demos | Each state opens reproducibly without a personal save and the capture matches the narrative/art intent | Generator, byte comparison, isolated launch and exported headless smoke implemented |
 | 5 | Run the Windows and user task matrix below, record issues by build SHA, then address P0/P1 first | Reproduction, severity, owner, fix, regression result, and re-test evidence exist for every issue | Exported Windows environment and users |
 | 6 | Decide installer/signing/update path after prototype ZIP validation | Installer or update cannot overwrite the local save; uninstall offers an explicit save-retention choice; rollback is documented | Distribution decision and manual install test |
@@ -49,14 +49,14 @@ must be checked on a clean machine rather than inferred from CI.
 
 The simulation/persistence boundary is suitable for replacing visuals: scene
 views receive Town/Companion/Ghost projections and have no authority to award
-Focus Energy. The 46-entry catalog now validates the manifest and Mina's six
-clips can use the same sheet in all three display views with a geometric
-fallback. The **other scene art still needs catalog binders**. Town building
-states and positions are currently hard-coded in `TownScene.cs` and its scene;
-Mina and ambient NPCs draw geometric rectangles in C#. Replacing sprites today
-requires edits to those presentation classes, scene node paths, and possibly
-placement. Changing sprite frame sizes or pivots without validation can cause
-clipping, jumps, and a click target that no longer matches the artwork.
+Focus Energy. The 46-entry catalog validates the manifest. Mina's six clips
+resolve from one shared catalog in all three views; Town buildings, Noah/Rumi
+idle/read art, and six Companion props also resolve through scene binders with
+geometric fallback. All files are currently unassigned. Frame size and count
+are checked at runtime, while placement and pivots still need visual sign-off.
+Walking sheets, remaining environment/effects/tool art, and audio do not yet
+have runtime placement. The scene node bounds are still fixed, so a valid PNG
+can be off-center, obscure text, or appear too small at a chosen scale.
 
 Keep logical state/clip names and stable manifest IDs; put paths, frame counts,
 FPS, pivots, and fallback assets in catalog resources. Swap one visual family at
@@ -92,6 +92,8 @@ Current protections: the Town does not open at Focus completion; a short
 completion notice offers explicit Open, with Tray status as fallback; Hidden
 does not show Companion/Ghost; the F10 Ghost preview cannot run during Focus.
 These are code observations, not proof that real PC work is uninterrupted.
+Catalog sprites are draw-only nodes beneath the existing window boundary and
+introduce no pointer controls; the Windows input checks remain necessary.
 
 The native completion notice is topmost, 360×110, and visible for six seconds.
 It is marked unfocusable but **can receive pointer input** so its Open button

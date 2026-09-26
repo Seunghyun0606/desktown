@@ -1,4 +1,5 @@
 using global::Godot;
+using DeskTown.Presentation.Display;
 
 namespace DeskTown.Presentation;
 
@@ -7,6 +8,23 @@ public partial class TownNpcPlaceholderView : Node2D
 {
     private bool _isRumi;
     private bool _reading;
+    private double _frameElapsed;
+    private int _frame;
+
+    public override void _Ready()
+    {
+        VisibilityChanged += () => SetProcess(IsVisibleInTree());
+        SetProcess(IsVisibleInTree());
+    }
+
+    public override void _Process(double delta)
+    {
+        _frameElapsed += delta;
+        if (_frameElapsed < 0.5) return;
+        _frameElapsed %= 0.5;
+        _frame = (_frame + 1) % 4;
+        QueueRedraw();
+    }
 
     public void Configure(bool isRumi)
     {
@@ -23,6 +41,14 @@ public partial class TownNpcPlaceholderView : Node2D
 
     public override void _Draw()
     {
+        var assetId = _isRumi ? "CHR-RUM-001" : _reading ? "CHR-NOA-003" : "CHR-NOA-001";
+        if (VisualAssetCatalog.Frame(assetId, _frame) is { } image)
+        {
+            DrawTextureRectRegion(image.Sheet,
+                new Rect2(Vector2.Zero, image.Source.Size), image.Source);
+            return;
+        }
+
         var coat = Color.FromHtml(_isRumi ? "b87866" : "68889a");
         var hair = Color.FromHtml(_isRumi ? "704a42" : "4c4540");
         DrawRect(new Rect2(9, 40, 29, 3), new Color(0, 0, 0, 0.18f));

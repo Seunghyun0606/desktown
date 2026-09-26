@@ -21,6 +21,17 @@ not judge animation quality, alpha edges, loop seams, license suitability, or
 sound mix; those remain art/human gates. Run `--require-production` only for a
 funding candidate; it intentionally fails while assets are unassigned.
 
-Mina views in Town, Companion, and Ghost resolve the same six `CHR-MIN-*` IDs
-and fall back to geometric drawing if files are missing. Other scene art still
-requires presenter/binder replacement before assigned files can appear.
+Mina views in Town, Companion, and Ghost resolve the same six `CHR-MIN-*` IDs.
+Town resolves House, Workshop, Library, Tree, Campfire and Noah/Rumi idle/read
+art. Companion resolves its Window, Floor, Lamp, Workbench, Stool and Decor.
+Each binder uses the declared frame size and count, and falls back to geometric
+drawing if the file is absent or has the wrong sheet dimensions. The Workshop
+sheet cells are Broken, Repairing, Complete, in that order. Lamp and Decor use
+cell 0 until their visual variants are approved. Noah/Rumi walking sheets and
+the remaining environment/effect/tool IDs still need scene decisions.
+
+Assigned prop art is shown at its native frame size, centered horizontally and
+aligned to the bottom of its geometric scene rectangle; the geometric label is
+hidden only when that asset loads. Check the placement and legibility against
+the three demo states and at each Companion scale before accepting art. These
+binders draw only and do not add controls or alter the Focus reward or save.
