@@ -23,7 +23,7 @@ public partial class AppRoot : Node
     {
         if (System.Environment.GetEnvironmentVariable("DESKTOWN_CI_ART_SMOKE") == "1")
         {
-            CatalogArtSmoke.Run(GetTree());
+            Callable.From(() => CatalogArtSmoke.Run(GetTree())).CallDeferred();
             return;
         }
         if (System.Environment.GetEnvironmentVariable("DESKTOWN_CI_SMOKE") == "1")
