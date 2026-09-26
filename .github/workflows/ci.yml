@@ -31,6 +31,11 @@ jobs:
       - name: Validate repository structure
         run: bash scripts/validate-project-structure.sh
 
+      - name: Validate asset catalog contract
+        run: |
+          python scripts/assets/validate_catalog.py
+          python -m unittest discover -s scripts/assets -p 'test_*.py'
+
       - name: Restore
         run: dotnet restore DeskTown.sln
 
@@ -44,6 +49,19 @@ jobs:
           --no-build
           --logger "trx;LogFileName=tests.trx"
           --collect "XPlat Code Coverage"
+
+      - name: Generate deterministic demo saves
+        run: |
+          dotnet run --project tools/DeskTown.DemoSaves --configuration Release -- build/demo-saves 2026-09-25
+          dotnet run --project tools/DeskTown.DemoSaves --configuration Release -- build/demo-saves-repeat 2026-09-25
+          diff -qr build/demo-saves build/demo-saves-repeat
+
+      - name: Upload isolated demo saves
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktown-demo-saves
+          path: build/demo-saves/**
+          if-no-files-found: error
 
       - name: Upload test results
         if: always()
@@ -111,12 +129,18 @@ jobs:
           name: desktown-windows-foundation
           path: build/windows
 
+      - name: Download demo saves
+        uses: actions/download-artifact@v4
+        with:
+          name: desktown-demo-saves
+          path: build/demo-saves
+
       - name: Launch executable headlessly
         shell: pwsh
         run: |
           $exe = (Resolve-Path 'build/windows/DeskTown.exe').Path
-          $stdout = Join-Path $PWD 'build/windows/stdout.log'
-          $stderr = Join-Path $PWD 'build/windows/stderr.log'
+          $stdout = Join-Path $env:RUNNER_TEMP 'desktown-startup-stdout.log'
+          $stderr = Join-Path $env:RUNNER_TEMP 'desktown-startup-stderr.log'
           $process = Start-Process -FilePath $exe -ArgumentList @('--headless', '--quit-after', '120') -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
           if (-not $process.WaitForExit(45000)) {
             $process.Kill()
@@ -155,3 +179,91 @@ jobs:
           if (-not (Test-Path $env:DESKTOWN_CI_SMOKE_SAVE)) {
             throw 'The exported app did not create its isolated save file.'
           }
+
+      - name: Open demo states in exported executable
+        shell: pwsh
+        run: |
+          $exe = (Resolve-Path 'build/windows/DeskTown.exe').Path
+          foreach ($scenario in @('workshop-repairing', 'workshop-reveal-pending', 'railway-teaser')) {
+            $directory = Join-Path $env:RUNNER_TEMP ('desktown-demo-' + [guid]::NewGuid().ToString('N'))
+            New-Item -ItemType Directory -Path $directory | Out-Null
+            $env:DESKTOWN_DEMO_SAVE = Join-Path $directory 'save.json'
+            Copy-Item (Join-Path "build/demo-saves/$scenario" 'save.json') $env:DESKTOWN_DEMO_SAVE
+            $stdout = Join-Path $directory 'stdout.log'
+            $stderr = Join-Path $directory 'stderr.log'
+            $process = Start-Process -FilePath $exe -ArgumentList @('--headless', '--quit-after', '120', '--', '--desktown-demo') -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+            if (-not $process.WaitForExit(45000)) {
+              $process.Kill()
+              throw "Demo $scenario did not exit within 45 seconds."
+            }
+            $log = (Get-Content $stdout -Raw) + "`n" + (Get-Content $stderr -Raw)
+            Write-Output "$scenario`: $log"
+            if ($process.ExitCode -ne 0 -or $log -match '(?m)^(ERROR:|SCRIPT ERROR:)') {
+              throw "Exported demo $scenario failed with exit code $($process.ExitCode)."
+            }
+          }
+
+      - name: Package complete Windows export
+        shell: pwsh
+        run: |
+          $export = (Resolve-Path 'build/windows').Path
+          $files = @(Get-ChildItem $export -Recurse -File | Sort-Object FullName | ForEach-Object {
+            [ordered]@{
+              path = [IO.Path]::GetRelativePath($export, $_.FullName).Replace('\', '/')
+              bytes = $_.Length
+              sha256 = (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+            }
+          })
+          if (-not ($files | Where-Object { $_.path -eq 'DeskTown.exe' })) {
+            throw 'Export is missing DeskTown.exe.'
+          }
+          $shortSha = $env:GITHUB_SHA.Substring(0, 8)
+          $package = 'build/package'
+          New-Item -ItemType Directory -Path $package -Force | Out-Null
+          $manifest = [ordered]@{
+            product = 'DeskTown Prototype v0.1'
+            commit = $env:GITHUB_SHA
+            godot = $env:GODOT_VERSION
+            dotnetSdk = '8.0.425'
+            signed = $false
+            files = $files
+          }
+          $manifest | ConvertTo-Json -Depth 6 | Set-Content (Join-Path $package 'build-manifest.json') -Encoding utf8
+          @(
+            'DeskTown Prototype v0.1 — unsigned Windows x64 preview'
+            "Commit: $env:GITHUB_SHA"
+            'Extract the entire ZIP before launching DeskTown.exe.'
+            'Ghost Focus remains disabled pending Windows click-through review.'
+            'Manual Windows 11 UI, DPI, notice, save-location, and art gates remain open.'
+          ) | Set-Content (Join-Path $package 'RELEASE-NOTES.txt') -Encoding utf8
+          $zip = Join-Path $package "DeskTown-v0.1-$shortSha-win-x64.zip"
+          Compress-Archive -Path (Join-Path $export '*') -DestinationPath $zip
+          $hash = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$hash  $(Split-Path $zip -Leaf)" | Set-Content (Join-Path $package 'SHA256SUMS.txt') -Encoding ascii
+          $unpacked = Join-Path $env:RUNNER_TEMP ('desktown-package-' + [guid]::NewGuid().ToString('N'))
+          Expand-Archive -Path $zip -DestinationPath $unpacked
+          foreach ($file in $files) {
+            $candidate = Join-Path $unpacked $file.path
+            if (-not (Test-Path $candidate) -or
+                (Get-FileHash $candidate -Algorithm SHA256).Hash.ToLowerInvariant() -ne $file.sha256) {
+              throw "Packaged file differs from the tested export: $($file.path)"
+            }
+          }
+          $stdout = Join-Path $env:RUNNER_TEMP 'desktown-package-stdout.log'
+          $stderr = Join-Path $env:RUNNER_TEMP 'desktown-package-stderr.log'
+          $process = Start-Process -FilePath (Join-Path $unpacked 'DeskTown.exe') -ArgumentList @('--headless', '--quit-after', '120') -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          if (-not $process.WaitForExit(45000)) {
+            $process.Kill()
+            throw 'Unpacked DeskTown.exe timed out.'
+          }
+          $log = (Get-Content $stdout -Raw) + "`n" + (Get-Content $stderr -Raw)
+          if ($process.ExitCode -ne 0 -or $log -match '(?m)^(ERROR:|SCRIPT ERROR:)') {
+            throw 'Unpacked DeskTown.exe failed startup smoke.'
+          }
+
+      - name: Upload versioned prototype ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktown-windows-prototype-package
+          path: build/package/*
+          if-no-files-found: error
