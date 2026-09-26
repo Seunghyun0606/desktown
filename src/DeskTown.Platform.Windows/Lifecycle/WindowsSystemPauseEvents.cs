@@ -1,9 +1,11 @@
+using System.Runtime.Versioning;
 using Microsoft.Win32;
 using DeskTown.Application.Lifecycle;
 
 namespace DeskTown.Platform.Windows.Lifecycle;
 
 /// <summary>Reports Windows session and power transitions without touching Godot nodes.</summary>
+[SupportedOSPlatform("windows")]
 public sealed class WindowsSystemPauseEvents : IDisposable
 {
     private bool _disposed;

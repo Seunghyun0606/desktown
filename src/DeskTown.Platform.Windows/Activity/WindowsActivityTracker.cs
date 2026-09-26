@@ -1,5 +1,4 @@
 using DeskTown.Application.Activity;
-using DeskTown.Application.Activity;
 using DeskTown.Application.Ports;
 
 namespace DeskTown.Platform.Windows.Activity;
