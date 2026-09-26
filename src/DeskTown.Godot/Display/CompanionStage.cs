@@ -10,6 +10,12 @@ public partial class CompanionStage : Control
 
     public override void _Ready()
     {
+        CatalogRectArt.Bind(GetNode<ColorRect>("SkyWindow"), "CMP-WIN-001");
+        CatalogRectArt.Bind(GetNode<ColorRect>("Floor"), "CMP-FLR-001");
+        CatalogRectArt.Bind(GetNode<ColorRect>("Lamp"), "CMP-LMP-001");
+        CatalogRectArt.Bind(GetNode<ColorRect>("Workbench"), "CMP-WRK-001");
+        CatalogRectArt.Bind(GetNode<ColorRect>("Stool"), "CMP-STL-001");
+        CatalogRectArt.Bind(GetNode<ColorRect>("Plant"), "CMP-DEC-001");
         _mina = GetNode<MinaPlaceholderView>("MinaView");
         _mina.Bind(_latest);
     }

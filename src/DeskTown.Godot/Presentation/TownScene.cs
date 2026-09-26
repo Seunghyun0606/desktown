@@ -30,6 +30,12 @@ public partial class TownScene : Control
         };
         GetNode<TownNpcPlaceholderView>("World/NoahView").Configure(false);
         GetNode<TownNpcPlaceholderView>("World/RumiView").Configure(true);
+        CatalogRectArt.Bind(GetNode<ColorRect>("World/House"), "BLD-HOU-001",
+            placeholderLabel: GetNode<Label>("World/House/Name"));
+        CatalogRectArt.Bind(GetNode<ColorRect>("World/LockedArea"), "BLD-LCK-001",
+            placeholderLabel: GetNode<Label>("World/LockedArea/Name"));
+        CatalogRectArt.Bind(GetNode<ColorRect>("World/Tree"), "ENV-TRE-001");
+        CatalogRectArt.Bind(GetNode<ColorRect>("World/Campfire"), "FX-FIR-001");
         if (Visible)
         {
             _ambientTimer.Start();
@@ -47,13 +53,16 @@ public partial class TownScene : Control
 
         var workshop = GetNode<ColorRect>("World/Workshop");
         var label = GetNode<Label>("World/Workshop/State");
-        (workshop.Color, label.Text) = (visualWorkshop ?? snapshot.Workshop) switch
+        var state = visualWorkshop ?? snapshot.Workshop;
+        (workshop.Color, label.Text) = state switch
         {
             WorkshopState.Broken => (Color.FromHtml("806f66"), "Broken Workshop"),
             WorkshopState.Repairing => (Color.FromHtml("ac8362"), "Repairing Workshop"),
             WorkshopState.Complete => (Color.FromHtml("d2a878"), "Workshop Complete"),
             _ => throw new ArgumentOutOfRangeException(nameof(snapshot))
         };
+        CatalogRectArt.Bind(workshop, "BLD-WRK-001", (int)state,
+            placeholderLabel: label);
         GetNode<Label>("Hud/Project").Text =
             snapshot.Events.RailwayTeaserUnlocked
                 ? "Explore Old Railway  0 / 45 Focus  •  Coming in the next build"

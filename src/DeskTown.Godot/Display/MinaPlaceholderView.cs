@@ -38,11 +38,10 @@ public partial class MinaPlaceholderView : Node2D
             MinaAnimationClip.Celebrate => "CHR-MIN-006",
             _ => "CHR-MIN-001"
         };
-        if (VisualAssetCatalog.Texture(assetId) is { } sheet && sheet.GetWidth() >= 48)
+        if (VisualAssetCatalog.Frame(assetId, frame) is { } image)
         {
-            var cell = Math.Min(frame, sheet.GetWidth() / 48 - 1);
-            DrawTextureRectRegion(sheet, new Rect2(0, 0, 48, 48),
-                new Rect2(cell * 48, 0, 48, 48));
+            DrawTextureRectRegion(image.Sheet,
+                new Rect2(Vector2.Zero, image.Source.Size), image.Source);
             return;
         }
 
