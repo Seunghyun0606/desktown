@@ -47,6 +47,22 @@ public sealed class JsonGameStateStoreTests
     }
 
     [Fact]
+    public void Completion_notice_preference_round_trips_and_old_V1_saves_keep_notice()
+    {
+        var original = Example().Snapshot;
+        var quiet = original with
+        {
+            Settings = original.Settings with { CompletionNoticeEnabled = false }
+        };
+        var saved = JsonSaveCodec.Encode(quiet, 2, StartedAt.AddMinutes(1));
+        Assert.False(JsonSaveCodec.Decode(saved).Snapshot.Settings.CompletionNoticeEnabled);
+
+        var oldFormat = Parse(JsonSaveCodec.Encode(original, 1, StartedAt));
+        ((JsonObject)oldFormat["settings"]!).Remove("completionNoticeEnabled");
+        Assert.True(JsonSaveCodec.Decode(Rehash(oldFormat)).Snapshot.Settings.CompletionNoticeEnabled);
+    }
+
+    [Fact]
     public void Completed_project_survives_three_restart_boundaries_without_duplicate_reveal()
     {
         var initial = CompletedExample();

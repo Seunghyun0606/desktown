@@ -18,6 +18,7 @@ public partial class TrayHost : Node
     public event Action<string>? GhostPositionRequested;
     public event Action<int>? GhostMonitorRequested;
     public event Action? AudioToggleRequested;
+    public event Action? CompletionNoticeToggleRequested;
 
     public override void _Ready()
     {
@@ -49,6 +50,8 @@ public partial class TrayHost : Node
         _menu.AddItem("85%", 42);
         _menu.AddSeparator();
         _menu.AddItem("Audio", 50);
+        _menu.AddCheckItem("Completion notice (otherwise Tray only)", 51);
+        _menu.SetItemChecked(_menu.GetItemIndex(51), true);
         _menu.AddItem("End Focus", 60);
         _menu.AddItem("Quit", 90);
         _menu.IdPressed += id => Dispatch((int)id);
@@ -76,6 +79,11 @@ public partial class TrayHost : Node
             _menu.SetItemDisabled(_menu.GetItemIndex(60), !focusing);
     }
 
+    public void SetCompletionNotice(bool enabled)
+    {
+        if (_menu is not null) _menu.SetItemChecked(_menu.GetItemIndex(51), enabled);
+    }
+
     private void Dispatch(int id)
     {
         switch (id)
@@ -91,6 +99,7 @@ public partial class TrayHost : Node
             case >= 40 and <= 42: GhostOpacityRequested?.Invoke(new[] { 40, 65, 85 }[id - 40]); break;
             case >= 100: GhostMonitorRequested?.Invoke(id - 100); break;
             case 50: AudioToggleRequested?.Invoke(); break;
+            case 51: CompletionNoticeToggleRequested?.Invoke(); break;
             case 60: EndFocusRequested?.Invoke(); break;
             case 90: QuitRequested?.Invoke(); break;
         }

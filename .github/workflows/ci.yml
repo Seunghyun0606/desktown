@@ -116,6 +116,19 @@ jobs:
           path: build/windows/**
           if-no-files-found: error
 
+      # The tested export above contains only the unassigned production catalog.
+      # Synthetic PNGs are added afterward in this disposable checkout.
+      - name: Smoke assigned catalog art in Town and Companion scenes
+        run: |
+          python scripts/assets/create_smoke_art.py
+          python scripts/assets/validate_catalog.py
+          godot --headless --editor --path . --quit-after 5
+          DESKTOWN_CI_ART_SMOKE=1 godot --headless --path . --quit-after 120 2>&1 | tee build/catalog-art-smoke.log
+          if rg -n '^ERROR:|SCRIPT ERROR:|DESKTOWN_CI_ART_SMOKE_FAILED' build/catalog-art-smoke.log; then
+            exit 1
+          fi
+          rg -q 'DESKTOWN_CI_ART_SMOKE_OK' build/catalog-art-smoke.log
+
   windows-export-smoke:
     name: Launch exported Windows build
     needs: godot-windows-export
@@ -266,4 +279,28 @@ jobs:
         with:
           name: desktown-windows-prototype-package
           path: build/package/*
+          if-no-files-found: error
+
+      - name: Assemble and verify laptop QA kit
+        shell: pwsh
+        run: |
+          $kit = 'build/qa-kit'
+          New-Item -ItemType Directory -Path $kit | Out-Null
+          Copy-Item build/package/* $kit
+          Copy-Item scripts/qa/*.ps1 $kit
+          Copy-Item scripts/qa/QA-README.md $kit
+          Copy-Item docs/qa/WINDOWS_GATE.md $kit
+          Copy-Item build/demo-saves (Join-Path $kit 'demo-saves') -Recurse
+          & (Join-Path $kit 'preflight.ps1') -KitDirectory $kit -RunSmoke
+          & (Join-Path $kit 'collect-evidence.ps1') -KitDirectory $kit -Scaling 'CI' -OutputPath (Join-Path $env:RUNNER_TEMP 'desktown-qa-results.md')
+          if (-not (Select-String -Path (Join-Path $env:RUNNER_TEMP 'desktown-qa-results.md') -Pattern $env:GITHUB_SHA -Quiet)) {
+            throw 'QA result template does not identify the build.'
+          }
+          Remove-Item (Join-Path $kit 'app') -Recurse -Force
+
+      - name: Upload laptop QA kit
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktown-windows-qa-kit
+          path: build/qa-kit/*
           if-no-files-found: error

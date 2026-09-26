@@ -21,7 +21,8 @@ public sealed record SettingsSnapshot(
     int GhostOpacityPercent,
     bool AudioEnabled,
     bool OnboardingCompleted,
-    bool ReducedMotion);
+    bool ReducedMotion,
+    bool CompletionNoticeEnabled = true);
 
 public sealed record WindowPlacementSnapshot(string MonitorId, string Anchor, int OffsetX, int OffsetY);
 

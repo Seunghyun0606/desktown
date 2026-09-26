@@ -14,6 +14,9 @@ The [backlog](../BACKLOG.md) remains the task inventory, and the
 - CI validates the 46-entry asset contract, generates byte-identical demo saves
   for a fixed date, opens all three states in the exported app, and creates an
   unsigned versioned Windows ZIP with a file manifest and SHA-256 checksum.
+- CI assembles a laptop QA kit, runs its isolated PowerShell preflight on
+  Windows, and tests assigned synthetic art in Town and Companion after the
+  unmodified production export has been uploaded.
 - Focus simulation, Energy, Workshop, and pending reveal are independent of
   the presentation. The Town ambient timer and Mina placeholder frame processing
   stop while their views are hidden.
@@ -34,7 +37,10 @@ input, mixed DPI, sleep/lock, normal `user://` save placement, or visual quality
 | 5 | Run the Windows and user task matrix below, record issues by build SHA, then address P0/P1 first | Reproduction, severity, owner, fix, regression result, and re-test evidence exist for every issue | Exported Windows environment and users |
 | 6 | Decide installer/signing/update path after prototype ZIP validation | Installer or update cannot overwrite the local save; uninstall offers an explicit save-retention choice; rollback is documented | Distribution decision and manual install test |
 
-The CI artifact `desktown-windows-prototype-package` contains the versioned
+The `desktown-windows-qa-kit` artifact contains the versioned ZIP/checksum,
+demo saves, scripts, build manifest, and Windows result sheet. Run its
+`preflight.ps1 -RunSmoke` before interactive QA; it never uses the personal
+save. The CI artifact `desktown-windows-prototype-package` contains the versioned
 ZIP, `SHA256SUMS.txt`, `build-manifest.json`, and `RELEASE-NOTES.txt`. The older
 `desktown-windows-foundation` artifact remains a raw export for QA. Do not
 distribute only `DeskTown.exe`; keep the exported directory intact. A ZIP is the
@@ -52,8 +58,10 @@ views receive Town/Companion/Ghost projections and have no authority to award
 Focus Energy. The 46-entry catalog validates the manifest. Mina's six clips
 resolve from one shared catalog in all three views; Town buildings, Noah/Rumi
 idle/read art, and six Companion props also resolve through scene binders with
-geometric fallback. All files are currently unassigned. Frame size and count
-are checked at runtime, while placement and pivots still need visual sign-off.
+geometric fallback. All production files are currently unassigned. CI checks
+several assigned synthetic sheets in actual Godot scenes after exporting the
+unmodified prototype. Frame size and count are checked at runtime, while
+placement and pivots still need visual sign-off.
 Walking sheets, remaining environment/effects/tool art, and audio do not yet
 have runtime placement. The scene node bounds are still fixed, so a valid PNG
 can be off-center, obscure text, or appear too small at a chosen scale.
@@ -68,15 +76,16 @@ No art replacement should change a save field or gameplay threshold.
 
 ## Reproducible demo saves
 
-The `desktown-demo-saves` CI artifact contains three scenarios. The generator
+The QA kit includes three isolated demo scenarios; the separate
+`desktown-demo-saves` CI artifact contains the same fixtures. The generator
 uses a fixed date and session ID, domain transitions, and the production save
 codec. Run `dotnet run --project tools/DeskTown.DemoSaves -- <output-dir>
 <yyyy-MM-dd>` to generate for a chosen UTC day; without a date it uses
-2026-09-25. To inspect one on Windows after extracting both artifacts:
+2026-09-25. From the extracted QA kit, after `preflight.ps1`, run:
 
 ```powershell
-./scripts/qa/launch-demo.ps1 -Scenario workshop-reveal-pending `
-  -WindowsExport ./build/windows -DemoSaves ./build/demo-saves
+./launch-demo.ps1 -Scenario workshop-reveal-pending `
+  -WindowsExport ./app -DemoSaves ./demo-saves
 ```
 
 Close any existing DeskTown instance first. The script copies the fixture into
@@ -95,15 +104,17 @@ These are code observations, not proof that real PC work is uninterrupted.
 Catalog sprites are draw-only nodes beneath the existing window boundary and
 introduce no pointer controls; the Windows input checks remain necessary.
 
-The native completion notice is topmost, 360×110, and visible for six seconds.
+The native completion notice is topmost, 360×110, and visible for six seconds
+when its setting is on (the existing-save and new-save default).
 It is marked unfocusable but **can receive pointer input** so its Open button
 works. It may cover or intercept a click in an underlying app. Companion is
 always on top with a draggable strip, and real focus restoration is unverified.
-Treat notice pointer interception, Companion focus theft, and any Ghost input
-interception as release-blocking until observed on the exported build. Test
-Hidden with no visible surfaces and low idle CPU/GPU usage. A setting for
-Tray-only completion or a platform notification should be considered if the
-notice interrupts work; do not silently sacrifice the Open action.
+The Tray offers `Completion notice (otherwise Tray only)` and saves that
+preference. Tray-only completion keeps the Work complete status and explicit
+Open command without a notice window. Treat notice pointer interception,
+Companion focus theft, and any Ghost input interception as release-blocking
+until observed on the exported build. Test Hidden with no visible surfaces
+and low idle CPU/GPU usage.
 
 User test protocol after the Windows system gate:
 

@@ -44,7 +44,8 @@ public static class SaveStateMapper
                 GhostOpacityPercent = snapshot.Settings.GhostOpacityPercent,
                 AudioEnabled = snapshot.Settings.AudioEnabled,
                 OnboardingCompleted = snapshot.Settings.OnboardingCompleted,
-                ReducedMotion = snapshot.Settings.ReducedMotion
+                ReducedMotion = snapshot.Settings.ReducedMotion,
+                CompletionNoticeEnabled = snapshot.Settings.CompletionNoticeEnabled
             },
             Focus = new FocusDto
             {
@@ -204,7 +205,8 @@ public static class SaveStateMapper
                 new WindowPlacementSnapshot(companion.MonitorId, companion.Anchor, companion.OffsetX, companion.OffsetY),
                 new WindowPlacementSnapshot(ghost.MonitorId, ghost.Anchor, ghost.OffsetX, ghost.OffsetY),
                 settings.CompanionScalePercent, settings.GhostOpacityPercent, settings.AudioEnabled,
-                settings.OnboardingCompleted, settings.ReducedMotion),
+                settings.OnboardingCompleted, settings.ReducedMotion,
+                settings.CompletionNoticeEnabled),
             new FocusSnapshot(ledger, activeCheckpoint, modeChanges),
             EventSaveMapper.Town(project, eventState),
             new MinaSnapshot(mina.Activity, mina.Location, mina.ProjectId,

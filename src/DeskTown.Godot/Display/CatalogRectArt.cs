@@ -12,6 +12,8 @@ internal static class CatalogRectArt
         if (image is null)
         {
             if (art is not null) art.Visible = false;
+            // All geometric scene props are opaque; restore the current state color.
+            host.Color = new Color(host.Color.R, host.Color.G, host.Color.B, 1);
             placeholderLabel?.Show();
             return;
         }

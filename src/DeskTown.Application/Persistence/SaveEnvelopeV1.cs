@@ -30,6 +30,8 @@ public sealed class SettingsDto
     public bool AudioEnabled { get; set; } = true;
     public bool OnboardingCompleted { get; set; }
     public bool ReducedMotion { get; set; }
+    // Older V1 saves omit this field and retain the original notice behavior.
+    public bool CompletionNoticeEnabled { get; set; } = true;
 }
 
 public sealed class WindowPlacementDto

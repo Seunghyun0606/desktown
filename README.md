@@ -99,8 +99,9 @@ The repository currently provides:
 - an isolated native Windows Ghost QA adapter and saved preview placement/opacity;
 - CI for build, tests, headless main-scene launch, Windows export, and exported
   `.exe` save/restart/recovery smoke in an isolated temporary directory;
-- a validated 46-entry asset catalog with optional shared Mina sprite binding,
-  deterministic demo saves, and a versioned Windows ZIP/checksum artifact.
+- a validated 46-entry asset catalog with optional Town and Companion sprite binding,
+  deterministic demo saves, a versioned Windows ZIP/checksum, and a laptop QA kit
+  with isolated preflight and results template.
 
 The exported `.exe` still needs Windows 11 QA for focus/input behavior, Tray,
 sleep/crash recovery, mixed-DPI placement, and the Ghost click-through matrix.

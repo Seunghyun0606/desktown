@@ -13,10 +13,15 @@ public partial class CompletionNotice : Window
         Visible = false;
         GetNode<Button>("Panel/Content/Open").Pressed += () =>
         {
-            _generation++;
-            Visible = false;
+            Dismiss();
             OpenRequested?.Invoke();
         };
+    }
+
+    public void Dismiss()
+    {
+        _generation++;
+        Visible = false;
     }
 
     public async void ShowMessage(string message)

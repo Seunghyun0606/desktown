@@ -64,6 +64,14 @@ public partial class PrototypeAppController : Node
         tray.AudioToggleRequested += () => _ = RunAsync(() =>
             _game!.ChangeSettingsAsync(_game.Settings with
             { AudioEnabled = !_game.Settings.AudioEnabled }));
+        tray.CompletionNoticeToggleRequested += () => _ = RunAsync(async () =>
+        {
+            if (_game is null) return;
+            var enabled = !_game.Settings.CompletionNoticeEnabled;
+            await _game.ChangeSettingsAsync(_game.Settings with { CompletionNoticeEnabled = enabled });
+            tray.SetCompletionNotice(enabled);
+            if (!enabled) Root<CompletionNotice>("CompletionNotice").Dismiss();
+        });
         tray.EndFocusRequested += () => _ = RunAsync(EndFocusAsync);
         tray.QuitRequested += RequestQuit;
         Root<CompletionNotice>("CompletionNotice").OpenRequested += OpenTown;
@@ -121,6 +129,7 @@ public partial class PrototypeAppController : Node
                 _activity, new SystemWallClock(), new StopwatchMonotonicClock(), _checkpointInterval);
             Root<CompanionWindowHost>("CompanionWindow").Configure(
                 _game.Settings.Companion, _game.Settings.CompanionScalePercent);
+            Root<TrayHost>("TrayHost").SetCompletionNotice(_game.Settings.CompletionNoticeEnabled);
             ConfigureGhostPreview();
             Root<Label>("MainShell/Center/Message").Visible = false;
             Root<TownScene>("MainShell/Town").Bind(_game.World.Town, _game.TodayFocus);
@@ -198,7 +207,8 @@ public partial class PrototypeAppController : Node
             var message = _game?.World.Town.Workshop == WorkshopState.Complete
                 ? "Mina finished her work. The Workshop has changed."
                 : "Mina finished her work.";
-            Root<CompletionNotice>("CompletionNotice").ShowMessage(message);
+            if (_game?.Settings.CompletionNoticeEnabled == true)
+                Root<CompletionNotice>("CompletionNotice").ShowMessage(message);
         }
         catch (Exception error)
         {
