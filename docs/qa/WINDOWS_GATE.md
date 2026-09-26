@@ -1,102 +1,64 @@
-# DeskTown v0.1 — exported Windows gate
+# DeskTown v0.1 — Windows 내보내기 빌드 검증 게이트
 
-Use the exported build. Godot editor behavior, Linux headless CI, and a successful
-Windows export do not establish native window/input behavior. Keep Ghost disabled
-for normal Focus until the interaction matrix below has been recorded and reviewed.
-CI also launches the exported executable headlessly on a Windows runner. That
-checks bootstrap and script errors, and uses three separate exported-app
-processes to create, recover, and reload an isolated save. It cannot certify
-visible window behavior, the normal Windows save directory, or real sleep/lock.
+Godot 편집기, Linux 헤드리스 CI, Windows 내보내기 성공만으로 실제 창과 입력 동작을 보장할 수 없다. 반드시 내보낸 빌드에서 검사한다. 아래 입력 매트릭스를 기록하고 검토하기 전까지 일반 Focus에서 Ghost를 활성화하지 않는다. CI는 Windows 실행기에서 내보낸 실행 파일을 헤드리스로 실행하고, 분리된 세 프로세스에서 임시 저장 데이터의 생성·복구·재읽기를 검사한다. 이 검사는 눈에 보이는 창의 동작, 일반 Windows 저장 위치, 실제 잠금·절전 이벤트까지 증명하지 않는다.
 
-## Obtain and launch the build
+## 빌드 받기와 실행
 
-1. On the [CI Actions page](https://github.com/Seunghyun0606/desktown/actions/workflows/ci.yml),
-   open the latest **successful `main`** run. Record its commit SHA and run URL.
-2. Download `desktown-windows-qa-kit`, extract the artifact, and run
-   `./preflight.ps1 -RunSmoke` in PowerShell. It checks the versioned ZIP,
-   extracts the app, verifies the full file manifest, and tests an isolated
-   save/restart/recovery cycle without touching your personal save. Launch
-   `./app/DeskTown.exe` on Windows 11. The `desktown-windows-prototype-package`
-   artifact remains the distribution ZIP; `desktown-windows-foundation` is the
-   raw export. Do not run the executable from inside the ZIP.
-3. Run `./collect-evidence.ps1 -Scaling '100%'` with the laptop's actual Windows
-   scale. It writes a local result template with build SHA, OS version and
-   monitor bounds. Use a separate Windows test account or back up the existing
-   DeskTown save before destructive recovery tests. Keep one artifact and one
-   save baseline per test pass; do not upload personal saves or work contents.
+1. [CI Actions 페이지](https://github.com/Seunghyun0606/desktown/actions/workflows/ci.yml)에서 **성공한 최신 `main` 실행**을 열고 커밋 SHA와 실행 URL을 기록한다.
+2. `desktown-windows-qa-kit` 아티팩트를 내려받아 압축을 풀고 PowerShell에서 `./preflight.ps1 -RunSmoke`를 실행한다. 이 스크립트는 버전이 붙은 ZIP과 전체 파일 목록을 검증하고, 개인 저장 데이터를 건드리지 않는 별도 저장·재시작·복구 검사를 수행한다. Windows 11에서 `./app/DeskTown.exe`를 실행한다. `desktown-windows-prototype-package`는 배포용 ZIP이고 `desktown-windows-foundation`은 원본 내보내기 결과다. ZIP 안에서 실행 파일을 직접 실행하지 않는다.
+3. 노트북의 실제 Windows 배율을 넣어 `./collect-evidence.ps1 -Scaling '100%'`를 실행한다. 빌드 SHA, OS 버전, 모니터 경계가 포함된 로컬 결과 양식이 만들어진다. 파괴적인 복구 검사 전에는 별도 Windows 테스트 계정을 사용하거나 기존 DeskTown 저장 데이터를 백업한다. 검사 회차별 아티팩트와 저장 기준 상태를 구분한다. 개인 저장 데이터나 업무 내용은 업로드하지 않는다.
 
-The first run displays privacy/onboarding copy, then Town. Town opens Focus
-Setup. Focus Setup offers Companion or Hidden; Ghost is disabled. The Tray has
-Open, mode/settings, End Focus, and Quit. F10 from Town toggles the **Ghost QA
-preview only when no Focus session is active**. It does not start a session or
-award progress. F8 cycles placeholder Companion clips under the same condition.
+처음 실행하면 개인정보 안내와 온보딩 화면이 나타난 다음 Town으로 이동한다. Town에서 Focus 설정을 연다. Focus 설정에는 Companion과 Hidden을 선택할 수 있고 Ghost는 비활성화되어 있다. 트레이에는 열기, 모드·설정, Focus 종료, 앱 종료가 있다. **Focus 세션이 없을 때만** Town에서 F10을 누르면 Ghost QA 미리보기가 켜진다. 이 동작으로 세션이나 보상이 생기지 않는다. 같은 조건에서 F8은 Companion 플레이스홀더 동작을 순환한다.
 
-## 1. Core loop and recovery
+## 1. 기본 진행과 복구
 
-| Check | Procedure | Pass condition | Result / evidence |
+| 검사 | 절차 | 통과 조건 | 결과 / 근거 |
 | --- | --- | --- | --- |
-| First run | Complete onboarding; open Focus Setup | Tracking starts only after Start; process selection is optional | |
-| Shared session | Start 25-minute Companion Focus; switch to Hidden and back from Tray | Same elapsed Focus, Energy, and Workshop progress; no duplicate session | |
-| Passive completion | Finish 25 minutes while another app is active | Town stays hidden; notice or Tray status appears without stealing focus | |
-| Quiet completion | Tray → turn off `Completion notice`, finish another session | No notice window; Tray says Work complete and Open remains available; preference survives restart | |
-| Notice Open action | Click `Open DeskTown` on the completion notice | Existing Town opens once, without another process or reward | |
-| Deferred reward | Open DeskTown from Tray after completion | Workshop reveal and Railway teaser appear once, in order | |
-| Restart at reveal | Exit after completion notice, during reveal, and during discovery in separate runs | Saved state resumes the correct pending step once | |
-| Recovery | Start Focus, wait for a checkpoint, terminate process; relaunch | Resume/End choice appears; time away is excluded | |
-| Windows lifecycle | Lock/unlock, disconnect/reconnect, and sleep/resume during separate Focus runs; include overlapping lock and sleep | Suspended time is excluded; a fresh tick starts only after all pause reasons clear; state remains recoverable | |
-| Duplicate launch | Open another `DeskTown.exe` while first remains active | Existing instance opens; no second Focus/save owner | |
-| Hidden resources | Switch to Hidden and inspect windows and Task Manager | No Companion/Ghost surface or active visual effects; timer continues | |
+| 첫 실행 | 온보딩 완료 후 Focus 설정 열기 | Start 이후에만 활동 기록 시작, 앱 선택은 선택 사항 | |
+| 세션 유지 | Companion에서 25분 Focus를 시작하고 트레이로 Hidden 전환·복귀 | 경과 시간, Energy, Workshop 진행이 이어지고 세션이 중복되지 않음 | |
+| 조용한 완료 | 다른 앱을 쓰는 동안 25분 세션 완료 | Town은 숨겨진 상태, 알림 또는 트레이 표시가 작업 앱의 포커스를 빼앗지 않음 | |
+| 알림 없는 완료 | 트레이에서 `Completion notice`를 끄고 다음 세션 완료 | 알림 창이 없고 트레이에서 완료 상태와 Open을 사용할 수 있으며 재시작 후 설정 유지 | |
+| 알림 열기 | 완료 알림의 `Open DeskTown` 클릭 | 기존 Town이 한 번 열리고 프로세스나 보상 중복 없음 | |
+| 보상 지연 표시 | 완료 후 트레이에서 DeskTown 열기 | Workshop 연출과 Railway 예고가 순서대로 한 번씩 표시 | |
+| 연출 중 재시작 | 별도 실행에서 완료 알림 후, 연출 중, 발견 이벤트 중 종료·재실행 | 저장된 상태에 맞는 대기 단계가 한 번 이어짐 | |
+| 복구 | Focus 시작, 체크포인트 대기, 프로세스 종료 후 재실행 | Resume/End 선택이 나오고 종료 중 시간은 제외 | |
+| Windows 수명주기 | 별도 세션에서 잠금/해제, 연결 해제/재연결, 절전/복귀 수행; 잠금과 절전 겹침도 검사 | 중단 시간이 제외되고 모든 중단 사유가 해소된 뒤 새 기준점에서 재개하며 복구 가능 | |
+| 중복 실행 | 첫 `DeskTown.exe`가 실행 중일 때 두 번째 실행 | 기존 인스턴스가 열리고 두 번째 Focus·저장 주체는 생기지 않음 | |
+| Hidden 자원 | Hidden으로 전환 후 창 목록과 작업 관리자 확인 | Companion/Ghost 창이나 활성 시각 효과 없이 타이머는 계속 동작 | |
 
-Record the exact elapsed times and save observations for any discrepancy.
-If the notice cannot be shown or clicked, use **Tray → Open DeskTown** and record
-the failure; the saved reward must remain intact.
+차이가 나면 정확한 경과 시간과 저장 상태를 기록한다. 알림을 표시하거나 클릭할 수 없다면 **트레이 → Open DeskTown**을 사용하고 실패를 기록한다. 저장된 보상은 유지돼야 한다.
 
-## 2. Companion and placement
+## 2. Companion과 위치
 
-At 100%, 125%, and 150% Windows scaling, check single and dual monitors,
-including unlike DPI and a monitor to the left of the primary display.
+Windows 배율 100%, 125%, 150%에서 단일·듀얼 모니터를 검사한다. 모니터별 DPI가 다르거나 보조 모니터가 기본 모니터 왼쪽에 있는 경우도 포함한다.
 
-| Check | Pass condition | Result / evidence |
+| 검사 | 통과 조건 | 결과 / 근거 |
 | --- | --- | --- |
-| Always on top and drag strip | Companion stays visible above ordinary app windows; only its declared upper strip drags | |
-| Focus and input | Chrome, VS Code, Excel, and Notion remain usable while Companion is open | |
-| Close | Companion closes into Hidden without ending Focus | |
-| Scale presets | 75/100/125/150% scale remains legible and on-screen | |
-| Restore | Move/close/relaunch, then disconnect the chosen monitor and relaunch | Position restores or clamps into an available usable work area | |
+| 최상단 표시와 드래그 영역 | 일반 앱 창 위에 Companion이 보이고 지정된 상단 영역만 드래그 가능 | |
+| 포커스와 입력 | Companion을 띄운 상태에서 Chrome, VS Code, Excel, Notion 사용 가능 | |
+| 닫기 | Focus를 끝내지 않고 Hidden으로 전환 | |
+| 배율 프리셋 | 75/100/125/150%에서 읽을 수 있고 화면 안에 표시 | |
+| 위치 복원 | 이동·닫기·재실행 후 선택 모니터 연결을 해제하고 재실행 | 위치 복원 또는 사용 가능한 작업 영역 안으로 보정 | |
 
-## 3. Ghost interaction gate — release blocking
+## 3. Ghost 입력 게이트 — 출시 차단 조건
 
-Use Town F10 to show the isolated preview; set corner, monitor, and 40/65/85%
-opacity from Tray. Repeat on Windows 11 at 100%, 125%, and 150% scaling; on
-single and dual monitors; and with each application windowed and maximized.
-Place the overlay over both visible Mina/prop pixels and transparent pixels.
+Town에서 F10으로 분리된 미리보기를 표시하고 트레이에서 모서리 위치, 모니터, 불투명도 40/65/85%를 조절한다. Windows 11의 배율 100%, 125%, 150%, 단일·듀얼 모니터, 각 앱의 창 모드·최대화 모드에서 반복한다. Mina·소품이 보이는 픽셀과 투명한 픽셀 모두를 앱 위에 올려 검사한다.
 
-| App | Click / double / right | Hover / drag | Scroll / text select | Typing focus | Alpha / topmost / Alt+Tab | Result / evidence |
+| 앱 | 클릭 / 더블클릭 / 우클릭 | 호버 / 드래그 | 스크롤 / 텍스트 선택 | 키보드 포커스 | 투명도 / 최상단 / Alt+Tab | 결과 / 근거 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Chrome | | | | | | |
 | VS Code | | | | | | |
 | Excel | | | | | | |
 | Notion | | | | | | |
 
-For every DPI/monitor/window-state combination, record whether all pointer
-actions reach the underlying app, typing stays there, Ghost remains transparent
-and topmost, and it does not appear as an ordinary taskbar/Alt+Tab work window.
-Also verify corner/opacity changes while visible and restoration after restart.
+각 DPI·모니터·창 상태 조합에서 포인터 동작이 모두 아래 앱에 도달하는지, 입력 포커스가 유지되는지, Ghost가 투명하고 최상단인지, 일반 작업 창처럼 작업 표시줄/Alt+Tab에 나타나지 않는지 기록한다. 표시 중 위치·불투명도 변경과 재시작 후 위치 복원도 확인한다.
 
-**Decision:** Any intercepted action, focus theft, off-screen overlay, or
-unstable native behavior is a failure. Leave Ghost unavailable in Focus Setup
-and Tray, use Hidden, and file the exact combination with screenshots/video and
-reproduction steps. A passing F10 preview is evidence for the platform spike;
-normal Focus-mode fallback still needs an exported end-to-end check before Ghost
-can be enabled. Record the reviewer, date, build SHA, and final decision here:
+**판정:** 입력 가로채기, 포커스 탈취, 화면 밖 표시, 불안정한 네이티브 동작 중 하나라도 있으면 실패다. Ghost를 Focus 설정과 트레이에서 비활성 상태로 두고 Hidden을 사용한다. 정확한 조합과 재현 단계, 스크린샷/영상을 이슈에 남긴다. F10 미리보기 통과는 플랫폼 시제품의 근거이며, Ghost를 일반 Focus 모드로 켜려면 내보낸 빌드에서 전체 흐름과 안전한 대체 동작을 추가 확인해야 한다. 담당자, 날짜, 빌드 SHA, 최종 판정을 기록한다.
 
-| Reviewer / date | Build SHA / CI run | Ghost decision | Blocking issue links |
+| 검토자 / 날짜 | 빌드 SHA / CI 실행 | Ghost 판정 | 차단 이슈 링크 |
 | --- | --- | --- | --- |
-| | | Pending | |
+| | | 대기 | |
 
-## 4. Funding-build gate
+## 4. 펀딩용 빌드 게이트
 
-After the Windows behavior gate, review custom Mina animation, the three
-Workshop states, core Companion props, Old Railway Map, audio/effects, reduced
-motion, performance, privacy of the local JSON save, and deterministic capture
-scenes. These are not certified by the current placeholder export.
+Windows 동작 검사 후 Mina 전용 애니메이션, Workshop 세 단계, Companion 핵심 소품, Old Railway Map, 음향·효과, 움직임 줄이기, 성능, 로컬 JSON 저장의 개인정보 보호, 재현 가능한 캡처 장면을 검토한다. 현재 플레이스홀더 내보내기 빌드만으로는 이러한 사항이 검증되지 않는다.

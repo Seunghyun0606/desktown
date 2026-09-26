@@ -1,37 +1,11 @@
-# DT-E8-003 — Checkpoint and restart recovery contract
+# DT-E8-003 — 체크포인트와 재시작 복구 계약
 
-`ApplicationLifecycleCoordinator` loads one aggregate save and exposes an
-active checkpoint as a pending decision. It never silently resumes. The host
-constructs `FocusSessionCoordinator` using the restored ledger, then calls
-`ResolveRecovery(Resume|EndAtCheckpoint)`. Either choice first reconstructs
-the Focus session as Suspended at its exact counted/idle ticks. Resume starts a
-fresh monotonic baseline. End finalizes only the saved ticks. Wall time during
-shutdown, lock, or sleep is never applied as Focus Energy.
+`ApplicationLifecycleCoordinator`는 통합 저장 데이터 하나를 읽고 활성 체크포인트가 있으면 사용자 결정을 기다린다. 세션을 자동 재개하지 않는다. 호스트는 복원한 원장을 사용해 `FocusSessionCoordinator`를 만들고 `ResolveRecovery(Resume|EndAtCheckpoint)`를 호출한다. 어느 선택이든 먼저 기록된 집중 시간과 유휴 시간의 정확한 tick 값으로 세션을 Suspended 상태로 복원한다. Resume은 단조 시계의 새 기준점에서 시작하고, End는 저장된 시간만 확정한다. 종료·잠금·절전 중 흐른 실제 시간은 Focus Energy에 반영하지 않는다.
 
-The `CheckpointScheduler` uses monotonic time: 15 seconds during a running
-session, immediate saves at Focus start/end, suspension, display changes,
-world/event mutations, recovery decisions, and quit. The host supplies a
-consistent `GameStateSnapshot` with the current active checkpoint or terminal
-ledger and calls `SaveAsync` with a reason. Failed writes do not advance the
-revision or cadence. The local JSON store atomically writes and guards stale
-revisions. The caller must advance ProjectSystem/EventSystem and capture them
-in the same aggregate after a recovered End; no scene animation controls it.
+`CheckpointScheduler`는 단조 시계를 사용한다. 실행 중에는 15초마다 저장하며 Focus 시작·종료, 일시 중단, 표시 모드 변경, 월드·이벤트 변경, 복구 결정, 종료 시에는 즉시 저장한다. 호스트는 현재 활성 체크포인트 또는 확정된 원장이 포함된 일관된 `GameStateSnapshot`을 만들어 저장 사유와 함께 `SaveAsync`를 호출한다. 저장 실패 시 리비전과 저장 주기를 앞당기지 않는다. 로컬 JSON 저장소는 원자적으로 기록하고 이전 리비전의 덮어쓰기를 막는다. 복구 중 End를 선택하면 호출자가 `ProjectSystem`과 `EventSystem`을 진행한 다음 같은 통합 상태에 반영해야 한다. 장면 애니메이션이 상태 확정을 결정하지 않는다.
 
-`WindowsSingleInstanceGate` uses a named mutex object to prevent a second
-session and a named pipe carrying only `OPEN` to the existing process. AppRoot
-acquires the gate before initializing services; the second instance forwards
-the request and exits. An Open request focuses the existing window and does
-not create a Focus session.
+`WindowsSingleInstanceGate`는 이름 있는 mutex로 두 번째 세션을 막고, 이름 있는 pipe로 실행 중인 프로세스에 `OPEN` 명령만 전달한다. AppRoot는 서비스를 초기화하기 전에 이 게이트를 획득한다. 두 번째 인스턴스는 요청을 전달하고 종료한다. Open 요청은 기존 창을 앞으로 가져오며 새 Focus 세션을 만들지 않는다.
 
-`RecoveryPrompt.tscn` is connected to the current Focus UI. On Windows the
-host listens for session lock/disconnect and system suspend, and immediately
-checkpoints a Suspended session at its last observed tick. It discards the
-unobserved interval so a delayed event cannot award sleep time. Unlock and
-resume restart the monotonic baseline once all pause reasons clear. If the
-Windows event source cannot start, Focus cannot start. Real lock/sleep and
-input behavior still require the exported Windows gate.
+`RecoveryPrompt.tscn`은 현재 Focus UI에 연결돼 있다. Windows에서는 호스트가 세션 잠금·연결 해제와 시스템 절전을 감지하고, 마지막으로 관측한 tick까지만 인정한 Suspended 체크포인트를 즉시 저장한다. 이벤트 전달이 늦어져도 관측되지 않은 구간은 버려 절전 시간을 보상하지 않는다. 잠금 해제·복귀 후 모든 일시 중단 사유가 사라지면 단조 시계의 새 기준점에서 재개한다. Windows 이벤트 감시를 시작하지 못하면 Focus 시작을 막는다. 실제 잠금·절전 및 입력 동작은 내보낸 Windows 빌드에서 확인해야 한다.
 
-Automated tests cover a 15-second fake-clock cadence, failed save retry,
-two-hour offline resume, End-at-checkpoint idempotency, JSON restart
-round-trip, and second-instance Open forwarding. A cross-process Windows
-test and sleep/lock system gate are still manual.
+자동 테스트는 가짜 시계로 15초 저장 주기, 저장 실패 후 재시도, 2시간 중단 후 재개, 체크포인트에서 종료할 때의 멱등성, JSON 재시작 왕복, 두 번째 인스턴스의 Open 전달을 검사한다. 별도 프로세스에서의 Windows 동작과 실제 잠금·절전 검증은 수동 게이트로 남는다.

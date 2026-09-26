@@ -1,221 +1,212 @@
-# DeskTown Prototype v0.1 Wireframes
+# DeskTown Prototype v0.1 화면 와이어프레임
 
-These wireframes define hierarchy and behavior, not final art. Main Town uses a
-16:9 desktop canvas; utility panels are deliberately narrow so the town remains
-the focal point.
+이 문서는 최종 아트가 아니라 화면 위계와 동작을 정의한다. Main Town은 데스크톱 16:9 화면을 사용한다. 보조 패널은 폭을 좁혀 Town이 중심에 남도록 한다. 아래 도식의 한국어 문구는 화면 설계 의도이며, 현재 실행 파일의 UI 문구는 일부 영어다.
 
-## A. First Launch
+## A. 첫 실행
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────┐
+│                         [ DeskTown 로고 ]                             │
+│                               Mina                                   │
 │                                                                      │
-│                         [ DeskTown logo ]                            │
-│                              Mina                                    │
+│             집중하는 동안 Mina가 작은 마을을 복구해요.                 │
 │                                                                      │
-│            Your focus helps Mina rebuild a small town.               │
+│    FOCUS 중 기록                         기록하지 않음                │
+│    • 프로세스 이름                       • 입력한 글                  │
+│    • 전경 사용 시간                      • 화면 캡처                 │
+│    • 총 유휴 시간                        • 파일·문서 내용            │
+│    • 세션 시작·종료                      • URL·창 제목               │
+│                                         • 비밀번호·양식              │
 │                                                                      │
-│   DURING A FOCUS SESSION              DESKTOWN NEVER RECORDS          │
-│   • process name                      • typed text                    │
-│   • foreground duration              • screenshots                   │
-│   • total idle duration              • files or document content     │
-│   • session start and end            • browser URLs or window titles │
-│                                      • passwords or forms            │
+│              프로토타입 데이터는 이 PC에만 저장됩니다.                │
 │                                                                      │
-│             Prototype data stays only on this PC.                    │
-│                                                                      │
-│                         [ Continue ]          Quit                    │
+│                         [ 계속 ]             종료                    │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-The privacy explanation is the primary content, not a checkbox buried in legal
-copy. `Continue` does not start tracking.
+개인정보 안내가 주된 내용이다. 법률 문구 속에 묻힌 체크박스로 처리하지 않는다. `Continue`를 눌러도 활동 기록은 시작되지 않는다.
 
 ## B. Main Town
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────┐
-│ Restore Workshop  18/25                    Completed today 42 min  ⚙ │
+│ Workshop 복구  18/25                      오늘 완료 42분          ⚙  │
 │                                                                      │
-│                 trees                      [LOCKED AREA]              │
+│                 나무                           [잠긴 지역]            │
 │                                                                      │
 │       ┌─────────┐                   ┌─────────────────┐              │
-│       │  HOUSE  │       Mina        │ BROKEN WORKSHOP │              │
-│       │  light  │        ◕          │   boards/tools  │              │
+│       │   집    │       Mina        │ 부서진 Workshop │              │
+│       │  불빛   │        ◕          │  판자·도구      │              │
 │       └─────────┘       /|\          └─────────────────┘              │
-│            ╲             path                 ╱                       │
+│            ╲             길                   ╱                       │
 │             ╲───────────────────────────────╱                         │
-│                 Rumi               Noah            campfire          │
+│                 Rumi               Noah            모닥불            │
 │                  ◕                  ◕                 *              │
 │                                                                      │
-│                                                        [ Focus ]     │
+│                                                       [ Focus ]      │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-- Buildings and characters occupy most of the screen.
-- Project and daily time are quiet text, never dashboard cards.
-- Workshop is both a world object and the entry point to Focus Setup.
+- 화면 대부분을 건물과 캐릭터가 차지한다.
+- 프로젝트와 일일 시간은 조용한 글자로만 표시하고 대시보드 카드로 만들지 않는다. 일일 시간은 세션 종료일의 현지 날짜 기준이다.
+- Workshop은 월드의 건물이면서 Focus 설정을 여는 진입점이다.
 
-## C. Focus Setup
+## C. Focus 설정
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
-│ RESTORE WORKSHOP                                      [×]    │
-│ Mina • Builder                                               │
-│ Mina wants to restore the abandoned workshop.                │
+│ WORKSHOP 복구                                          [×]    │
+│ Mina • 건축가                                                │
+│ Mina가 버려진 작업장을 복구하고 싶어 해요.                    │
 │                                                              │
-│ Progress                     18 / 25 Focus                    │
+│ 진행                         18 / 25 Focus                    │
 │                                                              │
-│ Duration                     Apps for this session            │
-│ [● 25] [45] [60]            [ Any app                 ▾ ]    │
+│ 시간                       이번 세션에서 사용할 앱             │
+│ [● 25] [45] [60]            [ 모든 앱                 ▾ ]    │
 │                                                              │
-│ How should Mina stay with you?                               │
+│ Mina가 어떤 모습으로 곁에 있을까요?                           │
 │ ┌────────────┐  ┌────────────┐  ┌────────────┐               │
 │ │● Companion │  │○ Hidden    │  │○ Ghost     │               │
-│ │small room  │  │no visuals  │  │soft overlay│               │
+│ │작은 방     │  │화면 표시 없음│ │반투명 표시 │               │
 │ └────────────┘  └────────────┘  └────────────┘               │
-│ Same session. Same progress. Choose what feels comfortable.  │
+│ 같은 세션, 같은 진행. 편한 표시 방식을 선택하세요.             │
 │                                                              │
-│                         [ Start Focus ]                       │
+│                         [ Focus 시작 ]                        │
 └──────────────────────────────────────────────────────────────┘
 ```
 
-Mode cards use equal size, weight, and neutral descriptions. There is no badge
-such as “recommended” or “best rewards.”
+모드 카드는 크기와 강조 정도가 같다. “추천”이나 “보상 증가” 배지를 붙이지 않는다. 현재 Ghost는 일반 Focus에서 선택할 수 없고 QA 미리보기만 가능하다.
 
-## D. Companion Window
+## D. Companion 창
 
-Logical size: 360 × 200.
+논리 크기: 360 × 200.
 
 ```text
 ┌──────────────────────────────────────────┐
-│       cloud       ┌────────┐        lamp │
-│                   │ window │          ●  │
-│                   └────────┘             │
+│       구름       ┌────────┐        램프  │
+│                  │   창   │          ●   │
+│                  └────────┘              │
 │                                          │
-│       plant        Mina 🔨               │
-│        ♧         ┌──────────┐      stool │
-│                  │workbench │        ▱   │
+│       식물        Mina 🔨                │
+│        ♧         ┌──────────┐      의자  │
+│                  │  작업대  │        ▱   │
 │──────────────────┴──────────┴────────────│
 │ Workshop                             18:34│
 └──────────────────────────────────────────┘
 ```
 
-- Remaining time is secondary, small, and non-urgent.
-- The empty background is the drag zone.
-- Closing the window changes the display to Hidden.
+- 남은 시간은 작고 급하지 않게 보조 정보로 표시한다.
+- 비어 있는 배경이 드래그 영역이다.
+- 창을 닫으면 Hidden으로 전환한다.
 
-## E. Ghost Overlay
+## E. Ghost 오버레이
 
-Window size: 240 × 180; visible content about 120 × 100.
+창 크기: 240 × 180. 보이는 콘텐츠는 약 120 × 100.
 
 ```text
-        transparent native window boundary
+       투명한 네이티브 창의 경계
       ┌──────────────────────────────┐
       │                              │
-      │                  · spark     │
+      │                  · 반짝임    │
       │             Mina 🔨          │
       │          ───────────         │
-      │             shadow           │
+      │             그림자           │
       │                              │
       └──────────────────────────────┘
 
-      no controls • no text • no input
+      조작 없음 • 글 없음 • 입력 가로채기 없음
 ```
 
-The boundary is never rendered. All click, drag, scroll, hover, and keyboard
-input belongs to the application underneath.
+경계선은 실제로 그리지 않는다. 모든 클릭·드래그·스크롤·호버·키보드 입력은 아래에 놓인 앱으로 전달돼야 한다. 이 동작은 내보낸 Windows 빌드에서 검증할 때까지 일반 Focus에 적용하지 않는다.
 
-## F. Hidden / Tray
+## F. Hidden과 트레이
 
-There is no DeskTown surface on screen.
+화면에 DeskTown 창이 나타나지 않는다.
 
 ```text
-Windows notification area
+Windows 알림 영역
 ┌──────────────────────────────┐
 │ DeskTown • Focus             │
-│ Open DeskTown                │
-│ Display                  ▸   │
-│ Companion Scale          ▸   │
-│ Ghost Position           ▸   │
-│ Ghost Opacity            ▸   │
-│ Audio                     ✓  │
+│ DeskTown 열기                │
+│ 표시                     ▸   │
+│ Companion 배율           ▸   │
+│ Ghost 위치              ▸   │
+│ Ghost 불투명도           ▸   │
+│ 음향                     ✓  │
 │ ───────────────────────────  │
-│ End Focus…                   │
-│ Quit…                        │
+│ Focus 종료…                  │
+│ 앱 종료…                    │
 └──────────────────────────────┘
 ```
 
-## G. Passive completion
+## G. 조용한 완료 알림
 
 ```text
 ┌────────────────────────────────────────┐
 │ DeskTown                               │
-│ Mina finished her work.                │
-│ The Workshop has changed.              │
-│                          Open DeskTown  │
+│ Mina가 일을 마쳤어요.                  │
+│ Workshop이 달라졌어요.                 │
+│                          DeskTown 열기  │
 └────────────────────────────────────────┘
 ```
 
-No countdown, urgency, or automatic window opening.
+카운트다운이나 긴박감, 자동 창 열기는 없다. 현재 런타임 영문 알림은 `Mina finished her work. The Workshop has changed.`이다.
 
-## H. Reward Reveal beats
+## H. 보상 연출의 세 장면
 
 ```text
-Beat 1                  Beat 2                  Beat 3
-Old Workshop            Mina's last work        Completed Workshop
-┌─────────────┐          ┌─────────────┐         ┌─────────────┐
-│ loose boards│          │   Mina 🔨   │         │ window  ✦  │
-│ dark window │   →      │ hammer × 2  │   →     │ smoke  ~   │
-│ no smoke    │          │ then still  │         │ warm light  │
-└─────────────┘          └─────────────┘         └─────────────┘
+장면 1                 장면 2                 장면 3
+이전 Workshop          Mina의 마지막 작업     완성된 Workshop
+┌─────────────┐         ┌─────────────┐        ┌─────────────┐
+│ 헐거운 판자 │         │   Mina 🔨   │        │ 창문    ✦  │
+│ 어두운 창문 │   →     │ 망치질 두 번│   →    │ 연기    ~  │
+│ 연기 없음   │         │ 이후 멈춤   │        │ 따뜻한 불빛 │
+└─────────────┘         └─────────────┘        └─────────────┘
 ```
 
-The world state is committed before Beat 1. Animation only presents the change.
+장면 1이 시작되기 전에 월드 상태를 저장한다. 애니메이션은 이미 확정된 변화를 보여줄 뿐이다.
 
-## I. Discovery Event
+## I. 발견 이벤트
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
-│ WHILE YOU WERE AWAY                                         │
+│ 당신이 없는 동안                                              │
 │                                                              │
-│          [ old railway map ]                                 │
+│                    [ 오래된 철도 지도 ]                        │
 │                                                              │
-│ Mina found an old railway map beneath the workshop floor.    │
+│ Mina가 Workshop 바닥 아래에서 오래된 철도 지도를 찾았어요.     │
 │                                                              │
-│ Rumi: “I wonder where this leads…”                           │
+│ Rumi: “어디로 이어지는 걸까…”                                  │
 │                                                              │
-│ NEW PROJECT                                                  │
-│ Explore the Old Railway                         0 / 45 Focus │
-│ Coming in the next build                                     │
-│                                                [ Continue ]   │
+│ 새 프로젝트                                                   │
+│ 오래된 철도 탐험                                 0 / 45 Focus │
+│ 다음 빌드에서 만나요                                           │
+│                                                [ 계속 ]        │
 └──────────────────────────────────────────────────────────────┘
 ```
 
-## J. Settings panel
+## J. 설정 패널
 
 ```text
 ┌───────────────────────────────────────────┐
-│ Settings                              [×] │
+│ 설정                                  [×] │
 │                                           │
-│ Display      Companion  Hidden  Ghost     │
-│ Companion    Scale 100%   Reset position  │
-│ Ghost        Bottom Right   Opacity 65%   │
-│ Audio        On                            │
+│ 표시       Companion  Hidden  Ghost       │
+│ Companion  배율 100%    위치 초기화       │
+│ Ghost      오른쪽 아래  불투명도 65%      │
+│ 음향       켜짐                          │
 │                                           │
-│ Privacy & activity tracking               │
-│ View what DeskTown records                 │
-│ Open save folder                           │
+│ 개인정보와 활동 기록                      │
+│ DeskTown이 기록하는 내용 보기             │
+│ 저장 폴더 열기                            │
 │                                           │
-│                              [ Done ]      │
+│                              [ 완료 ]     │
 └───────────────────────────────────────────┘
 ```
 
-## Responsive and DPI notes
+## 화면 크기와 DPI
 
-- Main Town supports 1280 × 720 minimum and scales composition while preserving
-  the world-first hierarchy.
-- Companion uses 360 × 200 logical pixels and integer content scale presets.
-- Ghost's pixel art uses integer scale inside a DPI-aware native window; corner
-  placement uses each monitor's work area, not the virtual desktop origin.
-- At 125% and 150% DPI, UI text may scale smoothly while sprite pixels remain
-  nearest-neighbor and aligned to whole rendered pixels.
+- Main Town은 최소 1280 × 720을 지원하며 월드 중심의 위계를 유지하면서 크기를 조절한다.
+- Companion은 논리 크기 360 × 200과 정수 콘텐츠 배율 프리셋을 사용한다.
+- Ghost의 픽셀 아트는 DPI를 고려한 네이티브 창 안에서 정수 배율로 표시한다. 모서리 위치는 가상 데스크톱 원점이 아니라 각 모니터의 작업 영역을 기준으로 계산한다.
+- DPI 125%, 150%에서는 UI 글자를 부드럽게 확대할 수 있지만 스프라이트 픽셀은 최근접 보간으로 정확한 렌더링 픽셀 경계에 맞춘다.
