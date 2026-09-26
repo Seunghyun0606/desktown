@@ -122,12 +122,13 @@ jobs:
         run: |
           python scripts/assets/create_smoke_art.py
           python scripts/assets/validate_catalog.py
-          godot --headless --editor --path . --quit-after 5
+          godot --headless --editor --import --path .
+          dotnet build DeskTown.sln --configuration Release --no-restore
           DESKTOWN_CI_ART_SMOKE=1 godot --headless --path . --quit-after 120 2>&1 | tee build/catalog-art-smoke.log
-          if rg -n '^ERROR:|SCRIPT ERROR:|DESKTOWN_CI_ART_SMOKE_FAILED' build/catalog-art-smoke.log; then
+          if grep -En '^ERROR:|SCRIPT ERROR:|DESKTOWN_CI_ART_SMOKE_FAILED' build/catalog-art-smoke.log; then
             exit 1
           fi
-          rg -q 'DESKTOWN_CI_ART_SMOKE_OK' build/catalog-art-smoke.log
+          grep -q 'DESKTOWN_CI_ART_SMOKE_OK' build/catalog-art-smoke.log
 
   windows-export-smoke:
     name: Launch exported Windows build
