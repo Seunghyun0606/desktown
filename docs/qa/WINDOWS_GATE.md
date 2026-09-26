@@ -12,14 +12,18 @@ visible window behavior, the normal Windows save directory, or real sleep/lock.
 
 1. On the [CI Actions page](https://github.com/Seunghyun0606/desktown/actions/workflows/ci.yml),
    open the latest **successful `main`** run. Record its commit SHA and run URL.
-2. Download `desktown-windows-prototype-package`, verify the versioned ZIP with
-   `SHA256SUMS.txt`, extract it, and launch `DeskTown.exe` on Windows 11. The
-   older `desktown-windows-foundation` artifact is the raw export. Do not run
-   the executable from inside the ZIP.
-3. Use a separate Windows test account or back up the existing local DeskTown
-   save before destructive recovery tests. Record the Windows version, monitor
-   resolutions/layout, and DPI scaling. Keep one artifact and one save baseline
-   per test pass.
+2. Download `desktown-windows-qa-kit`, extract the artifact, and run
+   `./preflight.ps1 -RunSmoke` in PowerShell. It checks the versioned ZIP,
+   extracts the app, verifies the full file manifest, and tests an isolated
+   save/restart/recovery cycle without touching your personal save. Launch
+   `./app/DeskTown.exe` on Windows 11. The `desktown-windows-prototype-package`
+   artifact remains the distribution ZIP; `desktown-windows-foundation` is the
+   raw export. Do not run the executable from inside the ZIP.
+3. Run `./collect-evidence.ps1 -Scaling '100%'` with the laptop's actual Windows
+   scale. It writes a local result template with build SHA, OS version and
+   monitor bounds. Use a separate Windows test account or back up the existing
+   DeskTown save before destructive recovery tests. Keep one artifact and one
+   save baseline per test pass; do not upload personal saves or work contents.
 
 The first run displays privacy/onboarding copy, then Town. Town opens Focus
 Setup. Focus Setup offers Companion or Hidden; Ghost is disabled. The Tray has
@@ -34,6 +38,7 @@ award progress. F8 cycles placeholder Companion clips under the same condition.
 | First run | Complete onboarding; open Focus Setup | Tracking starts only after Start; process selection is optional | |
 | Shared session | Start 25-minute Companion Focus; switch to Hidden and back from Tray | Same elapsed Focus, Energy, and Workshop progress; no duplicate session | |
 | Passive completion | Finish 25 minutes while another app is active | Town stays hidden; notice or Tray status appears without stealing focus | |
+| Quiet completion | Tray → turn off `Completion notice`, finish another session | No notice window; Tray says Work complete and Open remains available; preference survives restart | |
 | Notice Open action | Click `Open DeskTown` on the completion notice | Existing Town opens once, without another process or reward | |
 | Deferred reward | Open DeskTown from Tray after completion | Workshop reveal and Railway teaser appear once, in order | |
 | Restart at reveal | Exit after completion notice, during reveal, and during discovery in separate runs | Saved state resumes the correct pending step once | |

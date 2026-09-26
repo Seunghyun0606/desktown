@@ -39,7 +39,8 @@ internal static class ExportedSaveSmoke
                     {
                         CompanionScalePercent = 125,
                         AudioEnabled = false,
-                        ReducedMotion = true
+                        ReducedMotion = true,
+                        CompletionNoticeEnabled = false
                     });
                     await game.StartAsync(TimeSpan.FromMinutes(25), [], DisplayMode.Hidden);
                     await Task.Delay(1100);
@@ -53,6 +54,7 @@ internal static class ExportedSaveSmoke
                         game.PendingRecovery?.CountedDuration > TimeSpan.Zero &&
                         game.Settings.CompanionScalePercent == 125 &&
                         !game.Settings.AudioEnabled && game.Settings.ReducedMotion &&
+                        !game.Settings.CompletionNoticeEnabled &&
                         game.Settings.DisplayMode == nameof(DisplayMode.Hidden),
                         "The exported app did not restore its saved settings and Focus checkpoint.");
                     await game.ResolveRecoveryAsync(RecoveryChoice.EndAtCheckpoint);
@@ -64,6 +66,7 @@ internal static class ExportedSaveSmoke
                     Require(game.OnboardingCompleted && game.PendingRecovery is null &&
                         game.ActiveSession is null && game.Settings.CompanionScalePercent == 125 &&
                         !game.Settings.AudioEnabled && game.Settings.ReducedMotion &&
+                        !game.Settings.CompletionNoticeEnabled &&
                         game.Settings.DisplayMode == nameof(DisplayMode.Hidden) &&
                         game.TotalFocus > TimeSpan.Zero,
                         "The recovered save was not durable across the next launch.");

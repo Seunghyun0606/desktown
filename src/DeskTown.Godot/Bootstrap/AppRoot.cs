@@ -21,6 +21,11 @@ public partial class AppRoot : Node
 
     public override void _Ready()
     {
+        if (System.Environment.GetEnvironmentVariable("DESKTOWN_CI_ART_SMOKE") == "1")
+        {
+            Callable.From(() => CatalogArtSmoke.Run(GetTree())).CallDeferred();
+            return;
+        }
         if (System.Environment.GetEnvironmentVariable("DESKTOWN_CI_SMOKE") == "1")
         {
             _ = ExportedSaveSmoke.RunAsync(GetTree());

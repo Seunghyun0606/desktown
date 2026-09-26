@@ -89,6 +89,7 @@ jobs:
         run: |
           dotnet restore DeskTown.sln
           dotnet build DeskTown.sln --configuration Release --no-restore
+          dotnet build DeskTown.csproj --configuration Debug --no-restore
 
       - name: Install Godot .NET and export templates
         run: bash scripts/ci/install-godot.sh
@@ -100,7 +101,7 @@ jobs:
         run: |
           mkdir -p build
           godot --headless --path . --quit-after 120 2>&1 | tee build/runtime-smoke.log
-          if rg -n '^ERROR:|SCRIPT ERROR:' build/runtime-smoke.log; then
+          if grep -En '^ERROR:|SCRIPT ERROR:' build/runtime-smoke.log; then
             exit 1
           fi
 
@@ -116,6 +117,42 @@ jobs:
           path: build/windows/**
           if-no-files-found: error
 
+  catalog-art-smoke:
+    name: Smoke assigned catalog art
+    needs: build-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.425
+
+      - name: Restore and build C#
+        run: |
+          dotnet restore DeskTown.sln
+          dotnet build DeskTown.csproj --configuration Debug --no-restore
+
+      - name: Install Godot .NET and export templates
+        run: bash scripts/ci/install-godot.sh
+
+      # The synthetic assets exist only in this disposable checkout, before its
+      # first Godot import. The exported Windows build stays free of test art.
+      - name: Smoke assigned catalog art in Town and Companion scenes
+        run: |
+          python scripts/assets/create_smoke_art.py
+          python scripts/assets/validate_catalog.py
+          godot --headless --editor --path . --quit-after 120
+          mkdir -p build
+          DESKTOWN_CI_ART_SMOKE=1 godot --headless --path . --quit-after 120 2>&1 | tee build/catalog-art-smoke.log
+          if grep -En '^ERROR:|SCRIPT ERROR:|DESKTOWN_CI_ART_SMOKE_FAILED' build/catalog-art-smoke.log; then
+            exit 1
+          fi
+          grep -q 'DESKTOWN_CI_ART_SMOKE_OK' build/catalog-art-smoke.log
+
   windows-export-smoke:
     name: Launch exported Windows build
     needs: godot-windows-export
@@ -123,6 +160,8 @@ jobs:
     timeout-minutes: 8
 
     steps:
+      - uses: actions/checkout@v4
+
       - name: Download exported build
         uses: actions/download-artifact@v4
         with:
@@ -266,4 +305,28 @@ jobs:
         with:
           name: desktown-windows-prototype-package
           path: build/package/*
+          if-no-files-found: error
+
+      - name: Assemble and verify laptop QA kit
+        shell: pwsh
+        run: |
+          $kit = 'build/qa-kit'
+          New-Item -ItemType Directory -Path $kit | Out-Null
+          Copy-Item build/package/* $kit
+          Copy-Item scripts/qa/*.ps1 $kit
+          Copy-Item scripts/qa/QA-README.md $kit
+          Copy-Item docs/qa/WINDOWS_GATE.md $kit
+          Copy-Item build/demo-saves (Join-Path $kit 'demo-saves') -Recurse
+          & (Join-Path $kit 'preflight.ps1') -KitDirectory $kit -RunSmoke
+          & (Join-Path $kit 'collect-evidence.ps1') -KitDirectory $kit -Scaling 'CI' -OutputPath (Join-Path $env:RUNNER_TEMP 'desktown-qa-results.md')
+          if (-not (Select-String -Path (Join-Path $env:RUNNER_TEMP 'desktown-qa-results.md') -Pattern $env:GITHUB_SHA -Quiet)) {
+            throw 'QA result template does not identify the build.'
+          }
+          Remove-Item (Join-Path $kit 'app') -Recurse -Force
+
+      - name: Upload laptop QA kit
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktown-windows-qa-kit
+          path: build/qa-kit/*
           if-no-files-found: error
