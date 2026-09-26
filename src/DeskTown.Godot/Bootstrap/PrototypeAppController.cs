@@ -139,7 +139,7 @@ public partial class PrototypeAppController : Node
 
     public override void _ExitTree()
     {
-        if (_systemPauseEvents is null) return;
+        if (!OperatingSystem.IsWindows() || _systemPauseEvents is null) return;
         _systemPauseEvents.Changed -= OnSystemPauseChanged;
         _systemPauseEvents.Dispose();
     }
