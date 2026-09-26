@@ -29,7 +29,7 @@ public sealed record ActivitySample
                 "An activity sample cannot be active and idle at the same time.");
         }
 
-        ProcessName = NormalizeProcessName(processName);
+        ProcessName = ProcessNamePolicy.Normalize(processName);
         ActiveDuration = activeDuration;
         IdleDuration = idleDuration;
     }
@@ -49,18 +49,4 @@ public sealed record ActivitySample
     public static ActivitySample Unknown { get; } =
         new(UnknownProcessName, TimeSpan.Zero, TimeSpan.Zero);
 
-    private static string NormalizeProcessName(string? processName)
-    {
-        if (string.IsNullOrWhiteSpace(processName))
-        {
-            return UnknownProcessName;
-        }
-
-        var candidate = processName.Trim();
-        return candidate.Contains('/')
-            || candidate.Contains('\\')
-            || candidate.Any(char.IsControl)
-                ? UnknownProcessName
-                : candidate;
-    }
 }

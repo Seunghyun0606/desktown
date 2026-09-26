@@ -23,6 +23,7 @@ public sealed class WindowsProcessCatalogTests
     [InlineData("C:\\Program Files\\Code.exe")]
     [InlineData("/usr/bin/code")]
     [InlineData("bad\nname")]
+    [InlineData("bad:name")]
     public void CatalogRejectsValuesThatCouldExposePathsOrControlData(string unsafeName)
     {
         var source = new FakeRunningProcessSource
@@ -33,6 +34,18 @@ public sealed class WindowsProcessCatalogTests
         var names = new WindowsProcessCatalog(source).GetRunningProcessNames();
 
         Assert.Equal(new[] { "code" }, names);
+    }
+
+    [Fact]
+    public void CatalogExcludesNamesThatTheSaveCannotPersist()
+    {
+        var source = new FakeRunningProcessSource
+        {
+            ProcessNames = new[] { new string('x', 129), "code" }
+        };
+
+        Assert.Equal(new[] { "code" },
+            new WindowsProcessCatalog(source).GetRunningProcessNames());
     }
 
     [Fact]

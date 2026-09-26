@@ -1,3 +1,4 @@
+using DeskTown.Application.Activity;
 using DeskTown.Application.Ports;
 
 namespace DeskTown.Platform.Windows.Processes;
@@ -26,7 +27,7 @@ public sealed class WindowsProcessCatalog : IProcessCatalog
         {
             return _processSource
                 .ReadProcessNames()
-                .Where(IsBareProcessName)
+                .Where(ProcessNamePolicy.IsPersistable)
                 .Select(name => name.Trim())
                 .Distinct(StringComparer.OrdinalIgnoreCase)
                 .OrderBy(name => name, StringComparer.OrdinalIgnoreCase)
@@ -36,14 +37,6 @@ public sealed class WindowsProcessCatalog : IProcessCatalog
         {
             return Array.Empty<string>();
         }
-    }
-
-    private static bool IsBareProcessName(string? processName)
-    {
-        return !string.IsNullOrWhiteSpace(processName)
-            && !processName.Contains('/')
-            && !processName.Contains('\\')
-            && !processName.Any(char.IsControl);
     }
 
     private static bool IsRecoverableCatalogFailure(Exception exception)

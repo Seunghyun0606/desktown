@@ -18,13 +18,20 @@ The [backlog](../BACKLOG.md) remains the task inventory, and the
   Windows, and tests assigned synthetic art in Town and Companion in a
   separate checkout from the production export.
 - Focus simulation, Energy, Workshop, and pending reveal are independent of
-  the presentation. The Town ambient timer and Mina placeholder frame processing
+  the presentation. Windows session/power events suspend Focus at the last
+  observed tick; the Town ambient timer and Mina placeholder frame processing
   stop while their views are hidden.
 - During Focus the main Town window is hidden. Hidden removes the Companion
   surface. Ghost is disabled for normal Focus until the Windows input gate.
 
 These checks do **not** prove visible focus behavior, cross-application pointer
-input, mixed DPI, sleep/lock, normal `user://` save placement, or visual quality.
+input, mixed DPI, real Windows sleep/lock delivery, normal `user://` save
+placement, or visual quality.
+
+The HUD's `Completed today` total uses the computer's local calendar day and
+assigns a completed session to its end date. The V1 save's UTC daily summary
+stays unchanged for compatibility. Exact splitting of a session across midnight
+would require persisting counted intervals and belongs to a later schema.
 
 ## Prioritized TODO
 

@@ -119,6 +119,15 @@ public sealed class WindowsActivityTrackerTests
     }
 
     [Fact]
+    public void LongForegroundNameFallsBackToUnknownBeforeSave()
+    {
+        var resolver = new FakeProcessNameResolver { ProcessName = new string('x', 129) };
+        var sample = CreateTracker(processNameResolver: resolver).Sample();
+
+        Assert.Equal(ActivitySample.UnknownProcessName, sample.ProcessName);
+    }
+
+    [Fact]
     public void LastInputFailureReturnsUnknownAndSkipsForegroundRead()
     {
         var native = new FakeWindowsActivityNativeApi { IdleAvailable = false };

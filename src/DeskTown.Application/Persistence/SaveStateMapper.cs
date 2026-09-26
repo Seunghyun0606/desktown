@@ -1,3 +1,4 @@
+using DeskTown.Application.Activity;
 using DeskTown.Application.Sessions;
 using DeskTown.Domain.Focus;
 using DeskTown.Domain.Projects;
@@ -305,13 +306,12 @@ public static class SaveStateMapper
 
     private static string ProcessName(string? name)
     {
-        if (string.IsNullOrWhiteSpace(name) || name.Length > 128
-            || name.Any(c => char.IsControl(c) || c is '/' or '\\' or ':'))
+        if (!ProcessNamePolicy.IsPersistable(name))
         {
             throw new InvalidDataException("Process name must be a bare, non-sensitive name.");
         }
 
-        return name;
+        return name!;
     }
 
     private static IReadOnlyList<string> ProcessNames(List<string>? names) =>

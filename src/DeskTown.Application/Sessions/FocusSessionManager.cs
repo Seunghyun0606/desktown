@@ -139,6 +139,20 @@ public sealed class FocusSessionManager
         return session;
     }
 
+    /// <summary>Discard the unobserved tail when Windows locks or suspends.</summary>
+    public FocusSession SuspendAtLastTick()
+    {
+        var session = RequireActiveSession();
+        if (session.Status != FocusSessionStatus.Running)
+            throw new FocusSessionManagerException("Only a running session can be suspended.");
+
+        var nowUtc = ReadUtcNow();
+        session.Suspend();
+        _lastMonotonicElapsed = null;
+        Publish(new FocusSessionSuspended(session.Id, nowUtc, session.CountedDuration));
+        return session;
+    }
+
     public FocusSession Stop(TimeSpan idleSinceLastTick)
     {
         var session = RequireActiveSession();

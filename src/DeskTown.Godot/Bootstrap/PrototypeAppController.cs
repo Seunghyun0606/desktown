@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using DeskTown.Application.Display;
 using DeskTown.Application.Lifecycle;
 using DeskTown.Application.Persistence;
@@ -5,6 +6,7 @@ using DeskTown.Application.Runtime;
 using DeskTown.Domain.Focus;
 using DeskTown.Domain.Projects;
 using DeskTown.Platform.Windows.Activity;
+using DeskTown.Platform.Windows.Lifecycle;
 using DeskTown.Platform.Windows.Processes;
 using DeskTown.Presentation.Display;
 using global::Godot;
@@ -23,6 +25,11 @@ public partial class PrototypeAppController : Node
     private TimeSpan _checkpointInterval;
     private bool _busy;
     private bool _revealing;
+    private readonly ConcurrentQueue<(SystemPauseReason Reason, bool Paused)> _systemEvents = new();
+    private readonly SystemPauseState _pauseState = new();
+    private WindowsSystemPauseEvents? _systemPauseEvents;
+    private bool _processingSystemEvents;
+    private DateOnly _shownLocalDay;
 
     public bool IsFocusActive => _game?.ActiveSession is not null;
 
@@ -35,6 +42,18 @@ public partial class PrototypeAppController : Node
 
     public void Start()
     {
+        if (OperatingSystem.IsWindows() && DisplayServer.GetName() != "headless")
+        {
+            try
+            {
+                _systemPauseEvents = new WindowsSystemPauseEvents();
+                _systemPauseEvents.Changed += OnSystemPauseChanged;
+            }
+            catch (Exception error)
+            {
+                GD.PrintErr($"DeskTown system lifecycle unavailable: {error.GetType().Name}");
+            }
+        }
         var tray = Root<TrayHost>("TrayHost");
         tray.OpenRequested += OpenTown;
         tray.ModeRequested += mode => _ = RunAsync(() => ChangeModeAsync(mode));
@@ -106,6 +125,47 @@ public partial class PrototypeAppController : Node
         _ = InitializeAsync();
     }
 
+    public override void _Process(double delta)
+    {
+        if (!_processingSystemEvents && !_systemEvents.IsEmpty)
+            _ = ProcessSystemEventsAsync();
+        if (_game is not null && _game.TodayDisplayDate != _shownLocalDay)
+        {
+            _shownLocalDay = _game.TodayDisplayDate;
+            var town = Root<TownScene>("MainShell/Town");
+            if (town.Visible) town.Bind(_game.World.Town, _game.TodayFocus);
+        }
+    }
+
+    public override void _ExitTree()
+    {
+        if (_systemPauseEvents is null) return;
+        _systemPauseEvents.Changed -= OnSystemPauseChanged;
+        _systemPauseEvents.Dispose();
+    }
+
+    private void OnSystemPauseChanged(SystemPauseReason reason, bool paused) =>
+        _systemEvents.Enqueue((reason, paused));
+
+    private async Task ProcessSystemEventsAsync()
+    {
+        _processingSystemEvents = true;
+        try
+        {
+            while (_systemEvents.TryDequeue(out var change))
+            {
+                _pauseState.Set(change.Reason, change.Paused);
+                if (_game?.ActiveSession is not { } session) continue;
+                if (_pauseState.IsPaused && session.Status == FocusSessionStatus.Running)
+                    await _game.SuspendForSystemAsync();
+                else if (!_pauseState.IsPaused && session.Status == FocusSessionStatus.Suspended)
+                    await _game.ResumeForSystemAsync();
+            }
+        }
+        catch (Exception error) { ShowError(error); }
+        finally { _processingSystemEvents = false; }
+    }
+
     public void CompanionClosed()
     {
         _display?.CompanionCloseRequested();
@@ -164,6 +224,10 @@ public partial class PrototypeAppController : Node
         IReadOnlyCollection<string> apps, DisplayMode mode)
     {
         if (_game is null || IsFocusActive || mode == DisplayMode.Ghost) return;
+        if (OperatingSystem.IsWindows() && _systemPauseEvents is null)
+            throw new InvalidOperationException("Windows session monitoring is unavailable.");
+        if (_pauseState.IsPaused)
+            throw new InvalidOperationException("Wait until Windows is active to start Focus.");
         await _game.StartAsync(duration, apps, mode);
         Root<FocusSetup>("MainShell/FocusSetup").Visible = false;
         Root<TownScene>("MainShell/Town").Visible = false;
@@ -176,7 +240,7 @@ public partial class PrototypeAppController : Node
 
     private async Task TickAsync()
     {
-        if (_busy || _game?.ActiveSession is null) return;
+        if (_busy || _game?.ActiveSession is not { Status: FocusSessionStatus.Running }) return;
         _busy = true;
         try
         {

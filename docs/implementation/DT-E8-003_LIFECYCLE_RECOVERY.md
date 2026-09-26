@@ -23,12 +23,13 @@ acquires the gate before initializing services; the second instance forwards
 the request and exits. An Open request focuses the existing window and does
 not create a Focus session.
 
-`RecoveryPrompt.tscn` is a small reusable Resume/End decision view. The current
-foundation shell does not yet construct a running Focus UI, so the prompt's
-choice event is not bound to the lifecycle coordinator in AppRoot. The
-composition hookup and recovery banner belong with Focus Setup/Main shell;
-this task remains in review until an exported Windows run covers crash,
-sleep/lock, restart, duplicate launch and the actual prompt workflow.
+`RecoveryPrompt.tscn` is connected to the current Focus UI. On Windows the
+host listens for session lock/disconnect and system suspend, and immediately
+checkpoints a Suspended session at its last observed tick. It discards the
+unobserved interval so a delayed event cannot award sleep time. Unlock and
+resume restart the monotonic baseline once all pause reasons clear. If the
+Windows event source cannot start, Focus cannot start. Real lock/sleep and
+input behavior still require the exported Windows gate.
 
 Automated tests cover a 15-second fake-clock cadence, failed save retry,
 two-hour offline resume, End-at-checkpoint idempotency, JSON restart

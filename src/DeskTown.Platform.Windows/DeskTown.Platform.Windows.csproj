@@ -7,5 +7,6 @@
   <ItemGroup>
     <ProjectReference Include="../DeskTown.Application/DeskTown.Application.csproj" />
     <ProjectReference Include="../DeskTown.Domain/DeskTown.Domain.csproj" />
+    <PackageReference Include="Microsoft.Win32.SystemEvents" />
   </ItemGroup>
 </Project>

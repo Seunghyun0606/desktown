@@ -150,6 +150,36 @@ public sealed class FocusSessionCoordinatorTests
     }
 
     [Fact]
+    public void SystemPauseDiscardsUnobservedTimeAndResumeStartsANewBaseline()
+    {
+        var context = CreateContext();
+        var session = context.Coordinator.StartFocus(SessionId(), TimeSpan.FromMinutes(25));
+        context.Advance(TimeSpan.FromSeconds(1));
+        context.Coordinator.Tick();
+
+        context.Advance(TimeSpan.FromHours(2));
+        context.Coordinator.SuspendAtLastTick();
+        Assert.Equal(TimeSpan.FromSeconds(1), session.CountedDuration);
+        Assert.Equal(FocusSessionStatus.Suspended, session.Status);
+
+        context.Advance(TimeSpan.FromHours(1));
+        context.Coordinator.Resume();
+        context.Advance(TimeSpan.FromSeconds(1));
+        context.Coordinator.Tick();
+        Assert.Equal(TimeSpan.FromSeconds(2), session.CountedDuration);
+    }
+
+    [Fact]
+    public void UnpersistableIntendedProcessNameBecomesAnyApp()
+    {
+        var context = CreateContext();
+        var session = context.Coordinator.StartFocus(SessionId(), TimeSpan.FromMinutes(25),
+            new[] { new string('x', 129) });
+
+        Assert.Empty(session.IntendedProcessNames);
+    }
+
+    [Fact]
     public void SuspendRecordsOnlyTheAppliedIdleInterval()
     {
         var context = CreateContext();
