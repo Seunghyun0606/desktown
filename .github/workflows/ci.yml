@@ -116,14 +116,36 @@ jobs:
           path: build/windows/**
           if-no-files-found: error
 
-      # The tested export above contains only the unassigned production catalog.
-      # Synthetic PNGs are added afterward in this disposable checkout.
+  catalog-art-smoke:
+    name: Smoke assigned catalog art
+    needs: build-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.425
+
+      - name: Restore and build C#
+        run: |
+          dotnet restore DeskTown.sln
+          dotnet build DeskTown.sln --configuration Release --no-restore
+
+      - name: Install Godot .NET and export templates
+        run: bash scripts/ci/install-godot.sh
+
+      # The synthetic assets exist only in this disposable checkout, before its
+      # first Godot import. The exported Windows build stays free of test art.
       - name: Smoke assigned catalog art in Town and Companion scenes
         run: |
           python scripts/assets/create_smoke_art.py
           python scripts/assets/validate_catalog.py
-          godot --headless --editor --import --path .
-          dotnet build DeskTown.sln --configuration Release --no-restore
+          godot --headless --editor --path . --quit-after 120
+          mkdir -p build
           DESKTOWN_CI_ART_SMOKE=1 godot --headless --path . --quit-after 120 2>&1 | tee build/catalog-art-smoke.log
           if grep -En '^ERROR:|SCRIPT ERROR:|DESKTOWN_CI_ART_SMOKE_FAILED' build/catalog-art-smoke.log; then
             exit 1
