@@ -89,6 +89,7 @@ jobs:
         run: |
           dotnet restore DeskTown.sln
           dotnet build DeskTown.sln --configuration Release --no-restore
+          dotnet build DeskTown.csproj --configuration Debug --no-restore
 
       - name: Install Godot .NET and export templates
         run: bash scripts/ci/install-godot.sh
@@ -100,7 +101,7 @@ jobs:
         run: |
           mkdir -p build
           godot --headless --path . --quit-after 120 2>&1 | tee build/runtime-smoke.log
-          if rg -n '^ERROR:|SCRIPT ERROR:' build/runtime-smoke.log; then
+          if grep -En '^ERROR:|SCRIPT ERROR:' build/runtime-smoke.log; then
             exit 1
           fi
 
@@ -133,7 +134,7 @@ jobs:
       - name: Restore and build C#
         run: |
           dotnet restore DeskTown.sln
-          dotnet build DeskTown.sln --configuration Release --no-restore
+          dotnet build DeskTown.csproj --configuration Debug --no-restore
 
       - name: Install Godot .NET and export templates
         run: bash scripts/ci/install-godot.sh
@@ -159,6 +160,8 @@ jobs:
     timeout-minutes: 8
 
     steps:
+      - uses: actions/checkout@v4
+
       - name: Download exported build
         uses: actions/download-artifact@v4
         with:

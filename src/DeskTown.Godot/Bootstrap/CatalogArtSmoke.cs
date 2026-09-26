@@ -4,7 +4,7 @@ using global::Godot;
 
 namespace DeskTown.Presentation.Bootstrap;
 
-/// <summary>CI-only scene lookup with synthetic catalog assignments after export.</summary>
+/// <summary>CI-only scene lookup with synthetic catalog assignments.</summary>
 internal static class CatalogArtSmoke
 {
     public static void Run(SceneTree tree)

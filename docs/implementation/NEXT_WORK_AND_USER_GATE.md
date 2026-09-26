@@ -15,8 +15,8 @@ The [backlog](../BACKLOG.md) remains the task inventory, and the
   for a fixed date, opens all three states in the exported app, and creates an
   unsigned versioned Windows ZIP with a file manifest and SHA-256 checksum.
 - CI assembles a laptop QA kit, runs its isolated PowerShell preflight on
-  Windows, and tests assigned synthetic art in Town and Companion after the
-  unmodified production export has been uploaded.
+  Windows, and tests assigned synthetic art in Town and Companion in a
+  separate checkout from the production export.
 - Focus simulation, Energy, Workshop, and pending reveal are independent of
   the presentation. The Town ambient timer and Mina placeholder frame processing
   stop while their views are hidden.
@@ -59,9 +59,9 @@ Focus Energy. The 46-entry catalog validates the manifest. Mina's six clips
 resolve from one shared catalog in all three views; Town buildings, Noah/Rumi
 idle/read art, and six Companion props also resolve through scene binders with
 geometric fallback. All production files are currently unassigned. CI checks
-several assigned synthetic sheets in actual Godot scenes after exporting the
-unmodified prototype. Frame size and count are checked at runtime, while
-placement and pivots still need visual sign-off.
+several assigned synthetic sheets in actual Godot scenes in a separate checkout
+from the unmodified prototype export. Frame size and count are checked at
+runtime, while placement and pivots still need visual sign-off.
 Walking sheets, remaining environment/effects/tool art, and audio do not yet
 have runtime placement. The scene node bounds are still fixed, so a valid PNG
 can be off-center, obscure text, or appear too small at a chosen scale.

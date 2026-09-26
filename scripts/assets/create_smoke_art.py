@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create deterministic synthetic art in a disposable CI checkout after export."""
+"""Create deterministic synthetic art in a disposable CI checkout."""
 
 import json
 import struct
