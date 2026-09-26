@@ -53,7 +53,8 @@ public sealed class FocusSessionCoordinator
         TimeSpan targetDuration,
         IEnumerable<string>? intendedProcessNames = null)
     {
-        var session = FocusSession.Create(sessionId, targetDuration, intendedProcessNames);
+        var safeNames = intendedProcessNames?.Where(ProcessNamePolicy.IsPersistable);
+        var session = FocusSession.Create(sessionId, targetDuration, safeNames);
         _manager.Start(session);
         _activity.Reset();
         PublishCheckpoint(session);
@@ -134,6 +135,13 @@ public sealed class FocusSessionCoordinator
     public FocusSession Resume()
     {
         var session = _manager.Resume();
+        PublishCheckpoint(session);
+        return session;
+    }
+
+    public FocusSession SuspendAtLastTick()
+    {
+        var session = _manager.SuspendAtLastTick();
         PublishCheckpoint(session);
         return session;
     }

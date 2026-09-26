@@ -58,7 +58,7 @@ public sealed class WindowsActivityTracker : IActivityTracker
         {
             if (!_nativeApi.TryGetForegroundProcessId(out var processId)
                 || !_processNameResolver.TryResolve(processId, out var processName)
-                || !IsBareProcessName(processName))
+                || !ProcessNamePolicy.IsPersistable(processName))
             {
                 return ActivitySample.UnknownProcessName;
             }
@@ -83,13 +83,6 @@ public sealed class WindowsActivityTracker : IActivityTracker
             idleDuration = TimeSpan.Zero;
             return false;
         }
-    }
-
-    private static bool IsBareProcessName(string? processName)
-    {
-        return !string.IsNullOrWhiteSpace(processName)
-            && !processName.Contains('/')
-            && !processName.Contains('\\');
     }
 
     private static bool IsExpectedAccessFailure(Exception exception)

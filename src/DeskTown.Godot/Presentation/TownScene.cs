@@ -69,7 +69,7 @@ public partial class TownScene : Control
                 : $"Restore Workshop  {Math.Floor(snapshot.Progress.CountedDuration.TotalMinutes):0} / 25 Focus";
         GetNode<Button>("Hud/Focus").Disabled = snapshot.Workshop == WorkshopState.Complete;
         if (todayFocus is { } elapsed)
-            GetNode<Label>("Hud/Today").Text = $"Today  {Math.Floor(elapsed.TotalMinutes):0} min";
+            GetNode<Label>("Hud/Today").Text = $"Completed today  {Math.Floor(elapsed.TotalMinutes):0} min";
         var mina = GetNode<MinaPlaceholderView>("World/MinaView");
         mina.Bind(snapshot.Mina);
         var minaX = snapshot.Mina.Location == MinaLocation.Home ? 310 : 850;

@@ -165,11 +165,12 @@ text = "Restore Workshop  0 / 25 Focus"
 
 [node name="Today" type="Label" parent="Hud"]
 layout_mode = 0
-offset_left = 1095.0
+offset_left = 970.0
 offset_top = 22.0
 offset_right = 1264.0
 offset_bottom = 51.0
-text = "Today  0 min"
+text = "Completed today  0 min"
+horizontal_alignment = 2
 
 [node name="Focus" type="Button" parent="Hud"]
 layout_mode = 0

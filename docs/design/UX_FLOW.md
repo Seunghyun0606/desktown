@@ -114,7 +114,7 @@ sequenceDiagram
 - Town canvas: House, Workshop, path, campfire, locked Library/area
 - Mina near the current project; Noah and Rumi in ambient positions
 - Quiet top-left project chip: project name and `18 / 25 Focus`
-- Quiet top-right daily text: `Today 42 min`
+- Quiet top-right daily text: `Completed today 42 min` (local end date)
 - One unobtrusive `Focus` action and Settings icon
 - Workshop visual is Broken, Repairing, or Complete from simulation state
 
@@ -397,4 +397,3 @@ Every transition must:
 - Whether `Any app` should remain default after users understand app selection.
 - Whether an early-ended session should round Energy down by whole minutes or
   retain seconds internally and only round presentation.
-

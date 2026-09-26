@@ -34,7 +34,7 @@ copy. `Continue` does not start tracking.
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────┐
-│ Restore Workshop  18/25                              Today 42 min  ⚙ │
+│ Restore Workshop  18/25                    Completed today 42 min  ⚙ │
 │                                                                      │
 │                 trees                      [LOCKED AREA]              │
 │                                                                      │
@@ -219,4 +219,3 @@ The world state is committed before Beat 1. Animation only presents the change.
   placement uses each monitor's work area, not the virtual desktop origin.
 - At 125% and 150% DPI, UI text may scale smoothly while sprite pixels remain
   nearest-neighbor and aligned to whole rendered pixels.
-

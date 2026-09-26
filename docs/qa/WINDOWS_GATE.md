@@ -43,7 +43,7 @@ award progress. F8 cycles placeholder Companion clips under the same condition.
 | Deferred reward | Open DeskTown from Tray after completion | Workshop reveal and Railway teaser appear once, in order | |
 | Restart at reveal | Exit after completion notice, during reveal, and during discovery in separate runs | Saved state resumes the correct pending step once | |
 | Recovery | Start Focus, wait for a checkpoint, terminate process; relaunch | Resume/End choice appears; time away is excluded | |
-| Windows lifecycle | Lock/unlock and sleep/resume during separate Focus runs | Suspended time is excluded; state remains recoverable | |
+| Windows lifecycle | Lock/unlock, disconnect/reconnect, and sleep/resume during separate Focus runs; include overlapping lock and sleep | Suspended time is excluded; a fresh tick starts only after all pause reasons clear; state remains recoverable | |
 | Duplicate launch | Open another `DeskTown.exe` while first remains active | Existing instance opens; no second Focus/save owner | |
 | Hidden resources | Switch to Hidden and inspect windows and Task Manager | No Companion/Ghost surface or active visual effects; timer continues | |
 

@@ -13,6 +13,7 @@ namespace DeskTown.Application.Runtime;
 public sealed class PrototypeRuntime
 {
     private readonly IWallClock _wallClock;
+    private readonly TimeZoneInfo _displayTimeZone;
     private readonly ApplicationLifecycleCoordinator _lifecycle;
     private readonly FocusSessionCoordinator _focus;
     private readonly SessionLedger _ledger;
@@ -24,9 +25,11 @@ public sealed class PrototypeRuntime
 
     private PrototypeRuntime(IWallClock wallClock, ApplicationLifecycleCoordinator lifecycle,
         FocusSessionCoordinator focus, SessionLedger ledger, TownSimulation town,
-        SettingsSnapshot settings, List<DisplayModeChangeSnapshot> modeChanges)
+        SettingsSnapshot settings, List<DisplayModeChangeSnapshot> modeChanges,
+        TimeZoneInfo displayTimeZone)
     {
         _wallClock = wallClock;
+        _displayTimeZone = displayTimeZone;
         _lifecycle = lifecycle;
         _focus = focus;
         _ledger = ledger;
@@ -38,7 +41,8 @@ public sealed class PrototypeRuntime
 
     public static async Task<PrototypeRuntime> OpenAsync(IGameStateStore store,
         IActivityTracker activity, IWallClock wallClock, IMonotonicClock monotonicClock,
-        TimeSpan checkpointInterval, CancellationToken cancellationToken = default)
+        TimeSpan checkpointInterval, CancellationToken cancellationToken = default,
+        TimeZoneInfo? displayTimeZone = null)
     {
         var lifecycle = new ApplicationLifecycleCoordinator(store, wallClock,
             monotonicClock, checkpointInterval);
@@ -50,7 +54,8 @@ public sealed class PrototypeRuntime
         var town = loaded is null ? TownSimulation.Create() : RestoreTown(loaded.Snapshot);
         var runtime = new PrototypeRuntime(wallClock, lifecycle, focus, ledger, town,
             loaded?.Snapshot.Settings ?? DefaultSettings(),
-            loaded?.Snapshot.Focus.ModeChanges.ToList() ?? []);
+            loaded?.Snapshot.Focus.ModeChanges.ToList() ?? [],
+            displayTimeZone ?? TimeZoneInfo.Local);
         runtime._lastFocusCheckpoint = loaded?.Snapshot.Focus.ActiveCheckpoint;
         runtime._observedSessionDuration = runtime._lastFocusCheckpoint?.CountedDuration ?? TimeSpan.Zero;
         return runtime;
@@ -63,10 +68,10 @@ public sealed class PrototypeRuntime
     public FocusActivitySummary Activity => _focus.CurrentActivity;
     public MinaTransition? LastMinaTransition { get; private set; }
     public TimeSpan TotalFocus => _ledger.TotalCountedDuration;
-    public TimeSpan TodayFocus => TimeSpan.FromTicks(_ledger.Entries
-        .Where(entry => DateOnly.FromDateTime(entry.EndedAtUtc.UtcDateTime) ==
-            DateOnly.FromDateTime(_wallClock.UtcNow.UtcDateTime))
-        .Sum(entry => entry.CountedDuration.Ticks));
+    public DateOnly TodayDisplayDate => DateOnly.FromDateTime(
+        TimeZoneInfo.ConvertTime(_wallClock.UtcNow, _displayTimeZone).Date);
+    /// <summary>Completed sessions for the user's local calendar day.</summary>
+    public TimeSpan TodayFocus => CompletedOn(TodayDisplayDate, _displayTimeZone);
     public bool OnboardingCompleted => _settings.OnboardingCompleted;
 
     public async Task CompleteOnboardingAsync()
@@ -101,6 +106,20 @@ public sealed class PrototypeRuntime
         _focus.Stop();
         AdvanceFinalized();
         await SaveAsync(CheckpointReason.FocusEnded);
+    }
+
+    public async Task SuspendForSystemAsync()
+    {
+        _focus.SuspendAtLastTick();
+        Advance(TimeSpan.Zero, TimeSpan.Zero);
+        await SaveAsync(CheckpointReason.Suspended);
+    }
+
+    public async Task ResumeForSystemAsync()
+    {
+        _focus.Resume();
+        Advance(TimeSpan.Zero, TimeSpan.Zero);
+        await SaveAsync(CheckpointReason.Suspended);
     }
 
     public async Task ChangeModeAsync(DisplayMode mode)
@@ -168,7 +187,8 @@ public sealed class PrototypeRuntime
         var project = ProjectSystem.RestoreWorkshop(checkpoint.ProjectProgress,
             checkpoint.LastObservedEnergy);
         var today = DateOnly.FromDateTime(_wallClock.UtcNow.UtcDateTime);
-        var todayTicks = TodayFocus.Ticks;
+        // V1's player summary remains UTC for existing saves; the HUD is local.
+        var todayTicks = CompletedOn(today, TimeZoneInfo.Utc).Ticks;
         return new GameStateSnapshot(_settings,
             new FocusSnapshot(_ledger, _focus.ActiveSession is null ? null : _lastFocusCheckpoint,
                 _modeChanges.ToArray()),
@@ -179,6 +199,12 @@ public sealed class PrototypeRuntime
             new PlayerSnapshot(_ledger.TotalCountedDuration.Ticks, today, todayTicks),
             EventSaveMapper.Presentation(checkpoint.Events));
     }
+
+    private TimeSpan CompletedOn(DateOnly day, TimeZoneInfo zone) =>
+        TimeSpan.FromTicks(_ledger.Entries
+            .Where(entry => DateOnly.FromDateTime(
+                TimeZoneInfo.ConvertTime(entry.EndedAtUtc, zone).Date) == day)
+            .Sum(entry => entry.CountedDuration.Ticks));
 
     private static TownSimulation RestoreTown(GameStateSnapshot snapshot)
     {
