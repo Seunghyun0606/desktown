@@ -279,7 +279,7 @@ public static class SaveStateMapper
 
     private static void ValidateMode(string? mode)
     {
-        if (mode is not ("Companion" or "Hidden" or "Ghost"))
+        if (mode is not ("Companion" or "Hidden" or "Ghost" or "Minimized"))
         {
             throw new InvalidDataException("Invalid display mode.");
         }

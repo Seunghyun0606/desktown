@@ -23,15 +23,16 @@ flowchart TD
     A["첫 실행"] --> B["Main Town"]
     B --> C["Focus 설정"]
     C --> D{"표시 모드"}
-    D --> E["Companion 창"]
+    D --> E["PiP Companion 창"]
     D --> F["Hidden / 트레이만"]
-    D --> G["Ghost 오버레이"]
+    D --> M["Minimized / 작업 표시줄"]
+    B --> G["Ghost QA 미리보기"]
     E <--> F
-    F <--> G
-    G <--> E
+    F <--> M
+    M <--> E
     E --> H["조용한 완료 알림"]
     F --> H
-    G --> H
+    M --> H
     H --> I["사용자가 다시 연 Town"]
     I --> J["보상 연출"]
     J --> K["철도 지도 발견"]
@@ -129,7 +130,7 @@ sequenceDiagram
 - 프로젝트 그림·제목, 담당 NPC Mina, 현재 진행
 - 25/45/60분 프리셋, 기본 25분
 - `Apps for this session`: 현재 실행 중인 프로세스 이름 선택과 간단한 수동 이름 입력
-- 같은 비중의 Companion·Hidden·Ghost 표시 카드 세 개
+- 같은 비중의 PiP·Minimized·Hidden 표시 카드 세 개. Ghost는 별도 QA 미리보기로만 제공한다.
 - 카드 공통 설명: “같은 세션, 같은 진행. 원하는 만큼만 DeskTown을 보세요.”
 - `Start Focus`
 
@@ -137,7 +138,8 @@ sequenceDiagram
 
 - 시간과 표시 모드는 항상 하나 이상 선택돼 있다.
 - 앱 선택은 선택 사항이며 기본은 `Any app`이다.
-- 시작 시 Main Town을 숨기고 세션 하나만 만든 뒤 선택한 모드를 적용한다. 표시 모드별 별도 세션을 만들지 않는다.
+- PiP를 선택하면 75/100/125/150% 크기를 Focus 시작 전에 고를 수 있다. 실행 중에는 PiP의 −/+ 버튼 또는 트레이에서 크기를 바꾸고 상단을 드래그해 위치를 옮긴다.
+- 시작 시 세션 하나만 만들고 선택한 표시 모드를 적용한다. PiP는 작은 Companion 창만 보이고, Minimized는 Town의 작업 표시줄 항목만 남기며, Hidden은 트레이만 남긴다. 표시 모드별 별도 세션을 만들지 않는다.
 - Ghost를 처음 사용할 때는 오버레이를 클릭할 수 없으므로 위치·불투명도를 트레이에서 바꾼다는 안내를 한 번 보여준다. 현재 일반 Focus에서는 Ghost가 비활성화되어 있다.
 
 **빈 상태·오류·중단**
@@ -162,7 +164,7 @@ sequenceDiagram
 - 테두리 없는 창을 최상단에 표시하며 사용하지 않는 배경 영역에서 드래그할 수 있다.
 - 이동 후 위치와 모니터 ID를 저장한다.
 - 닫으면 Focus를 끝내지 않고 Hidden으로 바뀐다.
-- 트레이에서 Hidden/Ghost로 전환해도 세션을 다시 만들지 않는다. 일반 Focus의 Ghost 전환은 현재 차단돼 있다.
+- 트레이에서 Minimized/Hidden으로 전환해도 세션을 다시 만들지 않는다. 일반 Focus의 Ghost 전환은 현재 차단돼 있다.
 - Mina는 논리 상태에 따라 Active→Work, 짧은 유휴→Stretch/Look, 긴 유휴·중단→Rest, 복귀→Walk→Work를 표시한다.
 
 **빈 상태·오류·중단**
@@ -200,7 +202,7 @@ sequenceDiagram
 
 **목적:** 동료를 표시하지 않는 선택을 동등하게 제공한다.
 
-**구성:** 창과 오버레이가 없으며 트레이 툴팁에는 `DeskTown • Focus`가 표시된다.
+**구성:** Town 작업 표시줄 항목, PiP 창, 오버레이가 없으며 트레이 툴팁에는 `DeskTown • Focus`가 표시된다.
 
 **동작과 전환**
 
@@ -284,8 +286,9 @@ sequenceDiagram
 DeskTown • Focus
 Open DeskTown
 Display
-  ● Companion
-  ○ Hidden
+  ● PiP Companion
+  ○ Minimize to taskbar
+  ○ Hide completely (Tray only)
   ○ Ghost
 Companion Scale
   75% / 100% / 125% / 150%
@@ -308,11 +311,11 @@ Quit…
 stateDiagram-v2
     [*] --> Companion
     Companion --> Hidden: 트레이 / Companion 닫기
-    Companion --> Ghost: 트레이
+    Companion --> Minimized: 트레이
     Hidden --> Companion: 트레이
-    Hidden --> Ghost: 트레이
-    Ghost --> Companion: 트레이
-    Ghost --> Hidden: 트레이 또는 안전한 대체 동작
+    Hidden --> Minimized: 트레이
+    Minimized --> Companion: 트레이
+    Minimized --> Hidden: 트레이
 ```
 
 모든 전환에서 다음을 지킨다.

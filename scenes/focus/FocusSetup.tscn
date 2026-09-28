@@ -62,6 +62,13 @@ text = "How would you like Mina nearby?"
 [node name="Mode" type="OptionButton" parent="Panel/Content"]
 layout_mode = 2
 
+[node name="CompanionScaleLabel" type="Label" parent="Panel/Content"]
+layout_mode = 2
+text = "PiP size (drag its header to move it)"
+
+[node name="CompanionScale" type="OptionButton" parent="Panel/Content"]
+layout_mode = 2
+
 [node name="Equal" type="Label" parent="Panel/Content"]
 layout_mode = 2
 text = "Every display choice builds the same Workshop."

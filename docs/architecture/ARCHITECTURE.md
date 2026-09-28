@@ -218,7 +218,7 @@ typed application events at the presentation boundary.
 ## 7. Display mode controller
 
 ```csharp
-public enum DisplayMode { Companion, Hidden, Ghost }
+public enum DisplayMode { Companion, Hidden, Ghost, Minimized }
 
 public interface IDisplaySurface
 {
@@ -235,6 +235,12 @@ Switch algorithm:
 3. Show incoming surface from current immutable `DisplaySnapshot`.
 4. Save preference and append debug `DisplayModeChanged`.
 5. If Ghost validation/show fails, show Hidden and report passive status.
+
+During Focus, `Companion` shows only the PiP window, `Minimized` leaves only
+the Town taskbar entry, and `Hidden` leaves only the Tray. The Main Town scene
+does not animate in any of these modes. The selected value persists in the V1
+settings string so recovery restores the same presentation; existing
+`Companion` and `Hidden` save values remain readable.
 
 Neither `FocusSessionManager`, `IEnergyPolicy`, nor `ProjectSystem` receives the
 selected `DisplayMode`.

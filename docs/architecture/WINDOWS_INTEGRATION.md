@@ -168,7 +168,8 @@ forwards them to application commands; it does not mutate scenes directly.
 Required commands:
 
 - Open DeskTown
-- Companion / Hidden / Ghost
+- PiP Companion / Minimize to taskbar / Hide completely (Tray only)
+- Ghost remains a disabled QA preview until the Windows input gate passes
 - Companion scale
 - Ghost corner and opacity
 - Audio

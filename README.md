@@ -9,7 +9,7 @@ vertical slice. Exported Windows behavior and final art still require review.
 
 ## Prototype invariant
 
-`Companion`, `Hidden`, and `Ghost` are display preferences over one shared
+`Companion` (PiP), `Minimized`, `Hidden`, and the gated `Ghost` preview are display preferences over one shared
 focus session. They never change Focus Energy, project progress, events, or
 rewards.
 
@@ -73,7 +73,7 @@ dotnet test DeskTown.sln
 
 Open `project.godot` with Godot 4.7.2 .NET and run the main scene. A new save
 opens First Launch, then the placeholder Town and Focus Setup. Start a Focus
-session in Companion or Hidden; the Tray can reopen the Town or end Focus.
+session in PiP, Minimized, or Hidden; the Tray can reopen the Town or end Focus.
 The F10 Ghost preview is for isolated QA outside a session. Ghost remains
 unavailable in Focus Setup and the Tray until exported Windows input testing.
 
@@ -89,7 +89,7 @@ bash scripts/validate-project-structure.sh
 The repository currently provides:
 
 - a six-project C# solution with one-way dependency boundaries;
-- a Godot AppRoot, Town/Focus Setup, Companion/Hidden presentation, and Windows export preset;
+- a Godot AppRoot, Town/Focus Setup, PiP/Minimized/Hidden presentation, and Windows export preset;
 - typed prototype configuration and privacy-safe structured logging;
 - a display-independent FocusSession, privacy-minimal Windows activity tracking,
   process catalog, and elapsed-time Focus Energy;

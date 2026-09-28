@@ -30,3 +30,5 @@ logs/
 save.json
 save.backup.json
 save.tmp
+
+desktown-windows-qa-kit*

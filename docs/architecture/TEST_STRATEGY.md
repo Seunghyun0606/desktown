@@ -53,7 +53,7 @@ The choice must be singular across the solution; xUnit is the recommendation.
 ## 3. Application integration scenarios
 
 1. Town → Focus Setup → start → ticks → progress → complete → save
-2. Companion → Hidden → Ghost → Companion with one session ID and equal totals
+2. Companion → Minimized → Hidden → Companion with one session ID and equal totals
 3. Tracker throws/access denied; Timer-only session completes
 4. Ghost probe fails; Hidden activates without session interruption
 5. Completion notification fails; pending reveal remains accessible from Tray
@@ -95,6 +95,14 @@ Any input interception is a **fail** and activates Hidden fallback.
 - drag/monitor restore and off-screen clamping
 - close means Hidden; session continues
 - other applications remain normally usable
+
+### Focus presentation gate
+
+- PiP leaves only the Companion visible; the Town taskbar entry is absent
+- Minimized leaves only the Town taskbar entry; restoring it opens Town in the same session
+- Hidden leaves only the Tray; opening Town from the Tray preserves the session
+- switching among the three modes and restarting from a saved checkpoint preserves
+  the selected mode and counted Focus duration
 
 ### Activity/privacy gate
 

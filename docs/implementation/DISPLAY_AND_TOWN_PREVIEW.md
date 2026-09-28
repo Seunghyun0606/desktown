@@ -31,6 +31,9 @@ surfaces, and keeping the Town closed after completion until explicitly opened.
 It owns no session or reward state. The Town binds a `TownProjection` to distinct
 Broken/Repairing/Complete Workshop visuals and a minimal HUD; the later Focus UI
 slice connects the saved world and real session.
+The Godot host hides the Town scene during Focus so ambient animation stops.
+It parks the native Town window on the taskbar only in Minimized mode; PiP and
+Hidden modes fully hide it until the user opens Town.
 
 The follow-up Town pass replaces name-only NPCs with three geometric character
 views. Mina reuses the Companion clip clock and moves between Home and Workshop

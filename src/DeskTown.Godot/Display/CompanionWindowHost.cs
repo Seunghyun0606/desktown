@@ -11,7 +11,9 @@ public partial class CompanionWindowHost : Window, IFocusDisplaySurface
 {
     public event Action? HideRequested;
     public event Action<WindowPlacementSnapshot>? PlacementChanged;
+    public event Action<int>? ScaleRequested;
     private CompanionStage? _stage;
+    private global::Godot.Timer? _placementSaveTimer;
     private WindowPlacementSnapshot _placement = new("screen:0", "BottomRight", 24, 24);
     private int _scalePercent = 100;
 
@@ -19,10 +21,21 @@ public partial class CompanionWindowHost : Window, IFocusDisplaySurface
     {
         CloseRequested += RequestHide;
         GetNode<Button>("Stage/Close").Pressed += RequestHide;
+        GetNode<Button>("Stage/ScaleDown").Pressed += () => RequestScale(-1);
+        GetNode<Button>("Stage/ScaleUp").Pressed += () => RequestScale(1);
         _stage = GetNode<CompanionStage>("Stage");
         _stage.ProcessMode = ProcessModeEnum.Disabled;
+        _placementSaveTimer = new global::Godot.Timer { OneShot = true, WaitTime = 0.35 };
+        AddChild(_placementSaveTimer);
+        _placementSaveTimer.Timeout += SaveCurrentPlacement;
         // This window starts hidden; the application chooses when it is shown.
         Visible = false;
+    }
+
+    public override void _Notification(int what)
+    {
+        if (what == NotificationWMPositionChanged && Visible)
+            _placementSaveTimer?.Start();
     }
 
     public override void _Input(InputEvent input)
@@ -31,8 +44,8 @@ public partial class CompanionWindowHost : Window, IFocusDisplaySurface
             || click.ButtonIndex != MouseButton.Left || !click.Pressed)
             return;
 
-        // Only the empty upper strip is a drag handle. The close control remains clickable.
-        if (click.Position.X >= 0 && click.Position.X < 324
+        // The labeled header is the drag handle; size and close controls remain clickable.
+        if (click.Position.X >= 0 && click.Position.X < 258
             && click.Position.Y >= 0 && click.Position.Y < 28)
         {
             StartDrag();
@@ -58,11 +71,8 @@ public partial class CompanionWindowHost : Window, IFocusDisplaySurface
     {
         if (Visible)
         {
-            var monitors = WorkAreas();
-            var monitor = CurrentScreen >= 0 && CurrentScreen < monitors.Count
-                ? monitors[CurrentScreen] : monitors[0];
-            _placement = CompanionPlacement.Capture(Position.X, Position.Y, monitor);
-            PlacementChanged?.Invoke(_placement);
+            _placementSaveTimer?.Stop();
+            SaveCurrentPlacement();
         }
         Visible = false;
         if (_stage is not null) _stage.ProcessMode = ProcessModeEnum.Disabled;
@@ -72,11 +82,23 @@ public partial class CompanionWindowHost : Window, IFocusDisplaySurface
 
     public void Play(MinaPresentationIntent presentation) => _stage?.Play(presentation);
 
+    public WindowPlacementSnapshot CurrentPlacement()
+    {
+        if (!Visible) return _placement;
+        var monitors = WorkAreas();
+        var monitor = CurrentScreen >= 0 && CurrentScreen < monitors.Count
+            ? monitors[CurrentScreen] : monitors[0];
+        return CompanionPlacement.Capture(Position.X, Position.Y, monitor);
+    }
+
     public void Configure(WindowPlacementSnapshot placement, int scalePercent)
     {
         _ = CompanionPlacement.SizeForScale(scalePercent);
         _placement = placement ?? throw new ArgumentNullException(nameof(placement));
         _scalePercent = scalePercent;
+        GetNode<Label>("Stage/DragLabel").Text = $"DeskTown  •  drag here  •  {scalePercent}%";
+        GetNode<Button>("Stage/ScaleDown").Disabled = scalePercent == 75;
+        GetNode<Button>("Stage/ScaleUp").Disabled = scalePercent == 150;
         if (Visible)
         {
             Visible = false;
@@ -106,4 +128,21 @@ public partial class CompanionWindowHost : Window, IFocusDisplaySurface
     }
 
     private void RequestHide() => HideRequested?.Invoke();
+
+    private void SaveCurrentPlacement()
+    {
+        if (!Visible) return;
+        var placement = CurrentPlacement();
+        if (placement == _placement) return;
+        _placement = placement;
+        PlacementChanged?.Invoke(placement);
+    }
+
+    private void RequestScale(int direction)
+    {
+        var scales = new[] { 75, 100, 125, 150 };
+        var index = Array.IndexOf(scales, _scalePercent);
+        var next = Math.Clamp(index + direction, 0, scales.Length - 1);
+        if (next != index) ScaleRequested?.Invoke(scales[next]);
+    }
 }

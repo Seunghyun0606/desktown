@@ -27,8 +27,9 @@ public partial class TrayHost : Node
         AddChild(_menu);
         _menu.AddItem("Open DeskTown", 1);
         _menu.AddSeparator();
-        _menu.AddItem("Companion", 10);
-        _menu.AddItem("Hidden", 11);
+        _menu.AddItem("PiP Companion", 10);
+        _menu.AddItem("Minimize to taskbar", 13);
+        _menu.AddItem("Hide completely (Tray only)", 11);
         _menu.AddItem("Ghost (Windows QA pending)", 12);
         _menu.SetItemDisabled(_menu.GetItemIndex(12), true);
         _menu.AddSeparator("Companion Scale");
@@ -91,6 +92,7 @@ public partial class TrayHost : Node
             case 1: OpenRequested?.Invoke(); break;
             case 10: ModeRequested?.Invoke(DisplayMode.Companion); break;
             case 11: ModeRequested?.Invoke(DisplayMode.Hidden); break;
+            case 13: ModeRequested?.Invoke(DisplayMode.Minimized); break;
             case 12: break; // fail closed until Ghost release gate
             case >= 20 and <= 23: CompanionScaleRequested?.Invoke(new[] { 75, 100, 125, 150 }[id - 20]); break;
             case >= 30 and <= 33:

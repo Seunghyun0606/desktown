@@ -4,5 +4,6 @@ public enum DisplayMode
 {
     Companion,
     Hidden,
-    Ghost
+    Ghost,
+    Minimized
 }

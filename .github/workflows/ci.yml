@@ -324,6 +324,13 @@ jobs:
           }
           Remove-Item (Join-Path $kit 'app') -Recurse -Force
 
+      - name: Verify laptop QA kit in Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          $kit = 'build/qa-kit'
+          & (Join-Path $kit 'preflight.ps1') -KitDirectory $kit -RunSmoke
+          Remove-Item (Join-Path $kit 'app') -Recurse -Force
+
       - name: Upload laptop QA kit
         uses: actions/upload-artifact@v4
         with:

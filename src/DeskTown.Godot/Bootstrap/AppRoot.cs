@@ -79,6 +79,7 @@ public partial class AppRoot : Node
         AddChild(_controller);
         companion.HideRequested += _controller.CompanionClosed;
         companion.PlacementChanged += _controller.CompanionMoved;
+        companion.ScaleRequested += scale => _controller.CompanionScaleChanged(scale);
         _controller.Start();
 
         _logger.Information(

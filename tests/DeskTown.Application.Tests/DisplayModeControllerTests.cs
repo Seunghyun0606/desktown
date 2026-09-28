@@ -36,6 +36,11 @@ public sealed class DisplayModeControllerTests
         controller.SetDisplayMode(DisplayMode.Hidden);
         Assert.False(companion.Visible);
         Assert.False(ghost.Visible);
+
+        controller.SetDisplayMode(DisplayMode.Companion);
+        Assert.Equal(DisplayMode.Minimized, controller.SetDisplayMode(DisplayMode.Minimized));
+        Assert.False(companion.Visible);
+        Assert.False(ghost.Visible);
     }
 
     [Fact]

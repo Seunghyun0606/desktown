@@ -30,6 +30,9 @@ public partial class PrototypeAppController : Node
     private WindowsSystemPauseEvents? _systemPauseEvents;
     private bool _processingSystemEvents;
     private DateOnly _shownLocalDay;
+    private Window.ModeEnum _townWindowMode = Window.ModeEnum.Windowed;
+    private bool _townMinimizedForFocus;
+    private bool _townObservedMinimized;
 
     public bool IsFocusActive => _game?.ActiveSession is not null;
 
@@ -99,7 +102,8 @@ public partial class PrototypeAppController : Node
             _ = RunAsync(CompleteOnboardingAsync);
         Root<TownScene>("MainShell/Town").FocusRequested += OpenSetup;
         Root<FocusSetup>("MainShell/FocusSetup").StartRequested +=
-            (duration, apps, mode) => _ = RunAsync(() => StartFocusAsync(duration, apps, mode));
+            (duration, apps, mode, scale) =>
+                _ = RunAsync(() => StartFocusAsync(duration, apps, mode, scale));
         Root<FocusSetup>("MainShell/FocusSetup").BackRequested += OpenTown;
         Root<RecoveryPrompt>("MainShell/RecoveryPrompt").ChoiceSelected += choice =>
             _ = RunAsync(() => ResolveRecoveryAsync(choice));
@@ -129,6 +133,13 @@ public partial class PrototypeAppController : Node
     {
         if (!_processingSystemEvents && !_systemEvents.IsEmpty)
             _ = ProcessSystemEventsAsync();
+        if (_townMinimizedForFocus && _game is not null)
+        {
+            if (GetWindow().Mode == Window.ModeEnum.Minimized)
+                _townObservedMinimized = true;
+            else if (_townObservedMinimized)
+                OpenTown();
+        }
         if (_game is not null && _game.TodayDisplayDate != _shownLocalDay)
         {
             _shownLocalDay = _game.TodayDisplayDate;
@@ -169,7 +180,7 @@ public partial class PrototypeAppController : Node
     public void CompanionClosed()
     {
         _display?.CompanionCloseRequested();
-        if (IsFocusActive) _ = RunAsync(() => _game!.ChangeModeAsync(DisplayMode.Hidden));
+        if (IsFocusActive) _ = RunAsync(() => ChangeModeAsync(DisplayMode.Hidden));
     }
 
     public void CompanionMoved(WindowPlacementSnapshot placement)
@@ -178,6 +189,9 @@ public partial class PrototypeAppController : Node
             _ = RunAsync(() => _game.ChangeSettingsAsync(
                 _game.Settings with { Companion = placement }));
     }
+
+    public void CompanionScaleChanged(int scale) =>
+        _ = RunAsync(() => ChangeScaleAsync(scale));
 
     private T Root<T>(string path) where T : Node => GetParent().GetNode<T>(path);
 
@@ -216,24 +230,27 @@ public partial class PrototypeAppController : Node
     {
         if (_game is null || IsFocusActive) return;
         var setup = Root<FocusSetup>("MainShell/FocusSetup");
-        setup.Bind(_game.World.Town, _catalog.GetRunningProcessNames());
+        var selectedMode = Enum.TryParse<DisplayMode>(_game.Settings.DisplayMode, out var savedMode)
+            ? savedMode : DisplayMode.Hidden;
+        setup.Bind(_game.World.Town, _catalog.GetRunningProcessNames(),
+            selectedMode, _game.Settings.CompanionScalePercent);
         setup.Visible = true;
     }
 
     private async Task StartFocusAsync(TimeSpan duration,
-        IReadOnlyCollection<string> apps, DisplayMode mode)
+        IReadOnlyCollection<string> apps, DisplayMode mode, int companionScalePercent)
     {
         if (_game is null || IsFocusActive || mode == DisplayMode.Ghost) return;
         if (OperatingSystem.IsWindows() && _systemPauseEvents is null)
             throw new InvalidOperationException("Windows session monitoring is unavailable.");
         if (_pauseState.IsPaused)
             throw new InvalidOperationException("Wait until Windows is active to start Focus.");
+        if (_game.Settings.CompanionScalePercent != companionScalePercent)
+            await ChangeScaleAsync(companionScalePercent);
         await _game.StartAsync(duration, apps, mode);
         Root<FocusSetup>("MainShell/FocusSetup").Visible = false;
-        Root<TownScene>("MainShell/Town").Visible = false;
         Root<CompanionWindowHost>("CompanionWindow").Bind(_game.World.Companion);
-        _display!.SetDisplayMode(mode);
-        GetWindow().Visible = false;
+        ApplyFocusPresentation(mode);
         Root<TrayHost>("TrayHost").SetStatus(true, false);
         _timer!.Start();
     }
@@ -265,7 +282,7 @@ public partial class PrototypeAppController : Node
         _timer?.Stop();
         _display?.SetDisplayMode(DisplayMode.Hidden);
         Root<TrayHost>("TrayHost").SetStatus(false, true);
-        // The main window stays hidden until the user opens it.
+        // The selected window presentation stays parked until the user opens Town.
         try
         {
             var message = _game?.World.Town.Workshop == WorkshopState.Complete
@@ -284,21 +301,19 @@ public partial class PrototypeAppController : Node
     private async Task ChangeModeAsync(DisplayMode mode)
     {
         if (_game is null || mode == DisplayMode.Ghost) return;
-        var activeMode = _display!.SetDisplayMode(mode);
-        if (IsFocusActive)
-        {
-            Root<TownScene>("MainShell/Town").Visible = false;
-            GetWindow().Visible = false;
-        }
+        var activeMode = IsFocusActive
+            ? ApplyFocusPresentation(mode) : _display!.SetDisplayMode(mode);
         await _game.ChangeModeAsync(activeMode);
     }
 
     private async Task ChangeScaleAsync(int scale)
     {
         if (_game is null) return;
-        Root<CompanionWindowHost>("CompanionWindow")
-            .Configure(_game.Settings.Companion, scale);
-        await _game.ChangeSettingsAsync(_game.Settings with { CompanionScalePercent = scale });
+        var companion = Root<CompanionWindowHost>("CompanionWindow");
+        var placement = companion.CurrentPlacement();
+        companion.Configure(placement, scale);
+        await _game.ChangeSettingsAsync(_game.Settings with
+        { Companion = placement, CompanionScalePercent = scale });
     }
 
     private void ConfigureGhostPreview()
@@ -323,8 +338,8 @@ public partial class PrototypeAppController : Node
         }
         else
         {
-            Root<TownScene>("MainShell/Town").Bind(_game.World.Town, _game.TodayFocus);
             Root<TrayHost>("TrayHost").SetStatus(false, true);
+            OpenTown();
         }
     }
 
@@ -337,8 +352,7 @@ public partial class PrototypeAppController : Node
             _game.TodayFocus, visualWorkshop: pendingReveal ? WorkshopState.Repairing : null);
         Root<TownScene>("MainShell/Town").Visible = true;
         Root<FocusSetup>("MainShell/FocusSetup").Visible = false;
-        GetWindow().Visible = true;
-        GetWindow().GrabFocus();
+        RestoreTownWindow();
         if (pendingReveal && !_revealing)
             _ = RunAsync(StartRevealAsync);
         else if (_game.World.Town.Events.RailwayDiscoveryPending)
@@ -382,9 +396,51 @@ public partial class PrototypeAppController : Node
         var mode = Enum.TryParse<DisplayMode>(_game.Settings.DisplayMode, out var selected)
             && selected != DisplayMode.Ghost ? selected : DisplayMode.Hidden;
         Root<CompanionWindowHost>("CompanionWindow").Bind(_game.World.Companion);
-        _display!.SetDisplayMode(mode);
+        Root<FocusSetup>("MainShell/FocusSetup").Visible = false;
+        ApplyFocusPresentation(mode);
+    }
+
+    private DisplayMode ApplyFocusPresentation(DisplayMode mode)
+    {
         Root<TownScene>("MainShell/Town").Visible = false;
-        GetWindow().Visible = false;
+        var activeMode = _display!.SetDisplayMode(mode);
+        if (activeMode == DisplayMode.Minimized)
+            MinimizeTownWindow();
+        else
+            HideTownWindow();
+        return activeMode;
+    }
+
+    private void MinimizeTownWindow()
+    {
+        var window = GetWindow();
+        if (window.Mode != Window.ModeEnum.Minimized)
+            _townWindowMode = window.Mode;
+        _townMinimizedForFocus = true;
+        window.Mode = Window.ModeEnum.Minimized;
+        window.Visible = true;
+        _townObservedMinimized = window.Mode == Window.ModeEnum.Minimized;
+    }
+
+    private void HideTownWindow()
+    {
+        var window = GetWindow();
+        if (window.Mode != Window.ModeEnum.Minimized)
+            _townWindowMode = window.Mode;
+        _townMinimizedForFocus = false;
+        _townObservedMinimized = false;
+        window.Visible = false;
+    }
+
+    private void RestoreTownWindow()
+    {
+        _townMinimizedForFocus = false;
+        _townObservedMinimized = false;
+        var window = GetWindow();
+        window.Visible = true;
+        if (window.Mode == Window.ModeEnum.Minimized)
+            window.Mode = _townWindowMode;
+        window.GrabFocus();
     }
 
     private void RequestQuit()
@@ -419,6 +475,6 @@ public partial class PrototypeAppController : Node
         var message = Root<Label>("MainShell/Center/Message");
         message.Text = "DeskTown needs attention. Saved progress was not discarded.";
         message.Visible = true;
-        GetWindow().Visible = true;
+        RestoreTownWindow();
     }
 }

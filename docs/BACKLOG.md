@@ -447,7 +447,7 @@ may be adjusted to the final scaffold without changing task responsibility.
 - **Dependencies:** DT-E1-005, DT-E2-004, DT-E4-002.
 - **Implementation:** commit completion/pending reveal, then passive notification;
   fallback to Tray status.
-- **Acceptance:** Main Town stays hidden; notification failure retains reward;
+- **Acceptance:** Main Town remains minimized or fully hidden according to the selected Focus mode; notification failure retains reward;
   Open action focuses existing instance.
 - **Automated:** notification success/failure tests.
 - **Manual:** Yes — packaged/unpackaged exported build behavior.

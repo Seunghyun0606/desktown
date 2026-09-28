@@ -63,6 +63,24 @@ public sealed class JsonGameStateStoreTests
     }
 
     [Fact]
+    public void Minimized_display_mode_round_trips_in_V1_save()
+    {
+        var original = Example().Snapshot;
+        var minimized = original with
+        {
+            Settings = original.Settings with { DisplayMode = "Minimized" },
+            Focus = original.Focus with
+            {
+                ModeChanges = [new DisplayModeChangeSnapshot(StartedAt, "Minimized")]
+            }
+        };
+        var saved = JsonSaveCodec.Encode(minimized, 2, StartedAt.AddMinutes(1));
+        var restored = JsonSaveCodec.Decode(saved).Snapshot;
+        Assert.Equal("Minimized", restored.Settings.DisplayMode);
+        Assert.Equal("Minimized", Assert.Single(restored.Focus.ModeChanges).DisplayMode);
+    }
+
+    [Fact]
     public void Completed_project_survives_three_restart_boundaries_without_duplicate_reveal()
     {
         var initial = CompletedExample();

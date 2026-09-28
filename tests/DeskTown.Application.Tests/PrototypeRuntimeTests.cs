@@ -4,6 +4,7 @@ using DeskTown.Application.Runtime;
 using DeskTown.Application.Tests.Fakes;
 using DeskTown.Domain.Focus;
 using DeskTown.Domain.Projects;
+using DeskTown.Domain.Simulation;
 using DeskTown.Persistence;
 
 namespace DeskTown.Application.Tests;
@@ -26,7 +27,8 @@ public sealed class PrototypeRuntimeTests
 
             for (var minute = 0; minute < 25; minute++)
             {
-                if (minute == 8) await game.ChangeModeAsync(DisplayMode.Hidden);
+                if (minute == 8) await game.ChangeModeAsync(DisplayMode.Minimized);
+                if (minute == 12) await game.ChangeModeAsync(DisplayMode.Hidden);
                 if (minute == 16) await game.ChangeModeAsync(DisplayMode.Companion);
                 clock.Advance(TimeSpan.FromMinutes(1));
                 wall.Advance(TimeSpan.FromMinutes(1));
@@ -70,7 +72,7 @@ public sealed class PrototypeRuntimeTests
             var clock = new FakeMonotonicClock();
             var game = await PrototypeRuntime.OpenAsync(store, new FakeActivityTracker(),
                 wall, clock, TimeSpan.FromSeconds(15));
-            await game.StartAsync(TimeSpan.FromMinutes(25), [], DisplayMode.Hidden);
+            await game.StartAsync(TimeSpan.FromMinutes(25), [], DisplayMode.Minimized);
             clock.Advance(TimeSpan.FromMinutes(1));
             wall.Advance(TimeSpan.FromMinutes(1));
             await game.TickAsync(TimeSpan.Zero);
@@ -79,9 +81,14 @@ public sealed class PrototypeRuntimeTests
             var restarted = await PrototypeRuntime.OpenAsync(store, new FakeActivityTracker(),
                 wall, new FakeMonotonicClock(), TimeSpan.FromSeconds(15));
             Assert.NotNull(restarted.PendingRecovery);
+            Assert.Equal(nameof(DisplayMode.Minimized), restarted.Settings.DisplayMode);
+            Assert.Equal(MinaLocation.Workshop, restarted.World.Town.Mina.Location);
             await restarted.ResolveRecoveryAsync(RecoveryChoice.EndAtCheckpoint);
             Assert.Equal(TimeSpan.FromMinutes(1), restarted.TotalFocus);
             Assert.Null(restarted.PendingRecovery);
+            Assert.Equal(MinaLocation.Home, restarted.World.Town.Mina.Location);
+            Assert.Equal(TimeSpan.FromMinutes(1),
+                restarted.World.Town.Progress.CountedDuration);
         }
         finally { Directory.Delete(directory, recursive: true); }
     }

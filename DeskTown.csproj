@@ -3,6 +3,7 @@
     <RootNamespace>DeskTown</RootNamespace>
     <AssemblyName>DeskTown</AssemblyName>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="src/DeskTown.Godot/**/*.cs" />

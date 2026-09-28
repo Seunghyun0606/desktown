@@ -13,4 +13,4 @@
    다른 시나리오는 `workshop-repairing`과 `railway-teaser`다. 실행마다 샘플 데이터를 새 임시 폴더로 복사하고 분리된 데모임을 창 제목에 표시한다. 다음 데모를 실행하기 전에 현재 데모를 정상 종료한다.
 4. 실제 Focus를 검사할 때는 데모를 종료한 뒤 `./app/DeskTown.exe`를 실행한다. 파괴적인 복구 검사 전에는 별도 Windows 계정을 쓰거나 기존 DeskTown 저장 데이터를 백업한다. 결과를 `qa-results.md`에 기록하고 `WINDOWS_GATE.md`의 절차를 따른다. 헤드리스 사전 검사는 일반 `user://` 저장 데이터를 건드리지 않지만 실제 앱은 해당 저장 데이터를 사용한다.
 
-Ghost는 Town에서 F10으로 켜는 QA 미리보기이며 일반 Focus에서는 선택할 수 없다. 완료 알림은 현재 기본적으로 켜져 있다. 트레이에서 끄면 알림 창 없이 완료 상태를 표시하며 `Open DeskTown` 명령은 계속 사용할 수 있다.
+Focus 중 PiP는 작은 Companion 창만, Minimized는 Town 작업 표시줄 항목만, Hidden은 트레이만 남는다. 세 모드를 전환해도 세션은 유지돼야 한다. Ghost는 Town에서 F10으로 켜는 QA 미리보기이며 일반 Focus에서는 선택할 수 없다. 완료 알림은 현재 기본적으로 켜져 있다. 트레이에서 끄면 알림 창 없이 완료 상태를 표시하며 `Open DeskTown` 명령은 계속 사용할 수 있다.
