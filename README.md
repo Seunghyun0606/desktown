@@ -71,6 +71,18 @@ dotnet build DeskTown.sln
 dotnet test DeskTown.sln
 ```
 
+For a local Windows export with pinned tools, use the checked exporter:
+
+```powershell
+python scripts/export_windows.py --godot <Godot-.NET-executable> `
+  --dotnet-root <SDK-install-directory> --output-directory build/windows-local
+```
+
+Use an ASCII path for the SDK installation and an empty output directory. The
+script checks tool versions, waits on the Godot main executable, rejects error
+logs even at exit code 0, and keeps logs under `build/export-logs`. See the
+[local export guide](docs/qa/LOCAL_WINDOWS_EXPORT.md) for setup and failure handling.
+
 Open `project.godot` with Godot 4.7.2 .NET and run the main scene. A new save
 opens First Launch, then the placeholder Town and Focus Setup. Start a Focus
 session in PiP, Minimized, or Hidden; the Tray can reopen the Town or end Focus.
