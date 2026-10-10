@@ -227,6 +227,8 @@ sequenceDiagram
 **동작과 전환**
 
 - 완료 시 세션을 확정하고 보상 연출을 대기 상태로 저장한다.
+- PiP로 진행한 Focus가 완료되면 Companion 창을 숨기고 트레이에 완료 상태를 표시한다. Minimized의 Town은 최소화된 채로, Hidden의 Town은 숨겨진 채로 남는다. 다음 세션을 위한 표시 모드 설정은 유지한다.
+- 완료 알림 창은 기존 `Completion notice` 설정에 따라 표시한다. 알림을 끈 경우에는 트레이의 완료 표시와 `Open DeskTown`을 사용한다.
 - 알림을 닫아도 손해가 없고 Main Town은 닫힌 채로 남는다.
 - 알림 또는 트레이의 `Open DeskTown`을 누르면 대기 중인 연출을 연다.
 

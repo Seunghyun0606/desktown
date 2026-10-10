@@ -31,6 +31,7 @@ $lines = @(
   '| Minimized: Town taskbar entry only, resource use | Not tested | |',
   '| Hidden: Tray only, no Town taskbar entry or PiP | Not tested | |',
   '| Restore Town from taskbar during and after Focus | Not tested | |',
+  '| PiP completion hides Companion, shows Tray completion, and does not open Town | Not tested | |',
   '| Completion notice or Tray-only and Open | Not tested | |',
   '| Save/restart/recovery, lock/sleep | Not tested | |',
   '| Ghost QA preview input matrix | Not tested | |',

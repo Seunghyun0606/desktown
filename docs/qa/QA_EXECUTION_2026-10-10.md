@@ -25,3 +25,7 @@ Windows PowerShell 5.1의 GUI 실행 파일 종료 코드 처리는 기존 사�
 실제 Windows 창·입력·포커스·DPI 검증은 미검증이다. 자동조작 도구의 native pipe 연결 실패에 대해 성공 근거를 추가하지 않는다.
 
 코드 점검에서 Focus 완료 후 PiP 동작의 문서·구현 차이를 확인했다. Windows QA의 조용한 완료 항목은 선택한 표시 상태 유지를 요구하지만, `PrototypeAppController.FinishFocus()`는 Companion 표시를 Hidden으로 바꾸어 PiP를 닫는다. 최소화한 Town은 그대로 두고 Town을 자동으로 열지는 않는다. 완료 후 PiP 유지 여부는 제품 동작 결정이므로 이번 도구 수정에 포함하지 않는다.
+
+## 사용자 결정 후속 반영
+
+사용자는 옵션 A, 현재처럼 Focus 완료 시 PiP를 숨기고 트레이에 완료 상태를 표시하는 동작을 승인했다. 구현은 이미 이 동작을 수행하므로 실행 로직 변경 없이 UX·Windows QA 기준·결과 양식·코드 주석을 맞췄다. 다음 세션의 표시 모드 설정과 기존 완료 알림 설정은 유지한다. Companion 완료 후 PiP와 Town이 숨겨지는 회귀 검사도 추가했다. 이 자동 검사는 실제 Windows 창·입력 합격 판정을 대신하지 않는다.

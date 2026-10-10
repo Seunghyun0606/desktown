@@ -282,7 +282,8 @@ public partial class PrototypeAppController : Node
         _timer?.Stop();
         _display?.SetDisplayMode(DisplayMode.Hidden);
         Root<TrayHost>("TrayHost").SetStatus(false, true);
-        // The selected window presentation stays parked until the user opens Town.
+        // Completion hides PiP and marks the Tray complete. A minimized Town stays
+        // minimized; a hidden Town stays hidden until the user explicitly opens it.
         try
         {
             var message = _game?.World.Town.Workshop == WorkshopState.Complete

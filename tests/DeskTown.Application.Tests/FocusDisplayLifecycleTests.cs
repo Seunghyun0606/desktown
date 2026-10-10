@@ -5,6 +5,26 @@ namespace DeskTown.Application.Tests;
 public sealed class FocusDisplayLifecycleTests
 {
     [Fact]
+    public void Companion_completion_hides_PiP_without_opening_town()
+    {
+        var main = new Surface();
+        var companion = new Surface();
+        var ghost = new Surface();
+        var modes = new DisplayModeController(companion, ghost);
+        var display = new FocusDisplayLifecycle(modes, main);
+        display.EnterFocus(DisplayMode.Companion);
+        Assert.True(companion.Visible);
+
+        display.FocusCompleted();
+
+        Assert.False(companion.Visible);
+        Assert.False(ghost.Visible);
+        Assert.False(main.Visible);
+        Assert.False(display.FocusPresentationActive);
+        Assert.Equal(DisplayMode.Hidden, modes.Mode);
+    }
+
+    [Fact]
     public void Hidden_keeps_all_surfaces_off_and_completion_never_opens_town()
     {
         var main = new Surface();
