@@ -1,0 +1,371 @@
+{
+  "status": "style_candidate_pending_human_approval",
+  "tool": "Python/Pillow",
+  "pillowVersion": "12.3.0",
+  "sources": [
+    {
+      "file": "docs/art/reviews/2026-10-11/workshop-v1/sources/broken.png",
+      "sha256": "422d961b95c3b1610cb6ec163424fa9d6f72f824aa415122d7bff78772d6c298",
+      "size": [
+        1402,
+        1122
+      ]
+    },
+    {
+      "file": "docs/art/reviews/2026-10-11/workshop-v1/sources/complete.png",
+      "sha256": "7740ed618d2f6993e17b28ec185d093e2dc57050a19eab3360ae956d8daa6866",
+      "size": [
+        1402,
+        1122
+      ]
+    }
+  ],
+  "sourceBounds": [
+    [
+      125,
+      153,
+      1390,
+      1032
+    ],
+    [
+      125,
+      153,
+      1393,
+      1010
+    ]
+  ],
+  "commonCrop": [
+    125,
+    153,
+    1393,
+    1032
+  ],
+  "resizedSize": [
+    144,
+    100
+  ],
+  "offset": [
+    8,
+    28
+  ],
+  "identityLocksFromComplete": [
+    [
+      65,
+      81,
+      94,
+      128
+    ],
+    [
+      0,
+      123,
+      160,
+      128
+    ]
+  ],
+  "commonVerticalShift": 3,
+  "cell": [
+    160,
+    128
+  ],
+  "pivot": [
+    80,
+    128
+  ],
+  "resampling": "nearest",
+  "alphaThreshold": 128,
+  "paletteRGB": [
+    [
+      37,
+      16,
+      12
+    ],
+    [
+      42,
+      23,
+      18
+    ],
+    [
+      51,
+      25,
+      18
+    ],
+    [
+      51,
+      28,
+      21
+    ],
+    [
+      53,
+      20,
+      15
+    ],
+    [
+      58,
+      30,
+      21
+    ],
+    [
+      64,
+      36,
+      26
+    ],
+    [
+      70,
+      58,
+      37
+    ],
+    [
+      89,
+      51,
+      34
+    ],
+    [
+      93,
+      41,
+      28
+    ],
+    [
+      97,
+      68,
+      48
+    ],
+    [
+      98,
+      56,
+      37
+    ],
+    [
+      105,
+      88,
+      62
+    ],
+    [
+      121,
+      50,
+      32
+    ],
+    [
+      122,
+      109,
+      87
+    ],
+    [
+      126,
+      73,
+      46
+    ],
+    [
+      146,
+      71,
+      42
+    ],
+    [
+      149,
+      133,
+      88
+    ],
+    [
+      150,
+      84,
+      50
+    ],
+    [
+      160,
+      94,
+      55
+    ],
+    [
+      175,
+      93,
+      50
+    ],
+    [
+      184,
+      106,
+      58
+    ],
+    [
+      186,
+      138,
+      96
+    ],
+    [
+      197,
+      74,
+      37
+    ],
+    [
+      202,
+      172,
+      131
+    ],
+    [
+      210,
+      85,
+      41
+    ],
+    [
+      224,
+      129,
+      66
+    ],
+    [
+      229,
+      105,
+      50
+    ],
+    [
+      232,
+      149,
+      80
+    ],
+    [
+      232,
+      179,
+      116
+    ],
+    [
+      241,
+      205,
+      154
+    ],
+    [
+      252,
+      229,
+      183
+    ]
+  ],
+  "opaqueColorCount": 32,
+  "cellBounds": [
+    [
+      8,
+      31,
+      152,
+      128
+    ],
+    [
+      8,
+      31,
+      152,
+      128
+    ]
+  ],
+  "town": {
+    "viewport": [
+      1280,
+      720
+    ],
+    "workshopOrigin": [
+      796,
+      324
+    ],
+    "minaOrigin": [
+      680,
+      415
+    ]
+  },
+  "checks": {
+    "dimensions": true,
+    "binaryAlpha": true,
+    "sharedPaletteLimit32": true,
+    "transparentRGBZero": true,
+    "nearestEnlargement": true,
+    "srgb": true,
+    "fixedDoorPixels": true,
+    "fixedFoundationPixels": true,
+    "sameGroundContactRow127": true,
+    "distinctStates": true,
+    "sourcePreserved": true
+  },
+  "limits": "Fixed door and foundation pixels do not prove visual approval. No Repairing frame, separate smoke, cast shadow, runtime assignment or Windows QA.",
+  "files": [
+    {
+      "file": "workshop-broken-1x.png",
+      "size": [
+        160,
+        128
+      ],
+      "sha256": "20167cf544f23284b682a55741892b55ee050c9b3ce60b42c696d890f63fdb8f"
+    },
+    {
+      "file": "workshop-broken-2x.png",
+      "size": [
+        320,
+        256
+      ],
+      "sha256": "f925ffa0af27dcd80628b50f89cfa0fc9127d3d5a024e65c054ebda35b949faf"
+    },
+    {
+      "file": "workshop-broken-3x.png",
+      "size": [
+        480,
+        384
+      ],
+      "sha256": "c66e77a814cd662c5a552156d32d2b27a9a59b90beeee215cd60eee12ba7b8c0"
+    },
+    {
+      "file": "workshop-broken-gray.png",
+      "size": [
+        160,
+        128
+      ],
+      "sha256": "7e3da0b73502c4862ef5caf4e1344aef818d25a3831a78fdc08a226ed9b3f798"
+    },
+    {
+      "file": "workshop-complete-1x.png",
+      "size": [
+        160,
+        128
+      ],
+      "sha256": "9374dc64fa2eb1a9929a596b615f1d23b779e1f0c5c363ddbe07b0ce53413381"
+    },
+    {
+      "file": "workshop-complete-2x.png",
+      "size": [
+        320,
+        256
+      ],
+      "sha256": "1a505775863805348e65c941218361397017692909764cf9955b7f92d4fa97d4"
+    },
+    {
+      "file": "workshop-complete-3x.png",
+      "size": [
+        480,
+        384
+      ],
+      "sha256": "1e5b96ff69f2f552eedf8cfe5b692aa95215258bf8df8cbc19d66ccdfa6edc6d"
+    },
+    {
+      "file": "workshop-complete-gray.png",
+      "size": [
+        160,
+        128
+      ],
+      "sha256": "57d31c42f59438d3e975573d231bcbcde2eca313b3a94536517d09d9a72b2795"
+    },
+    {
+      "file": "comparison-board.png",
+      "size": [
+        704,
+        656
+      ],
+      "sha256": "63549cb29bf35e308133ec6818a8e1d16f3058e16ed08932ceb54b712605c83f"
+    },
+    {
+      "file": "town-broken-1x.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "9eaf6c47c21309fb2b726e9cc9f2fbbebccf08b9c5c4e8e442c55007516d6f1c"
+    },
+    {
+      "file": "town-complete-1x.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e861caf451531866e6c532dc642bb3b16780684e4da3f9b193ca150763481a13"
+    }
+  ]
+}

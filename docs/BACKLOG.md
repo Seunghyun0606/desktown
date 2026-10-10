@@ -550,9 +550,13 @@ may be adjusted to the final scaffold without changing task responsibility.
 - **Art review progress (2026-10-11):** Mina's neutral silhouette and actual 48×48
   frame are human-approved. [Idle/Work review candidates](art/reviews/2026-10-11/idle-work-v1/review.html)
   have 4/6 distinct frames, a shared 32-color palette, binary alpha and fixed feet.
-  Motion/background review and Companion prop/floor alignment remain open;
-  all runtime catalog entries remain unassigned. Workshop style testing follows
-  the Idle/Work visual gate.
+  The human approved Idle/Work motion direction and proceeding to Workshop
+  Broken/Complete style testing. Companion prop/floor alignment remains open;
+  all runtime catalog entries remain unassigned.
+  [Workshop Broken/Complete candidates](art/reviews/2026-10-11/workshop-v1/review.html)
+  use 160×128 cells, a shared 32-color palette and fixed door/foundation pixels.
+  Town scale and grayscale comparisons are ready for the human style gate.
+  Repairing, smoke and a project-wide palette remain future production work.
 
 ### DT-E9-002 — Add final sound, particles, light, and reduced motion
 

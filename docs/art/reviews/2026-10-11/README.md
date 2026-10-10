@@ -66,4 +66,4 @@ python -m venv build/tools/art-python
 
 게임 장면·저장 스키마·카탈로그는 변경하지 않았다. 이 후보의 생성 시점에는 중립 프레임 시각 승인을 기다렸다. 이후 사용자가 중립 프레임을 승인하고 Idle·Work 테스트 진행을 선택했다. 생성 당시의 `preparation.json`은 당시 판정을 기록한 원본으로 보존했다.
 
-후속 결과: [Idle·Work 스타일 테스트](idle-work-v1/review.html), [생성·변환 기록](idle-work-v1/README.md). 애니메이션 테스트의 시각 승인을 기다리며 Workshop 제작은 아직 시작하지 않았다.
+후속 결과: [Idle·Work 스타일 테스트](idle-work-v1/review.html), [생성·변환 기록](idle-work-v1/README.md). 사용자가 Idle·Work 동작 방향을 승인했고, [Workshop Broken/Complete 스타일 테스트](workshop-v1/review.html)를 준비했으며 사용자 스타일 승인을 기다린다.
