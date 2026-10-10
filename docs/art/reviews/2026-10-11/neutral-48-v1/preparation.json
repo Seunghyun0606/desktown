@@ -1,0 +1,235 @@
+{
+  "status": "candidate_pending_visual_approval",
+  "source": "docs/art/reviews/2026-10-11/mina-neutral-v1.png",
+  "sourceSha256": "63d171fbbea27ca488e937cfbd4c2cf62f026f478d2d31fd2b31432b2d6a737c",
+  "tool": "Python/Pillow",
+  "pillowVersion": "12.3.0",
+  "sourceBoundsAtAlpha128": [
+    341,
+    148,
+    927,
+    1155
+  ],
+  "targetBounds": [
+    13,
+    5,
+    36,
+    45
+  ],
+  "fit": {
+    "height": 40,
+    "width": 23,
+    "top": 5
+  },
+  "resampling": "nearest",
+  "alphaThreshold": 128,
+  "alphaValues": [
+    0,
+    255
+  ],
+  "opaqueColorCount": 32,
+  "paletteRGB": [
+    [
+      49,
+      22,
+      16
+    ],
+    [
+      49,
+      30,
+      20
+    ],
+    [
+      51,
+      28,
+      20
+    ],
+    [
+      54,
+      32,
+      22
+    ],
+    [
+      55,
+      29,
+      21
+    ],
+    [
+      58,
+      24,
+      16
+    ],
+    [
+      58,
+      25,
+      17
+    ],
+    [
+      60,
+      45,
+      27
+    ],
+    [
+      62,
+      26,
+      17
+    ],
+    [
+      75,
+      31,
+      19
+    ],
+    [
+      75,
+      68,
+      39
+    ],
+    [
+      92,
+      47,
+      30
+    ],
+    [
+      95,
+      68,
+      39
+    ],
+    [
+      96,
+      88,
+      51
+    ],
+    [
+      106,
+      99,
+      57
+    ],
+    [
+      107,
+      100,
+      57
+    ],
+    [
+      108,
+      101,
+      58
+    ],
+    [
+      121,
+      58,
+      40
+    ],
+    [
+      123,
+      65,
+      41
+    ],
+    [
+      142,
+      56,
+      34
+    ],
+    [
+      147,
+      87,
+      50
+    ],
+    [
+      154,
+      69,
+      41
+    ],
+    [
+      156,
+      108,
+      64
+    ],
+    [
+      206,
+      95,
+      44
+    ],
+    [
+      211,
+      99,
+      46
+    ],
+    [
+      222,
+      163,
+      108
+    ],
+    [
+      223,
+      132,
+      78
+    ],
+    [
+      230,
+      118,
+      62
+    ],
+    [
+      233,
+      182,
+      127
+    ],
+    [
+      251,
+      196,
+      136
+    ],
+    [
+      252,
+      187,
+      122
+    ],
+    [
+      252,
+      230,
+      187
+    ]
+  ],
+  "pivot": [
+    24,
+    44
+  ],
+  "footContactRow": 44,
+  "checks": {
+    "dimensions": true,
+    "binaryAlpha": true,
+    "paletteLimit": true,
+    "transparentRGBZero": true,
+    "footContact": true,
+    "scalePixelReplication": true,
+    "srgbChunk": true,
+    "sourcePreserved": true
+  },
+  "files": [
+    {
+      "file": "mina-neutral-48-v1-1x.png",
+      "size": [
+        48,
+        48
+      ],
+      "sha256": "2cd45e8d2ecc1062c5bb624d129f0879746364ed69a3ad095387b75d358e214e"
+    },
+    {
+      "file": "mina-neutral-48-v1-2x.png",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "1339b065bcf5da1116d047e788313060bcc29f35c88c470e4ffe87796d837c85"
+    },
+    {
+      "file": "mina-neutral-48-v1-3x.png",
+      "size": [
+        144,
+        144
+      ],
+      "sha256": "d105187ed6f142da89ee546ce2f66d48aad49a4d5c1eb9e6510ec3cd06d6b06c"
+    }
+  ],
+  "limits": "Visual identity, hammer readability and animation continuity require review."
+}

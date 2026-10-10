@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mina Idle·Work 스타일 테스트</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:24px;background:#f3efe7;color:#342c27;font:16px/1.6 system-ui,sans-serif}main{max-width:1500px;margin:auto}h1{margin:0;font-size:28px}.note{padding:14px;background:#fff9ed;border-left:4px solid #9b5e34;max-width:1100px}.controls{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:20px 0}button,select,input{font:inherit}button,select{padding:6px 10px}button{cursor:pointer}.clips{display:flex;flex-wrap:wrap;gap:24px}article{max-width:100%;overflow:auto;background:#fff;padding:16px;border-radius:12px}canvas,img{image-rendering:pixelated}canvas{display:block}.strip{max-width:100%;height:auto}.error{color:#8b281b}a{color:#754321}small{display:block}
+</style>
+<main>
+<h1>Mina Idle·Work 스타일 테스트</h1>
+<p>승인된 48×48 중립 프레임 · 공통 32색 · 발 접점 고정 · Idle 4프레임 2 FPS / Work 6프레임 6 FPS</p>
+<p class="note">애니메이션과 배경의 <strong>아트 검토용</strong> 페이지입니다. Companion은 현재 장면의 기하학적 배경·좌표를 참조합니다. Ghost는 밝고 어두운 단색 배경 예시입니다. Godot 실행·실제 Windows 창·입력 검증 결과가 아닙니다.</p>
+<div class="controls">
+<label>배경 <select id="context"><option value="companion">Companion 장면 참조</option><option value="ghost-light">Ghost 밝은 배경</option><option value="ghost-dark">Ghost 어두운 배경</option><option value="ghost-light-40">Ghost 밝은 배경 · 40%</option><option value="ghost-dark-40">Ghost 어두운 배경 · 40%</option></select></label>
+<label>배율 <select id="scale"><option value="1">1×</option><option value="2" selected>2×</option><option value="3">3×</option></select></label>
+<button id="pause" type="button">일시 정지</button>
+<label><input id="anchor" type="checkbox">발 기준점 표시</label>
+</div>
+<div id="error" class="error" role="alert"></div>
+<div class="clips">
+<article><h2>Idle · 2 FPS</h2><canvas id="idle" width="360" height="200" aria-label="Mina Idle 4프레임 애니메이션">Canvas 지원이 필요합니다.</canvas><label>프레임 <input id="idle-frame" type="range" min="0" max="3" value="0"></label> <output id="idle-index">0 / 3</output><small>프레임 슬라이더를 움직이면 재생을 멈춥니다.</small></article>
+<article><h2>Work · 6 FPS</h2><canvas id="work" width="360" height="200" aria-label="Mina Work 6프레임 애니메이션">Canvas 지원이 필요합니다.</canvas><label>프레임 <input id="work-frame" type="range" min="0" max="5" value="0"></label> <output id="work-index">0 / 5</output><small>프레임 4: tool_contact 후보. 게임 진행과 연결되지 않습니다.</small></article>
+</div>
+<h2>전체 프레임 · 3× 최근접 확대</h2>
+<p>Idle</p><img class="strip" src="prepared-v3/idle-strip-3x.png" width="576" height="144" alt="Idle 프레임 0부터 3까지">
+<p>Work</p><img class="strip" src="prepared-v3/work-strip-3x.png" width="864" height="144" alt="Work 프레임 0부터 5까지">
+<h2>검토 항목</h2>
+<ul><li>모자·얼굴·발이 흔들리지 않고 승인된 Mina로 읽히는가?</li><li>Idle의 작은 호흡과 눈깜빡임이 차분한가?</li><li>Work의 들어 올림·접촉·복귀가 읽히고 마지막 프레임에서 첫 프레임으로 자연스럽게 돌아가는가?</li><li>Ghost 40%에서도 밝고 어두운 배경에 묻히지 않는가?</li></ul>
+<p class="note">현재 Companion 좌표에서 Work 프레임 4의 도구 오른쪽 끝과 작업대 왼쪽 사이에 <strong>5px 간격</strong>이 있습니다. 발 마지막 행 y=147과 바닥 시작 y=154 사이에도 6개의 빈 행이 남습니다. 실행 장면의 노드 배치는 변경하지 않았습니다. 동작 스타일 검토와 별도로 후속 배치 검토가 필요합니다. 원본 AI 격자의 색 흔들림을 줄이기 위해 승인된 머리·하체를 고정했습니다. 동작과 루프 품질은 사용자 검토를 기다립니다.</p>
+<p><a href="README.md">생성 기록·변환 방법</a> · <a href="prepared-v3/preparation.json">검사 결과</a> · <a href="../neutral-48-v1/review.html">승인된 중립 프레임</a></p>
+<p><a href="prepared-v3/chr_mina_idle.png">Idle 192×48 PNG</a> · <a href="prepared-v3/chr_mina_work.png">Work 288×48 PNG</a></p>
+</main>
+<script>
+const clips={idle:{count:4,fps:2},work:{count:6,fps:6}};
+const context=document.querySelector('#context'),scale=document.querySelector('#scale'),anchor=document.querySelector('#anchor');
+const pause=document.querySelector('#pause'); let playing=true, start=performance.now();
+for(const [name,clip] of Object.entries(clips)){
+ clip.canvas=document.querySelector('#'+name); clip.image=new Image(); clip.slider=document.querySelector('#'+name+'-frame'); clip.index=document.querySelector('#'+name+'-index'); clip.frozen=0;
+ clip.slider.addEventListener('input',()=>{for(const current of Object.values(clips))current.frozen=Number(current.slider.value);playing=false;pause.textContent='재생';});
+}
+pause.addEventListener('click',()=>{playing=!playing;pause.textContent=playing?'일시 정지':'재생';if(playing)start=performance.now();else for(const clip of Object.values(clips))clip.frozen=Number(clip.slider.value);});
+function background(ctx,type){
+ if(type==='companion'){
+  ctx.fillStyle='#3c352f';ctx.fillRect(0,0,360,200);
+  for(const [x,y,w,h,c] of [[0,0,360,30,'#2e2924'],[134,39,66,51,'#7ca2a7'],[0,154,360,46,'#5d493b'],[290,44,15,30,'#eec27b'],[146,130,106,25,'#9a6344'],[273,142,25,14,'#8d5e46'],[55,126,19,27,'#709e6b']]){ctx.fillStyle=c;ctx.fillRect(x,y,w,h);}
+ }else{
+  ctx.fillStyle=type.includes('light')?'#f3f1ec':'#20252b';ctx.fillRect(0,0,240,160);ctx.fillStyle='#956248';ctx.fillRect(118,115,51,17);
+ }
+}
+function draw(now){
+ for(const [name,clip] of Object.entries(clips)){
+  const index=playing?Math.floor((now-start)*clip.fps/1000)%clip.count:clip.frozen;
+  clip.slider.value=index;clip.index.value=index+' / '+(clip.count-1);
+  const type=context.value, width=type==='companion'?360:240,height=type==='companion'?200:160;
+  if(clip.canvas.width!==width||clip.canvas.height!==height){clip.canvas.width=width;clip.canvas.height=height;}
+  clip.canvas.style.width=width*Number(scale.value)+'px';clip.canvas.style.height=height*Number(scale.value)+'px';
+  const ctx=clip.canvas.getContext('2d');ctx.imageSmoothingEnabled=false;background(ctx,type);
+  const x=type==='companion'?100:75,y=type==='companion'?103:88;
+  ctx.globalAlpha=type.endsWith('-40') ? 0.4 : 1;ctx.drawImage(clip.image,index*48,0,48,48,x,y,48,48);ctx.globalAlpha=1;
+  if(anchor.checked){ctx.strokeStyle='#70e1ff';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x+21.5,y+44.5);ctx.lineTo(x+27.5,y+44.5);ctx.moveTo(x+24.5,y+41.5);ctx.lineTo(x+24.5,y+47.5);ctx.stroke();}
+ }
+ requestAnimationFrame(draw);
+}
+Promise.all(Object.entries(clips).map(([name,clip])=>new Promise((resolve,reject)=>{
+ clip.image.onload=()=>{if(clip.image.naturalWidth!==48*clip.count||clip.image.naturalHeight!==48)reject(new Error(name+' 크기 불일치'));else resolve();};
+ clip.image.onerror=()=>reject(new Error(name+' PNG를 읽을 수 없습니다.'));clip.image.src='prepared-v3/chr_mina_'+name+'.png';
+}))).then(()=>{start=performance.now();requestAnimationFrame(draw);}).catch(e=>document.querySelector('#error').textContent=e.message);
+</script>
+</html>

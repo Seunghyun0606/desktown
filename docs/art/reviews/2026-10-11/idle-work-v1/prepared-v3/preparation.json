@@ -1,0 +1,528 @@
+{
+  "status": "style_test_pending_visual_approval",
+  "tool": "Pillow",
+  "pillowVersion": "12.3.0",
+  "sourceHashes": {
+    "docs\\art\\reviews\\2026-10-11\\neutral-48-v1\\mina-neutral-48-v1-1x.png": "2cd45e8d2ecc1062c5bb624d129f0879746364ed69a3ad095387b75d358e214e",
+    "docs\\art\\reviews\\2026-10-11\\idle-work-v1\\sources\\idle-grid.png": "c52d2d440adad5a6f2b4bb433d919c4f3a2640c05b8e461b2c3d0a98972d31ac",
+    "docs\\art\\reviews\\2026-10-11\\idle-work-v1\\sources\\work-grid.png": "bd30e39d465919257672c42092d62ec46ffb0c1055d97accff8b9fea5d73d3d8"
+  },
+  "palette": [
+    [
+      49,
+      22,
+      16
+    ],
+    [
+      49,
+      30,
+      20
+    ],
+    [
+      51,
+      28,
+      20
+    ],
+    [
+      54,
+      32,
+      22
+    ],
+    [
+      55,
+      29,
+      21
+    ],
+    [
+      58,
+      24,
+      16
+    ],
+    [
+      58,
+      25,
+      17
+    ],
+    [
+      60,
+      45,
+      27
+    ],
+    [
+      62,
+      26,
+      17
+    ],
+    [
+      75,
+      31,
+      19
+    ],
+    [
+      75,
+      68,
+      39
+    ],
+    [
+      92,
+      47,
+      30
+    ],
+    [
+      95,
+      68,
+      39
+    ],
+    [
+      96,
+      88,
+      51
+    ],
+    [
+      106,
+      99,
+      57
+    ],
+    [
+      107,
+      100,
+      57
+    ],
+    [
+      108,
+      101,
+      58
+    ],
+    [
+      121,
+      58,
+      40
+    ],
+    [
+      123,
+      65,
+      41
+    ],
+    [
+      142,
+      56,
+      34
+    ],
+    [
+      147,
+      87,
+      50
+    ],
+    [
+      154,
+      69,
+      41
+    ],
+    [
+      156,
+      108,
+      64
+    ],
+    [
+      206,
+      95,
+      44
+    ],
+    [
+      211,
+      99,
+      46
+    ],
+    [
+      222,
+      163,
+      108
+    ],
+    [
+      223,
+      132,
+      78
+    ],
+    [
+      230,
+      118,
+      62
+    ],
+    [
+      233,
+      182,
+      127
+    ],
+    [
+      251,
+      196,
+      136
+    ],
+    [
+      252,
+      187,
+      122
+    ],
+    [
+      252,
+      230,
+      187
+    ]
+  ],
+  "opaqueColorCount": 32,
+  "alphaValues": [
+    0,
+    255
+  ],
+  "targetCapCenterX": 24.0,
+  "clips": {
+    "idle": {
+      "assetId": "CHR-MIN-001",
+      "file": "chr_mina_idle.png",
+      "sheetSize": [
+        192,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "count": 4,
+      "fps": 2,
+      "loop": true,
+      "distinctFrames": 4,
+      "pivot": [
+        24,
+        44
+      ],
+      "footRow": 44,
+      "footEdgeSpreadPixels": [
+        0,
+        0
+      ],
+      "nextFrameChangedPixelsIncludingSeam": [
+        107,
+        69,
+        63,
+        94
+      ],
+      "events": [],
+      "frames": [
+        {
+          "sourceBounds": [
+            205,
+            85,
+            481,
+            575
+          ],
+          "sourceCapCenter": 343.0,
+          "widthAtHeight40": 23,
+          "destination": [
+            13,
+            5
+          ],
+          "index": 0,
+          "bounds": [
+            13,
+            5,
+            36,
+            45
+          ],
+          "footBoundsX": [
+            16,
+            33
+          ],
+          "pixelHash": "022a3ce45ab021224f33d08bec3877249c0f53851d687fe3a00e746b0cde72a9"
+        },
+        {
+          "sourceBounds": [
+            173,
+            85,
+            448,
+            575
+          ],
+          "sourceCapCenter": 310.5,
+          "widthAtHeight40": 22,
+          "destination": [
+            13,
+            5
+          ],
+          "index": 1,
+          "bounds": [
+            13,
+            5,
+            36,
+            45
+          ],
+          "footBoundsX": [
+            16,
+            33
+          ],
+          "pixelHash": "c2ba18759a4722e93dd52be5b96ecb8302231864c09120d485b994adbcf77d1d"
+        },
+        {
+          "sourceBounds": [
+            205,
+            60,
+            482,
+            548
+          ],
+          "sourceCapCenter": 344.0,
+          "widthAtHeight40": 23,
+          "destination": [
+            13,
+            5
+          ],
+          "index": 2,
+          "bounds": [
+            13,
+            5,
+            36,
+            45
+          ],
+          "footBoundsX": [
+            16,
+            33
+          ],
+          "pixelHash": "bc22dfd0938b490a6f7c6819c738a2153207383f86c8ab3a6eba3d8216c93c70"
+        },
+        {
+          "sourceBounds": [
+            174,
+            60,
+            449,
+            548
+          ],
+          "sourceCapCenter": 311.0,
+          "widthAtHeight40": 23,
+          "destination": [
+            13,
+            5
+          ],
+          "index": 3,
+          "bounds": [
+            13,
+            5,
+            36,
+            45
+          ],
+          "footBoundsX": [
+            16,
+            33
+          ],
+          "pixelHash": "f672baad0d26abd176d302fb7edf6cf1849bcc2de266691538e7b679f4f69557"
+        }
+      ],
+      "sha256": "61b5161df22764d96db8f17ef9c9dc20ec96ef843d0a1e3d4968a834b3ca444d"
+    },
+    "work": {
+      "assetId": "CHR-MIN-003",
+      "file": "chr_mina_work.png",
+      "sheetSize": [
+        288,
+        48
+      ],
+      "frameSize": [
+        48,
+        48
+      ],
+      "count": 6,
+      "fps": 6,
+      "loop": true,
+      "distinctFrames": 6,
+      "pivot": [
+        24,
+        44
+      ],
+      "footRow": 44,
+      "footEdgeSpreadPixels": [
+        0,
+        0
+      ],
+      "nextFrameChangedPixelsIncludingSeam": [
+        150,
+        158,
+        205,
+        98,
+        153,
+        93
+      ],
+      "events": [
+        {
+          "name": "tool_contact",
+          "frame": 4
+        }
+      ],
+      "frames": [
+        {
+          "sourceBounds": [
+            163,
+            54,
+            438,
+            460
+          ],
+          "sourceCapCenter": 279.5,
+          "widthAtHeight40": 27,
+          "destination": [
+            13,
+            5
+          ],
+          "index": 0,
+          "bounds": [
+            14,
+            5,
+            40,
+            45
+          ],
+          "footBoundsX": [
+            16,
+            33
+          ],
+          "pixelHash": "4f21aa19c6123201081b4e4c9931f7af71cfb64e03ff7bae8d49aaa2cc87241d"
+        },
+        {
+          "sourceBounds": [
+            153,
+            54,
+            395,
+            460
+          ],
+          "sourceCapCenter": 269.0,
+          "widthAtHeight40": 24,
+          "destination": [
+            13,
+            5
+          ],
+          "index": 1,
+          "bounds": [
+            14,
+            5,
+            37,
+            45
+          ],
+          "footBoundsX": [
+            16,
+            33
+          ],
+          "pixelHash": "d3a96fda46d986df5003f8ab2f463c35ecc54f511aa4c841c30af10de0e46b26"
+        },
+        {
+          "sourceBounds": [
+            129,
+            54,
+            401,
+            460
+          ],
+          "sourceCapCenter": 249.0,
+          "widthAtHeight40": 27,
+          "destination": [
+            13,
+            5
+          ],
+          "index": 2,
+          "bounds": [
+            14,
+            5,
+            40,
+            45
+          ],
+          "footBoundsX": [
+            16,
+            33
+          ],
+          "pixelHash": "46479161f523233533bed08ecf4eb7c52a82603fd59429ac5f179ecc604734a1"
+        },
+        {
+          "sourceBounds": [
+            163,
+            44,
+            453,
+            449
+          ],
+          "sourceCapCenter": 279.5,
+          "widthAtHeight40": 29,
+          "destination": [
+            13,
+            5
+          ],
+          "index": 3,
+          "bounds": [
+            14,
+            5,
+            42,
+            45
+          ],
+          "footBoundsX": [
+            16,
+            33
+          ],
+          "pixelHash": "2a8f5f6b6335e3809dcf125c20e14331e0b63077108d71e59f477de0c1ebacc7"
+        },
+        {
+          "sourceBounds": [
+            153,
+            44,
+            444,
+            449
+          ],
+          "sourceCapCenter": 268.5,
+          "widthAtHeight40": 29,
+          "destination": [
+            13,
+            5
+          ],
+          "index": 4,
+          "bounds": [
+            14,
+            5,
+            42,
+            45
+          ],
+          "footBoundsX": [
+            16,
+            33
+          ],
+          "pixelHash": "7cf661eaf30c3582ceaddc116a6f857dc4a33b2b043c964a791bef32a38e689e"
+        },
+        {
+          "sourceBounds": [
+            129,
+            44,
+            401,
+            449
+          ],
+          "sourceCapCenter": 246.5,
+          "widthAtHeight40": 27,
+          "destination": [
+            13,
+            5
+          ],
+          "index": 5,
+          "bounds": [
+            14,
+            5,
+            40,
+            45
+          ],
+          "footBoundsX": [
+            16,
+            33
+          ],
+          "pixelHash": "f1e41ef571d659d75be5bcc34a3a79d3d6e057095c030d1f6371b0804177c783"
+        }
+      ],
+      "sha256": "f52d1f4b2b725fc2aa69895bfdd9c49d756527428b91451582f3fede19f914c8"
+    }
+  },
+  "sourcePreserved": true,
+  "identityLock": {
+    "idle": "neutral with generated chest/hand windows and frame2 blink",
+    "work": "approved head silhouette and lower body; generated arm/tool outside head"
+  },
+  "limits": [
+    "Human identity, subtle motion and loop seams are not auto-approved.",
+    "Static scene-background references, not Godot/native-window validation.",
+    "Contact frame is a presentation cue candidate only.",
+    "Fixed scene prop spacing is shown without moving runtime nodes."
+  ]
+}

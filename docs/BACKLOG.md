@@ -547,6 +547,12 @@ may be adjusted to the final scaffold without changing task responsibility.
 - **Automated:** catalog completeness/dimension/frame validation.
 - **Manual:** Yes — art gates and alpha/pivot review.
 - **Asset dependency:** production assets; blocking.
+- **Art review progress (2026-10-11):** Mina's neutral silhouette and actual 48×48
+  frame are human-approved. [Idle/Work review candidates](art/reviews/2026-10-11/idle-work-v1/review.html)
+  have 4/6 distinct frames, a shared 32-color palette, binary alpha and fixed feet.
+  Motion/background review and Companion prop/floor alignment remain open;
+  all runtime catalog entries remain unassigned. Workshop style testing follows
+  the Idle/Work visual gate.
 
 ### DT-E9-002 — Add final sound, particles, light, and reduced motion
 

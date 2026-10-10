@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mina 48×48 중립 프레임 검토</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:28px;background:#f3efe7;color:#342c27;font:16px/1.65 system-ui,sans-serif}main{max-width:1000px;margin:auto}h1{font-size:28px;margin:0 0 12px}p{max-width:850px}.note{padding:14px 18px;background:#fff9ed;border-left:4px solid #9b5e34}.row{display:flex;flex-wrap:wrap;align-items:end;gap:32px;padding:20px;border-radius:12px;margin:16px 0}.light{background:#fff}.gray{background:#808080;color:white}.dark{background:#20252b;color:white}figure{margin:0}img{display:block;image-rendering:pixelated}figcaption{font-size:14px;margin-top:8px}a{color:#754321}code{font-size:14px}.comparison{display:flex;flex-wrap:wrap;gap:28px;background:#fff;padding:20px;border-radius:12px}.comparison img{object-fit:contain}.board{max-width:100%;height:auto}
+</style>
+<main>
+<h1>Mina 48×48 중립 프레임 후보</h1>
+<p>사용자가 이 중립 프레임을 승인했습니다. <a href="../idle-work-v1/review.html">후속 Idle·Work 스타일 테스트</a></p>
+<p>승인된 v1 외형을 Python으로 변환한 실제 48×48 RGBA PNG입니다.</p>
+<p class="note"><strong>자동 형식 검사는 통과했습니다. 시각 승인은 대기 중입니다.</strong> 색상 32개, 알파 0/255, 기준점 (24,44), 발 접점 y=44. 2×·3× PNG는 원본 픽셀을 정확히 반복합니다. 화면의 CSS 크기를 유지하며 브라우저 확대 설정에 따라 물리 크기는 달라질 수 있습니다.</p>
+<h2>승인된 외형과 후보 비교</h2>
+<div class="comparison">
+<figure><img src="../mina-neutral-v1.png" width="240" height="240" alt="승인된 Mina 원본 외형"><figcaption>승인된 외형 시안</figcaption></figure>
+<figure><img src="mina-neutral-48-v1-3x.png" width="144" height="144" alt="실제 48×48 후보의 3배 최근접 확대"><figcaption>48×48 후보 — 3×</figcaption></figure>
+</div>
+<h2>실제 프레임의 최근접 1×·2×·3×</h2>
+<div class="row light" aria-label="밝은 배경">
+<figure><img src="mina-neutral-48-v1-1x.png" width="48" height="48" alt="밝은 배경 1배 후보"><figcaption>1× · 48×48</figcaption></figure>
+<figure><img src="mina-neutral-48-v1-2x.png" width="96" height="96" alt="밝은 배경 2배 후보"><figcaption>2× · 96×96</figcaption></figure>
+<figure><img src="mina-neutral-48-v1-3x.png" width="144" height="144" alt="밝은 배경 3배 후보"><figcaption>3× · 144×144</figcaption></figure>
+</div>
+<div class="row gray" aria-label="회색 배경">
+<figure><img src="mina-neutral-48-v1-1x.png" width="48" height="48" alt="회색 배경 1배 후보"><figcaption>1× · 48×48</figcaption></figure>
+<figure><img src="mina-neutral-48-v1-2x.png" width="96" height="96" alt="회색 배경 2배 후보"><figcaption>2× · 96×96</figcaption></figure>
+<figure><img src="mina-neutral-48-v1-3x.png" width="144" height="144" alt="회색 배경 3배 후보"><figcaption>3× · 144×144</figcaption></figure>
+</div>
+<div class="row dark" aria-label="어두운 배경">
+<figure><img src="mina-neutral-48-v1-1x.png" width="48" height="48" alt="어두운 배경 1배 후보"><figcaption>1× · 48×48</figcaption></figure>
+<figure><img src="mina-neutral-48-v1-2x.png" width="96" height="96" alt="어두운 배경 2배 후보"><figcaption>2× · 96×96</figcaption></figure>
+<figure><img src="mina-neutral-48-v1-3x.png" width="144" height="144" alt="어두운 배경 3배 후보"><figcaption>3× · 144×144</figcaption></figure>
+</div>
+<h2>확인할 사항</h2>
+<ul><li>주황색 모자와 머리·몸통 비율이 승인한 Mina의 특징을 유지하는가?</li><li>1×에서 작은 빌더로 인식되고, 작업용 망치가 충분히 읽히는가?</li><li>밝고 어두운 배경에서 외곽과 부츠가 식별되는가?</li></ul>
+<p>망치의 세부 형태는 1×에서 약하게 보입니다. 자동 색상 제한과 발 접점 검사로 이 가독성을 승인하지는 않습니다. 이 후보에는 작업·이동 애니메이션이 없고 게임 카탈로그에 연결하지 않았습니다.</p>
+<p><a href="mina-neutral-48-v1-1x.png">48×48 PNG</a> · <a href="review-board.png">배경별 검토 보드</a> · <a href="preparation.json">변환·검사 기록</a> · <a href="../README.md">생성 출처와 재현 방법</a></p>
+</main>
+</html>

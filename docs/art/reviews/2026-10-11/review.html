@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeskTown Mina 외형 시안 v1</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; padding: 28px; font: 16px/1.65 system-ui,sans-serif; color:#342c27; background:#f3efe7; }
+main { max-width:1000px; margin:auto; }
+h1 { margin:0 0 12px; font-size:28px; }
+p { max-width:850px; }
+.note { padding:14px 18px; border-left:4px solid #9b5e34; background:#fff9ed; }
+.rows { display:grid; gap:16px; }
+.row { display:flex; flex-wrap:wrap; align-items:end; gap:24px; padding:20px; border-radius:12px; }
+.light { background:#fff; color:#342c27; }
+.gray { background:#808080; color:#fff; }
+.dark { background:#20252b; color:#fff; }
+figure { margin:0; }
+img { display:block; image-rendering:pixelated; }
+figcaption { margin-top:8px; font-size:14px; }
+.source { display:inline-block; padding:20px; background:#fff; border-radius:12px; }
+.source img { width:320px; height:320px; max-width:100%; }
+a { color:#754321; }
+footer { margin-top:24px; }
+</style>
+<main>
+<h1>Mina 외형 시안 v1</h1>
+<p><a href="neutral-48-v1/review.html">승인된 외형으로 만든 실제 48×48 후보 검토</a></p>
+<p>둥근 작업 모자 · 올리브색 멜빵 · 작은 빌더 · 오른쪽 중립 자세</p>
+<p class="note"><strong>외형 검토용입니다.</strong> 원본은 1254×1254 RGBA이며 아래는 브라우저에서 48·96·144 CSS px로 축소한 표시입니다. 정확한 48×48 스프라이트의 1×/2×/3× 검증은 아직 아닙니다.</p>
+<h2>확대 시안</h2>
+<figure class="source"><img src="mina-neutral-v1.png" alt="주황색 모자와 올리브 멜빵을 입고 오른쪽을 바라보는 작은 빌더 Mina"><figcaption>원본 시안 — 320 CSS px 표시</figcaption></figure>
+<h2>작은 표시와 배경 대비</h2>
+<div class="rows">
+<div class="row light" aria-label="밝은 배경">
+<figure><img src="mina-neutral-v1.png" width="48" height="48" alt="밝은 배경 48 px"><figcaption>48 CSS px</figcaption></figure>
+<figure><img src="mina-neutral-v1.png" width="96" height="96" alt="밝은 배경 96 px"><figcaption>96 CSS px</figcaption></figure>
+<figure><img src="mina-neutral-v1.png" width="144" height="144" alt="밝은 배경 144 px"><figcaption>144 CSS px</figcaption></figure>
+</div>
+<div class="row gray" aria-label="회색 배경">
+<figure><img src="mina-neutral-v1.png" width="48" height="48" alt="회색 배경 48 px"><figcaption>48 CSS px</figcaption></figure>
+<figure><img src="mina-neutral-v1.png" width="96" height="96" alt="회색 배경 96 px"><figcaption>96 CSS px</figcaption></figure>
+<figure><img src="mina-neutral-v1.png" width="144" height="144" alt="회색 배경 144 px"><figcaption>144 CSS px</figcaption></figure>
+</div>
+<div class="row dark" aria-label="어두운 배경">
+<figure><img src="mina-neutral-v1.png" width="48" height="48" alt="어두운 배경 48 px"><figcaption>48 CSS px</figcaption></figure>
+<figure><img src="mina-neutral-v1.png" width="96" height="96" alt="어두운 배경 96 px"><figcaption>96 CSS px</figcaption></figure>
+<figure><img src="mina-neutral-v1.png" width="144" height="144" alt="어두운 배경 144 px"><figcaption>144 CSS px</figcaption></figure>
+</div>
+</div>
+<h2>검토 항목</h2>
+<ul><li>모자·머리·몸통의 윤곽이 작은 크기에서도 기억되는가?</li><li>차분한 작은 빌더라는 제품 분위기에 맞는가?</li><li>따뜻한 모자와 절제된 멜빵 색 배치가 적절한가?</li><li>망치가 무기처럼 보이지 않고 작은 작업 도구로 읽히는가?</li></ul>
+<p>외형 승인 후에도 정확한 픽셀 격자, 색 수, 알파 가장자리, 피벗과 발 접점 검증이 필요합니다. 아직 게임에 적용되지 않았습니다.</p>
+<footer><a href="README.md">생성 기록과 검토 한계</a> · <a href="prompt-v1.txt">사용한 전체 프롬프트</a></footer>
+</main>
+</html>
