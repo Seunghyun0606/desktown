@@ -566,7 +566,10 @@ may be adjusted to the final scaffold without changing task responsibility.
   approved Reward color/effect direction and proceeding to shared palette comparison.
   [Shared palette candidates](art/reviews/2026-10-11/palette-v1/review.html) compare
   the original 95-color core union with shared 24/32-color core palettes; the
-  approved separate 6-color effect ramp is retained. Palette choice is pending.
+  approved separate 6-color effect ramp is retained. The human selected shared32
+  as the production baseline; exact colors and editor palettes are recorded in
+  [Approved palette](art/palettes/README.md). Mina's remaining four clips / 20
+  frames, Workshop Repairing and Companion core props are next production items.
   Repairing, Celebrate, full effect sheets and runtime reveal integration remain
   future production work. Art direction approvals are not final asset delivery.
 

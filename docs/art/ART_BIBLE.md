@@ -33,9 +33,13 @@ recognizable at 48 × 48 and at 40% Ghost opacity.
 - One restrained accent for discoveries, reused consistently
 - No pure black outlines; use a dark warm or cool neutral
 
-Target a compact working palette of 24–32 colors for characters and environment,
-with shared ramp families. Effects may add a small emissive ramp. Final palette
-values are an art-production decision after one Mina + Workshop style test.
+Use the human-approved 32-color production baseline for characters and environment:
+[exact RGB/HEX values](palettes/desktown-v01-32.json),
+[editor palettes and production notes](palettes/README.md).
+The user selected the shared32 candidate on 2026-10-11 after the Mina, Workshop,
+environment and Reward style reviews. The approved six-color effect ramp remains
+separate. New art that needs changed colors requires another human review.
+This color baseline does not approve individual final sheets or runtime assignment.
 
 ## 4. Pixel language
 

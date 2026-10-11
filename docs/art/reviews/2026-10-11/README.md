@@ -66,4 +66,4 @@ python -m venv build/tools/art-python
 
 게임 장면·저장 스키마·카탈로그는 변경하지 않았다. 이 후보의 생성 시점에는 중립 프레임 시각 승인을 기다렸다. 이후 사용자가 중립 프레임을 승인하고 Idle·Work 테스트 진행을 선택했다. 생성 당시의 `preparation.json`은 당시 판정을 기록한 원본으로 보존했다.
 
-후속 결과: [Idle·Work 스타일 테스트](idle-work-v1/review.html), [생성·변환 기록](idle-work-v1/README.md). 사용자가 Idle·Work 동작 방향을 승인했고, [Workshop Broken/Complete 스타일 테스트](workshop-v1/review.html)의 스타일을 사용자가 승인했다. [House·길·식생 테스트](town-cluster-v1/review.html)의 환경 스타일도 사용자가 승인했다. [Reward 완성 연출 색·효과 테스트](reward-v1/review.html)의 방향도 사용자가 승인했다. 후속 [공통 24색·32색 팔레트 비교](palette-v1/review.html)를 준비했으며 제작 준비의 기본 색 선택을 기다린다.
+후속 결과: [Idle·Work 스타일 테스트](idle-work-v1/review.html), [생성·변환 기록](idle-work-v1/README.md). 사용자가 Idle·Work 동작 방향을 승인했고, [Workshop Broken/Complete 스타일 테스트](workshop-v1/review.html)의 스타일을 사용자가 승인했다. [House·길·식생 테스트](town-cluster-v1/review.html)의 환경 스타일도 사용자가 승인했다. [Reward 완성 연출 색·효과 테스트](reward-v1/review.html)의 방향도 사용자가 승인했다. [공통 24색·32색 팔레트 비교](palette-v1/review.html)에서 사용자는 공통 32색을 제작 기준으로 선택했다. [승인 기준 파일과 다음 제작 항목](../../palettes/README.md)에 기록했다.
