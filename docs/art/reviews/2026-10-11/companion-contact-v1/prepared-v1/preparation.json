@@ -1,0 +1,893 @@
+{
+  "status": "human_review_pending",
+  "pillow": "12.3.0",
+  "runtimeAssigned": false,
+  "method": "Alpha>=128 bounds fitted by nearest; weighted RGB2/4/3 to approved32; transparent RGB0. Floor holes filled from nearest opaque pixel in same row.",
+  "sourceSha256": {
+    "docs/art/reviews/2026-10-11/companion-contact-v1/sources/floor-prompt.txt": "02463ea3c6c76fc74d8225532b9b2c51568ada2e3528b56250d00d09cc3dce24",
+    "docs/art/reviews/2026-10-11/companion-contact-v1/sources/floor.png": "abaebd6dcc5d4ed06ef4536edd4ed64773c724cc172cdc80c3cd8e25354ee3ec",
+    "docs/art/reviews/2026-10-11/companion-contact-v1/sources/stool-prompt.txt": "4b374b6a109c58b9f82139eefd5d2d1a0d77a6ca448be26db459131249d62107",
+    "docs/art/reviews/2026-10-11/companion-contact-v1/sources/stool.png": "b1de1317d85c2454264682f2b199f3615a90a04b388c0b296971d41d47c8e73f",
+    "docs/art/reviews/2026-10-11/companion-contact-v1/sources/shadow-prompt.txt": "8ac407d37a0fe14f3c3d1a1d353ff1d83a6f996de3e99101805a2d0e4b64dc1b",
+    "docs/art/reviews/2026-10-11/companion-contact-v1/sources/shadow.png": "fd6c54e45efdf0ee2a97a9f5b83f3a29449b5716f851bfcf32c9c0640b8eeb20",
+    "docs/art/reviews/2026-10-11/companion-props-v1/prepared-v1/prop_workbench.png": "db9ca0b3daf6737d572a5930499a5e59cf57415922e3923094fd7158b0ab1f7d",
+    "docs/art/reviews/2026-10-11/companion-props-v1/prepared-v1/prop_small_window.png": "6af561dd94f4b1f995b5803488aaa0e951329de0cd8ab87326f5a17b4dd2be3e",
+    "docs/art/reviews/2026-10-11/companion-props-v1/prepared-v1/lamp-f01.png": "792b02988d481f00a8972d543c56adddd3165ebcc862d610214d621c2e369643",
+    "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/work-1x.png": "5d9a2454da521d6011b69f449163f017c4f85b4af578e51fa90062e190a0c756",
+    "docs/art/reviews/2026-10-11/mina-motion-v1/prepared-v1/chr_mina_rest.png": "8635f11f257b3ec8c164890998521938d153c7866fee125f0c7d427d2de5dce4",
+    "docs/art/palettes/desktown-v01-32.json": "7159392f53c516fded526541ac2b9a9d4eb0e005056d594bd61ad9ca2eca638b"
+  },
+  "assets": [
+    {
+      "id": "CMP-FLR-001",
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "sourceROI": [
+        0,
+        0,
+        2172,
+        724
+      ],
+      "sourceAlphaBoundsInROI": [
+        13,
+        363,
+        2160,
+        677
+      ],
+      "targetBox": [
+        0,
+        12,
+        360,
+        64
+      ],
+      "size": [
+        360,
+        64
+      ],
+      "alphaBounds": [
+        0,
+        12,
+        360,
+        64
+      ],
+      "colorsUsed": 19,
+      "pivot": [
+        180,
+        64
+      ]
+    },
+    {
+      "id": "CMP-STL-001",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceROI": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceAlphaBoundsInROI": [
+        490,
+        585,
+        1047,
+        927
+      ],
+      "targetBox": [
+        7,
+        18,
+        25,
+        32
+      ],
+      "size": [
+        32,
+        32
+      ],
+      "alphaBounds": [
+        7,
+        18,
+        25,
+        32
+      ],
+      "colorsUsed": 18,
+      "pivot": [
+        16,
+        32
+      ]
+    },
+    {
+      "id": "CMP-SHD-001",
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "sourceROI": [
+        0,
+        690,
+        1774,
+        887
+      ],
+      "sourceAlphaBoundsInROI": [
+        483,
+        16,
+        1290,
+        115
+      ],
+      "targetBox": [
+        3,
+        6,
+        29,
+        11
+      ],
+      "size": [
+        32,
+        16
+      ],
+      "alphaBounds": [
+        3,
+        6,
+        29,
+        11
+      ],
+      "colorsUsed": 2,
+      "pivot": [
+        16,
+        16
+      ]
+    }
+  ],
+  "contactReferences": [
+    {
+      "clip": "work",
+      "layout": "current",
+      "frame": 0,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        269.5,
+        124
+      ],
+      "seatTopY": 142,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "work",
+      "layout": "current",
+      "frame": 1,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        269.5,
+        124
+      ],
+      "seatTopY": 142,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "work",
+      "layout": "current",
+      "frame": 2,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        269.5,
+        124
+      ],
+      "seatTopY": 142,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "work",
+      "layout": "current",
+      "frame": 3,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        269.5,
+        124
+      ],
+      "seatTopY": 142,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "work",
+      "layout": "current",
+      "frame": 4,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        269.5,
+        124
+      ],
+      "seatTopY": 142,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "work",
+      "layout": "current",
+      "frame": 5,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        269.5,
+        124
+      ],
+      "seatTopY": 142,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "work",
+      "layout": "proposal",
+      "frame": 0,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        108,
+        116
+      ],
+      "seatTopY": 134,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "work",
+      "layout": "proposal",
+      "frame": 1,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        108,
+        116
+      ],
+      "seatTopY": 134,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "work",
+      "layout": "proposal",
+      "frame": 2,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        108,
+        116
+      ],
+      "seatTopY": 134,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "work",
+      "layout": "proposal",
+      "frame": 3,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        108,
+        116
+      ],
+      "seatTopY": 134,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "work",
+      "layout": "proposal",
+      "frame": 4,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        108,
+        116
+      ],
+      "seatTopY": 134,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "work",
+      "layout": "proposal",
+      "frame": 5,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        108,
+        116
+      ],
+      "seatTopY": 134,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "rest",
+      "layout": "current",
+      "frame": 0,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        269.5,
+        124
+      ],
+      "seatTopY": 142,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "rest",
+      "layout": "current",
+      "frame": 1,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        269.5,
+        124
+      ],
+      "seatTopY": 142,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "rest",
+      "layout": "current",
+      "frame": 2,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        269.5,
+        124
+      ],
+      "seatTopY": 142,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "rest",
+      "layout": "current",
+      "frame": 3,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        269.5,
+        124
+      ],
+      "seatTopY": 142,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "rest",
+      "layout": "proposal",
+      "frame": 0,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        108,
+        116
+      ],
+      "seatTopY": 134,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "rest",
+      "layout": "proposal",
+      "frame": 1,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        108,
+        116
+      ],
+      "seatTopY": 134,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "rest",
+      "layout": "proposal",
+      "frame": 2,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        108,
+        116
+      ],
+      "seatTopY": 134,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    },
+    {
+      "clip": "rest",
+      "layout": "proposal",
+      "frame": 3,
+      "minaOrigin": [
+        100,
+        103
+      ],
+      "footLastY": 147,
+      "floorFirstY": 148,
+      "seatOrigin": [
+        108,
+        116
+      ],
+      "seatTopY": 134,
+      "note": "Geometric reference values; no automatic artistic/contact pass verdict."
+    }
+  ],
+  "outputs": [
+    {
+      "file": "prop_companion_floor.png",
+      "size": [
+        360,
+        64
+      ],
+      "sha256": "1e23e16eee74c5b2aff438a0d9177f305833866ebc0362f1a2e2e4ee360c6368"
+    },
+    {
+      "file": "floor-2x.png",
+      "size": [
+        720,
+        128
+      ],
+      "sha256": "81c49ab87c2eff3082bf6cb06bb3796f3c03fd3f2e004e4b0c46c2e7b23e634f"
+    },
+    {
+      "file": "floor-3x.png",
+      "size": [
+        1080,
+        192
+      ],
+      "sha256": "2a876e865eb9ff6864af0797b857255fdac12dc03881d5692ce11634664030f9"
+    },
+    {
+      "file": "floor-gray.png",
+      "size": [
+        360,
+        64
+      ],
+      "sha256": "5c7fbf3f3fd1c024fa7c7ed0ecff5ef31f3e47801152ee088505b70cd3abba3f"
+    },
+    {
+      "file": "prop_stool.png",
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "a7ab4a73cec2cf456b3b159f3e7c6aa6204897d6b0b9fc72cffc0b3f2a6deb1a"
+    },
+    {
+      "file": "stool-2x.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "237fcccf72931327c30dd4bb74e203dd5b4b5e6c7f2aa578f78dc9dda35266e7"
+    },
+    {
+      "file": "stool-3x.png",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "4350c09c4bd83f13dcd4eb3d9f6724e03bf0c4d47f5125044b25e87560f2e318"
+    },
+    {
+      "file": "stool-gray.png",
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "c43f7013211eacf05b8a95375f179afca9d6727ab9ce689ade0356d7f9833f33"
+    },
+    {
+      "file": "prop_character_shadow.png",
+      "size": [
+        32,
+        16
+      ],
+      "sha256": "6038bb47816c47c56405882d756bdf3fea9458ba08565f22765dcf5425d223c4"
+    },
+    {
+      "file": "shadow-2x.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "8718e2f5ae8fd20d11f41b44a6fd036ef2390216620f897b0a0177486c3f2a49"
+    },
+    {
+      "file": "shadow-3x.png",
+      "size": [
+        96,
+        48
+      ],
+      "sha256": "4a788028505a674730df87ab57471ebc5de49769b446d72e7f5f0f9e9221bbc0"
+    },
+    {
+      "file": "shadow-gray.png",
+      "size": [
+        32,
+        16
+      ],
+      "sha256": "bdf01aad81c07ca3d5f316a215a60614d502293742bc71bff93cc745c9b91ad0"
+    },
+    {
+      "file": "work-current-f00.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "9e93a89003876376672aa12e29367315c44e3db95de3921e2aa3bec780c71e57"
+    },
+    {
+      "file": "work-current-f01.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "1ddb2a8f7d0d9676816fe80059fbb10c7bf3d637c68af2f983101c00dfb9e9a8"
+    },
+    {
+      "file": "work-current-f02.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "a4af37cea55ecfb94bed764d88624eae851412b5cebb06eea1f9d88d82687266"
+    },
+    {
+      "file": "work-current-f03.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "02d1a24b523899b671d2de3403a37cdf351d07ac8d71ce030b7de2554b13f998"
+    },
+    {
+      "file": "work-current-f04.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "eb7f5f5fdee16d551bdaa425069bb1c820b19ffffd5b94c011edccb5a0794720"
+    },
+    {
+      "file": "work-current-f05.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "d1908cd5d63bd065f32e24170e7d2ad084e650ce6bc9a5ba8a627718334775be"
+    },
+    {
+      "file": "work-current-contact-strip.png",
+      "size": [
+        510,
+        53
+      ],
+      "sha256": "adbbe41d78db7c5b77fd54d07db1ee48889b390604030941d87cde5d0cc8e074"
+    },
+    {
+      "file": "work-current-contact-strip-2x.png",
+      "size": [
+        1020,
+        106
+      ],
+      "sha256": "53fe50146f8327763adee0362553b750a28cbba7a8283a9b57f01c18f5c02d75"
+    },
+    {
+      "file": "work-current-animated.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "a0a18cc942050072e2bafffe5cddf5e204d9174f690a971c1d296a33e5d539ff"
+    },
+    {
+      "file": "work-proposal-f00.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "749d9acbc1bf3cff8d089667bc8ad88ac12ec24d6fe5394d2ab596a091613a6a"
+    },
+    {
+      "file": "work-proposal-f01.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "ae8011459ac65fa98fd21081d7e0fd0bc69baebc05cb97e4ac2f53e215d2ed19"
+    },
+    {
+      "file": "work-proposal-f02.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "2ff6fc944c95f1d4173822471bb6d7f0d44b6b469a1384edf974fa28dbbd61ac"
+    },
+    {
+      "file": "work-proposal-f03.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "bf5105544768d149b81f94191f7e3a0fcf4af65eba5de85c4d2e304e1656a598"
+    },
+    {
+      "file": "work-proposal-f04.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "0343baf44a14bc7315e12cbe53fc3ce35b245ab130f586b430f5e4ce27993e7c"
+    },
+    {
+      "file": "work-proposal-f05.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "50446fba2d136cc06d89e3a01de25eb28e02cc26aeebcb9b6b17a4c44111865d"
+    },
+    {
+      "file": "work-proposal-contact-strip.png",
+      "size": [
+        510,
+        53
+      ],
+      "sha256": "f9b7504397c4ea7861c47f1362a55e8fd713f0a29805332a09cca88125809d87"
+    },
+    {
+      "file": "work-proposal-contact-strip-2x.png",
+      "size": [
+        1020,
+        106
+      ],
+      "sha256": "23f7d2b418ff8427371bea3a64a6fb4e842fa2e88582254b86df469da6dcc457"
+    },
+    {
+      "file": "work-proposal-animated.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "373020cc7333002d75ce0dd965a54dd09455e35cc04a695e4f48c07e7362a222"
+    },
+    {
+      "file": "rest-current-f00.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "b01ef533b623570bc8ed279860ef0263178892e801f12e569dec4f8e978cfcbf"
+    },
+    {
+      "file": "rest-current-f01.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "8fa42561f76cd6fd317ac66b01541a71a2cd407325fcacbd827714f61105723b"
+    },
+    {
+      "file": "rest-current-f02.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "7599351ea11ad5753d40b5e4e2527f514f86c1fa239a04408d30fe3c2547119a"
+    },
+    {
+      "file": "rest-current-f03.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "2af0d226a44ccbc94100cc22398c64783a29a996e6d060305a0b993f586cb7d1"
+    },
+    {
+      "file": "rest-current-contact-strip.png",
+      "size": [
+        340,
+        53
+      ],
+      "sha256": "2b5e920b2d02f8b3797b05d39291c72597b62bdaccc0366cf86160c77038c602"
+    },
+    {
+      "file": "rest-current-contact-strip-2x.png",
+      "size": [
+        680,
+        106
+      ],
+      "sha256": "05538ffd3e67398e516899e61b0751b6d124346bcecdc9fd26322a44477554f8"
+    },
+    {
+      "file": "rest-current-animated.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "b83f6b838adddd46e43a794b5b37b6fb081a060bd76e927aaf054172a29b87aa"
+    },
+    {
+      "file": "rest-proposal-f00.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "032cce56ddca8b4299807d6d395bad85df4ab95e9aa36fc07d4436ded27692aa"
+    },
+    {
+      "file": "rest-proposal-f01.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "ebae07c13fcbb476f1cd72485d355926ac3eae2e9257c35860d960c643541f88"
+    },
+    {
+      "file": "rest-proposal-f02.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "897f9412b64b3fb5bc92a2a9cc11d09db63dc052b9d1e1e3678192505d96551e"
+    },
+    {
+      "file": "rest-proposal-f03.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "3045afe537afcc7415b1f93a026ab3e251cff7302014e31a545a4ce39173b06a"
+    },
+    {
+      "file": "rest-proposal-contact-strip.png",
+      "size": [
+        340,
+        53
+      ],
+      "sha256": "b771f1a3ff3ea91c1684d7e7f4529677e9f5e59545a5ce372fc521298b48fe1d"
+    },
+    {
+      "file": "rest-proposal-contact-strip-2x.png",
+      "size": [
+        680,
+        106
+      ],
+      "sha256": "9e5662dfec02aaf3f8125d65c00aabdace8cce075327e348e32b80fa669abd27"
+    },
+    {
+      "file": "rest-proposal-animated.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "c2cc8adaf90ebb63e186e18ee98ef6369a52af2945e0a4b145db748c59ebe28f"
+    },
+    {
+      "file": "comparison-board.png",
+      "size": [
+        1160,
+        1080
+      ],
+      "sha256": "77e22467c7ef09689dd3c14b23787763b73d879ac561bc97fb5b0a9f5add5809"
+    }
+  ],
+  "layout": {
+    "currentWorkbench": [
+      151,
+      91
+    ],
+    "proposalWorkbench": [
+      135,
+      91
+    ],
+    "currentStool": [
+      269.5,
+      124
+    ],
+    "rasterCurrentStool": [
+      270,
+      124
+    ],
+    "proposalStool": [
+      108,
+      116
+    ],
+    "minaOriginAllClips": [
+      100,
+      103
+    ],
+    "floorOrigin": [
+      0,
+      136
+    ],
+    "floorVisibleFirstY": 148,
+    "oldGeometricFloorFirstY": 154,
+    "proposalShadow": [
+      108,
+      141
+    ],
+    "shadowRuntimeBindingExists": false,
+    "lampOrigin": [
+      281.5,
+      26
+    ],
+    "rasterLamp": [
+      282,
+      26
+    ],
+    "drawOrder": "Floor, shadow(proposal), bench, stool, plant, Mina, label; props fixed across clips.",
+    "unresolved": "Tool baked into Work; exact contact/event frame, Rest seat support/occlusion and live whole-pixel binding require human/Godot review."
+  }
+}

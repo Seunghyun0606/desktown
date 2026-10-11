@@ -579,8 +579,11 @@ may be adjusted to the final scaffold without changing task responsibility.
   The human approved Repairing appearance and the three-state distinction.
   [Companion core prop candidates](art/reviews/2026-10-11/companion-props-v1/review.html)
   provide Workbench/Lamp/Window/Tool (4 IDs / 6 cells), approved32 and current vs.
-  proposed contact references. Prop appearance approval is pending; floor/stool,
-  all-frame contact and tool separation decisions remain open. No live scene change.
+  proposed contact references. The human approved core prop appearance.
+  [Floor/stool/shadow and full contact review](art/reviews/2026-10-11/companion-contact-v1/review.html)
+  adds 3 approved32 candidates and all 6 Work / 4 Rest frames with current vs.
+  fixed nearby prop placement. New art/placement approval, exact tool contact,
+  shadow binding and final delivery remain open. No live scene change.
   Final Mina/Workshop delivery, full effect sheets and runtime reveal integration remain
   future production work. Art direction approvals are not final asset delivery.
 
