@@ -571,9 +571,13 @@ may be adjusted to the final scaffold without changing task responsibility.
   [Approved palette](art/palettes/README.md).
   [Walk/Rest/Stretch/Celebrate candidates](art/reviews/2026-10-11/mina-motion-v1/review.html)
   now provide the remaining 20 distinct 48×48 frames in the approved palette,
-  fixed foot baseline and loop/one-shot previews. Their motion and visual quality
-  await human review. Workshop Repairing and Companion core props are next.
-  Final Mina delivery, full effect sheets and runtime reveal integration remain
+  fixed foot baseline and loop/one-shot previews. Their motion direction was
+  human-approved; final visual quality and scene contact remain open.
+  [Workshop Repairing / three-state candidate](art/reviews/2026-10-11/workshop-repairing-v1/review.html)
+  provides a 480×128 sheet in the approved32 palette, fixed door/foundation,
+  unchanged Broken/Complete pixels and color/grayscale/Town references.
+  Repairing visual approval is pending; Companion core props are next.
+  Final Mina/Workshop delivery, full effect sheets and runtime reveal integration remain
   future production work. Art direction approvals are not final asset delivery.
 
 ### DT-E9-002 — Add final sound, particles, light, and reduced motion

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop 수리 중 · 3상태 검토</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3efe7;color:#30251d;font:16px/1.6 system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:32px 24px}h1{margin:12px 0;font-size:30px}.tag{display:inline-block;background:#ead7b7;padding:4px 12px;border-radius:5px;font-size:14px}section{background:#fffaf1;border:1px solid #d8cbb7;border-radius:12px;padding:20px;margin:24px 0}.controls{display:flex;gap:16px;flex-wrap:wrap;align-items:center}select,button{font:inherit;padding:6px 12px;border:1px solid #b8a58d;border-radius:5px;background:#fffaf1;cursor:pointer}label{white-space:nowrap}canvas,img{image-rendering:pixelated}.scroll{overflow:auto}.states{display:flex;gap:16px;margin:20px 0}.card{flex:none}.card h3{margin:0 0 8px;font-size:17px}.card img{display:block;outline:1px solid #b8a58d}#town{display:block;margin:20px 0;border:1px solid #b8a58d}.note{color:#66574a}a{color:#925125}#board{max-width:100%;width:1024px}
+</style><main>
+<span class="tag">Repairing 후보 · 사용자 승인 대기</span>
+<h1>Workshop의 파손 → 수리 중 → 완성</h1>
+<p>160×128 셀 3개 · 480×128 가로 시트 · 승인 32색 · 공통 피벗 (80,128). 문과 기초를 고정하고 발판·노출 서까래로 수리 중 상태를 표현했습니다.</p>
+<section><div class="controls">
+<label>배율 <select id="scale"><option value="1">1×</option><option value="2" selected>2×</option><option value="3">3×</option></select></label>
+<label>배경 <select id="background"><option value="town">마을 녹색</option><option value="light">밝은 배경</option><option value="dark">어두운 배경</option></select></label>
+<label><input id="gray" type="checkbox"> 흑백 비교</label>
+<label><input id="anchors" type="checkbox"> 문·기초 고정 영역</label>
+</div><div class="scroll"><div class="states">
+<div class="card"><h3>0 · Broken</h3><canvas id="broken" width="320" height="256"></canvas></div>
+<div class="card"><h3>1 · Repairing</h3><canvas id="repairing" width="320" height="256"></canvas></div>
+<div class="card"><h3>2 · Complete</h3><canvas id="complete" width="320" height="256"></canvas></div>
+</div></div><p id="status" role="status"></p><p class="note">흑백에서도 지붕·발판으로 상태가 읽히는지 확인하세요. 연기·반짝임은 이 건물 시트에 포함하지 않았습니다.</p></section>
+<section><h2>현재 Town 좌표에서 상태 전환</h2><div class="controls">
+<label>상태 <select id="state"><option value="broken">Broken</option><option value="repairing" selected>Repairing</option><option value="complete">Complete</option></select></label>
+<button id="next">다음 상태</button></div><div class="scroll"><canvas id="town" width="880" height="520"></canvas></div><p>Workshop 원점 (796,324), Mina 원점 (680,415)을 유지한 기하학적 배경 참조입니다. 카메라 영역 (600,254)에서 440×260을 잘라 표시합니다. 실제 Godot 장면 캡처는 아닙니다.</p></section>
+<section><h2>색·흑백 비교 보드</h2><img id="board" src="prepared-v1/comparison-board.png" alt="Workshop 파손 수리 중 완성 세 상태의 컬러 및 흑백 2배 비교"><p>제작 시트: <a href="prepared-v1/bld_workshop_states.png">480×128 PNG</a> · <a href="prepared-v1/cluster-repairing-1x.png">House·Mina·환경 비교</a></p></section>
+<section><h2>검토할 항목</h2><ul><li>Repairing이 Broken·Complete와 1× 및 흑백에서 구분되는가?</li><li>노출 서까래·왼쪽 발판이 기존 건물과 같은 재료·스케일로 읽히는가?</li><li>상태를 바꿀 때 문·기초·굴뚝·간판이 튀지 않는가?</li><li>Mina와 건물의 크기 관계, 세부 목재 연결 및 패치 경계가 자연스러운가?</li></ul><p>시각적 승인 전까지 아트 후보입니다. 런타임 카탈로그는 미배정이며 상태 전환 시점·게임 진행·저장은 바꾸지 않았습니다.</p><a href="README.md">제작·검사 기록</a> · <a href="prepared-v1/preparation.json">변환·해시 기록</a> · <a href="../mina-motion-v1/review.html">승인된 Mina 동작 방향</a></section>
+</main><script>
+const names=['broken','repairing','complete'],$=id=>document.getElementById(id),art={},towns={};let ready=false;
+const load=(src,target,key)=>new Promise((resolve,reject)=>{const im=new Image();target[key]=im;im.onload=resolve;im.onerror=()=>reject(Error('PNG load failed: '+src));im.src=src;});
+function draw(){if(!ready)return;const scale=Number($('scale').value),gray=$('gray').checked,bg={town:'#4c6955',light:'#f3f1ec',dark:'#20252b'}[$('background').value];for(const name of names){const canvas=$(name);canvas.width=160*scale;canvas.height=128*scale;const ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;ctx.scale(scale,scale);ctx.fillStyle=bg;ctx.fillRect(0,0,160,128);ctx.drawImage(art[name+(gray?'-gray':'')],0,0);if($('anchors').checked){ctx.strokeStyle='#72c6cf';ctx.lineWidth=1;ctx.strokeRect(65.5,81.5,28,46);ctx.strokeRect(.5,123.5,159,4);}}const town=$('town');town.width=440*scale;town.height=260*scale;const ctx=town.getContext('2d');ctx.imageSmoothingEnabled=false;ctx.drawImage(towns[$('state').value],600,254,440,260,0,0,town.width,town.height);town.style.filter=gray?'grayscale(1)':'none';$('status').textContent=`${scale}× · ${gray?'흑백':'컬러'} · 3상태 · 문·기초 동일 픽셀 · 런타임 미배정`;}
+['scale','background','gray','anchors','state'].forEach(id=>$(id).addEventListener('change',draw));$('next').onclick=()=>{$('state').value=names[(names.indexOf($('state').value)+1)%3];draw();};
+Promise.all(names.flatMap(n=>[load('prepared-v1/workshop-'+n+'-1x.png',art,n),load('prepared-v1/workshop-'+n+'-gray.png',art,n+'-gray'),load('prepared-v1/town-'+n+'-1x.png',towns,n)])).then(()=>{ready=true;draw();}).catch(e=>{$('status').textContent=e.message;console.error(e);});
+</script></html>

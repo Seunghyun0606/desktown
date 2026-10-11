@@ -1,0 +1,317 @@
+{
+  "status": "repairing_candidate_pending_human_approval",
+  "tool": "Python/Pillow",
+  "pillowVersion": "12.3.0",
+  "assetId": "BLD-WRK-001",
+  "sourceHashes": {
+    "docs/art/reviews/2026-10-11/workshop-repairing-v1/sources/repairing.png": "bd33268e47be809e70755b2c33b7ea359046368a29c0c358f46570e95b837a0d",
+    "docs/art/reviews/2026-10-11/workshop-repairing-v1/sources/repairing-prompt.txt": "e8f4f9acb20919023f0fcd44abfdb37ea4969f881ece20b5ab061ecbc45bce5f",
+    "docs/art/palettes/desktown-v01-32.json": "7159392f53c516fded526541ac2b9a9d4eb0e005056d594bd61ad9ca2eca638b",
+    "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/broken-1x.png": "88271f6972cd293101bdc19c8d2e29dbe0cb8e064517e7910088fa599dd341c5",
+    "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/complete-1x.png": "c02398d7e4a18a648b0c9d09f4801eb9beae5bd638098e10b6d7c0ac0b7bce9f",
+    "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/neutral-1x.png": "4211c4bc5b280f8d85e1795433f1794969d6a1a4d3b0fdd338f851ea44dcc00d",
+    "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/house-1x.png": "c08a25b0ebc2fdda69c91a1ac5ef4e49336c4d2a261d24ced2ca1dfe3534bb47",
+    "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/grass-1x.png": "ddefa1af8367ecf8ce9243ee771f2a3d616b34cff0212f2ab15f2bd9392c5880",
+    "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/path-1x.png": "f529b14c7c6695aa81d30946f500e3d33e2a3f59e50fa8353d30e3935ad58b18"
+  },
+  "sourceSize": [
+    1402,
+    1122
+  ],
+  "mapping": "entire generated canvas to160x128, nearest; no alpha-bounds fit",
+  "patchesFromGenerated": [
+    [
+      12,
+      37,
+      72,
+      77
+    ],
+    [
+      12,
+      74,
+      61,
+      123
+    ],
+    [
+      98,
+      79,
+      120,
+      123
+    ]
+  ],
+  "locksFromComplete": [
+    [
+      65,
+      81,
+      94,
+      128
+    ],
+    [
+      0,
+      123,
+      160,
+      128
+    ]
+  ],
+  "repairingSignAndGableLocks": [
+    [
+      57,
+      58,
+      98,
+      86
+    ]
+  ],
+  "unchangedArchitecture": "all pixels outside patch rectangles; door/foundation override patches",
+  "sheetSize": [
+    480,
+    128
+  ],
+  "frameSize": [
+    160,
+    128
+  ],
+  "pivot": [
+    80,
+    128
+  ],
+  "stateOrder": [
+    "broken",
+    "repairing",
+    "complete"
+  ],
+  "states": [
+    {
+      "state": "broken",
+      "index": 0,
+      "bounds": [
+        8,
+        31,
+        152,
+        128
+      ],
+      "opaqueColors": 22,
+      "changedPixelsFromComplete": 4325
+    },
+    {
+      "state": "repairing",
+      "index": 1,
+      "bounds": [
+        8,
+        31,
+        152,
+        128
+      ],
+      "opaqueColors": 31,
+      "changedPixelsFromComplete": 4274
+    },
+    {
+      "state": "complete",
+      "index": 2,
+      "bounds": [
+        8,
+        31,
+        152,
+        128
+      ],
+      "opaqueColors": 22,
+      "changedPixelsFromComplete": 0
+    }
+  ],
+  "paletteId": "desktown-v01-32",
+  "town": {
+    "viewport": [
+      1280,
+      720
+    ],
+    "workshopOrigin": [
+      796,
+      324
+    ],
+    "minaOrigin": [
+      680,
+      415
+    ],
+    "reviewCrop": [
+      600,
+      254,
+      440,
+      260
+    ]
+  },
+  "runtimeAssigned": false,
+  "files": [
+    {
+      "file": "workshop-broken-1x.png",
+      "size": [
+        160,
+        128
+      ],
+      "sha256": "88271f6972cd293101bdc19c8d2e29dbe0cb8e064517e7910088fa599dd341c5"
+    },
+    {
+      "file": "workshop-broken-2x.png",
+      "size": [
+        320,
+        256
+      ],
+      "sha256": "9decfeb5504f50144ce546871f6c9b08b2bac5eeede2b3a4e8ed07de8687cab2"
+    },
+    {
+      "file": "workshop-broken-3x.png",
+      "size": [
+        480,
+        384
+      ],
+      "sha256": "b89388cf9eecd0c6512ea3845634864551e89373e6cfbaec606bd18bed484806"
+    },
+    {
+      "file": "workshop-broken-gray.png",
+      "size": [
+        160,
+        128
+      ],
+      "sha256": "927ec95fd50b0ad1ca3d38d21abd6cc8de01e1dc0c61a779abe2cc46a1ffaa03"
+    },
+    {
+      "file": "workshop-repairing-1x.png",
+      "size": [
+        160,
+        128
+      ],
+      "sha256": "321b8beeb56e731d0197362e8dc2e45025714f92fcb8dde230593626e8832fc7"
+    },
+    {
+      "file": "workshop-repairing-2x.png",
+      "size": [
+        320,
+        256
+      ],
+      "sha256": "da109132a7463f0333b8950a7486fcc2105a76720bf705511515fcbcf2796a3f"
+    },
+    {
+      "file": "workshop-repairing-3x.png",
+      "size": [
+        480,
+        384
+      ],
+      "sha256": "8778d7bd119e600cfc434b7a9eb136778617145a4f5fb1df09255a66b4831dae"
+    },
+    {
+      "file": "workshop-repairing-gray.png",
+      "size": [
+        160,
+        128
+      ],
+      "sha256": "53662f7f23a8874dc8bc82c211ddc2581869f47d216265c600cfb2fb7f318dc2"
+    },
+    {
+      "file": "workshop-complete-1x.png",
+      "size": [
+        160,
+        128
+      ],
+      "sha256": "c02398d7e4a18a648b0c9d09f4801eb9beae5bd638098e10b6d7c0ac0b7bce9f"
+    },
+    {
+      "file": "workshop-complete-2x.png",
+      "size": [
+        320,
+        256
+      ],
+      "sha256": "ad5160e1c62db18f70c759f5c161cba53ad3e8db2b16fa596396d266e8208aea"
+    },
+    {
+      "file": "workshop-complete-3x.png",
+      "size": [
+        480,
+        384
+      ],
+      "sha256": "927b07390418743cb8c538ad5cfa29abef20f8b6e56e3d9e234010078c23b168"
+    },
+    {
+      "file": "workshop-complete-gray.png",
+      "size": [
+        160,
+        128
+      ],
+      "sha256": "4d95465ab330e178ea7e312f1e2dcc2e5edcd3415e1aab8da6513c514b6090ac"
+    },
+    {
+      "file": "bld_workshop_states.png",
+      "size": [
+        480,
+        128
+      ],
+      "sha256": "a1d62f076d31616ae07049daed4de47cd3ea635dda3c2f7f8f0886b0e7990644"
+    },
+    {
+      "file": "repairing-normalized-reference.png",
+      "size": [
+        160,
+        128
+      ],
+      "sha256": "85b0e642cfa6426e70bc346ab77ce36edc5f57281945691887e8c0bacc59ba54"
+    },
+    {
+      "file": "comparison-board.png",
+      "size": [
+        1024,
+        650
+      ],
+      "sha256": "0bd3482ce82d02a42b8424a19a3f9157ec255d7a7b5ef96e33e1a891fc85268c"
+    },
+    {
+      "file": "cluster-broken-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "2b1d34c1db9f631cc3eda3eaf4324944ba4f227dacd2e93d1823eedec226682e"
+    },
+    {
+      "file": "town-broken-1x.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "2bde7b5ad0cf7ef65284d8970916db2ed764098477962600a8e65fdeeaf36827"
+    },
+    {
+      "file": "cluster-repairing-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "3482e12ed9b0fb56cf1d27cca925be16c46ca3cecfffb54332e7d0c43dbdb503"
+    },
+    {
+      "file": "town-repairing-1x.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "f0117c6dc36b6b1015532b6e6907d01cf9a4e9954b0720fec83023a34d929b7e"
+    },
+    {
+      "file": "cluster-complete-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "ef5c29c6283996bcf46385b37ad8b9c3f56e90527a015728664337db94f075ee"
+    },
+    {
+      "file": "town-complete-1x.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "c74355ec596873de5cb96dfe99faaca7b886107144c4ee0ae3cbffdeb165ad4b"
+    }
+  ],
+  "limits": [
+    "Human state readability and scaffold/roof continuity approval pending.",
+    "Static PNG/HTML reference; not Godot or native Windows QA.",
+    "No smoke, spark, state timing, collision, navigation or save changes."
+  ]
+}
