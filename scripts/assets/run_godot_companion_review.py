@@ -26,7 +26,8 @@ def main():
         parser.error("This capture runner currently supports Windows only.")
     if (ROOT / "build").resolve() not in review.parents:
         parser.error("Review must be below this repository's build/.")
-    if not json.loads((review / "preparation.json").read_text(encoding="utf-8"))["reviewOnly"]:
+    preparation = json.loads((review / "preparation.json").read_text(encoding="utf-8"))
+    if not preparation["reviewOnly"]:
         parser.error("Not an isolated review fixture.")
     if (review / "captures").exists():
         parser.error("Captures already exist; prepare a new review directory.")
@@ -42,6 +43,8 @@ def main():
     for key in list(env):
         if key.startswith("DESKTOWN_"):
             del env[key]
+    if preparation.get("runtimeCatalog"):
+        env["DESKTOWN_ART_REVIEW_RUNTIME_CATALOG"] = "1"
     env.update(DOTNET_ROOT=str(sdk), PATH=str(sdk) + os.pathsep + env.get("PATH", ""),
                UseSharedCompilation="false", MSBUILDDISABLENODEREUSE="1", DOTNET_CLI_USE_MSBUILD_SERVER="0")
     logs = review / ("logs-" + time.strftime("%H%M%S-") + uuid.uuid4().hex[:6])

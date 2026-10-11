@@ -590,9 +590,11 @@ may be adjusted to the final scaffold without changing task responsibility.
   [Runtime connection verification](art/reviews/2026-10-11/companion-runtime-v1/README.md)
   moves integer placement/shadow binding into the real scene and reproduces all
   124 capture hashes without test-side layout changes. Missing-shadow fallback passes.
-  Final delivery/use approval and catalog assignment remain open; all runtime
-  catalog IDs are still unassigned. Exact tool contact remains open.
-  Final Mina/Workshop delivery, full effect sheets and runtime reveal integration remain
+  The human approved delivery/use and 12-ID production assignment (shared Mina
+  six clips plus Companion six props). [Actual catalog verification](art/reviews/2026-10-11/companion-delivery-v1/README.md)
+  preserves all 124 approved capture hashes and checks Town Mina / Ghost 40/65/85%
+  rendering. 34 IDs remain unassigned. Exact tool contact remains open.
+  Final Workshop delivery, full effect sheets and runtime reveal integration remain
   future production work. Art direction approvals are not final asset delivery.
 
 ### DT-E9-002 — Add final sound, particles, light, and reduced motion

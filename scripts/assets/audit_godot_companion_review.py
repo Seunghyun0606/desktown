@@ -68,10 +68,20 @@ def audit(review):
                 if pixel[3] == 255:
                     assert rendered.getpixel((282 + x, 26 + y)) == pixel, (name, x, y)
     assert set(hashes) == set(result["captures"]) and len(hashes) == 124
+    shared_hashes = {}
+    if preparation.get("runtimeCatalog"):
+        expected_shared = {"town-idle.png": (1280, 720),
+                           **{f"ghost-work-{opacity}.png": (220, 180) for opacity in (40, 65, 85)}}
+        assert set(result["sharedViews"]) == set(expected_shared)
+        for name, size in expected_shared.items():
+            path = review / "captures" / name
+            assert Image.open(path).size == size, name
+            shared_hashes[name] = hashlib.sha256(path.read_bytes()).hexdigest()
     report = {"success": True, "sourceRevision": preparation["sourceRevision"], "engine": result["engine"],
               "renderer": result["renderer"], "captures": len(hashes), "nativeMinaOpaquePixelsMatched": pixel_count,
               "workRestContactCropsMatched": 10, "workRestArtAreasMatchedExceptLampAndPlant": 10,
               "nativeLampCellsMatched": 2, "referenceDifferences": "Lamp OFF vs ON; green stage Plant vs brown mock Plant", "sha256": hashes,
+              "sharedViewSha256": shared_hashes,
               "limits": "Pixel/render verification only; no native input/DPI, exact tool event or final delivery approval."}
     (review / "audit.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(f"PASS: {len(hashes)} captures; {pixel_count} native Mina opaque pixels; 10 exact contact crops")

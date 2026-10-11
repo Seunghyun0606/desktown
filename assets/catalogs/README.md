@@ -2,8 +2,10 @@
 
 `asset_catalog.json` is the v0.1 visual/audio delivery contract. Its 46 IDs and
 dimensions match `docs/art/ASSET_MANIFEST.md`; the `key` field is a stable
-semantic name. All entries are initially `unassigned`: the running prototype
-continues to use geometric presentation until approved assets are supplied.
+semantic name. The human approved delivery/use and production assignment of
+six shared Mina clips and six Companion props on 2026-10-11. Those 12 IDs resolve
+actual art; the other 34 entries retain their geometric fallback or stay hidden.
+See the [delivery and provenance record](../art/DELIVERY_2026-10-11.md).
 
 To assign an asset, add the file under `assets/art/`, change its entry to
 `placeholder` or `production`, set `resource` to its `res://assets/art/...`
@@ -28,7 +30,7 @@ Companion also resolves the character shadow through a draw-only Sprite2D;
 an unassigned or invalid shadow stays hidden. The human-approved integer
 Workbench/Stool/Lamp placement and runtime binding reproduce the approved
 [Godot captures](../../docs/art/reviews/2026-10-11/companion-runtime-v1/README.md).
-Final delivery/use approval and the proposed 12-ID runtime assignment are pending.
+Final delivery/use approval and the 12-ID runtime assignment are complete.
 Each binder uses the declared frame size and count, and falls back to geometric
 drawing if the file is absent or has the wrong sheet dimensions. The Workshop
 sheet cells are Broken, Repairing, Complete, in that order. Lamp and Decor use

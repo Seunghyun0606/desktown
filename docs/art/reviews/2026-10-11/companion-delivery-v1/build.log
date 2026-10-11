@@ -1,0 +1,17 @@
+  복원할 프로젝트를 확인하는 중...
+  <isolated-project>\src\DeskTown.Application\DeskTown.Application.csproj을(를) 81밀리초 동안 복원했습니다.
+  <isolated-project>\src\DeskTown.Persistence\DeskTown.Persistence.csproj을(를) 81밀리초 동안 복원했습니다.
+  <isolated-project>\src\DeskTown.Domain\DeskTown.Domain.csproj을(를) 81밀리초 동안 복원했습니다.
+  <isolated-project>\DeskTown.csproj을(를) 147밀리초 동안 복원했습니다.
+  <isolated-project>\src\DeskTown.Platform.Windows\DeskTown.Platform.Windows.csproj을(를) 147밀리초 동안 복원했습니다.
+  DeskTown.Domain -> <isolated-project>\src\DeskTown.Domain\bin\Debug\net8.0\DeskTown.Domain.dll
+  DeskTown.Application -> <isolated-project>\src\DeskTown.Application\bin\Debug\net8.0\DeskTown.Application.dll
+  DeskTown.Platform.Windows -> <isolated-project>\src\DeskTown.Platform.Windows\bin\Debug\net8.0\DeskTown.Platform.Windows.dll
+  DeskTown.Persistence -> <isolated-project>\src\DeskTown.Persistence\bin\Debug\net8.0\DeskTown.Persistence.dll
+  DeskTown -> <isolated-project>\.godot\mono\temp\bin\Debug\DeskTown.dll
+
+빌드했습니다.
+    경고 0개
+    오류 0개
+
+경과 시간: 00:00:08.04

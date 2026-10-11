@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "actualRuntimeCatalog": true,
+  "catalogSha256": "be1ccb3bc83f0c58cd39d042eb07a04253840ce717d208fb3abc938401bb510a",
+  "assignedIds": 12,
+  "unassignedIds": 34,
+  "approvedCompanionCapturesMatched": 124,
+  "sharedViewCaptures": 4,
+  "syntheticFallbackSmokePassed": true
+}

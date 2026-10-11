@@ -1,6 +1,6 @@
 {
-  "pendingHumanApproval": true,
-  "appliedToRuntimeCatalog": false,
+  "pendingHumanApproval": false,
+  "appliedToRuntimeCatalog": true,
   "assets": [
     {
       "id": "CHR-MIN-001",
@@ -9,7 +9,7 @@
       "sha256": "1465be74bad491373df82b023d044de5d648c92f682a6a11e5eb34d1d9fb8261",
       "targetResource": "res://assets/art/chr_mina_idle.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Shared Mina in Town/Companion/Ghost"
     },
     {
@@ -19,7 +19,7 @@
       "sha256": "a48710741766c4e719fd469dbc26e2d440531389a4313df763134b3e2ffaac63",
       "targetResource": "res://assets/art/chr_mina_walk.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Shared Mina in Town/Companion/Ghost"
     },
     {
@@ -29,7 +29,7 @@
       "sha256": "5d9a2454da521d6011b69f449163f017c4f85b4af578e51fa90062e190a0c756",
       "targetResource": "res://assets/art/chr_mina_work.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Shared Mina in Town/Companion/Ghost"
     },
     {
@@ -39,7 +39,7 @@
       "sha256": "8635f11f257b3ec8c164890998521938d153c7866fee125f0c7d427d2de5dce4",
       "targetResource": "res://assets/art/chr_mina_rest.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Shared Mina in Town/Companion/Ghost"
     },
     {
@@ -49,7 +49,7 @@
       "sha256": "9966316ff15a474769433a2409597c439eca844ae130c2de5669f1f2c0ada72b",
       "targetResource": "res://assets/art/chr_mina_stretch.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Shared Mina in Town/Companion/Ghost"
     },
     {
@@ -59,7 +59,7 @@
       "sha256": "ed1df4f84f8a310846ce36aecdba3b24cd49f13c6180ec1a413a4d01791f6f37",
       "targetResource": "res://assets/art/chr_mina_celebrate.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Shared Mina in Town/Companion/Ghost"
     },
     {
@@ -69,7 +69,7 @@
       "sha256": "db9ca0b3daf6737d572a5930499a5e59cf57415922e3923094fd7158b0ab1f7d",
       "targetResource": "res://assets/art/prop_workbench.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Companion only"
     },
     {
@@ -79,7 +79,7 @@
       "sha256": "091d70cb174d7d4d9fae9ca4c3a31d6a11564b0224e12ff0ae70f4d0c1336b51",
       "targetResource": "res://assets/art/prop_lamp_states.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Companion only"
     },
     {
@@ -89,7 +89,7 @@
       "sha256": "6af561dd94f4b1f995b5803488aaa0e951329de0cd8ab87326f5a17b4dd2be3e",
       "targetResource": "res://assets/art/prop_small_window.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Companion only"
     },
     {
@@ -99,7 +99,7 @@
       "sha256": "1e23e16eee74c5b2aff438a0d9177f305833866ebc0362f1a2e2e4ee360c6368",
       "targetResource": "res://assets/art/prop_companion_floor.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Companion only"
     },
     {
@@ -109,7 +109,7 @@
       "sha256": "a7ab4a73cec2cf456b3b159f3e7c6aa6204897d6b0b9fc72cffc0b3f2a6deb1a",
       "targetResource": "res://assets/art/prop_stool.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Companion only"
     },
     {
@@ -119,10 +119,11 @@
       "sha256": "6038bb47816c47c56405882d756bdf3fea9458ba08565f22765dcf5425d223c4",
       "targetResource": "res://assets/art/prop_character_shadow.png",
       "catalogStatusRequired": "production",
-      "deliveryAndUseApproval": "pending",
+      "deliveryAndUseApproval": "approved-2026-10-11",
       "scope": "Companion only"
     }
   ],
   "excluded": "CMP-TOL-001: Work sheet already contains the hammer; no separate tool binding",
-  "approvalNeeded": "Final delivery/use and production catalog assignment; render/layout has been approved"
+  "approval": "A: 납품·사용 승인 — 12개 아트 배정",
+  "approvalDate": "2026-10-11"
 }

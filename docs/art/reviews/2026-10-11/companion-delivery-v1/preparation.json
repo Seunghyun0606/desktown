@@ -1,0 +1,73 @@
+{
+  "sourceRevision": "724acab119c4071c6e07b1b80411ae3fbd78fce2",
+  "reviewOnly": true,
+  "sources": {
+    "CHR-MIN-001": {
+      "source": "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/idle-1x.png",
+      "sha256": "1465be74bad491373df82b023d044de5d648c92f682a6a11e5eb34d1d9fb8261",
+      "runtimeResource": "res://assets/art/chr_mina_idle.png"
+    },
+    "CHR-MIN-002": {
+      "source": "docs/art/reviews/2026-10-11/mina-motion-v1/prepared-v1/chr_mina_walk.png",
+      "sha256": "a48710741766c4e719fd469dbc26e2d440531389a4313df763134b3e2ffaac63",
+      "runtimeResource": "res://assets/art/chr_mina_walk.png"
+    },
+    "CHR-MIN-003": {
+      "source": "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/work-1x.png",
+      "sha256": "5d9a2454da521d6011b69f449163f017c4f85b4af578e51fa90062e190a0c756",
+      "runtimeResource": "res://assets/art/chr_mina_work.png"
+    },
+    "CHR-MIN-004": {
+      "source": "docs/art/reviews/2026-10-11/mina-motion-v1/prepared-v1/chr_mina_rest.png",
+      "sha256": "8635f11f257b3ec8c164890998521938d153c7866fee125f0c7d427d2de5dce4",
+      "runtimeResource": "res://assets/art/chr_mina_rest.png"
+    },
+    "CHR-MIN-005": {
+      "source": "docs/art/reviews/2026-10-11/mina-motion-v1/prepared-v1/chr_mina_stretch.png",
+      "sha256": "9966316ff15a474769433a2409597c439eca844ae130c2de5669f1f2c0ada72b",
+      "runtimeResource": "res://assets/art/chr_mina_stretch.png"
+    },
+    "CHR-MIN-006": {
+      "source": "docs/art/reviews/2026-10-11/mina-motion-v1/prepared-v1/chr_mina_celebrate.png",
+      "sha256": "ed1df4f84f8a310846ce36aecdba3b24cd49f13c6180ec1a413a4d01791f6f37",
+      "runtimeResource": "res://assets/art/chr_mina_celebrate.png"
+    },
+    "CMP-WRK-001": {
+      "source": "docs/art/reviews/2026-10-11/companion-props-v1/prepared-v1/prop_workbench.png",
+      "sha256": "db9ca0b3daf6737d572a5930499a5e59cf57415922e3923094fd7158b0ab1f7d",
+      "runtimeResource": "res://assets/art/prop_workbench.png"
+    },
+    "CMP-LMP-001": {
+      "source": "docs/art/reviews/2026-10-11/companion-props-v1/prepared-v1/prop_lamp_states.png",
+      "sha256": "091d70cb174d7d4d9fae9ca4c3a31d6a11564b0224e12ff0ae70f4d0c1336b51",
+      "runtimeResource": "res://assets/art/prop_lamp_states.png"
+    },
+    "CMP-WIN-001": {
+      "source": "docs/art/reviews/2026-10-11/companion-props-v1/prepared-v1/prop_small_window.png",
+      "sha256": "6af561dd94f4b1f995b5803488aaa0e951329de0cd8ab87326f5a17b4dd2be3e",
+      "runtimeResource": "res://assets/art/prop_small_window.png"
+    },
+    "CMP-FLR-001": {
+      "source": "docs/art/reviews/2026-10-11/companion-contact-v1/prepared-v1/prop_companion_floor.png",
+      "sha256": "1e23e16eee74c5b2aff438a0d9177f305833866ebc0362f1a2e2e4ee360c6368",
+      "runtimeResource": "res://assets/art/prop_companion_floor.png"
+    },
+    "CMP-STL-001": {
+      "source": "docs/art/reviews/2026-10-11/companion-contact-v1/prepared-v1/prop_stool.png",
+      "sha256": "a7ab4a73cec2cf456b3b159f3e7c6aa6204897d6b0b9fc72cffc0b3f2a6deb1a",
+      "runtimeResource": "res://assets/art/prop_stool.png"
+    },
+    "CMP-SHD-001": {
+      "source": "docs/art/reviews/2026-10-11/companion-contact-v1/prepared-v1/prop_character_shadow.png",
+      "sha256": "6038bb47816c47c56405882d756bdf3fea9458ba08565f22765dcf5425d223c4",
+      "runtimeResource": "res://assets/art/prop_character_shadow.png"
+    }
+  },
+  "runtimeWorkingTreeFiles": {},
+  "runtimeCatalog": true,
+  "catalogSha256": "be1ccb3bc83f0c58cd39d042eb07a04253840ce717d208fb3abc938401bb510a",
+  "catalogStatusNote": "Unmodified runtime catalog",
+  "probeSha256": "4c43d31dc2f08fb2387f20c2e186112bbeb1e350b2317038bf94ee3d3496614f",
+  "personalSaveAccess": false,
+  "engineUserDirectoryIsolated": true
+}

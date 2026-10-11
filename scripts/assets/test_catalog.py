@@ -2,7 +2,7 @@ import copy
 import json
 import unittest
 
-from validate_catalog import CATALOG, manifest_records, validate
+from validate_catalog import CATALOG, manifest_records, new_catalog, validate
 
 
 class CatalogContractTests(unittest.TestCase):
@@ -23,7 +23,8 @@ class CatalogContractTests(unittest.TestCase):
         self.assertTrue(any("unique manifest IDs" in error for error in errors))
 
     def test_unassigned_catalog_cannot_claim_production_ready(self):
-        self.assertEqual(46, len(validate(self.catalog, self.manifest, True)))
+        unassigned = new_catalog(self.manifest)
+        self.assertEqual(46, len(validate(unassigned, self.manifest, True)))
 
 
 if __name__ == "__main__":

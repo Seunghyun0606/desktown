@@ -31,7 +31,7 @@ ART = {
 }
 
 
-def prepare(output, runtime_working_tree=False):
+def prepare(output, runtime_working_tree=False, runtime_catalog=False):
     output = output.resolve()
     build = (ROOT / "build").resolve()
     if build not in output.parents or output.exists():
@@ -52,6 +52,8 @@ def prepare(output, runtime_working_tree=False):
             shutil.copyfile(ROOT / relative, project / relative)
             runtime_hashes[relative] = hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
     path = project / "assets/catalogs/asset_catalog.json"
+    if runtime_catalog:
+        shutil.copyfile(ROOT / "assets/catalogs/asset_catalog.json", path)
     catalog = json.loads(path.read_text(encoding="utf-8"))
     rows = {row["id"]: row for row in catalog["assets"]}
     missing = set(ART) - rows.keys()
@@ -61,20 +63,34 @@ def prepare(output, runtime_working_tree=False):
     for asset_id, relative in ART.items():
         source = project / REVIEWS / relative
         row = rows[asset_id]
+        if runtime_catalog:
+            if row["status"] == "unassigned":
+                continue
+            resource = row["resource"].removeprefix("res://")
+            target = project / resource
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / resource, target)
+            digest = hashlib.sha256(target.read_bytes()).hexdigest()
+            if digest != hashlib.sha256(source.read_bytes()).hexdigest():
+                raise ValueError(f"Runtime file differs from approved source: {asset_id}")
+            sources[asset_id] = {"source": (REVIEWS / relative).as_posix(), "sha256": digest,
+                                 "runtimeResource": row["resource"]}
+            continue
         resource = "assets/art/review-only/" + row["filename"]
         target = project / resource
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
         row.update(status="production", resource="res://" + resource,
                    provenance={"creator": "OpenAI image generation + approved Python pixel preparation",
-                               "license": "Review-only fixture; final delivery license approval pending",
+                               "license": "Review-only fixture; not a runtime delivery record",
                                "source": (REVIEWS / relative).as_posix(), "importDate": "2026-10-11",
                                "manifestRevision": catalog["manifestRevision"]})
         if row["pivot"] is None:
             row["pivot"] = [row["frameSize"][0] // 2, row["frameSize"][1]]
         sources[asset_id] = {"source": row["provenance"]["source"],
                              "sha256": hashlib.sha256(source.read_bytes()).hexdigest()}
-    path.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if not runtime_catalog:
+        path.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     probe = project / "src/DeskTown.Godot/Bootstrap/CompanionArtReview.cs"
     shutil.copyfile(ROOT / "scripts/assets/CompanionArtReview.cs.txt", probe)
     scene = project / "scenes/companion/ArtReview.tscn"
@@ -88,7 +104,9 @@ def prepare(output, runtime_working_tree=False):
         'run/main_scene="res://scenes/companion/ArtReview.tscn"'), encoding="utf-8")
     report = {"sourceRevision": revision, "reviewOnly": True, "sources": sources,
               "runtimeWorkingTreeFiles": runtime_hashes,
-              "catalogStatusNote": "production is required by the existing P0 validator; isolated fixture only",
+              "runtimeCatalog": runtime_catalog,
+              "catalogSha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+              "catalogStatusNote": "Unmodified runtime catalog" if runtime_catalog else "Isolated fixture only",
               "probeSha256": hashlib.sha256(probe.read_bytes()).hexdigest(),
               "personalSaveAccess": False, "engineUserDirectoryIsolated": True}
     (output / "preparation.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -100,5 +118,7 @@ if __name__ == "__main__":
     parser.add_argument("output", type=Path)
     parser.add_argument("--runtime-working-tree", action="store_true",
                         help="Overlay only the three named Companion runtime files for pre-commit validation")
+    parser.add_argument("--runtime-catalog", action="store_true",
+                        help="Copy the actual working catalog and assigned PNGs without fixture reassignment")
     args = parser.parse_args()
-    prepare(args.output, args.runtime_working_tree)
+    prepare(args.output, args.runtime_working_tree, args.runtime_catalog)

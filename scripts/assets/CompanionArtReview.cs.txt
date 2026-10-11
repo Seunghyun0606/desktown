@@ -26,6 +26,7 @@ public partial class CompanionArtReview : Node
             var output = ProjectSettings.GlobalizePath("res://../captures");
             Directory.CreateDirectory(output);
             var captures = new List<string>();
+            var runtimeCatalog = System.Environment.GetEnvironmentVariable("DESKTOWN_ART_REVIEW_RUNTIME_CATALOG") == "1";
             var clips = new[] { MinaAnimationClip.Idle, MinaAnimationClip.Walk,
                 MinaAnimationClip.Work, MinaAnimationClip.Rest,
                 MinaAnimationClip.Stretch, MinaAnimationClip.Celebrate };
@@ -83,8 +84,10 @@ public partial class CompanionArtReview : Node
                     "Runtime shadow binding is incorrect");
                 Require(shadow.GetIndex() < stool.GetIndex() && stool.GetIndex() < mina.GetIndex(),
                     "Shadow/stool must draw behind Mina");
-                // Exercise both lamp cells and both tool cells without overlaying the baked hammer.
-                foreach (var id in new[] { "CMP-LMP-001", "CMP-TOL-001" })
+                // Runtime intentionally keeps the separate tool unassigned: Work already has a hammer.
+                if (runtimeCatalog)
+                    Require(VisualAssetCatalog.Frame("CMP-TOL-001") is null, "Separate tool was unexpectedly assigned");
+                foreach (var id in runtimeCatalog ? new[] { "CMP-LMP-001" } : new[] { "CMP-LMP-001", "CMP-TOL-001" })
                     Require(VisualAssetCatalog.Frame(id, 0) is not null
                         && VisualAssetCatalog.Frame(id, 1) is not null
                         && VisualAssetCatalog.Frame(id, 2) is null, $"Wrong two-cell asset: {id}");
@@ -119,10 +122,11 @@ public partial class CompanionArtReview : Node
                 viewport.QueueFree();
                 await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             }
+            var sharedViews = runtimeCatalog ? await CaptureSharedViews(output) : new List<string>();
             File.WriteAllText(Path.Combine(output, "result.json"), JsonSerializer.Serialize(new
             {
                 engine = Engine.GetVersionInfo()["string"].AsString(), renderer = RenderingServer.GetCurrentRenderingMethod(),
-                captures, reviewOnly = true, personalSaveAccess = false, engineUserDirectoryIsolated = true,
+                captures, sharedViews, reviewOnly = true, personalSaveAccess = false, engineUserDirectoryIsolated = true,
                 notes = "SubViewport CanvasItems scale proxy; not native window/input/DPI QA. Tool remains baked in Work."
             }, new JsonSerializerOptions { WriteIndented = true }));
             GD.Print("DESKTOWN_COMPANION_REVIEW_OK");
@@ -133,5 +137,68 @@ public partial class CompanionArtReview : Node
             GD.PrintErr("DESKTOWN_COMPANION_REVIEW_FAILED: " + error);
             GetTree().Quit(1);
         }
+    }
+
+    private async Task<List<string>> CaptureSharedViews(string output)
+    {
+        var files = new List<string>();
+        foreach (var opacity in new[] { 100, 40, 65, 85 })
+        {
+            var townView = opacity == 100;
+            var viewport = new SubViewport
+            {
+                Size = townView ? new Vector2I(1280, 720) : new Vector2I(220, 180),
+                TransparentBg = !townView,
+                RenderTargetUpdateMode = SubViewport.UpdateMode.Always,
+                CanvasItemDefaultTextureFilter = Viewport.DefaultCanvasItemTextureFilter.Nearest
+            };
+            AddChild(viewport);
+            MinaPlaceholderView mina;
+            if (townView)
+            {
+                var town = GD.Load<PackedScene>("res://scenes/town/TownScene.tscn")
+                    .Instantiate<DeskTown.Presentation.TownScene>();
+                viewport.AddChild(town);
+                town.Bind(TownSimulation.Create().Snapshot.Town);
+                town.ProcessMode = ProcessModeEnum.Disabled;
+                mina = town.GetNode<MinaPlaceholderView>("World/MinaView");
+            }
+            else
+            {
+                var ghost = GD.Load<PackedScene>("res://scenes/ghost/GhostStage.tscn").Instantiate<Node2D>();
+                viewport.AddChild(ghost);
+                ghost.Modulate = new Color(1, 1, 1, opacity / 100f);
+                mina = ghost.GetNode<MinaPlaceholderView>("MinaView");
+                mina.Play(new MinaPresentationIntent(MinaAnimationClip.Work));
+            }
+            mina.SetProcess(false);
+            mina._Process(0);
+            await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+            using var image = viewport.GetTexture().GetImage();
+            var imageFrame = VisualAssetCatalog.Frame(townView ? "CHR-MIN-001" : "CHR-MIN-003")!.Value;
+            using var source = imageFrame.Sheet.GetImage();
+            var origin = (Vector2I)mina.GlobalPosition;
+            var pixels = 0;
+            for (var y = 0; y < 48; y++)
+                for (var x = 0; x < 48; x++)
+                {
+                    var expected = source.GetPixel(x, y);
+                    if (expected.A < 1) continue;
+                    var actual = image.GetPixel(origin.X + x, origin.Y + y);
+                    if (townView)
+                        Require(actual == expected, $"Town Mina pixel changed: {x},{y}");
+                    else
+                        Require(Math.Abs(actual.A - opacity / 100f) <= 1f / 255,
+                            $"Ghost Mina alpha changed: {opacity} {x},{y}");
+                    pixels++;
+                }
+            Require(pixels > 100, "Shared view did not draw the authored Mina silhouette");
+            var filename = townView ? "town-idle.png" : $"ghost-work-{opacity}.png";
+            Require(image.SavePng(Path.Combine(output, filename)) == Error.Ok, "Shared view capture failed");
+            files.Add(filename);
+            viewport.QueueFree();
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        }
+        return files;
     }
 }
