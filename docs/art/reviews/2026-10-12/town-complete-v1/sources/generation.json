@@ -1,0 +1,32 @@
+[
+  {
+    "key": "tree",
+    "source": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-a2591a85-b35b-4a5a-8a9a-a1077c8edc21.png",
+    "tool": "image_gen built-in",
+    "prompt": "Create a production concept source for DeskTown ENV-TRE-001 tree variants, a SINGLE sprite sheet containing TWO distinct small deciduous trees side by side, each occupying one half with equal margins and aligned base. Reference image is the approved House for STYLE ONLY, do not copy the building. Cozy miniature town pixel art, restrained moss and olive canopy, warm brown short trunk, clear chunky pixel clusters, upper-left lighting, dark warm brown outline no black, 2D slightly top-down diorama view consistent with the house. The two trees should be small round and slightly taller oval. Each will be normalized into 64x96 logical cells. Trees only, no grass slab, no cast shadow, no flowers, no scenery, no writing, no labels. Genuine transparent background. Crisp pixel art with large clear regions suitable for nearest downsampling. Keep colors near #301610 #463a25 #5c5739 #6a6339 #7a7c4d #7f834b #898451 #a08c58 #a36f45 #f2d49d."
+  },
+  {
+    "key": "flower",
+    "source": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-7d83839f-eeb3-44b9-9c96-fdf9c859201b.png",
+    "tool": "image_gen built-in",
+    "prompt": "DeskTown cozy pixel art source, ENV-FLW-001, ONE sprite sheet of two tiny flower clumps side by side. Left: three pale cream wildflowers on short muted olive stems. Right: three muted amber wildflowers on short muted olive stems. Both base-aligned, no ground tile. Each normalized to32x32. Reference House is STYLE ONLY. Clear chunky pixel clusters, 2D slightly top-down diorama matching House, upper-left lighting, no pure black outline, restrained small miniature game art. Palette near #301610 #463a25 #5c5739 #6a6339 #7a7c4d #7f834b #898451 #a08c58 #a36f45 #caac83 #d5945d #f2d49d #fce7bb. Genuine transparent background. Objects only with ample separation. No backdrop, no cast shadows, no labels or writing, no UI, no extra props. Pixel-clean edges suitable for nearest downsampling."
+  },
+  {
+    "key": "fence",
+    "source": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-233952d6-dfcc-46e5-8913-e2aaeaa1c6b1.png",
+    "tool": "image_gen built-in",
+    "prompt": "DeskTown cozy pixel art source, ENV-FEN-001, ONE sprite sheet of two wooden fence cells side by side. Left: a horizontal two-rail low wooden fence with two end posts. Right: a shorter weathered horizontal two-rail fence with a slightly different post cap. Bases aligned; endpoints clean for repeated placement. Each normalized32x32. Reference House is STYLE ONLY. Clear chunky pixel clusters, 2D slightly top-down diorama matching House, upper-left lighting, no pure black outline, restrained small miniature game art. Palette near #301610 #463a25 #5c5739 #6a6339 #7a7c4d #7f834b #898451 #a08c58 #a36f45 #caac83 #d5945d #f2d49d #fce7bb. Genuine transparent background. Objects only with ample separation. No backdrop, no cast shadows, no labels or writing, no UI, no extra props. Pixel-clean edges suitable for nearest downsampling."
+  },
+  {
+    "key": "rock",
+    "source": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-79bbe3df-380b-4ddf-a8e5-d5cd64912fe3.png",
+    "tool": "image_gen built-in",
+    "prompt": "DeskTown cozy pixel art source, ENV-ROC-001, ONE sprite sheet of two small rounded rocks side by side, low wide stone and slightly taller clustered stone. Muted warm gray-brown, upper left cream highlight, olive-brown shadow. Each normalized32x32, bases aligned. Reference House is STYLE ONLY. Clear chunky pixel clusters, 2D slightly top-down diorama matching House, upper-left lighting, no pure black outline, restrained small miniature game art. Palette near #301610 #463a25 #5c5739 #6a6339 #7a7c4d #7f834b #898451 #a08c58 #a36f45 #caac83 #d5945d #f2d49d #fce7bb. Genuine transparent background. Objects only with ample separation. No backdrop, no cast shadows, no labels or writing, no UI, no extra props. Pixel-clean edges suitable for nearest downsampling."
+  },
+  {
+    "key": "library",
+    "source": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-198450f2-b05f-43d8-9d0b-61c6de132812.png",
+    "tool": "image_gen built-in",
+    "prompt": "DeskTown cozy pixel art source, BLD-LCK-001, ONE small closed cozy village library building, square diorama sprite. Warm timber and cream plaster facade, restrained terra-cotta roof, small book emblem carved in sign above a firmly closed wooden door, shuttered dark window, short chimney. Closed and quiet, not ruined and not scary. No padlock icon, no text. Normalize128x128. Distinct slightly taller silhouette from the reference house, same pixel density and same small scale. No ground slab. Reference House is STYLE ONLY. Clear chunky pixel clusters, 2D slightly top-down diorama matching House, upper-left lighting, no pure black outline, restrained small miniature game art. Palette near #301610 #463a25 #5c5739 #6a6339 #7a7c4d #7f834b #898451 #a08c58 #a36f45 #caac83 #d5945d #f2d49d #fce7bb. Genuine transparent background. Objects only with ample separation. No backdrop, no cast shadows, no labels or writing, no UI, no extra props. Pixel-clean edges suitable for nearest downsampling."
+  }
+]

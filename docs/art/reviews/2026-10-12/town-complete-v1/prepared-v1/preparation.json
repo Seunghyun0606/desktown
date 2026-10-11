@@ -1,0 +1,267 @@
+{
+  "reviewOnly": true,
+  "pendingHumanApproval": true,
+  "productionAssigned": false,
+  "palette": "desktown-v01-32",
+  "sources": {
+    "tree": {
+      "path": "docs/art/reviews/2026-10-12/town-complete-v1/sources/tree.png",
+      "sha256": "8faa95610c98581b5d2f3b8e61c185deeee37ac9cfe853baf082425b7f05c8dd"
+    },
+    "flower": {
+      "path": "docs/art/reviews/2026-10-12/town-complete-v1/sources/flower.png",
+      "sha256": "3a67239bc4c9d32fc270f604ece46acbb4f1718ff895eaf98c0d9966cdfd2b47"
+    },
+    "fence": {
+      "path": "docs/art/reviews/2026-10-12/town-complete-v1/sources/fence.png",
+      "sha256": "81ca0d82a42c60c5ce4ca49a1fe0e8abc9ecc5d617011b38802c41049b51f4e9"
+    },
+    "rock": {
+      "path": "docs/art/reviews/2026-10-12/town-complete-v1/sources/rock.png",
+      "sha256": "375f7ffb0230b2f4954b46b20c29b0b67f79b3fbc8f018c707c3cff45c479fea"
+    },
+    "library": {
+      "path": "docs/art/reviews/2026-10-12/town-complete-v1/sources/library.png",
+      "sha256": "b2e62a416bce2867c45582c98e254e93b12f72a549208b8855da4f7da7b66e08"
+    },
+    "house": {
+      "path": "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/house-1x.png",
+      "sha256": "c08a25b0ebc2fdda69c91a1ac5ef4e49336c4d2a261d24ced2ca1dfe3534bb47"
+    },
+    "grass": {
+      "path": "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/grass-1x.png",
+      "sha256": "ddefa1af8367ecf8ce9243ee771f2a3d616b34cff0212f2ab15f2bd9392c5880"
+    },
+    "path": {
+      "path": "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/path-1x.png",
+      "sha256": "f529b14c7c6695aa81d30946f500e3d33e2a3f59e50fa8353d30e3935ad58b18"
+    },
+    "bush": {
+      "path": "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/bush-1x.png",
+      "sha256": "98c671fc99e9e62e66e7862852394310762948e814aeb8bc399c0b4a6b61170d"
+    },
+    "workshop": {
+      "path": "docs/art/reviews/2026-10-11/workshop-repairing-v1/prepared-v1/bld_workshop_states.png",
+      "sha256": "a1d62f076d31616ae07049daed4de47cd3ea635dda3c2f7f8f0886b0e7990644"
+    },
+    "palette": {
+      "path": "docs/art/palettes/desktown-v01-32.json",
+      "sha256": "7159392f53c516fded526541ac2b9a9d4eb0e005056d594bd61ad9ca2eca638b"
+    }
+  },
+  "assets": [
+    {
+      "id": "BLD-HOU-001",
+      "file": "bld_house.png",
+      "size": [
+        128,
+        128
+      ],
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 1,
+      "pivot": [
+        64,
+        128
+      ],
+      "sha256": "c08a25b0ebc2fdda69c91a1ac5ef4e49336c4d2a261d24ced2ca1dfe3534bb47"
+    },
+    {
+      "id": "BLD-WRK-001",
+      "file": "bld_workshop_states.png",
+      "size": [
+        480,
+        128
+      ],
+      "cell": [
+        160,
+        128
+      ],
+      "frames": 3,
+      "pivot": [
+        80,
+        128
+      ],
+      "sha256": "a1d62f076d31616ae07049daed4de47cd3ea635dda3c2f7f8f0886b0e7990644"
+    },
+    {
+      "id": "BLD-LCK-001",
+      "file": "bld_library_locked.png",
+      "size": [
+        128,
+        128
+      ],
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 1,
+      "pivot": [
+        64,
+        128
+      ],
+      "sha256": "15f0d90456a89d62ca3889be6e78735d1be43b15a2f624b026a9311367d04467"
+    },
+    {
+      "id": "ENV-GRA-001",
+      "file": "env_grass_tiles.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "623897dce0a34873a0ffaa65e0caa14ce56c9e713aff41de25dde30f4f8ce486"
+    },
+    {
+      "id": "ENV-DIR-001",
+      "file": "env_dirt_tile.png",
+      "size": [
+        32,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "a282b2bd4a4e1d5bb710d823492bd9bd9c8a555c8ce0691830f451815b339215"
+    },
+    {
+      "id": "ENV-PTH-001",
+      "file": "env_path_tiles.png",
+      "size": [
+        96,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 3,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "b7ddef97ee89490b4bb488745a83adba336cf2f8aa7bc33e19da9fdb09c70abc"
+    },
+    {
+      "id": "ENV-TRE-001",
+      "file": "env_tree_variants.png",
+      "size": [
+        128,
+        96
+      ],
+      "cell": [
+        64,
+        96
+      ],
+      "frames": 2,
+      "pivot": [
+        32,
+        96
+      ],
+      "sha256": "5b00b0259d52b4ce7f00b4a1c7f25ec767a1517c8dd7fa3ab9b82983cf144885"
+    },
+    {
+      "id": "ENV-BUS-001",
+      "file": "env_bush_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "6e9c658fafa1d945a807837225e5d1c902ed422aff7454ea0ef3e93d23cf72fd"
+    },
+    {
+      "id": "ENV-FLW-001",
+      "file": "env_flower_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "1dee64c5cb12ae2b4c95df81f720dea16810e988987d8d121d89e30a8f8c3893"
+    },
+    {
+      "id": "ENV-FEN-001",
+      "file": "env_fence_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "7592b156a01d6105975644a0f8b50b96bf980955e3cf62d0c47170a03e103b1d"
+    },
+    {
+      "id": "ENV-ROC-001",
+      "file": "env_rock_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "4ff1b785dc5ead5f281287b39211bfa173228da0b5f86d1e0fc7fc840dcae7d6"
+    }
+  ],
+  "checks": {
+    "dimensions": true,
+    "binaryAlpha": true,
+    "palette32": true,
+    "opaqueGround": true,
+    "distinctCells": true,
+    "approvedHouseWorkshopBytesPreserved": true,
+    "sourceHashesPreserved": true
+  },
+  "pathCells": [
+    "horizontal",
+    "vertical",
+    "cross"
+  ],
+  "limits": "Three explicit path cells, not an autotile topology; candidate art/layout requires review. Audio, NPCs, UI and effects remain separate."
+}

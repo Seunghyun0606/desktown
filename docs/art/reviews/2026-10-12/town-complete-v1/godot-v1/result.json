@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "logs": ".",
+  "sdk": "8.0.425",
+  "godot": "4.7.2.stable.mono.official.ed1daf0bf",
+  "captures": 15,
+  "renderer": "NVIDIA GeForce RTX 4070 SUPER"
+}

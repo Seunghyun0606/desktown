@@ -1,4 +1,4 @@
-"""Build, import and capture the disposable Companion project on Windows."""
+"""Build, import and capture a disposable Companion or Town project on Windows."""
 import argparse
 import json
 import os
@@ -68,11 +68,14 @@ def main():
         output = run_checked([str(godot), "--path", str(project), "--position", "-10000,-10000",
                               "--resolution", "64x64", "--audio-driver", "Dummy"],
                              project, env, logs / "capture.log", 90)
-        if "DESKTOWN_COMPANION_REVIEW_OK" not in output:
+        review_kind = preparation.get("reviewKind", "companion")
+        marker = "DESKTOWN_TOWN_REVIEW_OK" if review_kind == "town" else "DESKTOWN_COMPANION_REVIEW_OK"
+        if marker not in output:
             raise RuntimeError("Missing review completion marker")
         result = json.loads((review / "captures/result.json").read_text(encoding="utf-8"))
-        if len(result["captures"]) != 124 or any(not (review / "captures" / name).is_file() for name in result["captures"]):
-            raise RuntimeError("Incomplete 30-frame, four-scale capture set")
+        expected_count = preparation.get("expectedCaptures", 124)
+        if len(result["captures"]) != expected_count or any(not (review / "captures" / name).is_file() for name in result["captures"]):
+            raise RuntimeError(f"Incomplete {review_kind} capture set")
         report.update(success=True, captures=len(result["captures"]), renderer=result["renderer"])
     except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
         report["error"] = str(error)

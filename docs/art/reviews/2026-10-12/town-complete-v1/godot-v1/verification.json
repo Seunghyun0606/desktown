@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "reviewOnly": true,
+  "sourceRevision": "d59cce07fc9fe1c12cd63254a6e58a946952a0a1",
+  "engine": "4.7.2-stable (official)",
+  "renderer": "NVIDIA GeForce RTX 4070 SUPER",
+  "captures": 15,
+  "candidateSheets": 11,
+  "nearestBuildingAndTerrainPixelsChecked": 275416,
+  "mainCatalogUnchanged": true,
+  "candidateSourceHashesPreserved": true,
+  "probeHashPreserved": true,
+  "sha256": {
+    "existing-broken-100.png": "9c3b2e1db19cbd3381608c325c29dfdbedb885912720031bd8c77b459b3e5516",
+    "existing-repairing-100.png": "aac978aba249efb8a93391d81a162cdd5c62a4d9271c17e249bcb05045b35d31",
+    "existing-complete-100.png": "dbf8423154f362f1b99420bff6a40f993bd04c9b42d6812df21048a473c7d73f",
+    "proposed-broken-75.png": "9b2dcef802aa970e64bbe762278f8c31b61176aed712ec8374c99e8d3e6b6941",
+    "proposed-broken-100.png": "c1d5730a536d96ea516ff3a3e8ad68fd49b66f82df77086e1b08ff47b4edc5bd",
+    "proposed-broken-125.png": "e4d923612a1016da629b2e0d169c262b7899edd1b5b44a959790f43359a6d392",
+    "proposed-broken-150.png": "b490daf5064a9d41ce21f1ae4b0d1721ea1d06d51a62e3cfec5a57d1509b269e",
+    "proposed-repairing-75.png": "c4a232ece7f524509ebedc7b2ac379d3f53459d6ed892203f5553c9d57107af2",
+    "proposed-repairing-100.png": "82bbad7fae29d684a75a8da7c55646ae4c1cb1552db8694ff8128c074054208e",
+    "proposed-repairing-125.png": "d3987be9301962893b4331ea6441c2d4c43acf0cebfe6f4a46a662c96b5048f3",
+    "proposed-repairing-150.png": "79ef6246753416957f9d914a092c37b7970e8c108bf4e4118b31401ffb6b32f2",
+    "proposed-complete-75.png": "319ac8d3e836dd984a89da5b4319ae87a63c299158bf805770b104bbd406af0e",
+    "proposed-complete-100.png": "6f0070cba9911e523d39395c444e0e6dea70052be33ad35549da9d6be25ae898",
+    "proposed-complete-125.png": "dcc2714e821a4157782d2b640f01cbff6cc1c13c4b027d100f1007870979e4d5",
+    "proposed-complete-150.png": "30aea281784b81df524342f9e6c3673a9d1155d0da15d26575512ec196ff9bca"
+  },
+  "limits": "Partial unoccluded pixel checks plus visual review. No native window/DPI/input QA or production assignment."
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeskTown — Town 아트 11개 · 실제 Godot 배치 검토</title>
+<style>
+:root{color-scheme:light}body{margin:0;background:#eee6d8;color:#382c23;font:16px/1.6 system-ui,sans-serif}main{max-width:1380px;margin:auto;padding:32px}h1{font-size:30px;line-height:1.3}h2{font-size:22px}.tag{background:#675632;color:white;border-radius:20px;padding:6px 14px}section{background:#fffaf1;border:1px solid #d8cbb7;border-radius:14px;padding:22px;margin:24px 0}a{color:#925125}button,select{font:inherit;padding:5px 10px}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:16px}.scroll{overflow:auto;background:#463a25;border-radius:8px}img{image-rendering:pixelated;display:block}.scene{max-width:none}.note{color:#66574a}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:8px;border-bottom:1px solid #d8cbb7}.assets{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}.asset{overflow:auto;background:#e0d8c9;padding:12px;border-radius:8px}.asset img{background:repeating-conic-gradient(#c9c0b0 0% 25%,#ded6c8 0% 50%) 0/16px 16px;max-width:none}label{display:inline-flex;gap:8px;align-items:center}.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}.compare img{width:100%;height:auto}.compare a{display:block}
+</style>
+<main>
+<span class="tag">Town 후보 11개 · 납품·배치 승인 대기</span>
+<h1>마을을 채우는 건물·길·식생</h1>
+<p>승인된 Mina·House·Workshop과 공통 32색을 이어 사용했습니다. 실제 Godot Town 장면에 새 아트를 넣고 기존 배치와 <strong>월드 2× 배치안</strong>을 비교합니다. 아직 전체 최종본은 아니며 Noah·Rumi와 모닥불은 대체 표시입니다.</p>
+<p><a href="README.md">제작·검증 기록</a> · <a href="godot-v1/verification.json">렌더 픽셀·해시 검사</a> · <a href="prepared-v2/preparation.json">11개 시트 규격·출처</a> · <a href="../../../palettes/README.md">승인 팔레트</a></p>
+<section>
+<h2>실제 Godot 화면</h2>
+<div class="controls">
+<label>배치 <select id="layout"><option value="proposed">2× 배치안</option><option value="existing">기존 배치 + 후보 건물</option></select></label>
+<label>Workshop <select id="state"><option value="broken">파손 · 0 / 25</option><option value="repairing" selected>수리 중 · 10 / 25</option><option value="complete">완성 · 25 / 25</option></select></label>
+<label>렌더 배율 <select id="scale"><option value="75">75% · 960×540</option><option value="100" selected>100% · 1280×720</option><option value="125">125% · 1600×900</option><option value="150">150% · 1920×1080</option></select></label>
+<label><input id="gray" type="checkbox">흑백</label>
+</div>
+<p id="status" role="status">캡처 준비 중</p>
+<div class="scroll"><img class="scene" id="scene" alt="실제 Godot Town 캡처"></div>
+<p class="note">저장된 PNG를 실제 픽셀 크기로 표시합니다. 작은 화면에서는 옆으로 스크롤하세요. 75/125/150%는 SubViewport 렌더 배율이며 Windows 네이티브 DPI·입력 검사가 아닙니다. Workshop의 세 상태는 실제 TownScene.Bind로 선택했습니다.</p>
+</section>
+<section>
+<h2>기존 배치와 2× 배치안 · 수리 중</h2>
+<div class="compare"><div><p>기존 · 건물 원래 크기, 환경 대체 표시</p><a href="godot-v1/captures/existing-repairing-100.png"><img src="godot-v1/captures/existing-repairing-100.png" alt="기존 배치 전체"></a></div><div><p>배치안 · 건물·Mina 2배, 타일과 소품 연결</p><a href="godot-v1/captures/proposed-repairing-100.png"><img src="godot-v1/captures/proposed-repairing-100.png" alt="2배 배치안 전체"></a></div></div>
+<p>월드는 640×360 논리 좌표를 2배로 그리며 HUD와 Focus 버튼은 기존 크기로 유지합니다. House·Workshop·Library 출입구를 길에 연결하고 오른쪽 아래 조작 영역을 비웠습니다. 실제 게임 장면에는 아직 적용하지 않았습니다.</p>
+</section>
+<section><h2>시트 11개 · 3× 최근접 확대</h2><p>투명 격자는 PNG의 알파입니다. 흙·잔디는 불투명 32×32, 나머지는 투명 여백과 바닥 중앙 피벗을 유지합니다. House와 Workshop PNG는 승인본과 바이트 단위로 같습니다. 초기 준비본의 흙 반복 무늬는 prepared-v2에서 수정했습니다.</p><div id="assets" class="assets"></div></section>
+<section><h2>완성까지 남은 작업</h2>
+<table><thead><tr><th>묶음</th><th>다음 작업</th></tr></thead><tbody>
+<tr><td>Town 납품·배치</td><td>이번 11개와 2× 배치 승인 후 실제 카탈로그·장면 적용, 동일 화면 재검증.</td></tr>
+<tr><td>NPC · 5개</td><td>Noah Idle/Walk/Read, Rumi Idle/Walk의 외형·프레임·걷기 배치.</td></tr>
+<tr><td>효과 · 5개</td><td>Workshop 연기, 모닥불, 잎 움직임, 작업 불꽃, 차 김. 기존 효과 방향과 별도 6색 램프 사용.</td></tr>
+<tr><td>소품·UI·발견 · 5개</td><td>Companion 식물/상자, 별도 도구, 로고, 아이콘 9셀, Railway 지도. 도구는 기존 망치와 중복되지 않도록 검토.</td></tr>
+<tr><td>최종 화면</td><td>Town 3상태·보상·발견·Companion의 일관된 최종본과 새 사용자 QA 빌드.</td></tr>
+<tr><td>음향 · 8개</td><td>별도 제작·믹스·사용 승인 대기. 이번 시각 검토에 포함하지 않음.</td></tr>
+<tr><td>QA-PIP-001</td><td>PiP 중 Town 메인 창이 함께 뜨는 문제는 사용자 요청대로 TODO 유지.</td></tr>
+</tbody></table>
+<p>현재 실제 카탈로그는 <strong>12개 production · 34개 미배정</strong>입니다. 이번 Town 11개가 승인·배정되면 23개 production이 되며, 시각 15개와 음향 8개가 남습니다. 이 검토는 Focus/Energy·저장·창 정책을 변경하지 않습니다.</p>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const specs=[['BLD-HOU-001','House','bld_house',128,128,1],['BLD-WRK-001','Workshop 세 상태','bld_workshop_states',160,128,3],['BLD-LCK-001','Locked Library','bld_library_locked',128,128,1],['ENV-GRA-001','잔디 2셀','env_grass_tiles',32,32,2],['ENV-DIR-001','흙','env_dirt_tile',32,32,1],['ENV-PTH-001','길 · 가로/세로/교차','env_path_tiles',32,32,3],['ENV-TRE-001','나무 2종','env_tree_variants',64,96,2],['ENV-BUS-001','덤불 2셀','env_bush_variants',32,32,2],['ENV-FLW-001','꽃 2종','env_flower_variants',32,32,2],['ENV-FEN-001','울타리 2셀','env_fence_variants',32,32,2],['ENV-ROC-001','바위 2종','env_rock_variants',32,32,2]];
+for(const [id,title,file,w,h,n] of specs){const card=document.createElement('div');card.className='asset';const heading=document.createElement('strong');heading.textContent=title;const info=document.createElement('p');info.textContent=`${id} · ${w}×${h} · ${n}셀`;const link=document.createElement('a');link.href=`prepared-v2/${file}.png`;link.textContent='원본 PNG';const img=document.createElement('img');img.src=`prepared-v2/${file}-3x.png`;img.width=w*n*3;img.height=h*3;img.alt=`${title} 시트`;card.append(heading,info,link,img);$('assets').append(card)}
+function show(){const layout=$('layout').value;if(layout==='existing')$('scale').value='100';$('scale').disabled=layout==='existing';const scale=Number($('scale').value),state=$('state').value;$('scene').src=`godot-v1/captures/${layout}-${state}-${scale}.png`;$('scene').width=1280*scale/100;$('scene').height=720*scale/100;$('scene').style.filter=$('gray').checked?'grayscale(1)':'none';$('status').textContent=`${layout==='existing'?'기존 배치':'월드 2× 배치안'} · ${state} · ${scale}% · 실제 GPU 캡처`}
+for(const id of ['layout','state','scale','gray'])$(id).onchange=show;
+$('scene').onerror=()=>{$('status').textContent='캡처를 불러오지 못했습니다. 저장소의 godot-v1/captures 폴더를 확인하세요.'};show();
+</script></html>

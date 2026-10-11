@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "engine": "4.7.2-stable (official)",
+  "renderer": "NVIDIA GeForce RTX 4070 SUPER",
+  "captures": [
+    "existing-broken-100.png",
+    "proposed-broken-75.png",
+    "proposed-broken-100.png",
+    "proposed-broken-125.png",
+    "proposed-broken-150.png",
+    "existing-repairing-100.png",
+    "proposed-repairing-75.png",
+    "proposed-repairing-100.png",
+    "proposed-repairing-125.png",
+    "proposed-repairing-150.png",
+    "existing-complete-100.png",
+    "proposed-complete-75.png",
+    "proposed-complete-100.png",
+    "proposed-complete-125.png",
+    "proposed-complete-150.png"
+  ],
+  "reviewOnly": true,
+  "nativeInputQa": false,
+  "stateBindings": 3,
+  "layouts": [
+    "existing scene coordinates",
+    "proposed 640x360 world at 2x; original HUD"
+  ],
+  "limits": "Noah/Rumi and campfire remain geometric; NPC/UI/effects are next art work. No runtime delivery assignment."
+}

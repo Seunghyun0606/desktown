@@ -1,0 +1,146 @@
+// Review-only probe: copied into a disposable project, never shipping AppRoot.
+using DeskTown.Domain.Focus;
+using DeskTown.Domain.Projects;
+using DeskTown.Domain.Simulation;
+using DeskTown.Presentation.Display;
+using global::Godot;
+using System.Text.Json;
+
+namespace DeskTown.Presentation.Bootstrap;
+
+public partial class TownArtReview : Node
+{
+    private readonly List<string> _captures = new();
+    private static void Require(bool value, string message)
+    { if (!value) throw new InvalidOperationException(message); }
+    public override void _Ready() => Callable.From(() => { _ = Run(); }).CallDeferred();
+
+    private async Task Run()
+    {
+        try
+        {
+            GetWindow().Unfocusable = true;
+            Require(Path.GetFileName(OS.GetUserDataDir()).StartsWith("DeskTownArtReview-"), "User directory not isolated");
+            var output = ProjectSettings.GlobalizePath("res://../captures");
+            Directory.CreateDirectory(output);
+            foreach (var (id, count) in new[] {
+                ("BLD-HOU-001",1), ("BLD-WRK-001",3), ("BLD-LCK-001",1),
+                ("ENV-GRA-001",2), ("ENV-DIR-001",1), ("ENV-PTH-001",3),
+                ("ENV-TRE-001",2), ("ENV-BUS-001",2), ("ENV-FLW-001",2),
+                ("ENV-FEN-001",2), ("ENV-ROC-001",2) })
+            {
+                for (var frame = 0; frame < count; frame++)
+                    Require(VisualAssetCatalog.Frame(id, frame) is not null, $"Missing {id}/{frame}");
+                Require(VisualAssetCatalog.Frame(id, count) is null, $"Out-of-range {id}");
+            }
+            foreach (var state in Enum.GetValues<WorkshopState>())
+            {
+                await Capture(output, state, 100, false);
+                foreach (var percent in new[] {75,100,125,150})
+                    await Capture(output, state, percent, true);
+            }
+            File.WriteAllText(Path.Combine(output, "result.json"), JsonSerializer.Serialize(new {
+                success=true, engine=Engine.GetVersionInfo()["string"].AsString(),
+                renderer=RenderingServer.GetVideoAdapterName(), captures=_captures,
+                reviewOnly=true, nativeInputQa=false, stateBindings=3,
+                layouts=new[]{"existing scene coordinates", "proposed 640x360 world at 2x; original HUD"},
+                limits="Noah/Rumi and campfire remain geometric; NPC/UI/effects are next art work. No runtime delivery assignment."
+            }, new JsonSerializerOptions { WriteIndented=true }));
+            GD.Print("DESKTOWN_TOWN_REVIEW_OK");
+            GetTree().Quit();
+        }
+        catch (Exception error) { GD.PrintErr(error.ToString()); GetTree().Quit(1); }
+    }
+
+    private async Task Capture(string output, WorkshopState state, int percent, bool proposed)
+    {
+        var viewport = new SubViewport {
+            Size=new Vector2I(1280*percent/100,720*percent/100),
+            Size2DOverride=new Vector2I(1280,720), Size2DOverrideStretch=true,
+            RenderTargetUpdateMode=SubViewport.UpdateMode.Always,
+            CanvasItemDefaultTextureFilter=Viewport.DefaultCanvasItemTextureFilter.Nearest };
+        AddChild(viewport);
+        var town=GD.Load<PackedScene>("res://scenes/town/TownScene.tscn").Instantiate<TownScene>();
+        town.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);
+        town.Size=new Vector2(1280,720);
+        viewport.AddChild(town);
+        foreach(var timer in town.GetChildren().OfType<global::Godot.Timer>()) timer.Stop();
+        var simulation=TownSimulation.Create();
+        var minutes=state==WorkshopState.Broken ? 0 : state==WorkshopState.Repairing ? 10 : 25;
+        var elapsed=TimeSpan.FromMinutes(minutes);
+        simulation.AdvanceTo(elapsed,FocusEnergy.FromCountedDuration(elapsed),null,TimeSpan.Zero);
+        town.Bind(simulation.Snapshot.Town,elapsed, state);
+        var mina=town.GetNode<MinaPlaceholderView>("World/MinaView");
+        mina.Play(new MinaPresentationIntent(state==WorkshopState.Broken ? MinaAnimationClip.Idle :
+            state==WorkshopState.Repairing ? MinaAnimationClip.Work : MinaAnimationClip.Celebrate));
+        mina.SetProcess(false);
+        town.GetNode<TownNpcPlaceholderView>("World/NoahView").SetProcess(false);
+        town.GetNode<TownNpcPlaceholderView>("World/RumiView").SetProcess(false);
+        if(proposed) ApplyProposal(town, state);
+        var frame=VisualAssetCatalog.Frame("BLD-WRK-001",(int)state)!.Value;
+        var workshop=town.GetNode<ColorRect>("World/Workshop");
+        var art=workshop.GetNode<Sprite2D>("CatalogArt");
+        Require(art.RegionRect==frame.Source && workshop.Color.A==0, "Workshop state binding incorrect");
+        Require(art.TextureFilter==CanvasItem.TextureFilterEnum.Nearest, "Workshop filter changed");
+        await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
+        await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
+        var image=viewport.GetTexture().GetImage();
+        var filename=$"{(proposed ? "proposed" : "existing")}-{state.ToString().ToLowerInvariant()}-{percent}.png";
+        Require(image.SavePng(Path.Combine(output,filename))==Error.Ok, "Capture failed");
+        _captures.Add(filename);
+        viewport.QueueFree();
+        await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+    }
+
+    private static Sprite2D Sprite(Node parent,string id,int frame,Vector2 position)
+    {
+        var image=VisualAssetCatalog.Frame(id,frame)!.Value;
+        var sprite=new Sprite2D { Texture=image.Sheet, RegionEnabled=true, RegionRect=image.Source,
+            Centered=false, Position=position, TextureFilter=CanvasItem.TextureFilterEnum.Nearest };
+        parent.AddChild(sprite); return sprite;
+    }
+
+    private static void ApplyProposal(TownScene town,WorkshopState state)
+    {
+        town.GetNode<ColorRect>("Ground").Hide();
+        var world=town.GetNode<Control>("World"); world.Scale=new Vector2(2,2);
+        world.GetNode<ColorRect>("Path").Hide();
+        var ground=new Node2D { Name="ReviewTiles" }; world.AddChild(ground); world.MoveChild(ground,0);
+        for(var y=0;y<360;y+=32)
+            for(var x=0;x<640;x+=32)
+                Sprite(ground,"ENV-GRA-001",(x/32+y/32)%2,new Vector2(x,y));
+        for(var y=128;y<192;y+=32)
+            for(var x=512;x<608;x+=32) Sprite(ground,"ENV-DIR-001",0,new Vector2(x,y));
+        for(var x=16;x<640;x+=32) Sprite(ground,"ENV-PTH-001",0,new Vector2(x,264));
+        foreach(var x in new[]{144,432}) {
+            Sprite(ground,"ENV-PTH-001",1,new Vector2(x,232));
+            Sprite(ground,"ENV-PTH-001",2,new Vector2(x,264));
+        }
+        for(var y=136;y<264;y+=32) Sprite(ground,"ENV-PTH-001",1,new Vector2(528,y));
+        Sprite(ground,"ENV-PTH-001",2,new Vector2(528,264));
+        void Place(string name,string id,Vector2 position,Vector2 size,int frame=0) {
+            var host=world.GetNode<ColorRect>(name); host.Position=position; host.Size=size;
+            CatalogRectArt.Bind(host,id,frame);
+        }
+        Place("House","BLD-HOU-001",new(104,111),new(128,128));
+        Place("Workshop","BLD-WRK-001",new(365,111),new(160,128),(int)state);
+        Place("LockedArea","BLD-LCK-001",new(489,14),new(128,128));
+        Place("Tree","ENV-TRE-001",new(28,78),new(64,96));
+        world.GetNode<ColorRect>("Campfire").Position=new Vector2(316,294);
+        Sprite(ground,"ENV-TRE-001",1,new Vector2(292,74));
+        var objects=new[] {
+            ("ENV-BUS-001",0,32,248),("ENV-BUS-001",1,242,216),("ENV-BUS-001",0,572,163),("ENV-BUS-001",1,575,286),
+            ("ENV-FLW-001",0,116,300),("ENV-FLW-001",1,336,292),("ENV-FLW-001",0,476,310),
+            ("ENV-FEN-001",0,248,215),("ENV-FEN-001",1,280,215),("ENV-FEN-001",0,312,215),
+            ("ENV-ROC-001",0,82,315),("ENV-ROC-001",1,576,200) };
+        foreach(var (id,frame,x,y) in objects) Sprite(ground,id,frame,new Vector2(x,y));
+        var mina=world.GetNode<MinaPlaceholderView>("MinaView");
+        mina.Position=new Vector2(state==WorkshopState.Broken ? 168 : 437,228);
+        world.GetNode<TownNpcPlaceholderView>("NoahView").Position=new Vector2(268,228);
+        world.GetNode<TownNpcPlaceholderView>("RumiView").Position=new Vector2(226,282);
+        Sprite(ground,"CMP-SHD-001",0,mina.Position+new Vector2(8,38));
+        foreach(var label in new[]{"Mina","Noah","Rumi"}) world.GetNode<Label>(label).Hide();
+        foreach(var sprite in ground.GetChildren().OfType<Sprite2D>())
+            Require(sprite.Position.X==MathF.Round(sprite.Position.X) && sprite.Position.Y==MathF.Round(sprite.Position.Y), "Noninteger tile origin");
+    }
+}
