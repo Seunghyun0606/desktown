@@ -2,7 +2,7 @@
 
 ## 현재 판정
 
-사용자가 Mina Idle·Work 동작 방향을 승인하고 Workshop 스타일 테스트 진행을 선택했다. 아트 지침의 세 번째 게이트인 **Broken/Complete를 Town 크기에서 비교**하는 후보를 준비했다. [검토 페이지](review.html)에서 1×/2×/3×, 컬러/흑백, 밝고 어두운 배경 및 현재 Town 좌표의 상태 전환을 비교한다. Workshop 스타일의 사용자 승인은 대기 중이다.
+사용자가 Mina Idle·Work 동작 방향을 승인하고 Workshop 스타일 테스트 진행을 선택했다. 아트 지침의 세 번째 게이트인 **Broken/Complete를 Town 크기에서 비교**하는 후보를 준비했다. [검토 페이지](review.html)에서 1×/2×/3×, 컬러/흑백, 밝고 어두운 배경 및 현재 Town 좌표의 상태 전환을 비교한다. 사용자가 Workshop 파손·완성 스타일을 승인하고 House·길·식생 32px 타일 테스트 진행을 선택했다. 생성 당시 preparation.json의 판정은 당시 기록으로 보존한다.
 
 최종 검토 대상은 `prepared-v2/`다. 정렬 전 중간 결과는 무시되는 `build/workshop-intermediate-20261011/`에 보존했다. 카탈로그 배정, 게임 장면, 저장 스키마를 변경하지 않았다. Repairing이 없으므로 3프레임 납품 시트로 취급하지 않는다.
 

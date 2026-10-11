@@ -1,0 +1,497 @@
+{
+  "status": "style_candidate_pending_human_approval",
+  "tool": "Python/Pillow",
+  "pillowVersion": "12.3.0",
+  "sources": {
+    "house": {
+      "file": "docs/art/reviews/2026-10-11/town-cluster-v1/sources/house.png",
+      "sha256": "93c09a4885e37c24c23873b03dfd07af3513c1f62626637aeb789e207cecaaa4",
+      "size": [
+        1402,
+        1122
+      ]
+    },
+    "grass": {
+      "file": "docs/art/reviews/2026-10-11/town-cluster-v1/sources/grass.png",
+      "sha256": "ab83bfdfe2da5fbfa6f9fb0cd3abd531302ef2899e907f8e93545f231e5b87de",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "path": {
+      "file": "docs/art/reviews/2026-10-11/town-cluster-v1/sources/path.png",
+      "sha256": "b745d1437095ede0bdc6b38aa3843ada881c833d6b6dd0b449089f12b79d9590",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "bush": {
+      "file": "docs/art/reviews/2026-10-11/town-cluster-v1/sources/bush.png",
+      "sha256": "c4b4b5029ec788a08f53f90923f0f347c27fe54fafe4dc385f5f9d27fa38e5b5",
+      "size": [
+        1402,
+        1122
+      ]
+    },
+    "workshop": {
+      "file": "docs/art/reviews/2026-10-11/workshop-v1/prepared-v2/workshop-complete-1x.png",
+      "sha256": "9374dc64fa2eb1a9929a596b615f1d23b779e1f0c5c363ddbe07b0ce53413381",
+      "size": [
+        160,
+        128
+      ]
+    },
+    "mina": {
+      "file": "docs/art/reviews/2026-10-11/neutral-48-v1/mina-neutral-48-v1-1x.png",
+      "sha256": "2cd45e8d2ecc1062c5bb624d129f0879746364ed69a3ad095387b75d358e214e",
+      "size": [
+        48,
+        48
+      ]
+    }
+  },
+  "houseFit": {
+    "bounds": [
+      129,
+      176,
+      1313,
+      1031
+    ],
+    "size": [
+      112,
+      81
+    ],
+    "cell": [
+      128,
+      128
+    ]
+  },
+  "bushFit": {
+    "bounds": [
+      207,
+      483,
+      1240,
+      1060
+    ],
+    "size": [
+      28,
+      16
+    ],
+    "cell": [
+      32,
+      32
+    ]
+  },
+  "grassCenterCrop": [
+    0,
+    0,
+    1254,
+    1254
+  ],
+  "grassCleanup": {
+    "clusters": [
+      2,
+      2
+    ],
+    "baseRGB": [
+      127,
+      130,
+      76
+    ],
+    "contrastFactor": 0.35
+  },
+  "pathBounds": [
+    0,
+    406,
+    1254,
+    862
+  ],
+  "pathBand": [
+    32,
+    16
+  ],
+  "pathBandOrigin": [
+    0,
+    8
+  ],
+  "edgeCleanup": "Grass last column/row copy first column/row; path last column copies first.",
+  "pivot": {
+    "house": [
+      64,
+      128
+    ],
+    "bush": [
+      16,
+      32
+    ]
+  },
+  "logicalCellInTiles": {
+    "house": [
+      4,
+      4
+    ],
+    "bush": [
+      1,
+      1
+    ]
+  },
+  "reviewLayout": {
+    "canvas": [
+      384,
+      288
+    ],
+    "groundGrid": 32,
+    "houseOrigin": [
+      48,
+      32
+    ],
+    "workshopOrigin": [
+      192,
+      32
+    ],
+    "minaOrigin": [
+      168,
+      174
+    ],
+    "pathRow": 192,
+    "branchColumns": [
+      96,
+      256
+    ]
+  },
+  "paletteRGB": [
+    [
+      42,
+      21,
+      15
+    ],
+    [
+      49,
+      28,
+      21
+    ],
+    [
+      55,
+      29,
+      21
+    ],
+    [
+      58,
+      39,
+      28
+    ],
+    [
+      62,
+      29,
+      21
+    ],
+    [
+      77,
+      63,
+      44
+    ],
+    [
+      81,
+      46,
+      31
+    ],
+    [
+      88,
+      86,
+      58
+    ],
+    [
+      112,
+      106,
+      75
+    ],
+    [
+      120,
+      120,
+      78
+    ],
+    [
+      123,
+      55,
+      35
+    ],
+    [
+      124,
+      44,
+      28
+    ],
+    [
+      125,
+      128,
+      75
+    ],
+    [
+      127,
+      131,
+      75
+    ],
+    [
+      129,
+      72,
+      46
+    ],
+    [
+      133,
+      132,
+      79
+    ],
+    [
+      139,
+      85,
+      54
+    ],
+    [
+      153,
+      114,
+      77
+    ],
+    [
+      160,
+      140,
+      88
+    ],
+    [
+      166,
+      80,
+      46
+    ],
+    [
+      169,
+      95,
+      54
+    ],
+    [
+      177,
+      162,
+      119
+    ],
+    [
+      213,
+      78,
+      41
+    ],
+    [
+      215,
+      186,
+      136
+    ],
+    [
+      216,
+      169,
+      113
+    ],
+    [
+      218,
+      122,
+      64
+    ],
+    [
+      222,
+      108,
+      54
+    ],
+    [
+      227,
+      89,
+      45
+    ],
+    [
+      235,
+      155,
+      86
+    ],
+    [
+      236,
+      206,
+      149
+    ],
+    [
+      250,
+      226,
+      171
+    ],
+    [
+      253,
+      238,
+      191
+    ]
+  ],
+  "opaqueColorCount": 32,
+  "resampling": "nearest",
+  "alphaThreshold": 128,
+  "checks": {
+    "dimensions": true,
+    "binaryAlpha": true,
+    "grassOpaque": true,
+    "transparentRGBZero": true,
+    "sharedPaletteLimit32": true,
+    "nearestEnlargement": true,
+    "srgb": true,
+    "sourcePreserved": true,
+    "grassOppositeEdgesEqual": true,
+    "pathHorizontalEdgesEqual": true,
+    "repeat3x3": true
+  },
+  "limits": "Edge equality does not prove seamless perception. One representative grass/path/bush only; no final variant sheets, autotile topology, runtime catalog assignment or Windows QA. Mina/Workshop retained their approved pixels and separate candidate palettes.",
+  "files": [
+    {
+      "file": "house-1x.png",
+      "size": [
+        128,
+        128
+      ],
+      "sha256": "81e7ca20c047ac74c929f2ca2cc73a9dbe4b8957ea4c5d66f2fcaf1afd8df34b"
+    },
+    {
+      "file": "house-2x.png",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "08717abc7efc7f7c0ec9abbcd6a8905e783073c7130f4bdeea1c7841802be1e6"
+    },
+    {
+      "file": "house-3x.png",
+      "size": [
+        384,
+        384
+      ],
+      "sha256": "0f6848eeb9735c9c375c5da4189834b737c9f65ca6d8777109312a15f3838adc"
+    },
+    {
+      "file": "grass-1x.png",
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "07e97498a92aad98c781e1d569cce5b5b7cef5a9ed1dc2779ec4d0881fb6f84a"
+    },
+    {
+      "file": "grass-2x.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "a4f7658a15b84b3e1954e8ecf476e341e32d2e56af4c07eb1d253ab296c825c4"
+    },
+    {
+      "file": "grass-3x.png",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "685def81919b7a1618533428472070a81262ada65ccdbba5503f8a99e98b70ba"
+    },
+    {
+      "file": "path-1x.png",
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "38abc9f298538d33117a50263fbe5daeb32da9149b3f0c16b03de679d15da81a"
+    },
+    {
+      "file": "path-2x.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "7c4f63c510058fc2f439ad806c09fc221204df95221d044f230c2207d8cb0f15"
+    },
+    {
+      "file": "path-3x.png",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "811852ff294931a2ee81b1f43ea91020f3ecae667a799c59c8ce518c723273b1"
+    },
+    {
+      "file": "bush-1x.png",
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "f167bf46f2a3991022afa19f49495c7a5f79c2324f416e7ca707476621460ce6"
+    },
+    {
+      "file": "bush-2x.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "3884b7d964dc1a3b1cfd3f6b98ec9e132a5ad14027bffef72631689f04da5cef"
+    },
+    {
+      "file": "bush-3x.png",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "47cc41574ce11523f843d70fb49bafe0d6142922484cf2508f1690e72572d937"
+    },
+    {
+      "file": "grass-repeat-3x3.png",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "4a3ddc9a0c8b728c3901ec7359dfb86542e63ad3864a1d20a2f9ea81e669ace6"
+    },
+    {
+      "file": "path-repeat-3x3.png",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "bcba0146146ec4790fbadef9cf1e71ddfdd0930b023d2805813709d1358dc8aa"
+    },
+    {
+      "file": "cluster-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "3fb5886bfc252bef3600870615ef0d27a1c6d61cab0ee36de9fdbc106f7b5c89"
+    },
+    {
+      "file": "cluster-2x.png",
+      "size": [
+        768,
+        576
+      ],
+      "sha256": "25f97524d120fbeccf4feba7230034d4580d651d7f3aa6482d6f3f316a99077d"
+    },
+    {
+      "file": "cluster-3x.png",
+      "size": [
+        1152,
+        864
+      ],
+      "sha256": "03a8906c67f5d8969d5826f16ed577bb3cd2c77b687cd020510943305663d834"
+    },
+    {
+      "file": "cluster-gray-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "541b04dcc56d259bc5742247a7ebbd905b142422b01204f9c2745087c399f16e"
+    },
+    {
+      "file": "comparison-board.png",
+      "size": [
+        800,
+        344
+      ],
+      "sha256": "b4e66514e1e0e8a303ac4fe28210d21d844aba84fae8532d42c8d31f5a10ded5"
+    }
+  ]
+}

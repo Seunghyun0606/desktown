@@ -555,7 +555,11 @@ may be adjusted to the final scaffold without changing task responsibility.
   all runtime catalog entries remain unassigned.
   [Workshop Broken/Complete candidates](art/reviews/2026-10-11/workshop-v1/review.html)
   use 160×128 cells, a shared 32-color palette and fixed door/foundation pixels.
-  Town scale and grayscale comparisons are ready for the human style gate.
+  The human approved the Workshop style and proceeding to the 32px tile cluster.
+  [House/path/vegetation candidates](art/reviews/2026-10-11/town-cluster-v1/review.html)
+  include a 128×128 House, representative 32×32 grass/path/bush cells,
+  3×3 repeats and a shared 32-color candidate palette. Environment style review
+  is pending; Reward color/effect framing is the next art gate.
   Repairing, smoke and a project-wide palette remain future production work.
 
 ### DT-E9-002 — Add final sound, particles, light, and reduced motion

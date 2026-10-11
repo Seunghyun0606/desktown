@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>House·길·식생 32px 스타일 테스트</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:24px;background:#f3efe7;color:#342c27;font:16px/1.6 system-ui,sans-serif}main{max-width:1500px;margin:auto}h1{margin:0;font-size:28px}.note{background:#fff9ed;border-left:4px solid #9b5e34;padding:14px;max-width:1100px}.controls{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin:20px 0}button,select{font:inherit;padding:6px 10px}.gallery{display:flex;flex-wrap:wrap;gap:20px}article{background:#fff;padding:16px;border-radius:12px;max-width:100%;overflow:auto}canvas,img{image-rendering:pixelated}canvas{display:block}a{color:#754321}.error{color:#8b281b}small{display:block}
+</style>
+<main>
+<h1>House·길·식생 · 32px 스타일 테스트</h1>
+<p>Workshop 스타일 승인 후 준비한 House 128×128 · 잔디·길·덤불 32×32 대표 후보</p>
+<p class="note">32px 격자 위에 구성한 <strong>아트 스타일 비교</strong>입니다. 기존 Mina·Workshop을 함께 배치해 크기·빛·픽셀 밀도를 비교합니다. 새 후보 네 종류는 공통 32색이며 기존 Mina·Workshop의 승인된 픽셀은 유지했습니다. 전체 프로젝트 팔레트 확정과 실제 Town 적용은 후속 단계입니다.</p>
+<div class="controls">
+<label>배율 <select id="scale"><option value="1">1× · 원래 크기</option><option value="2" selected>2×</option><option value="3">3×</option></select></label>
+<label><input type="checkbox" id="gray">흑백 비교</label>
+<label><input type="checkbox" id="grid">32px 격자 표시</label>
+<label>투명 영역 배경 <select id="background"><option value="#4c6955">Town 녹색</option><option value="#ffffff">흰색</option><option value="#808080">회색</option><option value="#20252b">어두운 배경</option></select></label>
+</div>
+<div id="error" role="alert" class="error"></div>
+<article><h2>타일 클러스터</h2><canvas id="cluster" width="384" height="288" aria-label="32px 격자 위 House, Workshop, Mina, 길과 식생">Canvas 지원이 필요합니다.</canvas><small>384×288 구성 참조. 실제 Town 좌표나 충돌·동선 정의가 아닙니다.</small></article>
+<h2>대표 셀 · 최근접 확대</h2>
+<div class="gallery">
+<article><h3>House · 128×128</h3><canvas id="house" width="128" height="128" aria-label="House 후보">Canvas 지원이 필요합니다.</canvas></article>
+<article><h3>잔디 · 32×32</h3><canvas id="grass" width="32" height="32" aria-label="잔디 타일 후보">Canvas 지원이 필요합니다.</canvas></article>
+<article><h3>길 · 32×32</h3><canvas id="path" width="32" height="32" aria-label="수평 흙길 후보">Canvas 지원이 필요합니다.</canvas></article>
+<article><h3>덤불 · 32×32</h3><canvas id="bush" width="32" height="32" aria-label="덤불 후보">Canvas 지원이 필요합니다.</canvas></article>
+</div>
+<h2>3×3 반복</h2>
+<div class="gallery"><article><h3>잔디 · 가로/세로</h3><canvas id="grass-repeat" width="96" height="96" aria-label="잔디 3×3 반복">Canvas 지원이 필요합니다.</canvas></article><article><h3>길 · 가로 연결과 반복 무늬</h3><canvas id="path-repeat" width="96" height="96" aria-label="수평 길 3×3 반복">Canvas 지원이 필요합니다.</canvas><small>수평 길을 세 줄 반복합니다. 교차로·코너 타일 검증은 아닙니다.</small></article></div>
+<h2>검토 항목</h2>
+<ul><li>1×에서 House가 Workshop과 같은 마을의 주거 건물로 읽히는가?</li><li>길·잔디·덤불이 Mina보다 시선을 끌지 않고 차분한가?</li><li>3×3 반복에서 경계선·규칙적인 무늬가 거슬리지 않는가?</li><li>48px 캐릭터와 32px 환경의 픽셀 밀도와 빛 방향이 맞는가?</li></ul>
+<p class="note">AI 원본을 사용자가 허용한 Python 변환으로 정리했습니다. 반복 가장자리의 마지막 행/열을 첫 행/열과 맞췄으며, 경계 픽셀 일치가 시각적으로 자연스러운 반복을 보장하지는 않습니다. 잔디·길·덤불은 각각 한 대표 셀이어서 카탈로그의 전체 변형 시트가 아닙니다. Godot 실행과 Windows 입력 QA는 수행하지 않았습니다.</p>
+<p><a href="README.md">프롬프트·출처·변환 기록</a> · <a href="prepared-v3/comparison-board.png">컬러·흑백 비교 PNG</a> · <a href="prepared-v3/preparation.json">검사 기록</a> · <a href="../workshop-v1/review.html">승인된 Workshop 스타일</a></p>
+</main>
+<script>
+const $=id=>document.getElementById(id),images={};
+function load(id,path){return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[id]=im;resolve()};im.onerror=()=>reject(new Error('PNG를 읽을 수 없습니다: '+path));im.src=path})}
+function draw(){for(const [id,im] of Object.entries(images)){const s=Number($('scale').value),c=$(id);c.width=im.width*s;c.height=im.height*s;c.style.filter=$('gray').checked?'grayscale(1)':'none';const ctx=c.getContext('2d');ctx.imageSmoothingEnabled=false;ctx.scale(s,s);ctx.fillStyle=$('background').value;ctx.fillRect(0,0,im.width,im.height);ctx.drawImage(im,0,0);if($('grid').checked){ctx.strokeStyle='#e9d4a180';ctx.lineWidth=1;ctx.beginPath();for(let x=0;x<im.width;x+=32){ctx.moveTo(x+.5,0);ctx.lineTo(x+.5,im.height)}for(let y=0;y<im.height;y+=32){ctx.moveTo(0,y+.5);ctx.lineTo(im.width,y+.5)}ctx.stroke()}}}
+for(const id of ['scale','gray','grid','background'])$(id).addEventListener('change',draw);
+Promise.all(['cluster','house','grass','path','bush'].map(id=>load(id,'prepared-v3/'+id+'-1x.png')).concat(['grass','path'].map(id=>load(id+'-repeat','prepared-v3/'+id+'-repeat-3x3.png')))).then(draw).catch(e=>{$('error').textContent=e.message});
+</script>
+</html>
