@@ -558,9 +558,13 @@ may be adjusted to the final scaffold without changing task responsibility.
   The human approved the Workshop style and proceeding to the 32px tile cluster.
   [House/path/vegetation candidates](art/reviews/2026-10-11/town-cluster-v1/review.html)
   include a 128×128 House, representative 32×32 grass/path/bush cells,
-  3×3 repeats and a shared 32-color candidate palette. Environment style review
-  is pending; Reward color/effect framing is the next art gate.
-  Repairing, smoke and a project-wide palette remain future production work.
+  3×3 repeats and a shared 32-color candidate palette. The human approved the
+  environment style and proceeding to Reward color/effect framing.
+  [Reward keyframe candidates](art/reviews/2026-10-11/reward-v1/review.html) compare
+  Broken reference / one local effect beat / calm / no-particle final state.
+  Single 32×32 smoke and 16×16 spark representatives are prepared; Reward style
+  approval is pending. Repairing, Celebrate, full effect sheets, runtime reveal
+  integration and a project-wide palette remain future production work.
 
 ### DT-E9-002 — Add final sound, particles, light, and reduced motion
 

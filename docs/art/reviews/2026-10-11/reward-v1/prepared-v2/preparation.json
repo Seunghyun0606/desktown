@@ -1,0 +1,379 @@
+{
+  "status": "style_candidate_pending_human_approval",
+  "tool": "Python/Pillow",
+  "pillowVersion": "12.3.0",
+  "sources": {
+    "smoke": {
+      "file": "docs/art/reviews/2026-10-11/reward-v1/sources/smoke.png",
+      "sha256": "537baa9801516f98e6beafa6cdcc8358e837b541e735e2c0fed69f6a819674c8",
+      "size": [
+        1297,
+        1212
+      ]
+    },
+    "spark": {
+      "file": "docs/art/reviews/2026-10-11/reward-v1/sources/spark.png",
+      "sha256": "05df1ae134f44eb2755e97ec8c39e92ae40fbda559de2dc51eec66f9712f6ad1",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    "grass": {
+      "file": "docs/art/reviews/2026-10-11/town-cluster-v1/prepared-v3/grass-1x.png",
+      "sha256": "07e97498a92aad98c781e1d569cce5b5b7cef5a9ed1dc2779ec4d0881fb6f84a",
+      "size": [
+        32,
+        32
+      ]
+    },
+    "path": {
+      "file": "docs/art/reviews/2026-10-11/town-cluster-v1/prepared-v3/path-1x.png",
+      "sha256": "38abc9f298538d33117a50263fbe5daeb32da9149b3f0c16b03de679d15da81a",
+      "size": [
+        32,
+        32
+      ]
+    },
+    "house": {
+      "file": "docs/art/reviews/2026-10-11/town-cluster-v1/prepared-v3/house-1x.png",
+      "sha256": "81e7ca20c047ac74c929f2ca2cc73a9dbe4b8957ea4c5d66f2fcaf1afd8df34b",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "bush": {
+      "file": "docs/art/reviews/2026-10-11/town-cluster-v1/prepared-v3/bush-1x.png",
+      "sha256": "f167bf46f2a3991022afa19f49495c7a5f79c2324f416e7ca707476621460ce6",
+      "size": [
+        32,
+        32
+      ]
+    },
+    "broken": {
+      "file": "docs/art/reviews/2026-10-11/workshop-v1/prepared-v2/workshop-broken-1x.png",
+      "sha256": "20167cf544f23284b682a55741892b55ee050c9b3ce60b42c696d890f63fdb8f",
+      "size": [
+        160,
+        128
+      ]
+    },
+    "complete": {
+      "file": "docs/art/reviews/2026-10-11/workshop-v1/prepared-v2/workshop-complete-1x.png",
+      "sha256": "9374dc64fa2eb1a9929a596b615f1d23b779e1f0c5c363ddbe07b0ce53413381",
+      "size": [
+        160,
+        128
+      ]
+    },
+    "mina": {
+      "file": "docs/art/reviews/2026-10-11/neutral-48-v1/mina-neutral-48-v1-1x.png",
+      "sha256": "2cd45e8d2ecc1062c5bb624d129f0879746364ed69a3ad095387b75d358e214e",
+      "size": [
+        48,
+        48
+      ]
+    }
+  },
+  "smoke": {
+    "sourceBounds": [
+      507,
+      407,
+      883,
+      858
+    ],
+    "fitSize": [
+      23,
+      28
+    ],
+    "origin": [
+      5,
+      4
+    ],
+    "paletteRGB": [
+      [
+        99,
+        92,
+        86
+      ],
+      [
+        141,
+        130,
+        115
+      ],
+      [
+        198,
+        185,
+        162
+      ],
+      [
+        238,
+        220,
+        190
+      ]
+    ],
+    "basePixels": [
+      6,
+      7
+    ],
+    "chimneyAnchor": [
+      316,
+      63
+    ],
+    "sceneOrigin": [
+      310,
+      31
+    ]
+  },
+  "spark": {
+    "sourceBounds": [
+      678,
+      403,
+      858,
+      590
+    ],
+    "fitSize": [
+      11,
+      11
+    ],
+    "origin": [
+      3,
+      5
+    ],
+    "paletteRGB": [
+      [
+        185,
+        123,
+        32
+      ],
+      [
+        253,
+        242,
+        218
+      ]
+    ]
+  },
+  "effectBounds": {
+    "smoke": [
+      310,
+      31,
+      342,
+      63
+    ],
+    "spark": [
+      [
+        229,
+        106,
+        245,
+        122
+      ],
+      [
+        281,
+        98,
+        297,
+        114
+      ]
+    ]
+  },
+  "resampling": "nearest",
+  "alphaThreshold": 128,
+  "checks": {
+    "sizes": true,
+    "binaryAlpha": true,
+    "transparentRGBZero": true,
+    "smallEffectRamps": true,
+    "srgb": true,
+    "nearestEnlargement": true,
+    "sourcePreserved": true,
+    "reducedEqualsApprovedCluster": true,
+    "changesRestrictedToLocalEffects": true
+  },
+  "limits": "Single smoke/spark representatives, not 4-frame catalog sheets. Broken is a contrast reference, not the runtime Repairing state. Neutral Mina, not new Work/Celebrate art. No timing, sound, camera, runtime reduced-motion binding, global palette or catalog assignment.",
+  "files": [
+    {
+      "file": "before-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "89c0f5b324a05a5b816037b6b45a0d91443399b0fdb9c1ddc550b44824e65587"
+    },
+    {
+      "file": "before-2x.png",
+      "size": [
+        768,
+        576
+      ],
+      "sha256": "1ac7d557b07ea193dee64472eb46bf63c614d9a335183f75baf14994dfea7b2c"
+    },
+    {
+      "file": "before-3x.png",
+      "size": [
+        1152,
+        864
+      ],
+      "sha256": "88c60f2e1492f7339ef8b2027eda5df9c6cbcd72e8ec09476b030b2b5f2637cd"
+    },
+    {
+      "file": "beat-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "0a679b1ee5305413258f837dfaae5ae46464267cf88ed793d2745f30e84951a5"
+    },
+    {
+      "file": "beat-2x.png",
+      "size": [
+        768,
+        576
+      ],
+      "sha256": "2f48aecd5a0a1cdf1fa6f3213b0fb38456da2bc301b44d76bbb1e07a4e01134f"
+    },
+    {
+      "file": "beat-3x.png",
+      "size": [
+        1152,
+        864
+      ],
+      "sha256": "fe8671d2c50451783789598631d9330c277ed6834ba595840f6eaec45b0019ea"
+    },
+    {
+      "file": "calm-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "79dcd163293b28d49567657a3f9f9093cf9f7b569d5c68c92af85c09e0f242ec"
+    },
+    {
+      "file": "calm-2x.png",
+      "size": [
+        768,
+        576
+      ],
+      "sha256": "544b21883df85e65553aaeca7068198079080c68cb81090070f419764d7f650e"
+    },
+    {
+      "file": "calm-3x.png",
+      "size": [
+        1152,
+        864
+      ],
+      "sha256": "538d1a8855e3e6542fd8fcdf8bb02cbe2f7fd818422d9b3492a13cf4f4360337"
+    },
+    {
+      "file": "reduced-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "3fb5886bfc252bef3600870615ef0d27a1c6d61cab0ee36de9fdbc106f7b5c89"
+    },
+    {
+      "file": "reduced-2x.png",
+      "size": [
+        768,
+        576
+      ],
+      "sha256": "25f97524d120fbeccf4feba7230034d4580d651d7f3aa6482d6f3f316a99077d"
+    },
+    {
+      "file": "reduced-3x.png",
+      "size": [
+        1152,
+        864
+      ],
+      "sha256": "03a8906c67f5d8969d5826f16ed577bb3cd2c77b687cd020510943305663d834"
+    },
+    {
+      "file": "smoke-1x.png",
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "da35dcdaa915199c9a4be119bcb601b5b1dfdd8cfe5cd7782be08db1ea4ca0b1"
+    },
+    {
+      "file": "smoke-2x.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "2dffcb63ded05ee42654e8b892f8eb50232af2a9f22a80a73c53598c0af7b710"
+    },
+    {
+      "file": "smoke-3x.png",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "82cd20d0d06bc988133f8d739ae8d06d4175ffef76a32e31dd04c0d5e42441c5"
+    },
+    {
+      "file": "spark-1x.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "109c3c6007762c20d6785deea8afa55ce7af8174351ca77e3f938e2a705d8b98"
+    },
+    {
+      "file": "spark-2x.png",
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "97673e43724519afa65e23305089d8ab8b790c102c0934741fb3684f69c99541"
+    },
+    {
+      "file": "spark-3x.png",
+      "size": [
+        48,
+        48
+      ],
+      "sha256": "a360c6cc02a48bcdc6172d0e0a7d97792b515f7da0af8a406ca59b86103adfb2"
+    },
+    {
+      "file": "before-gray-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "278aa43a9356b244f609616cef8d8780c14cf2e948a19a336a459db4aace8969"
+    },
+    {
+      "file": "beat-gray-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "af5458ae04866752024d4624ab320a8b57783cfc0b72bb42945d2e1b4557c7ad"
+    },
+    {
+      "file": "calm-gray-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "54e4db8c3d58aec5ea07a1ee1a17582b1f3347c0585889379cb8520c768c1767"
+    },
+    {
+      "file": "reduced-gray-1x.png",
+      "size": [
+        384,
+        288
+      ],
+      "sha256": "541b04dcc56d259bc5742247a7ebbd905b142422b01204f9c2745087c399f16e"
+    },
+    {
+      "file": "comparison-board.png",
+      "size": [
+        800,
+        664
+      ],
+      "sha256": "f2ddbba662cfc69206d8fbbee910c3cb29d1da9cffc4f7faa9b8cd542175578a"
+    }
+  ]
+}

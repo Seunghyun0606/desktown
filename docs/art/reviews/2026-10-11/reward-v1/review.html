@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Workshop 완성 연출 · 색과 효과 검토</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:24px;background:#f3efe7;color:#342c27;font:16px/1.6 system-ui,sans-serif}main{max-width:1500px;margin:auto}h1{margin:0;font-size:28px}.note{background:#fff9ed;border-left:4px solid #9b5e34;padding:14px;max-width:1150px}.controls{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin:20px 0}select{font:inherit;padding:6px 10px}.gallery{display:flex;flex-wrap:wrap;gap:16px}article{background:white;padding:16px;border-radius:12px;max-width:100%;overflow:auto}canvas,img{image-rendering:pixelated}canvas{display:block}a{color:#754321}.error{color:#8b281b}small{display:block}.card{background:#fff9ed;border:1px solid #c8b9a3;padding:14px;max-width:384px;margin-top:16px}.card strong{display:block}
+</style>
+<main>
+<h1>Workshop 완성 연출 · 색과 효과</h1>
+<p>환경 스타일 승인 후 준비한 아트 지침의 다섯 번째 스타일 게이트</p>
+<p class="note">승인된 Mina·건물·환경의 픽셀을 유지하고, 작은 크림·꿀빛 반짝임과 따뜻한 회색 연기만 더했습니다. <strong>정지 키프레임 비교</strong>이며 실제 게임 화면·연출 시간 검증이 아닙니다. 완성 전 그림은 Broken 대비 참조입니다. 현재 앱이 사용하는 Repairing과 Mina Celebrate는 제작 전입니다.</p>
+<div class="controls">
+<label>프레임 <select id="frame"><option value="before">① 완성 전 · Broken 대비 참조</option><option value="beat" selected>② 한 번의 효과 비트</option><option value="calm">③ 차분한 완성 · 연기만</option><option value="reduced">④ 동작 줄이기 · 효과 없음</option></select></label>
+<label>배율 <select id="scale"><option value="1">1× · 원래 크기</option><option value="2" selected>2×</option><option value="3">3×</option></select></label>
+<label><input type="checkbox" id="gray">흑백 비교</label>
+</div>
+<div id="error" role="alert" class="error"></div>
+<article><canvas id="scene" width="384" height="288" aria-label="선택한 Workshop 완성 연출 색 효과 프레임">Canvas 지원이 필요합니다.</canvas>
+<div id="card" class="card" hidden><strong>Workshop restored</strong>집중한 시간이 마을에 남았습니다.<small>완성 카드 문구·색 배치 제안. 현재 UI 구현과 별도입니다.</small></div>
+<small>384×288 아트 클러스터. 전면 섬광·카메라 확대·지속적인 반짝임은 없습니다. 이 페이지에서는 애니메이션을 재생하지 않습니다.</small></article>
+<h2>네 프레임 · 1× 나란히 비교</h2>
+<div class="gallery">
+<article><h3>① 완성 전 대비</h3><img src="prepared-v2/before-1x.png" width="384" height="288" alt="Broken Workshop 대비 참조"><small>불규칙한 지붕·어두운 창. Repairing 대체 납품 아님.</small></article>
+<article><h3>② 짧은 효과 비트</h3><img src="prepared-v2/beat-1x.png" width="384" height="288" alt="완성 Workshop에 작은 반짝임 둘과 굴뚝 연기"><small>건물 앞 작은 반짝임 2개. 한 비트 이후 제거 제안.</small></article>
+<article><h3>③ 차분한 완성</h3><img src="prepared-v2/calm-1x.png" width="384" height="288" alt="반짝임 없이 연기만 남은 완성 Workshop"><small>깨끗한 지붕·따뜻한 창·작은 연기.</small></article>
+<article><h3>④ 동작 줄이기</h3><img src="prepared-v2/reduced-1x.png" width="384" height="288" alt="모든 효과 없이도 완성 상태를 보여 주는 Workshop"><small>연기·반짝임 없이 지붕·창과 카드로 완성 전달.</small></article>
+</div>
+<h2>효과 대표 셀 · 3× 최근접 확대</h2>
+<div class="gallery"><article><h3>연기 · 32×32 / 4색</h3><img src="prepared-v2/smoke-3x.png" width="96" height="96" alt="작은 굴뚝 연기 대표 프레임"><small>FX-SMK-001의 크기 참조. 4프레임 시트 아님.</small></article><article><h3>반짝임 · 16×16 / 2색</h3><img src="prepared-v2/spark-3x.png" width="48" height="48" alt="크림 꿀빛 반짝임 대표 프레임"><small>FX-SPK-001의 크기 참조. 4프레임 시트 아님.</small></article></div>
+<h2>검토 항목</h2>
+<ul><li>1×에서 반짝임·연기가 건물 변화보다 시선을 끌지 않는가?</li><li>완성 창의 크림빛과 효과의 꿀빛이 같은 마을의 재료로 읽히는가?</li><li>흑백과 효과 없음에서도 깨끗한 지붕·따뜻한 창이 완성을 전달하는가?</li><li>굴뚝 연기의 위치·규모가 작은 건물에 어울리는가?</li></ul>
+<p class="note">Mina는 승인된 중립 프레임입니다. 마지막 Work 두 번, Celebrate, Repairing, 완성 음향·카메라와 실제 효과 시트는 후속 제작입니다. 동작 줄이기는 최종 상태의 정지 비교만 준비했으며 런타임 연결은 하지 않았습니다. 프로젝트 전체 팔레트 확정과 46개 에셋 카탈로그 배정도 남아 있습니다.</p>
+<p><a href="README.md">출처·변환·검증 기록</a> · <a href="prepared-v2/comparison-board.png">네 프레임 비교 PNG</a> · <a href="prepared-v2/preparation.json">픽셀 검사 기록</a> · <a href="../town-cluster-v1/review.html">승인된 환경 스타일</a></p>
+</main>
+<script>
+const $=id=>document.getElementById(id),images={};
+function load(name){return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[name]=im;resolve()};im.onerror=()=>reject(new Error('PNG 로드 실패: '+name));im.src='prepared-v2/'+name+'-1x.png'})}
+function draw(){const name=$('frame').value,im=images[name];if(!im)return;const s=Number($('scale').value),c=$('scene');c.width=im.width*s;c.height=im.height*s;c.style.filter=$('gray').checked?'grayscale(1)':'none';const ctx=c.getContext('2d');ctx.imageSmoothingEnabled=false;ctx.scale(s,s);ctx.drawImage(im,0,0);$('card').hidden=!['calm','reduced'].includes(name);for(const im of document.querySelectorAll('.gallery img'))im.style.filter=$('gray').checked?'grayscale(1)':'none'}
+for(const id of ['frame','scale','gray'])$(id).addEventListener('change',draw);
+Promise.all(['before','beat','calm','reduced'].map(load)).then(draw).catch(e=>{$('error').textContent=e.message});
+</script>
+</html>
