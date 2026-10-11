@@ -43,6 +43,7 @@ rewards.
 - [Focus UI and runtime integration](docs/implementation/FOCUS_UI_RUNTIME_SLICE.md)
 - [Reward and Ghost Windows handoff](docs/implementation/REWARD_GHOST_HANDOFF.md)
 - [Exported Windows gate and result sheet](docs/qa/WINDOWS_GATE.md)
+- [Start isolated user QA](docs/qa/USER_QA_START.md)
 - [Packaging, art integration and user test follow-up](docs/implementation/NEXT_WORK_AND_USER_GATE.md)
 
 ## Fixed scope
