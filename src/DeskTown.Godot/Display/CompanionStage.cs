@@ -16,8 +16,24 @@ public partial class CompanionStage : Control
         CatalogRectArt.Bind(GetNode<ColorRect>("Workbench"), "CMP-WRK-001");
         CatalogRectArt.Bind(GetNode<ColorRect>("Stool"), "CMP-STL-001");
         CatalogRectArt.Bind(GetNode<ColorRect>("Plant"), "CMP-DEC-001");
+        BindShadow();
         _mina = GetNode<MinaPlaceholderView>("MinaView");
         _mina.Bind(_latest);
+    }
+
+    private void BindShadow()
+    {
+        var shadow = GetNode<Sprite2D>("Shadow");
+        if (VisualAssetCatalog.Frame("CMP-SHD-001") is not { } image)
+        {
+            // An unassigned or invalid shadow must not leave a solid geometric box.
+            shadow.Texture = null;
+            shadow.Visible = false;
+            return;
+        }
+        shadow.Texture = image.Sheet;
+        shadow.RegionRect = image.Source;
+        shadow.Visible = true;
     }
 
     public void Bind(CompanionProjection snapshot)

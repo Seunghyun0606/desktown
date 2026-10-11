@@ -53,12 +53,7 @@ public partial class CompanionArtReview : Node
                 AddChild(viewport);
                 var stage = GD.Load<PackedScene>("res://scenes/companion/CompanionStage.tscn")
                     .Instantiate<CompanionStage>();
-                // Only this isolated instance gets approved layout coordinates.
-                stage.GetNode<ColorRect>("Workbench").Position = new Vector2(130, 130);
                 var stool = stage.GetNode<ColorRect>("Stool");
-                stool.Position = new Vector2(108, 116);
-                stool.Size = new Vector2(32, 32);
-                stage.GetNode<ColorRect>("Lamp").Size = new Vector2(16, 30);
                 viewport.AddChild(stage);
                 stage.GetNode<Label>("DragLabel").Text = $"DeskTown  •  drag here  •  {percent}%";
                 var mina = stage.GetNode<MinaPlaceholderView>("MinaView");
@@ -79,15 +74,13 @@ public partial class CompanionArtReview : Node
                 }
                 Require(mina.Position == new Vector2(100, 103), "Mina origin changed");
                 Require(stage.GetNode<ColorRect>("Plant").Color.A == 1, "Unassigned Decor fallback lost");
+                var shadow = stage.GetNode<Sprite2D>("Shadow");
                 var shadowImage = VisualAssetCatalog.Frame("CMP-SHD-001")!.Value;
-                var shadow = new Sprite2D
-                {
-                    Name = "ReviewShadow", Texture = shadowImage.Sheet, Centered = false,
-                    RegionEnabled = true, RegionRect = shadowImage.Source,
-                    Position = new Vector2(108, 141), TextureFilter = CanvasItem.TextureFilterEnum.Nearest
-                };
-                stage.AddChild(shadow);
-                stage.MoveChild(shadow, stage.GetNode("Floor").GetIndex() + 1);
+                Require(shadow.Visible && shadow.Texture == shadowImage.Sheet
+                    && shadow.RegionRect == shadowImage.Source && !shadow.Centered
+                    && shadow.Position == new Vector2(108, 141)
+                    && shadow.TextureFilter == CanvasItem.TextureFilterEnum.Nearest,
+                    "Runtime shadow binding is incorrect");
                 Require(shadow.GetIndex() < stool.GetIndex() && stool.GetIndex() < mina.GetIndex(),
                     "Shadow/stool must draw behind Mina");
                 // Exercise both lamp cells and both tool cells without overlaying the baked hammer.

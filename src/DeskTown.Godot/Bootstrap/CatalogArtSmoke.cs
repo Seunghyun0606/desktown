@@ -53,6 +53,9 @@ internal static class CatalogArtSmoke
                 "Assigned Companion art did not replace fallback");
             Require(companionView.GetNode<ColorRect>("Stool").Color.A == 1,
                 "Unassigned Companion art did not keep fallback");
+            var shadow = companionView.GetNode<Sprite2D>("Shadow");
+            Require(!shadow.Visible && shadow.Texture is null,
+                "Unassigned Companion shadow must stay hidden");
             GD.Print("DESKTOWN_CI_ART_SMOKE_OK");
             tree.Quit();
         }

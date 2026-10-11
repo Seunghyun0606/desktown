@@ -45,6 +45,12 @@ its ambient timer stops until the user opens Town again.
 
 ## Remaining manual gates
 
+The human-approved Companion art layout now lives in the actual stage scene:
+nearby Workbench, fixed Stool, integer Lamp origin, and a catalog-backed Shadow
+behind Mina. Runtime connection validation reproduced all 124 approved captures
+without test-side placement changes. Final asset delivery/use and catalog
+assignment remain pending; see the [connection record](../art/reviews/2026-10-11/companion-runtime-v1/README.md).
+
 - Companion animation appearance, scale/pixel quality, mixed DPI and position
   restoration on actual Windows monitors.
 - Hidden zero-window/performance check once Focus Setup and Tray are wired.

@@ -586,8 +586,12 @@ may be adjusted to the final scaffold without changing task responsibility.
   [Isolated Godot review](art/reviews/2026-10-11/companion-godot-v1/review.html)
   renders 30 frames at four scales plus lamp ON (124 captures); native Mina pixels
   and all 10 contact crops match the approved inputs. Review-only shadow binding
-  and integer prop origins pass. Rendered layout approval, runtime assignment,
-  exact tool contact and final delivery remain open. No live scene change.
+  and integer prop origins pass. The human approved rendered layout and runtime connection.
+  [Runtime connection verification](art/reviews/2026-10-11/companion-runtime-v1/README.md)
+  moves integer placement/shadow binding into the real scene and reproduces all
+  124 capture hashes without test-side layout changes. Missing-shadow fallback passes.
+  Final delivery/use approval and catalog assignment remain open; all runtime
+  catalog IDs are still unassigned. Exact tool contact remains open.
   Final Mina/Workshop delivery, full effect sheets and runtime reveal integration remain
   future production work. Art direction approvals are not final asset delivery.
 

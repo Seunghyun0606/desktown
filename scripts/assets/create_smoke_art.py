@@ -30,6 +30,9 @@ def main():
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     for row in catalog["assets"]:
         if row["id"] not in IDS:
+            # Keep fallback assertions deterministic when the product catalog
+            # gains authored art. This script only runs in disposable CI projects.
+            row.update(status="unassigned", resource=None, provenance=None)
             continue
         path = ROOT / "assets/art" / row["filename"]
         path.parent.mkdir(parents=True, exist_ok=True)

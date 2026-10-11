@@ -57,30 +57,37 @@ offset_bottom = 200.0
 mouse_filter = 2
 color = Color(0.364706, 0.286275, 0.231373, 1)
 
+[node name="Shadow" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(108, 141)
+centered = false
+region_enabled = true
+
 [node name="Lamp" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 290.0
 offset_top = 44.0
-offset_right = 305.0
+offset_right = 306.0
 offset_bottom = 74.0
 mouse_filter = 2
 color = Color(0.933333, 0.760784, 0.482353, 1)
 
 [node name="Workbench" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 146.0
+offset_left = 130.0
 offset_top = 130.0
-offset_right = 252.0
+offset_right = 236.0
 offset_bottom = 155.0
 mouse_filter = 2
 color = Color(0.603922, 0.388235, 0.266667, 1)
 
 [node name="Stool" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 273.0
-offset_top = 142.0
-offset_right = 298.0
-offset_bottom = 156.0
+offset_left = 108.0
+offset_top = 116.0
+offset_right = 140.0
+offset_bottom = 148.0
 mouse_filter = 2
 color = Color(0.552941, 0.368627, 0.27451, 1)
 

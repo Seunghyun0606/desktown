@@ -24,6 +24,11 @@ funding candidate; it intentionally fails while assets are unassigned.
 Mina views in Town, Companion, and Ghost resolve the same six `CHR-MIN-*` IDs.
 Town resolves House, Workshop, Library, Tree, Campfire and Noah/Rumi idle/read
 art. Companion resolves its Window, Floor, Lamp, Workbench, Stool and Decor.
+Companion also resolves the character shadow through a draw-only Sprite2D;
+an unassigned or invalid shadow stays hidden. The human-approved integer
+Workbench/Stool/Lamp placement and runtime binding reproduce the approved
+[Godot captures](../../docs/art/reviews/2026-10-11/companion-runtime-v1/README.md).
+Final delivery/use approval and the proposed 12-ID runtime assignment are pending.
 Each binder uses the declared frame size and count, and falls back to geometric
 drawing if the file is absent or has the wrong sheet dimensions. The Workshop
 sheet cells are Broken, Repairing, Complete, in that order. Lamp and Decor use

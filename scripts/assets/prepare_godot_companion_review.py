@@ -31,7 +31,7 @@ ART = {
 }
 
 
-def prepare(output):
+def prepare(output, runtime_working_tree=False):
     output = output.resolve()
     build = (ROOT / "build").resolve()
     if build not in output.parents or output.exists():
@@ -42,6 +42,15 @@ def prepare(output):
     project = output / "project"
     with zipfile.ZipFile(io.BytesIO(archive)) as bundle:
         bundle.extractall(project)
+    runtime_hashes = {}
+    if runtime_working_tree:
+        # Only explicitly named runtime files are overlaid; never copy user data,
+        # build caches, .old backups, or the many editor-generated untracked UIDs.
+        for relative in ("scenes/companion/CompanionStage.tscn",
+                         "src/DeskTown.Godot/Display/CompanionStage.cs",
+                         "src/DeskTown.Godot/Bootstrap/CatalogArtSmoke.cs"):
+            shutil.copyfile(ROOT / relative, project / relative)
+            runtime_hashes[relative] = hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
     path = project / "assets/catalogs/asset_catalog.json"
     catalog = json.loads(path.read_text(encoding="utf-8"))
     rows = {row["id"]: row for row in catalog["assets"]}
@@ -78,6 +87,7 @@ def prepare(output):
         'run/main_scene="res://scenes/app/AppRoot.tscn"',
         'run/main_scene="res://scenes/companion/ArtReview.tscn"'), encoding="utf-8")
     report = {"sourceRevision": revision, "reviewOnly": True, "sources": sources,
+              "runtimeWorkingTreeFiles": runtime_hashes,
               "catalogStatusNote": "production is required by the existing P0 validator; isolated fixture only",
               "probeSha256": hashlib.sha256(probe.read_bytes()).hexdigest(),
               "personalSaveAccess": False, "engineUserDirectoryIsolated": True}
@@ -88,4 +98,7 @@ def prepare(output):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path)
-    prepare(parser.parse_args().output)
+    parser.add_argument("--runtime-working-tree", action="store_true",
+                        help="Overlay only the three named Companion runtime files for pre-commit validation")
+    args = parser.parse_args()
+    prepare(args.output, args.runtime_working_tree)
