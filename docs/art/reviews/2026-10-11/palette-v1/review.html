@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DeskTown 공통 팔레트 · 24색과 32색 비교</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:24px;background:#f3efe7;color:#342c27;font:16px/1.6 system-ui,sans-serif}main{max-width:1600px;margin:auto}h1{margin:0;font-size:28px}.note{background:#fff9ed;border-left:4px solid #9b5e34;padding:14px;max-width:1200px}.controls{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:20px 0}select{font:inherit;padding:6px 10px}.gallery{display:flex;flex-wrap:wrap;gap:16px}article{background:white;padding:16px;border-radius:12px;max-width:100%;overflow:auto}canvas,img{image-rendering:pixelated}canvas{display:block}a{color:#754321}.error{color:#8b281b}small{display:block}table{border-collapse:collapse;margin:16px 0}th,td{padding:8px 12px;border:1px solid #c8b9a3;text-align:left}#swatches{display:grid;grid-template-columns:repeat(8,minmax(72px,1fr));gap:8px;max-width:800px}.swatch{background:white;border:1px solid #c8b9a3;padding:4px;font:12px/1.5 monospace}.swatch i{display:block;height:36px}.original-label,.candidate-label{margin-top:0}
+</style>
+<main>
+<h1>공통 팔레트 · 24색 / 32색</h1>
+<p>Reward 색·효과 승인 후 준비한 제작용 공통 색 후보 비교</p>
+<p class="note">승인된 원본의 기본 아트는 합쳐서 <strong>95색</strong>입니다. 크기·실루엣·알파를 유지해 공통 24색/32색으로 변환했습니다. 효과는 승인된 <strong>별도 6색</strong>을 유지합니다. 32색 후보를 권장합니다. Mina와 건물의 원래 색을 더 가깝게 남깁니다. 최종 색 선택과 게임 적용은 사용자 승인 후의 단계입니다.</p>
+<div class="controls">
+<label>후보 <select id="palette"><option value="shared32" selected>공통 32색 · 권장</option><option value="shared24">공통 24색</option></select></label>
+<label>장면 <select id="frame"><option value="beat" selected>완성 효과 비트</option><option value="before">완성 전 · Broken 참조</option><option value="calm">차분한 완성</option><option value="reduced">효과 없는 완성</option></select></label>
+<label>배율 <select id="scale"><option value="1" selected>1× · 원래 크기</option><option value="2">2×</option><option value="3">3×</option></select></label>
+<label><input type="checkbox" id="gray">흑백</label>
+<label>Mina·시트 배경 <select id="background"><option value="#ffffff">흰색</option><option value="#808080">회색</option><option value="#20252b">어두운 배경</option></select></label>
+</div>
+<div id="error" role="alert" class="error"></div>
+<div class="gallery"><article><h2 class="original-label">승인된 원본 · 기본 아트 합계 95색</h2><canvas id="original-scene" width="384" height="288" aria-label="승인된 원본 장면">Canvas 지원이 필요합니다.</canvas></article><article><h2 class="candidate-label">공통 팔레트 후보</h2><canvas id="candidate-scene" width="384" height="288" aria-label="선택한 공통 팔레트 장면">Canvas 지원이 필요합니다.</canvas></article></div>
+<h2>Mina · 중립 / Idle / Work</h2>
+<small>같은 프레임과 접점을 유지합니다. 정지 시트 비교이며 실제 애니메이션·도구 접촉 QA는 아닙니다.</small>
+<div class="gallery"><article><h3>승인된 원본</h3><canvas id="original-neutral" width="48" height="48" aria-label="원본 Mina 중립"></canvas><h4>Idle · 4프레임</h4><canvas id="original-idle" width="192" height="48" aria-label="원본 Idle 시트"></canvas><h4>Work · 6프레임</h4><canvas id="original-work" width="288" height="48" aria-label="원본 Work 시트"></canvas></article><article><h3>선택한 공통 팔레트</h3><canvas id="candidate-neutral" width="48" height="48" aria-label="후보 Mina 중립"></canvas><h4>Idle · 4프레임</h4><canvas id="candidate-idle" width="192" height="48" aria-label="후보 Idle 시트"></canvas><h4>Work · 6프레임</h4><canvas id="candidate-work" width="288" height="48" aria-label="후보 Work 시트"></canvas></article></div>
+<h2>불투명도 · 배경 비교</h2>
+<div class="gallery"><article><h3>원본</h3><canvas id="original-backdrops" width="432" height="256" aria-label="원본 Mina 배경과 불투명도 비교"></canvas></article><article><h3>선택한 후보</h3><canvas id="candidate-backdrops" width="432" height="256" aria-label="후보 Mina 배경과 불투명도 비교"></canvas></article></div>
+<small>위: 100% / 아래: 40%. 모두 2× 최근접 확대, 왼쪽부터 흰색·회색·어두운 배경. 이 보드는 배율 선택과 독립적입니다. 실제 Ghost 창이나 입력 QA 결과는 아닙니다.</small>
+<h2>선택한 기본 팔레트 · 정확한 색 값</h2>
+<div id="swatches" aria-label="공통 후보 팔레트 색상표"></div>
+<p id="effect-note"></p>
+<h2>색 변환 비교</h2>
+<table><thead><tr><th>대표 아트</th><th>24색 RGB RMS</th><th>32색 RGB RMS</th></tr></thead><tbody id="metrics"></tbody></table>
+<small>RMS는 원본 대비 채널별 색 차이의 제곱평균제곱근입니다. 낮을수록 RGB 수치가 가깝습니다. 시각적 가독성·품질 승인 점수는 아닙니다. 새 장면 전체의 색 수는 기본 팔레트에 별도 효과 색이 더해집니다.</small>
+<h2>검토 항목</h2>
+<ul><li>1×에서 Mina의 주황 모자·얼굴·올리브 멜빵이 구분되는가?</li><li>Work의 망치·손과 Idle의 눈 변화가 색 축소 뒤에도 읽히는가?</li><li>Broken 지붕과 Complete 지붕·창빛이 흑백에서도 구분되는가?</li><li>환경이 차분하고 건물·캐릭터의 재료와 빛이 같은 마을로 읽히는가?</li><li>흰색·어두운 배경과 40% 표시에서 윤곽이 충분한가?</li></ul>
+<p class="note">Python 색 변환 후보이며 원본 PNG·카탈로그·게임 장면·저장 데이터는 유지했습니다. 색 선택 알고리즘은 세밀한 픽셀 작화나 최종 명암 보정을 대신하지 않습니다. 선택된 색은 현재 제작 준비의 기준이 되며, 앞으로 만드는 아트에 맞춰 수정이 필요하면 다시 검토합니다.</p>
+<p><a href="README.md">변환·검증 기록</a> · <a href="prepared-v2/comparison-board.png">원본 / 24색 / 32색 비교 PNG</a> · <a href="prepared-v2/shared24/palette.json">24색 JSON</a> · <a href="prepared-v2/shared32/palette.json">32색 JSON</a> · <a href="prepared-v2/preparation.json">검사 기록</a></p>
+</main>
+<script>
+const $=id=>document.getElementById(id),images={};let report;
+function load(mode,name,file=name+'-1x.png'){return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[mode+'/'+name]=im;resolve()};im.onerror=()=>reject(new Error('PNG 로드 실패: '+mode+'/'+name));im.src='prepared-v2/'+mode+'/'+file})}
+function canvas(id,im,scale,background){const c=$(id);c.width=im.width*scale;c.height=im.height*scale;c.style.filter=$('gray').checked?'grayscale(1)':'none';const ctx=c.getContext('2d');ctx.imageSmoothingEnabled=false;ctx.scale(scale,scale);if(background){ctx.fillStyle=background;ctx.fillRect(0,0,im.width,im.height)}ctx.drawImage(im,0,0)}
+function draw(){if(!report)return;const mode=$('palette').value,s=Number($('scale').value),frame=$('frame').value;for(const [prefix,m] of [['original','original'],['candidate',mode]]){canvas(prefix+'-scene',images[m+'/'+frame],s);for(const name of ['neutral','idle','work'])canvas(prefix+'-'+name,images[m+'/'+name],s,$('background').value);canvas(prefix+'-backdrops',images[m+'/backdrops'],1)}document.querySelector('.candidate-label').textContent='공통 '+report.modes[mode].coreColorCount+'색 후보';$('swatches').replaceChildren();for(const hex of report.modes[mode].paletteHex){const c=document.createElement('div');c.className='swatch';const i=document.createElement('i');i.style.background=hex;const label=document.createElement('span');label.textContent=hex;c.append(i,label);$('swatches').append(c)}}
+for(const id of ['palette','frame','scale','gray','background'])$(id).addEventListener('change',draw);
+const names=['before','beat','calm','reduced','neutral','idle','work'];
+Promise.all(['original','shared24','shared32'].flatMap(m=>names.map(n=>load(m,n)).concat(load(m,'backdrops','mina-backgrounds.png'))).concat(fetch('prepared-v2/preparation.json').then(r=>{if(!r.ok)throw new Error('검사 JSON 로드 실패');return r.json()}).then(d=>{report=d;$('effect-note').textContent='효과 별도 '+d.effectColorCount+'색: '+d.effectPaletteRGB.map(c=>'#'+c.map(v=>v.toString(16).padStart(2,'0')).join('')).join(' · ');for(const [name,label] of [['neutral','Mina 중립'],['work','Mina Work'],['complete','Workshop Complete'],['grass','잔디']]){const tr=document.createElement('tr');for(const text of [label,d.modes.shared24.assets[name].rgbRmsPerChannel,d.modes.shared32.assets[name].rgbRmsPerChannel]){const td=document.createElement('td');td.textContent=text;tr.append(td)}$('metrics').append(tr)}}))).then(draw).catch(e=>{$('error').textContent=e.message});
+</script>
+</html>

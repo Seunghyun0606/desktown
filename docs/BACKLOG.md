@@ -562,9 +562,13 @@ may be adjusted to the final scaffold without changing task responsibility.
   environment style and proceeding to Reward color/effect framing.
   [Reward keyframe candidates](art/reviews/2026-10-11/reward-v1/review.html) compare
   Broken reference / one local effect beat / calm / no-particle final state.
-  Single 32×32 smoke and 16×16 spark representatives are prepared; Reward style
-  approval is pending. Repairing, Celebrate, full effect sheets, runtime reveal
-  integration and a project-wide palette remain future production work.
+  Single 32×32 smoke and 16×16 spark representatives are prepared; the human
+  approved Reward color/effect direction and proceeding to shared palette comparison.
+  [Shared palette candidates](art/reviews/2026-10-11/palette-v1/review.html) compare
+  the original 95-color core union with shared 24/32-color core palettes; the
+  approved separate 6-color effect ramp is retained. Palette choice is pending.
+  Repairing, Celebrate, full effect sheets and runtime reveal integration remain
+  future production work. Art direction approvals are not final asset delivery.
 
 ### DT-E9-002 — Add final sound, particles, light, and reduced motion
 
