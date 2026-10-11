@@ -1,0 +1,3 @@
+# Keep prompt bytes stable for the recorded source hashes on Windows checkout.
+/sources/*.json text eol=lf
+/sources/*.txt text eol=lf

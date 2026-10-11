@@ -1,0 +1,871 @@
+{
+  "status": "pending_human_motion_review",
+  "pillowVersion": "12.3.0",
+  "paletteId": "desktown-v01-32",
+  "alphaValues": [
+    0,
+    255
+  ],
+  "pivot": [
+    24,
+    44
+  ],
+  "runtimeAssigned": false,
+  "clips": {
+    "walk": {
+      "assetId": "CHR-MIN-002",
+      "file": "chr_mina_walk.png",
+      "count": 6,
+      "fps": 8,
+      "loop": true,
+      "frameSize": [
+        48,
+        48
+      ],
+      "sheetSize": [
+        288,
+        48
+      ],
+      "distinctFrames": 6,
+      "footRow": 44,
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceRowSplit": 512,
+      "nextFrameChangedPixelsIncludingSeam": [
+        314,
+        315,
+        297,
+        345,
+        324,
+        297
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "sourceCell": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "sourceBounds": [
+            175,
+            82,
+            401,
+            471
+          ],
+          "sourceCapBounds": [
+            199,
+            89,
+            384,
+            199
+          ],
+          "scaleFromCapWidth": 0.10810810810810811,
+          "destination": [
+            12,
+            3
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            12,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "10626dd16b31defd798d11a6627aa154934002cc8e12dfe329636b0e2949c4f1"
+        },
+        {
+          "index": 1,
+          "sourceCell": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "sourceBounds": [
+            153,
+            82,
+            358,
+            471
+          ],
+          "sourceCapBounds": [
+            167,
+            89,
+            351,
+            199
+          ],
+          "scaleFromCapWidth": 0.10869565217391304,
+          "destination": [
+            13,
+            3
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            14,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "0af88e1716d4bdbe2087adbeb6413fb3a4a6c1ec30f0a58fa866c2b4b95c612d"
+        },
+        {
+          "index": 2,
+          "sourceCell": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "sourceBounds": [
+            114,
+            82,
+            337,
+            471
+          ],
+          "sourceCapBounds": [
+            136,
+            89,
+            320,
+            199
+          ],
+          "scaleFromCapWidth": 0.10869565217391304,
+          "destination": [
+            12,
+            3
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            12,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "029ebacf8aefa0cfd42594878f68d7ee9326c623a4a10b232325cddd392bc44e"
+        },
+        {
+          "index": 3,
+          "sourceCell": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "sourceBounds": [
+            171,
+            68,
+            401,
+            452
+          ],
+          "sourceCapBounds": [
+            199,
+            74,
+            384,
+            183
+          ],
+          "scaleFromCapWidth": 0.10810810810810811,
+          "destination": [
+            11,
+            3
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            11,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "18a729ade8b09555cead62ebafba051111ec51bf39a0e95d8d21adbadf6213bf"
+        },
+        {
+          "index": 4,
+          "sourceCell": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "sourceBounds": [
+            153,
+            68,
+            358,
+            452
+          ],
+          "sourceCapBounds": [
+            168,
+            74,
+            351,
+            183
+          ],
+          "scaleFromCapWidth": 0.1092896174863388,
+          "destination": [
+            13,
+            3
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            14,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "562118c3fdae829170b1123da07912d4d5e735105b519273b91722376a335e2f"
+        },
+        {
+          "index": 5,
+          "sourceCell": [
+            1024,
+            512,
+            1536,
+            1024
+          ],
+          "sourceBounds": [
+            120,
+            68,
+            342,
+            452
+          ],
+          "sourceCapBounds": [
+            136,
+            75,
+            320,
+            183
+          ],
+          "scaleFromCapWidth": 0.10869565217391304,
+          "destination": [
+            13,
+            3
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            13,
+            5,
+            37,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "faeef45233ec426187ef6c7f614eebd3853a8f1ba458caabf4e330e590506342"
+        }
+      ],
+      "events": [],
+      "sha256": "a48710741766c4e719fd469dbc26e2d440531389a4313df763134b3e2ffaac63"
+    },
+    "rest": {
+      "assetId": "CHR-MIN-004",
+      "file": "chr_mina_rest.png",
+      "count": 4,
+      "fps": 2,
+      "loop": true,
+      "frameSize": [
+        48,
+        48
+      ],
+      "sheetSize": [
+        192,
+        48
+      ],
+      "distinctFrames": 4,
+      "footRow": 44,
+      "sourceSize": [
+        1233,
+        1275
+      ],
+      "sourceRowSplit": 700,
+      "nextFrameChangedPixelsIncludingSeam": [
+        110,
+        129,
+        137,
+        109
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "sourceCell": [
+            0,
+            0,
+            616,
+            700
+          ],
+          "sourceBounds": [
+            214,
+            208,
+            499,
+            648
+          ],
+          "sourceCapBounds": [
+            244,
+            218,
+            488,
+            340
+          ],
+          "scaleFromCapWidth": 0.08196721311475409,
+          "destination": [
+            12,
+            9
+          ],
+          "headOffsetY": 4,
+          "bounds": [
+            13,
+            9,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "f568d4d9defae7d227970695f1b8653e9a3dda8ee6d3134019a92679ce3d62ff"
+        },
+        {
+          "index": 1,
+          "sourceCell": [
+            616,
+            0,
+            1233,
+            700
+          ],
+          "sourceBounds": [
+            80,
+            208,
+            365,
+            648
+          ],
+          "sourceCapBounds": [
+            110,
+            218,
+            354,
+            340
+          ],
+          "scaleFromCapWidth": 0.08196721311475409,
+          "destination": [
+            12,
+            9
+          ],
+          "headOffsetY": 4,
+          "bounds": [
+            13,
+            9,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "64d597ad268192c0f655d56af1f09a4c5b8c8ec036ad85e425f363862f3a9136"
+        },
+        {
+          "index": 2,
+          "sourceCell": [
+            0,
+            700,
+            616,
+            1275
+          ],
+          "sourceBounds": [
+            214,
+            61,
+            499,
+            501
+          ],
+          "sourceCapBounds": [
+            244,
+            71,
+            488,
+            193
+          ],
+          "scaleFromCapWidth": 0.08196721311475409,
+          "destination": [
+            12,
+            9
+          ],
+          "headOffsetY": 4,
+          "bounds": [
+            13,
+            9,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "012618a6fbbe29948a33d4f926f4e8cbebd585af55874da3aea4dfc7e70ecac2"
+        },
+        {
+          "index": 3,
+          "sourceCell": [
+            616,
+            700,
+            1233,
+            1275
+          ],
+          "sourceBounds": [
+            80,
+            61,
+            365,
+            501
+          ],
+          "sourceCapBounds": [
+            110,
+            71,
+            354,
+            193
+          ],
+          "scaleFromCapWidth": 0.08196721311475409,
+          "destination": [
+            12,
+            9
+          ],
+          "headOffsetY": 4,
+          "bounds": [
+            13,
+            9,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "1719736579f6bfc7134d650a4d00d6519e5b8227cbffec899a5a408cd2ec90ca"
+        }
+      ],
+      "events": [],
+      "sha256": "8635f11f257b3ec8c164890998521938d153c7866fee125f0c7d427d2de5dce4"
+    },
+    "stretch": {
+      "assetId": "CHR-MIN-005",
+      "file": "chr_mina_stretch.png",
+      "count": 4,
+      "fps": 4,
+      "loop": false,
+      "frameSize": [
+        48,
+        48
+      ],
+      "sheetSize": [
+        192,
+        48
+      ],
+      "distinctFrames": 4,
+      "footRow": 44,
+      "sourceSize": [
+        1288,
+        1221
+      ],
+      "sourceRowSplit": 610,
+      "nextFrameChangedPixelsIncludingSeam": [
+        148,
+        152,
+        161,
+        148
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "sourceCell": [
+            0,
+            0,
+            644,
+            610
+          ],
+          "sourceBounds": [
+            214,
+            83,
+            483,
+            565
+          ],
+          "sourceCapBounds": [
+            241,
+            92,
+            474,
+            228
+          ],
+          "scaleFromCapWidth": 0.08583690987124463,
+          "destination": [
+            12,
+            4
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            13,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "c08ec81c0bf0984b5493a193b0b56f005d03ef905f80713d445c846d953e15fb"
+        },
+        {
+          "index": 1,
+          "sourceCell": [
+            644,
+            0,
+            1288,
+            610
+          ],
+          "sourceBounds": [
+            160,
+            83,
+            430,
+            565
+          ],
+          "sourceCapBounds": [
+            193,
+            92,
+            420,
+            228
+          ],
+          "scaleFromCapWidth": 0.0881057268722467,
+          "destination": [
+            12,
+            3
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            13,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "6a34fd9ecd611d1b704b14fc4c29b4c201dd5612035018b1d56c1fb8876116bb"
+        },
+        {
+          "index": 2,
+          "sourceCell": [
+            0,
+            610,
+            644,
+            1221
+          ],
+          "sourceBounds": [
+            214,
+            60,
+            483,
+            542
+          ],
+          "sourceCapBounds": [
+            247,
+            69,
+            474,
+            205
+          ],
+          "scaleFromCapWidth": 0.0881057268722467,
+          "destination": [
+            11,
+            3
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            11,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "1669aefdea3498baef86cb16bfacfba06755f001ae5051d09c0d30c936ab61bd"
+        },
+        {
+          "index": 3,
+          "sourceCell": [
+            644,
+            610,
+            1288,
+            1221
+          ],
+          "sourceBounds": [
+            160,
+            60,
+            430,
+            542
+          ],
+          "sourceCapBounds": [
+            193,
+            69,
+            420,
+            205
+          ],
+          "scaleFromCapWidth": 0.0881057268722467,
+          "destination": [
+            12,
+            3
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            13,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "439032ee64a3a1c90af33230629f8f48b154bd94448cf8345017279be8465d31"
+        }
+      ],
+      "events": [],
+      "sha256": "9966316ff15a474769433a2409597c439eca844ae130c2de5669f1f2c0ada72b"
+    },
+    "celebrate": {
+      "assetId": "CHR-MIN-006",
+      "file": "chr_mina_celebrate.png",
+      "count": 6,
+      "fps": 8,
+      "loop": false,
+      "frameSize": [
+        48,
+        48
+      ],
+      "sheetSize": [
+        288,
+        48
+      ],
+      "distinctFrames": 6,
+      "footRow": 44,
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceRowSplit": 512,
+      "nextFrameChangedPixelsIncludingSeam": [
+        143,
+        145,
+        168,
+        170,
+        145,
+        143
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "sourceCell": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "sourceBounds": [
+            199,
+            101,
+            414,
+            480
+          ],
+          "sourceCapBounds": [
+            220,
+            108,
+            406,
+            215
+          ],
+          "scaleFromCapWidth": 0.10752688172043011,
+          "destination": [
+            12,
+            4
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            13,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "1f62245d919dfeb04b5e47e092d9aa967bb353da263e06dd259816c2ca23f748"
+        },
+        {
+          "index": 1,
+          "sourceCell": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "sourceBounds": [
+            153,
+            101,
+            368,
+            480
+          ],
+          "sourceCapBounds": [
+            176,
+            108,
+            361,
+            215
+          ],
+          "scaleFromCapWidth": 0.10810810810810811,
+          "destination": [
+            12,
+            4
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            13,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "eb485faeb6da1814e2d60e3d75c7c96a52cecab220fe3098fc99b8e35f53c91e"
+        },
+        {
+          "index": 2,
+          "sourceCell": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "sourceBounds": [
+            106,
+            101,
+            324,
+            480
+          ],
+          "sourceCapBounds": [
+            134,
+            108,
+            317,
+            215
+          ],
+          "scaleFromCapWidth": 0.1092896174863388,
+          "destination": [
+            11,
+            4
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            12,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "11cf5eed4be7926837eb9335eab983eb6126e2ef96b7d65002128b94ba22b62e"
+        },
+        {
+          "index": 3,
+          "sourceCell": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "sourceBounds": [
+            199,
+            50,
+            414,
+            428
+          ],
+          "sourceCapBounds": [
+            220,
+            56,
+            407,
+            163
+          ],
+          "scaleFromCapWidth": 0.10695187165775401,
+          "destination": [
+            12,
+            5
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            12,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "dc7ab09683a0c3dd7962d72c3984cdbd2518e30767b5e49749425a4e707acb54"
+        },
+        {
+          "index": 4,
+          "sourceCell": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "sourceBounds": [
+            153,
+            50,
+            368,
+            428
+          ],
+          "sourceCapBounds": [
+            176,
+            56,
+            361,
+            163
+          ],
+          "scaleFromCapWidth": 0.10810810810810811,
+          "destination": [
+            12,
+            4
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            13,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "f30a84a2f4ed391393b6b752d2d306ff6322bfb6fb63275963f59e81858ffdf0"
+        },
+        {
+          "index": 5,
+          "sourceCell": [
+            1024,
+            512,
+            1536,
+            1024
+          ],
+          "sourceBounds": [
+            107,
+            50,
+            324,
+            428
+          ],
+          "sourceCapBounds": [
+            130,
+            56,
+            317,
+            163
+          ],
+          "scaleFromCapWidth": 0.10695187165775401,
+          "destination": [
+            12,
+            5
+          ],
+          "headOffsetY": 0,
+          "bounds": [
+            13,
+            5,
+            36,
+            45
+          ],
+          "footRow": 44,
+          "pixelSha256": "9da8889f6bb489569919d052cafb17a49d0e0cc6f46e522150c6bf83503d58f4"
+        }
+      ],
+      "events": [
+        {
+          "name": "celebrate_peak",
+          "frame": 3
+        }
+      ],
+      "sha256": "ed1df4f84f8a310846ce36aecdba3b24cd49f13c6180ec1a413a4d01791f6f37"
+    }
+  },
+  "sourceHashes": {
+    "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/neutral-1x.png": "4211c4bc5b280f8d85e1795433f1794969d6a1a4d3b0fdd338f851ea44dcc00d",
+    "docs/art/palettes/desktown-v01-32.json": "7159392f53c516fded526541ac2b9a9d4eb0e005056d594bd61ad9ca2eca638b",
+    "docs/art/reviews/2026-10-11/mina-motion-v1/sources/prompts.json": "00589612f1dadbd2fbea888e9e79a773b8787941e74f8ed9d2d6100c204e4d63",
+    "docs/art/reviews/2026-10-11/mina-motion-v1/sources/walk-retry-prompt.txt": "448538f2e0b82c504baf2324bb3b76e6ec3155a5085223b0737b969d42370796",
+    "docs/art/reviews/2026-10-11/mina-motion-v1/sources/walk-grid-initial.png": "5f3331d2ee1a49d3d9e2cf04df97d8772eee1a85dccdb61ff5c866f9882b8ba4",
+    "docs/art/reviews/2026-10-11/mina-motion-v1/sources/walk-grid.png": "45a307bd648bd8caeb4d2f91b7ce3c888842a996bc143e501145efcb1cfd1f77",
+    "docs/art/reviews/2026-10-11/mina-motion-v1/sources/rest-grid.png": "4b0313d47d6f83618c849d0e3313b58cf849449ea3df287e2fa28cafc6ae8529",
+    "docs/art/reviews/2026-10-11/mina-motion-v1/sources/stretch-grid.png": "21f8a311146dfa16d29eae479f71cfa71bf1e89d9892f153efad9cff4d540c22",
+    "docs/art/reviews/2026-10-11/mina-motion-v1/sources/celebrate-grid.png": "1b8941bdafe1f0b648eb1f9a510ec8e6ac64196093670e43e2fb16271a768f3d"
+  },
+  "identityCleanup": "cap-width scale; generated upper head cleared, approved head pasted; retained cup/raised-hand windows; planted lower body for Stretch/Celebrate only; Walk near/far limb palette shading alternates after frame2",
+  "limits": [
+    "Motion quality and identity need human review.",
+    "Rest uses seated pose without furniture; prop contact remains a follow-up.",
+    "HTML is an art preview, not a Godot or Windows input test.",
+    "No runtime catalog or simulation change."
+  ]
+}

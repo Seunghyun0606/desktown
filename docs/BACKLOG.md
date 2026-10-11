@@ -568,9 +568,12 @@ may be adjusted to the final scaffold without changing task responsibility.
   the original 95-color core union with shared 24/32-color core palettes; the
   approved separate 6-color effect ramp is retained. The human selected shared32
   as the production baseline; exact colors and editor palettes are recorded in
-  [Approved palette](art/palettes/README.md). Mina's remaining four clips / 20
-  frames, Workshop Repairing and Companion core props are next production items.
-  Repairing, Celebrate, full effect sheets and runtime reveal integration remain
+  [Approved palette](art/palettes/README.md).
+  [Walk/Rest/Stretch/Celebrate candidates](art/reviews/2026-10-11/mina-motion-v1/review.html)
+  now provide the remaining 20 distinct 48×48 frames in the approved palette,
+  fixed foot baseline and loop/one-shot previews. Their motion and visual quality
+  await human review. Workshop Repairing and Companion core props are next.
+  Final Mina delivery, full effect sheets and runtime reveal integration remain
   future production work. Art direction approvals are not final asset delivery.
 
 ### DT-E9-002 — Add final sound, particles, light, and reduced motion

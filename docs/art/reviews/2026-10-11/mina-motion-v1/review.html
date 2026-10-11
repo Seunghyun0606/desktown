@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mina Walk · Rest · Stretch · Celebrate 검토</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3efe6;color:#30251d;font:16px/1.6 system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:32px 24px}h1{font-size:30px;margin-bottom:8px}.tag{display:inline-block;background:#ead7b7;padding:4px 12px;border-radius:5px;font-size:14px}section{background:#fffaf1;border:1px solid #d8cbb7;border-radius:12px;padding:20px;margin:24px 0}.controls{display:flex;gap:16px;flex-wrap:wrap;align-items:center}select,button,input{font:inherit}select,button{padding:6px 12px;border:1px solid #b8a58d;border-radius:5px;background:#fffaf1;cursor:pointer}canvas,img{image-rendering:pixelated}#stage{display:block;margin:20px auto;max-width:100%;border:1px solid #b8a58d}.sheets{overflow:auto}.sheets img{display:block;margin:12px 0;max-width:none}label{white-space:nowrap}#status{font-variant-numeric:tabular-nums}.note{color:#66574a}a{color:#925125}#board{width:900px;max-width:100%}code{font-size:14px}
+</style><main>
+<span class="tag">동작 후보 · 사용자 승인 대기</span>
+<h1>Mina의 남은 네 가지 동작</h1>
+<p>48×48 · 승인된 공통 32색 · 피벗 (24,44). 중립 및 Idle·Work와 외형을 비교하고, 걷기·휴식의 반복과 스트레칭·축하의 회복 동작을 확인하세요.</p>
+<section>
+<div class="controls">
+<label>클립 <select id="clip"><option value="walk">Walk · 6프레임 · 8 FPS · 반복</option><option value="rest">Rest · 4프레임 · 2 FPS · 반복</option><option value="stretch">Stretch · 4프레임 · 4 FPS · 한 번</option><option value="celebrate">Celebrate · 6프레임 · 8 FPS · 한 번</option><option value="idle">승인 Idle · 4프레임 · 2 FPS</option><option value="work">승인 Work · 6프레임 · 6 FPS</option><option value="neutral">승인 중립</option></select></label>
+<label>배율 <select id="scale"><option value="1">1×</option><option value="2">2×</option><option value="3" selected>3×</option></select></label>
+<label>배경 <select id="background"><option value="gray">회색</option><option value="light">밝은 배경</option><option value="dark">어두운 배경</option><option value="companion">Companion 장면 참조</option></select></label>
+<label><input id="ghost" type="checkbox"> 불투명도 40%</label>
+<label><input id="guides" type="checkbox" checked> 셀·접점 표시</label>
+<button id="play">정지</button><button id="replay">처음부터 재생</button>
+<label>프레임 <input id="frame" type="range" min="0" max="5" value="0"></label>
+</div><canvas id="stage" width="720" height="480"></canvas>
+<div id="status" role="status"></div>
+<p class="note">Stretch·Celebrate는 마지막 프레임에서 멈춥니다. ‘처음부터 재생’으로 다시 확인할 수 있습니다. Rest의 의자·작업대 접촉은 후속 소품 검토 대상입니다. 배경은 PNG 검토용 참조이며 실제 Godot 창·입력 QA가 아닙니다.</p>
+</section>
+<section><h2>전체 20프레임</h2><img id="board" src="prepared-v1/comparison-board.png" alt="네 가지 Mina 동작의 20프레임을 3배 확대해 나란히 비교"><p>각 행의 가는 선은 발 접점 y=44입니다. 클립별 자세의 높이는 달라도 셀 피벗은 같습니다.</p></section>
+<section><h2>판정할 항목</h2><ul><li>모자·얼굴·체형이 승인 중립과 같은 인물로 읽히는가?</li><li>Walk의 양쪽 다리가 번갈아 움직이고 반복 경계가 자연스러운가?</li><li>Rest의 찻잔 동작과 앉은 자세가 1×에서도 읽히는가?</li><li>Stretch·Celebrate가 차분하며 마지막 자세로 자연스럽게 회복하는가?</li><li>밝고 어두운 배경 및 40% 불투명도에서 실루엣이 읽히는가?</li></ul><p>아트 후보는 런타임 카탈로그에 배정하지 않았습니다. 발과 Companion 바닥의 기존 간격은 이 페이지에도 그대로 표시합니다.</p><a href="README.md">제작·검사 기록</a> · <a href="prepared-v1/preparation.json">픽셀 검사 결과</a></section>
+</main><script>
+const specs={walk:[6,8,true],rest:[4,2,true],stretch:[4,4,false],celebrate:[6,8,false],idle:[4,2,true],work:[6,6,true],neutral:[1,1,false]};
+const $=id=>document.getElementById(id),canvas=$('stage'),ctx=canvas.getContext('2d');
+const images={},controls=['clip','scale','background','ghost','guides'];
+let selected='walk',index=0,playing=true,start=performance.now(),ready=false;
+const loading=Object.keys(specs).map(name=>new Promise((resolve,reject)=>{const im=new Image();images[name]=im;im.onload=resolve;im.onerror=()=>reject(Error('PNG load failed: '+name));im.src=['idle','work','neutral'].includes(name)?'../palette-v1/prepared-v2/shared32/'+name+'-1x.png':'prepared-v1/chr_mina_'+name+'.png';}));
+function reset(){selected=$('clip').value;index=0;playing=selected!=='neutral';start=performance.now();$('frame').max=specs[selected][0]-1;$('frame').value=0;draw();}
+function draw(){if(!ready)return;const scale=Number($('scale').value),bg=$('background').value,companion=bg==='companion';const w=companion?360:240,h=companion?200:160;canvas.width=w*scale;canvas.height=h*scale;ctx.imageSmoothingEnabled=false;ctx.scale(scale,scale);ctx.fillStyle=({gray:'#d1cdc6',light:'#f3f1ec',dark:'#20252b',companion:'#3c352f'})[bg];ctx.fillRect(0,0,w,h);const x=companion?100:96,y=companion?103:70;if(companion){const boxes=[[0,0,360,30,'#2e2924'],[134,39,66,51,'#7ca2a7'],[0,154,360,46,'#5d493b'],[146,130,106,25,'#9a6344'],[290,44,15,30,'#eec27b'],[273,142,25,14,'#8d5e46'],[55,126,19,27,'#709e6b']];for(const [a,b,c,d,color] of boxes){ctx.fillStyle=color;ctx.fillRect(a,b,c,d);}}if($('guides').checked){ctx.strokeStyle=bg==='dark'?'#827b6f':'#9b9181';ctx.lineWidth=1;ctx.strokeRect(x-.5,y-.5,49,49);ctx.beginPath();ctx.moveTo(x,y+44.5);ctx.lineTo(x+48,y+44.5);ctx.moveTo(x+24.5,y+40);ctx.lineTo(x+24.5,y+48);ctx.stroke();}ctx.globalAlpha=$('ghost').checked?.4:1;ctx.drawImage(images[selected],index*48,0,48,48,x,y,48,48);ctx.globalAlpha=1;const [count,fps,loop]=specs[selected];$('frame').value=index;$('play').textContent=playing?'정지':'재생';$('status').textContent=`${selected} · frame ${index}/${count-1} · ${fps} FPS · ${loop?'반복':playing?'한 번 재생 중':'정지'} · ${scale}× · 불투명도 ${$('ghost').checked?'40':'100'}%`;}
+controls.forEach(id=>$(id).addEventListener('change',id==='clip'?reset:draw));
+$('play').onclick=()=>{if(!playing&&index===specs[selected][0]-1&&!specs[selected][2])index=0;playing=!playing;start=performance.now()-index/specs[selected][1]*1000;draw();};
+$('replay').onclick=reset;$('frame').oninput=()=>{playing=false;index=Number($('frame').value);draw();};
+function tick(now){if(ready&&playing){const [count,fps,loop]=specs[selected];let next=Math.floor((now-start)*fps/1000);if(loop)next%=count;else if(next>=count){next=count-1;playing=false;}if(next!==index||!playing){index=next;draw();}}requestAnimationFrame(tick);}
+Promise.all(loading).then(()=>{ready=true;reset();requestAnimationFrame(tick);}).catch(e=>{$('status').textContent=e.message;console.error(e);});
+</script></html>
