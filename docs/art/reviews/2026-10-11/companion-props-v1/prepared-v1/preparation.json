@@ -1,0 +1,517 @@
+{
+  "status": "human_review_pending",
+  "pillow": "12.3.0",
+  "palette": "desktown-v01-32",
+  "method": "Split equal cells, binary alpha at128, weighted RGB 2/4/3, alpha-bounds fit to declared box by nearest neighbor.",
+  "lampInvariant": "OFF alpha mask and pixel positions preserved in ON; overlapping generated ON colors only.",
+  "pixelCleanup": "Reconnect dropped hanging cord only at transparent OFF pixels x16, y20..33; same cord retained in ON.",
+  "runtimeAssigned": false,
+  "sourceSha256": {
+    "docs/art/reviews/2026-10-11/companion-props-v1/sources/workbench.png": "ed3eb607a4f78f25c4ad3d65f57c17590fbeebd910ae458d0b7991bdc448649b",
+    "docs/art/reviews/2026-10-11/companion-props-v1/sources/workbench-prompt.txt": "06be235a0aa5b66a9b024594c7c80ab2f273d3d41b5af450b02c76c3f56a2e67",
+    "docs/art/reviews/2026-10-11/companion-props-v1/sources/lamp.png": "fe3809aea1c0a43a226fcab439fdb06653c118c37b66eecd7d409ec531499071",
+    "docs/art/reviews/2026-10-11/companion-props-v1/sources/lamp-prompt.txt": "74d5ad12cde4639fb276d11e3b8855a5cdbc1ae82f9b354d7d7a9078d701e05b",
+    "docs/art/reviews/2026-10-11/companion-props-v1/sources/window.png": "b56f88e9602ce73b7943bba6f59f55abca7ef4090ab395c6bf7f6036dfad2edb",
+    "docs/art/reviews/2026-10-11/companion-props-v1/sources/window-prompt.txt": "917d80a5b760b4a757540dd48b788d66453ee00293d65d08c6f6b7707299b1dc",
+    "docs/art/reviews/2026-10-11/companion-props-v1/sources/tool.png": "e4e7c49e69549f9065fd1c3c8bdf88b71b1e39b0627a445f00fc1eaa118f359f",
+    "docs/art/reviews/2026-10-11/companion-props-v1/sources/tool-prompt.txt": "953fff95534b79266a7ca8bc238c6d31d1e4aec813541a4fbdbf123ce5828f4f",
+    "docs/art/reviews/2026-10-11/palette-v1/prepared-v2/shared32/work-1x.png": "5d9a2454da521d6011b69f449163f017c4f85b4af578e51fa90062e190a0c756",
+    "docs/art/palettes/desktown-v01-32.json": "7159392f53c516fded526541ac2b9a9d4eb0e005056d594bd61ad9ca2eca638b"
+  },
+  "frames": [
+    {
+      "id": "CMP-WRK-001",
+      "frame": 0,
+      "sourceCell": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        48,
+        584,
+        1488,
+        1001
+      ],
+      "targetBox": [
+        4,
+        43,
+        92,
+        64
+      ],
+      "alphaBounds": [
+        4,
+        43,
+        92,
+        64
+      ],
+      "colorsUsed": 20,
+      "pivot": [
+        48,
+        64
+      ]
+    },
+    {
+      "id": "CMP-LMP-001",
+      "frame": 0,
+      "sourceCell": [
+        0,
+        0,
+        724,
+        1086
+      ],
+      "sourceAlphaBounds": [
+        157,
+        441,
+        669,
+        1038
+      ],
+      "targetBox": [
+        7,
+        18,
+        25,
+        48
+      ],
+      "alphaBounds": [
+        7,
+        18,
+        25,
+        48
+      ],
+      "colorsUsed": 24,
+      "pivot": [
+        16,
+        48
+      ]
+    },
+    {
+      "id": "CMP-LMP-001",
+      "frame": 1,
+      "sourceCell": [
+        724,
+        0,
+        1448,
+        1086
+      ],
+      "sourceAlphaBounds": [
+        55,
+        441,
+        567,
+        1038
+      ],
+      "targetBox": [
+        7,
+        18,
+        25,
+        48
+      ],
+      "alphaBounds": [
+        7,
+        18,
+        25,
+        48
+      ],
+      "colorsUsed": 28,
+      "pivot": [
+        16,
+        48
+      ]
+    },
+    {
+      "id": "CMP-WIN-001",
+      "frame": 0,
+      "sourceCell": [
+        0,
+        0,
+        1374,
+        1145
+      ],
+      "sourceAlphaBounds": [
+        303,
+        386,
+        1071,
+        1099
+      ],
+      "targetBox": [
+        15,
+        29,
+        81,
+        80
+      ],
+      "alphaBounds": [
+        15,
+        29,
+        81,
+        80
+      ],
+      "colorsUsed": 29,
+      "pivot": [
+        48,
+        80
+      ]
+    },
+    {
+      "id": "CMP-TOL-001",
+      "frame": 0,
+      "sourceCell": [
+        0,
+        0,
+        887,
+        887
+      ],
+      "sourceAlphaBounds": [
+        265,
+        169,
+        666,
+        735
+      ],
+      "targetBox": [
+        7,
+        5,
+        25,
+        27
+      ],
+      "alphaBounds": [
+        7,
+        5,
+        25,
+        27
+      ],
+      "colorsUsed": 22,
+      "pivot": [
+        16,
+        32
+      ]
+    },
+    {
+      "id": "CMP-TOL-001",
+      "frame": 1,
+      "sourceCell": [
+        887,
+        0,
+        1774,
+        887
+      ],
+      "sourceAlphaBounds": [
+        208,
+        210,
+        722,
+        708
+      ],
+      "targetBox": [
+        7,
+        5,
+        25,
+        27
+      ],
+      "alphaBounds": [
+        7,
+        5,
+        25,
+        27
+      ],
+      "colorsUsed": 21,
+      "pivot": [
+        16,
+        32
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "file": "workbench-f00.png",
+      "size": [
+        96,
+        64
+      ],
+      "sha256": "db9ca0b3daf6737d572a5930499a5e59cf57415922e3923094fd7158b0ab1f7d"
+    },
+    {
+      "file": "workbench-f00-gray.png",
+      "size": [
+        96,
+        64
+      ],
+      "sha256": "be15049e6a224e4c4ee4f59753f1340bc5c2bf5b531d917d9558080ea06a71c5"
+    },
+    {
+      "file": "prop_workbench.png",
+      "size": [
+        96,
+        64
+      ],
+      "sha256": "db9ca0b3daf6737d572a5930499a5e59cf57415922e3923094fd7158b0ab1f7d"
+    },
+    {
+      "file": "workbench-sheet-2x.png",
+      "size": [
+        192,
+        128
+      ],
+      "sha256": "20e1eb58ab0d5b2eaa015821bb183ce1b32cc6bfc6905a08bee0c4186132d9b7"
+    },
+    {
+      "file": "workbench-sheet-3x.png",
+      "size": [
+        288,
+        192
+      ],
+      "sha256": "002299914a7835e278a35fc811e542585066c4dd3b06a52e3afeeff6bb89e164"
+    },
+    {
+      "file": "lamp-f00.png",
+      "size": [
+        32,
+        48
+      ],
+      "sha256": "7a2d814c33e15cb78cf2258f3a143618965c7a0f74f45c3f6e1abf0423d181ab"
+    },
+    {
+      "file": "lamp-f00-gray.png",
+      "size": [
+        32,
+        48
+      ],
+      "sha256": "a4a53e8a5caa35db671ac309d740f857368cdc29fa4c131d48301972ad3b4ace"
+    },
+    {
+      "file": "lamp-f01.png",
+      "size": [
+        32,
+        48
+      ],
+      "sha256": "792b02988d481f00a8972d543c56adddd3165ebcc862d610214d621c2e369643"
+    },
+    {
+      "file": "lamp-f01-gray.png",
+      "size": [
+        32,
+        48
+      ],
+      "sha256": "186bfef38dd1590bb5151d92b51bb7d5e37114cdbf62d8f89c380cbe86b2f856"
+    },
+    {
+      "file": "prop_lamp_states.png",
+      "size": [
+        64,
+        48
+      ],
+      "sha256": "091d70cb174d7d4d9fae9ca4c3a31d6a11564b0224e12ff0ae70f4d0c1336b51"
+    },
+    {
+      "file": "lamp-sheet-2x.png",
+      "size": [
+        128,
+        96
+      ],
+      "sha256": "5ddbd9459cea8fd4d627e1544f7b2f897e44ccb01fb868775965eff907901ddf"
+    },
+    {
+      "file": "lamp-sheet-3x.png",
+      "size": [
+        192,
+        144
+      ],
+      "sha256": "7f80705cc68a259e6b88031b6fbdd10c2c7322fe8c9a1ce145e8eaa5925b3b60"
+    },
+    {
+      "file": "window-f00.png",
+      "size": [
+        96,
+        80
+      ],
+      "sha256": "6af561dd94f4b1f995b5803488aaa0e951329de0cd8ab87326f5a17b4dd2be3e"
+    },
+    {
+      "file": "window-f00-gray.png",
+      "size": [
+        96,
+        80
+      ],
+      "sha256": "3a66125de8d6ce4c654c1eb04338ed22b1b99de818634e19338a83d0572b886d"
+    },
+    {
+      "file": "prop_small_window.png",
+      "size": [
+        96,
+        80
+      ],
+      "sha256": "6af561dd94f4b1f995b5803488aaa0e951329de0cd8ab87326f5a17b4dd2be3e"
+    },
+    {
+      "file": "window-sheet-2x.png",
+      "size": [
+        192,
+        160
+      ],
+      "sha256": "99a897120a6c0876cd16603ec50ae6141e946ecd3271ed037d2280bca75d3fcb"
+    },
+    {
+      "file": "window-sheet-3x.png",
+      "size": [
+        288,
+        240
+      ],
+      "sha256": "a3b296991aa8881e5437daebd05b65dfbacaf8f56c3daa983913c1d091dbc4d3"
+    },
+    {
+      "file": "tool-f00.png",
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "2e8251e8f0f8644bbd4f42c26977197641ff9ff3b7a8bdab45d6c09dfff2ea5a"
+    },
+    {
+      "file": "tool-f00-gray.png",
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "1fb23da609196aef9d424da63f0209e78ba07f1ed25c64b6957faf6a717965fd"
+    },
+    {
+      "file": "tool-f01.png",
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "f97a1d5171e6b14509be3e78133b9cd6a9c121f1203b8c307424b60782ea6c32"
+    },
+    {
+      "file": "tool-f01-gray.png",
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "8ebcc8b4b77c430659342e18136eeaa22fad7e03943f41f98fbb8018322ae297"
+    },
+    {
+      "file": "prop_mina_tool.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "f3f66c6d98f9a2b25692fd7957bc62db21853b03566442d867d5675e5eb58a41"
+    },
+    {
+      "file": "tool-sheet-2x.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "d1ca375b8621c238d4cf5f9a26eaa25cff4d074434ada8d123f5bef7e12c9f3f"
+    },
+    {
+      "file": "tool-sheet-3x.png",
+      "size": [
+        192,
+        96
+      ],
+      "sha256": "c948b99ff1b1ab9a44584e88b2bfe71759150fbebeeea2457983b83d6c3c6353"
+    },
+    {
+      "file": "stage-current-lamp0.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "f24449ca1b5f7f19e2bbff63af1855232f92b03e7d59d64a1f38c88d98700eb3"
+    },
+    {
+      "file": "stage-current-lamp0-gray.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "aacf4e55c9392b6bc69e8d26a6f2e3fba62df6ba11c8788af6b9a72bb3cf774f"
+    },
+    {
+      "file": "stage-current-lamp1.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "440ae40399cbd43d1a292e631e9b979acf18e3bbd4a7dedaaa881cd23fe3f5b0"
+    },
+    {
+      "file": "stage-current-lamp1-gray.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "10bc5e0fe055f89e7751224a4ac2b8bf0a0aa09512a11d69c7a0bcb92f7a8e95"
+    },
+    {
+      "file": "stage-proposal-lamp0.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "38b38440068406f2d879244e07716a3de32d94491ead1e64ca44f9fd5b4f95ee"
+    },
+    {
+      "file": "stage-proposal-lamp0-gray.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "d8e752726fcd7875efc33f03e6606b79dc44c9e5781fff76707ae90bd5c4db85"
+    },
+    {
+      "file": "stage-proposal-lamp1.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "8a92cce6f3750b664826afdf2a4c8c81cea24962a5da8da03ff9a2f90f326cab"
+    },
+    {
+      "file": "stage-proposal-lamp1-gray.png",
+      "size": [
+        360,
+        200
+      ],
+      "sha256": "4a64e12ec7bf82b949f5aa3d8c117c7a9c956510a3502f5c87c13ead52ea9ac6"
+    },
+    {
+      "file": "comparison-board.png",
+      "size": [
+        1000,
+        910
+      ],
+      "sha256": "313eca2dd351c879313e780eb31af4d98f739243b0eb61be0bf313520d8ab613"
+    }
+  ],
+  "reference": {
+    "viewport": [
+      360,
+      200
+    ],
+    "mina": [
+      100,
+      103
+    ],
+    "workFrame": 4,
+    "currentWorkbench": [
+      151,
+      91
+    ],
+    "proposalWorkbench": [
+      135,
+      91
+    ],
+    "currentFloorY": 154,
+    "proposalFloorY": 148,
+    "currentLampOrigin": [
+      281.5,
+      26
+    ],
+    "pngLampOrigin": [
+      282,
+      26
+    ],
+    "note": "Review PNG/HTML, not Godot capture; geometric floor/stool/plant are placeholders. No runtime position or binding changes."
+  }
+}

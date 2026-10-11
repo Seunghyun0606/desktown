@@ -2,7 +2,7 @@
 
 ## 현재 판정
 
-사용자가 Mina Walk·Rest·Stretch·Celebrate의 동작 방향을 승인하고 Workshop Repairing 제작을 선택했다. 기존 Broken·Complete와 연결되는 수리 중 **검토 후보**를 준비했다. [검토 페이지](review.html)는 1×/2×/3×, 컬러·흑백, 밝고 어두운 배경, 문·기초 고정 영역 및 현재 Town 좌표의 세 상태 전환을 제공한다. Repairing 외형과 세 상태 구분은 사용자 승인 대기다.
+사용자가 Mina Walk·Rest·Stretch·Celebrate의 동작 방향을 승인하고 Workshop Repairing 제작을 선택했다. 기존 Broken·Complete와 연결되는 수리 중 **검토 후보**를 준비했다. [검토 페이지](review.html)는 1×/2×/3×, 컬러·흑백, 밝고 어두운 배경, 문·기초 고정 영역 및 현재 Town 좌표의 세 상태 전환을 제공한다. 사용자가 2026-10-11 **A: 수리 중 외형 승인 — Companion 소품 진행**을 선택하여 Repairing 외형과 세 상태 구분을 승인했다. 생성 당시 변환 기록의 승인 대기 상태는 당시 기록으로 보존한다. 최종 출처·납품 및 런타임 배정은 별도다.
 
 | 항목 | 규격 | 파일 |
 | --- | --- | --- |
@@ -40,7 +40,7 @@ Repairing이 1×·흑백에서 두 상태와 구분되는지, 지붕·목재·�
 
 Town 참조는 기존 viewport 1280×720, Workshop 원점 (796,324), Mina 원점 (680,415)을 유지한다. HTML은 (600,254)에서 440×260을 잘라 표시한다. 클러스터는 House (48,32), Workshop (192,32), Mina (168,174)를 사용한 별도 아트 비교다. PNG·Canvas 재현이며 Godot 실행 캡처나 Windows 입력 QA가 아니다. 게임 상태 전환 시점·진행·저장·동선·충돌을 바꾸지 않았다.
 
-외형 승인 후 다음 제작은 Companion 핵심 소품과 Mina의 도구·발 정렬 검토다. 전체 효과 시트·Reward 런타임 연결 및 실제 Windows QA도 남는다.
+다음 제작인 [Companion 핵심 소품 후보](../companion-props-v1/review.html)와 Mina의 도구·발 정렬 비교를 준비했다. 소품 외형 승인과 실제 배치·도구 분리 구현은 후속 검토 대상이다. 전체 효과 시트·Reward 런타임 연결 및 실제 Windows QA도 남는다.
 
 ## 재현
 

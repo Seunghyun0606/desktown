@@ -576,7 +576,11 @@ may be adjusted to the final scaffold without changing task responsibility.
   [Workshop Repairing / three-state candidate](art/reviews/2026-10-11/workshop-repairing-v1/review.html)
   provides a 480×128 sheet in the approved32 palette, fixed door/foundation,
   unchanged Broken/Complete pixels and color/grayscale/Town references.
-  Repairing visual approval is pending; Companion core props are next.
+  The human approved Repairing appearance and the three-state distinction.
+  [Companion core prop candidates](art/reviews/2026-10-11/companion-props-v1/review.html)
+  provide Workbench/Lamp/Window/Tool (4 IDs / 6 cells), approved32 and current vs.
+  proposed contact references. Prop appearance approval is pending; floor/stool,
+  all-frame contact and tool separation decisions remain open. No live scene change.
   Final Mina/Workshop delivery, full effect sheets and runtime reveal integration remain
   future production work. Art direction approvals are not final asset delivery.
 

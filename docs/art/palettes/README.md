@@ -25,8 +25,8 @@
 | 순서 | 항목 | 준비된 입력 | 남은 완료 조건 |
 | --- | --- | --- | --- |
 | 1 | Mina 6클립 / 30프레임 | 중립·Idle·Work 및 [나머지 20프레임](../reviews/2026-10-11/mina-motion-v1/review.html)의 승인 동작 방향 | 제작용 세부 품질·장면 도구/발 접촉·출처/납품 검토 |
-| 2 | Workshop 3상태 / 480×128 | [Repairing 포함 3상태 후보](../reviews/2026-10-11/workshop-repairing-v1/review.html); 기존 두 상태·문·기초 유지 | Repairing 외형·흑백 구분·목재 연결·시트 및 출처/납품 승인 |
-| 3 | Companion 핵심 소품 | 기하학적 배치와 Mina Work 참조 | 작업대·램프·창 등 실제 아트 및 Mina 도구/발 정렬 검토 |
+| 2 | Workshop 3상태 / 480×128 | [Repairing 포함 3상태 후보](../reviews/2026-10-11/workshop-repairing-v1/review.html); 기존 두 상태·문·기초 유지 | 수리 중 외형·3상태 구분 승인 완료; 최종 시트·출처/납품 검토 |
+| 3 | Companion 핵심 소품 | [4항목 / 6셀 후보](../reviews/2026-10-11/companion-props-v1/review.html), 현재 배치·접촉 비교안 | 소품 외형 승인; 바닥·의자 제작, 전체 프레임 접촉·도구 분리·최종 배치 검토 |
 | 4 | 환경·효과·나머지 아트/음향 | House·대표 환경 셀·연기/반짝임의 승인 방향 | 전체 변형·효과 프레임·음향·로고·지도 등 46개 계약의 납품 및 출처 확인 |
 
 전체 명세: [Asset Manifest](../ASSET_MANIFEST.md), [Sprite Contract](../SPRITE_CONTRACT.md). 실제 Windows 창·입력 QA는 이 색 기준 승인과 별도로 남는다.
