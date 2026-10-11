@@ -1,0 +1,144 @@
+// Copied into an isolated review project only; never compiled into the shipping app.
+using DeskTown.Application.Display;
+using DeskTown.Domain.Simulation;
+using DeskTown.Presentation.Display;
+using global::Godot;
+using System.Text.Json;
+
+namespace DeskTown.Presentation.Bootstrap;
+
+public partial class CompanionArtReview : Node
+{
+    private static void Require(bool condition, string message)
+    {
+        if (!condition) throw new InvalidOperationException(message);
+    }
+
+    public override void _Ready() => Callable.From(() => { _ = Run(); }).CallDeferred();
+
+    private async Task Run()
+    {
+        try
+        {
+            GetWindow().Unfocusable = true;
+            Require(Path.GetFileName(OS.GetUserDataDir()).StartsWith("DeskTownArtReview-"),
+                "Engine log/user directory must be isolated from DeskTown");
+            var output = ProjectSettings.GlobalizePath("res://../captures");
+            Directory.CreateDirectory(output);
+            var captures = new List<string>();
+            var clips = new[] { MinaAnimationClip.Idle, MinaAnimationClip.Walk,
+                MinaAnimationClip.Work, MinaAnimationClip.Rest,
+                MinaAnimationClip.Stretch, MinaAnimationClip.Celebrate };
+            for (var i = 0; i < clips.Length; i++)
+            {
+                var spec = MinaClipPlayback.Spec(clips[i]);
+                for (var frame = 0; frame < spec.Frames; frame++)
+                {
+                    var image = VisualAssetCatalog.Frame($"CHR-MIN-{i + 1:000}", frame);
+                    Require(image is not null && image.Value.Source == new Rect2(frame * 48, 0, 48, 48),
+                        $"Wrong frame region: {clips[i]} {frame}");
+                }
+                Require(VisualAssetCatalog.Frame($"CHR-MIN-{i + 1:000}", spec.Frames) is null,
+                    "Out-of-range frame must fall back");
+            }
+            foreach (var percent in new[] { 75, 100, 125, 150 })
+            {
+                var viewport = new SubViewport
+                {
+                    Size = new Vector2I(360 * percent / 100, 200 * percent / 100),
+                    Size2DOverride = new Vector2I(360, 200), Size2DOverrideStretch = true,
+                    RenderTargetUpdateMode = SubViewport.UpdateMode.Always,
+                    CanvasItemDefaultTextureFilter = Viewport.DefaultCanvasItemTextureFilter.Nearest
+                };
+                AddChild(viewport);
+                var stage = GD.Load<PackedScene>("res://scenes/companion/CompanionStage.tscn")
+                    .Instantiate<CompanionStage>();
+                // Only this isolated instance gets approved layout coordinates.
+                stage.GetNode<ColorRect>("Workbench").Position = new Vector2(130, 130);
+                var stool = stage.GetNode<ColorRect>("Stool");
+                stool.Position = new Vector2(108, 116);
+                stool.Size = new Vector2(32, 32);
+                stage.GetNode<ColorRect>("Lamp").Size = new Vector2(16, 30);
+                viewport.AddChild(stage);
+                stage.GetNode<Label>("DragLabel").Text = $"DeskTown  •  drag here  •  {percent}%";
+                var mina = stage.GetNode<MinaPlaceholderView>("MinaView");
+                mina.SetProcess(false);
+                var placements = new Dictionary<string, Vector2>
+                {
+                    ["Workbench"] = new(135, 91), ["Stool"] = new(108, 116),
+                    ["Floor"] = new(0, 136), ["SkyWindow"] = new(119, 10), ["Lamp"] = new(282, 26)
+                };
+                foreach (var pair in placements)
+                {
+                    var host = stage.GetNode<ColorRect>(pair.Key);
+                    var art = host.GetNode<Sprite2D>("CatalogArt");
+                    Require(art.Visible && host.Color.A == 0, $"Missing art: {pair.Key}");
+                    Require(art.GlobalPosition - art.RegionRect.Size / 2 == pair.Value,
+                        $"Wrong texture origin: {pair.Key}");
+                    Require(art.TextureFilter == CanvasItem.TextureFilterEnum.Nearest, "Art filter changed");
+                }
+                Require(mina.Position == new Vector2(100, 103), "Mina origin changed");
+                Require(stage.GetNode<ColorRect>("Plant").Color.A == 1, "Unassigned Decor fallback lost");
+                var shadowImage = VisualAssetCatalog.Frame("CMP-SHD-001")!.Value;
+                var shadow = new Sprite2D
+                {
+                    Name = "ReviewShadow", Texture = shadowImage.Sheet, Centered = false,
+                    RegionEnabled = true, RegionRect = shadowImage.Source,
+                    Position = new Vector2(108, 141), TextureFilter = CanvasItem.TextureFilterEnum.Nearest
+                };
+                stage.AddChild(shadow);
+                stage.MoveChild(shadow, stage.GetNode("Floor").GetIndex() + 1);
+                Require(shadow.GetIndex() < stool.GetIndex() && stool.GetIndex() < mina.GetIndex(),
+                    "Shadow/stool must draw behind Mina");
+                // Exercise both lamp cells and both tool cells without overlaying the baked hammer.
+                foreach (var id in new[] { "CMP-LMP-001", "CMP-TOL-001" })
+                    Require(VisualAssetCatalog.Frame(id, 0) is not null
+                        && VisualAssetCatalog.Frame(id, 1) is not null
+                        && VisualAssetCatalog.Frame(id, 2) is null, $"Wrong two-cell asset: {id}");
+                foreach (var clip in clips)
+                {
+                    var spec = MinaClipPlayback.Spec(clip);
+                    // Force a different clip first: Apply intentionally preserves identical intent.
+                    mina.Play(new MinaPresentationIntent(clip == MinaAnimationClip.Idle
+                        ? MinaAnimationClip.Rest : MinaAnimationClip.Idle));
+                    mina.Play(new MinaPresentationIntent(clip));
+                    for (var frame = 0; frame < spec.Frames; frame++)
+                    {
+                        // Advance the actual view playback by slightly over one frame to avoid rounding.
+                        mina._Process(frame == 0 ? 0 : 1.0 / spec.Fps + 0.000001);
+                        await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+                        using var image = viewport.GetTexture().GetImage();
+                        Require(image is not null && !image.IsEmpty(), "Renderer produced no image");
+                        var filename = $"{clip.ToString().ToLowerInvariant()}-{percent}-f{frame:00}.png";
+                        Require(image!.SavePng(Path.Combine(output, filename)) == Error.Ok, "Capture save failed");
+                        captures.Add(filename);
+                    }
+                }
+                // ON is a review-only cell selection, not a runtime lighting policy.
+                CatalogRectArt.Bind(stage.GetNode<ColorRect>("Lamp"), "CMP-LMP-001", 1);
+                await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+                using (var image = viewport.GetTexture().GetImage())
+                {
+                    var filename = $"lamp-on-{percent}.png";
+                    Require(image.SavePng(Path.Combine(output, filename)) == Error.Ok, "ON capture failed");
+                    captures.Add(filename);
+                }
+                viewport.QueueFree();
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            }
+            File.WriteAllText(Path.Combine(output, "result.json"), JsonSerializer.Serialize(new
+            {
+                engine = Engine.GetVersionInfo()["string"].AsString(), renderer = RenderingServer.GetCurrentRenderingMethod(),
+                captures, reviewOnly = true, personalSaveAccess = false, engineUserDirectoryIsolated = true,
+                notes = "SubViewport CanvasItems scale proxy; not native window/input/DPI QA. Tool remains baked in Work."
+            }, new JsonSerializerOptions { WriteIndented = true }));
+            GD.Print("DESKTOWN_COMPANION_REVIEW_OK");
+            GetTree().Quit();
+        }
+        catch (Exception error)
+        {
+            GD.PrintErr("DESKTOWN_COMPANION_REVIEW_FAILED: " + error);
+            GetTree().Quit(1);
+        }
+    }
+}
