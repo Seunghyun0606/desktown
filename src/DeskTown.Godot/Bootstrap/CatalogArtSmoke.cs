@@ -23,6 +23,10 @@ internal static class CatalogArtSmoke
                 .Instantiate<DeskTown.Presentation.TownScene>();
             tree.Root.AddChild(townView);
             townView.Bind(TownSimulation.Create().Snapshot.Town);
+            Require(townView.GetNode<ColorRect>("Ground").Visible &&
+                townView.GetNode<ColorRect>("World/Path").Visible &&
+                townView.GetNode<ColorRect>("World/Path").Position == new Vector2(16, 264),
+                "Unassigned terrain did not preserve the visible approved-layout fallback");
             var house = townView.GetNode<ColorRect>("World/House");
             Require(house.GetNode<Sprite2D>("CatalogArt").Visible &&
                 house.Color.A == 0 && !house.GetNode<Label>("Name").Visible,

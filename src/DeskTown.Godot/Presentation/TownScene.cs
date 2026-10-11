@@ -11,6 +11,7 @@ public partial class TownScene : Control
 {
     private TownProjection? _pending;
     private global::Godot.Timer? _ambientTimer;
+    private Sprite2D? _minaShadow;
     public event Action? FocusRequested;
 
     public override void _Ready()
@@ -30,6 +31,7 @@ public partial class TownScene : Control
         };
         GetNode<TownNpcPlaceholderView>("World/NoahView").Configure(false);
         GetNode<TownNpcPlaceholderView>("World/RumiView").Configure(true);
+        _minaShadow = TownEnvironment.Bind(this);
         CatalogRectArt.Bind(GetNode<ColorRect>("World/House"), "BLD-HOU-001",
             placeholderLabel: GetNode<Label>("World/House/Name"));
         CatalogRectArt.Bind(GetNode<ColorRect>("World/LockedArea"), "BLD-LCK-001",
@@ -72,25 +74,33 @@ public partial class TownScene : Control
             GetNode<Label>("Hud/Today").Text = $"Completed today  {Math.Floor(elapsed.TotalMinutes):0} min";
         var mina = GetNode<MinaPlaceholderView>("World/MinaView");
         mina.Bind(snapshot.Mina);
-        var minaX = snapshot.Mina.Location == MinaLocation.Home ? 310 : 850;
-        mina.Position = new Vector2(minaX, 451);
+        var minaX = snapshot.Mina.Location == MinaLocation.Home ? 168 : 437;
+        mina.Position = new Vector2(minaX, 228);
+        if (_minaShadow is not null) _minaShadow.Position = mina.Position + new Vector2(8, 38);
         var minaName = GetNode<Label>("World/Mina");
-        minaName.Position = new Vector2(minaX, 494);
+        minaName.Position = new Vector2(minaX, 271);
         minaName.Text = "Mina";
     }
 
     private void UpdateAmbient()
     {
         if (!Visible) return;
-        var frame = NpcAmbientSchedule.At(TimeSpan.FromMilliseconds(Time.GetTicksMsec()));
+        BindAmbient(TimeSpan.FromMilliseconds(Time.GetTicksMsec()));
+    }
+
+    internal void BindAmbient(TimeSpan elapsed)
+    {
+        var frame = NpcAmbientSchedule.At(elapsed);
         var noah = GetNode<Label>("World/Noah");
-        noah.Position = new Vector2(510 + frame.NoahOffsetX, 461);
+        var noahX = 268 + MathF.Round(frame.NoahOffsetX / 2f);
+        var rumiX = 226 + MathF.Round(frame.RumiOffsetX / 2f);
+        noah.Position = new Vector2(noahX, 271);
         noah.Text = frame.NoahReading ? "Noah  •  Read" : "Noah";
         GetNode<TownNpcPlaceholderView>("World/NoahView").Position =
-            new Vector2(510 + frame.NoahOffsetX, 418);
+            new Vector2(noahX, 228);
         GetNode<TownNpcPlaceholderView>("World/NoahView").SetReading(frame.NoahReading);
-        GetNode<Label>("World/Rumi").Position = new Vector2(370 + frame.RumiOffsetX, 567);
+        GetNode<Label>("World/Rumi").Position = new Vector2(rumiX, 325);
         GetNode<TownNpcPlaceholderView>("World/RumiView").Position =
-            new Vector2(370 + frame.RumiOffsetX, 524);
+            new Vector2(rumiX, 282);
     }
 }

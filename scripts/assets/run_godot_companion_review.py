@@ -1,4 +1,4 @@
-"""Build, import and capture a disposable Companion or Town project on Windows."""
+"""Build, import and capture a disposable Companion, Town or NPC project on Windows."""
 import argparse
 import json
 import os
@@ -69,7 +69,7 @@ def main():
                               "--resolution", "64x64", "--audio-driver", "Dummy"],
                              project, env, logs / "capture.log", 90)
         review_kind = preparation.get("reviewKind", "companion")
-        marker = "DESKTOWN_TOWN_REVIEW_OK" if review_kind == "town" else "DESKTOWN_COMPANION_REVIEW_OK"
+        marker = {"town":"DESKTOWN_TOWN_REVIEW_OK", "npc":"DESKTOWN_NPC_REVIEW_OK"}.get(review_kind,"DESKTOWN_COMPANION_REVIEW_OK")
         if marker not in output:
             raise RuntimeError("Missing review completion marker")
         result = json.loads((review / "captures/result.json").read_text(encoding="utf-8"))

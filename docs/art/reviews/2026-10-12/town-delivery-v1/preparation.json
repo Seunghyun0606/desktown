@@ -1,0 +1,218 @@
+{
+  "reviewOnly": true,
+  "reviewKind": "town",
+  "expectedCaptures": 12,
+  "sourceRevision": "845390480507120ab51c2ef3c0e73ed965a08a70",
+  "runtimeCatalog": true,
+  "runtimeWorkingTreeFiles": {
+    "scenes/town/TownScene.tscn": "5fa5486d97d7f654af84cb2ed0f4d19b5dbc399b99b03f0f51e5544fe955cec3",
+    "src/DeskTown.Godot/Presentation/TownScene.cs": "6ee8395d0b308dad15ba61218e1ae8587373c85f2d2a83b81d39e641508eda62",
+    "src/DeskTown.Godot/Display/TownEnvironment.cs": "6bd8a306218052dac5e18ddefaeb7d2c20daba14deb330850f505a28cd93f4f5",
+    "assets/catalogs/asset_catalog.json": "ad43a01f5a7c32e25bc95b13ab864d8702eab7702a8d291b635957302a6509ef"
+  },
+  "personalSaveAccess": false,
+  "engineUserDirectoryIsolated": true,
+  "candidateAssets": [
+    {
+      "id": "BLD-HOU-001",
+      "file": "bld_house.png",
+      "size": [
+        128,
+        128
+      ],
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 1,
+      "pivot": [
+        64,
+        128
+      ],
+      "sha256": "c08a25b0ebc2fdda69c91a1ac5ef4e49336c4d2a261d24ced2ca1dfe3534bb47"
+    },
+    {
+      "id": "BLD-WRK-001",
+      "file": "bld_workshop_states.png",
+      "size": [
+        480,
+        128
+      ],
+      "cell": [
+        160,
+        128
+      ],
+      "frames": 3,
+      "pivot": [
+        80,
+        128
+      ],
+      "sha256": "a1d62f076d31616ae07049daed4de47cd3ea635dda3c2f7f8f0886b0e7990644"
+    },
+    {
+      "id": "BLD-LCK-001",
+      "file": "bld_library_locked.png",
+      "size": [
+        128,
+        128
+      ],
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 1,
+      "pivot": [
+        64,
+        128
+      ],
+      "sha256": "15f0d90456a89d62ca3889be6e78735d1be43b15a2f624b026a9311367d04467"
+    },
+    {
+      "id": "ENV-GRA-001",
+      "file": "env_grass_tiles.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "623897dce0a34873a0ffaa65e0caa14ce56c9e713aff41de25dde30f4f8ce486"
+    },
+    {
+      "id": "ENV-DIR-001",
+      "file": "env_dirt_tile.png",
+      "size": [
+        32,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "b2c9f27ea39bb5742360db02d1a1334dbbdb2bf43a27359aa6a84e04346303b3"
+    },
+    {
+      "id": "ENV-PTH-001",
+      "file": "env_path_tiles.png",
+      "size": [
+        96,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 3,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "b7ddef97ee89490b4bb488745a83adba336cf2f8aa7bc33e19da9fdb09c70abc"
+    },
+    {
+      "id": "ENV-TRE-001",
+      "file": "env_tree_variants.png",
+      "size": [
+        128,
+        96
+      ],
+      "cell": [
+        64,
+        96
+      ],
+      "frames": 2,
+      "pivot": [
+        32,
+        96
+      ],
+      "sha256": "5b00b0259d52b4ce7f00b4a1c7f25ec767a1517c8dd7fa3ab9b82983cf144885"
+    },
+    {
+      "id": "ENV-BUS-001",
+      "file": "env_bush_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "6e9c658fafa1d945a807837225e5d1c902ed422aff7454ea0ef3e93d23cf72fd"
+    },
+    {
+      "id": "ENV-FLW-001",
+      "file": "env_flower_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "1dee64c5cb12ae2b4c95df81f720dea16810e988987d8d121d89e30a8f8c3893"
+    },
+    {
+      "id": "ENV-FEN-001",
+      "file": "env_fence_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "7592b156a01d6105975644a0f8b50b96bf980955e3cf62d0c47170a03e103b1d"
+    },
+    {
+      "id": "ENV-ROC-001",
+      "file": "env_rock_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "4ff1b785dc5ead5f281287b39211bfa173228da0b5f86d1e0fc7fc840dcae7d6"
+    }
+  ],
+  "runtimeCatalogSha256": "ad43a01f5a7c32e25bc95b13ab864d8702eab7702a8d291b635957302a6509ef",
+  "probeSha256": "44221fe840be8f33922aebd4e9fc3dd64dddafaadfda88299b06b62f85fb1701",
+  "layoutProposal": "640x360 logical world at 2x in the 1280x720 Town; HUD stays at 1x. Review-only."
+}

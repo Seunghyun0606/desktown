@@ -5,7 +5,8 @@
 :root{color-scheme:light}body{margin:0;background:#eee6d8;color:#382c23;font:16px/1.6 system-ui,sans-serif}main{max-width:1380px;margin:auto;padding:32px}h1{font-size:30px;line-height:1.3}h2{font-size:22px}.tag{background:#675632;color:white;border-radius:20px;padding:6px 14px}section{background:#fffaf1;border:1px solid #d8cbb7;border-radius:14px;padding:22px;margin:24px 0}a{color:#925125}button,select{font:inherit;padding:5px 10px}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:16px}.scroll{overflow:auto;background:#463a25;border-radius:8px}img{image-rendering:pixelated;display:block}.scene{max-width:none}.note{color:#66574a}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:8px;border-bottom:1px solid #d8cbb7}.assets{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}.asset{overflow:auto;background:#e0d8c9;padding:12px;border-radius:8px}.asset img{background:repeating-conic-gradient(#c9c0b0 0% 25%,#ded6c8 0% 50%) 0/16px 16px;max-width:none}label{display:inline-flex;gap:8px;align-items:center}.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}.compare img{width:100%;height:auto}.compare a{display:block}
 </style>
 <main>
-<span class="tag">Town 후보 11개 · 납품·배치 승인 대기</span>
+<span class="tag">Town 11개 · 납품·2× 배치 승인 및 실제 적용 완료</span>
+<p><a href="../town-delivery-v1/README.md">실제 배정 결과: 12개 렌더가 승인본과 바이트 일치</a> · <a href="../npc-v1/review.html">다음 NPC 5클립 검토</a>. 아래 비교 캡처는 최초 승인 검토 자료입니다.</p>
 <h1>마을을 채우는 건물·길·식생</h1>
 <p>승인된 Mina·House·Workshop과 공통 32색을 이어 사용했습니다. 실제 Godot Town 장면에 새 아트를 넣고 기존 배치와 <strong>월드 2× 배치안</strong>을 비교합니다. 아직 전체 최종본은 아니며 Noah·Rumi와 모닥불은 대체 표시입니다.</p>
 <p><a href="README.md">제작·검증 기록</a> · <a href="godot-v1/verification.json">렌더 픽셀·해시 검사</a> · <a href="prepared-v2/preparation.json">11개 시트 규격·출처</a> · <a href="../../../palettes/README.md">승인 팔레트</a></p>
@@ -24,7 +25,7 @@
 <section>
 <h2>기존 배치와 2× 배치안 · 수리 중</h2>
 <div class="compare"><div><p>기존 · 건물 원래 크기, 환경 대체 표시</p><a href="godot-v1/captures/existing-repairing-100.png"><img src="godot-v1/captures/existing-repairing-100.png" alt="기존 배치 전체"></a></div><div><p>배치안 · 건물·Mina 2배, 타일과 소품 연결</p><a href="godot-v1/captures/proposed-repairing-100.png"><img src="godot-v1/captures/proposed-repairing-100.png" alt="2배 배치안 전체"></a></div></div>
-<p>월드는 640×360 논리 좌표를 2배로 그리며 HUD와 Focus 버튼은 기존 크기로 유지합니다. House·Workshop·Library 출입구를 길에 연결하고 오른쪽 아래 조작 영역을 비웠습니다. 실제 게임 장면에는 아직 적용하지 않았습니다.</p>
+<p>월드는 640×360 논리 좌표를 2배로 그리며 HUD와 Focus 버튼은 기존 크기로 유지합니다. House·Workshop·Library 출입구를 길에 연결하고 오른쪽 아래 조작 영역을 비웠습니다. 승인 후 실제 장면에 적용했고 동일한 렌더를 재검증했습니다.</p>
 </section>
 <section><h2>시트 11개 · 3× 최근접 확대</h2><p>투명 격자는 PNG의 알파입니다. 흙·잔디는 불투명 32×32, 나머지는 투명 여백과 바닥 중앙 피벗을 유지합니다. House와 Workshop PNG는 승인본과 바이트 단위로 같습니다. 초기 준비본의 흙 반복 무늬는 prepared-v2에서 수정했습니다.</p><div id="assets" class="assets"></div></section>
 <section><h2>완성까지 남은 작업</h2>
@@ -37,7 +38,7 @@
 <tr><td>음향 · 8개</td><td>별도 제작·믹스·사용 승인 대기. 이번 시각 검토에 포함하지 않음.</td></tr>
 <tr><td>QA-PIP-001</td><td>PiP 중 Town 메인 창이 함께 뜨는 문제는 사용자 요청대로 TODO 유지.</td></tr>
 </tbody></table>
-<p>현재 실제 카탈로그는 <strong>12개 production · 34개 미배정</strong>입니다. 이번 Town 11개가 승인·배정되면 23개 production이 되며, 시각 15개와 음향 8개가 남습니다. 이 검토는 Focus/Energy·저장·창 정책을 변경하지 않습니다.</p>
+<p>Town 11개 승인·배정 후 실제 카탈로그는 <strong>23개 production · 23개 미배정</strong>입니다. 시각 15개와 음향 8개가 남으며, NPC 5개는 후속 검토 후보입니다. Focus/Energy·저장·창 정책은 유지합니다.</p>
 </section>
 </main>
 <script>

@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "geometricGroundAndPathVisible": true,
+  "pathPosition": [
+    16,
+    264
+  ],
+  "mainCatalogSha256": "ad43a01f5a7c32e25bc95b13ab864d8702eab7702a8d291b635957302a6509ef",
+  "patchedSourceSha256": {
+    "scenes/town/TownScene.tscn": "76b16c9769b453d7f9dc0376a5ee3d0410e729be8af9b22a4b12cdf224abd33b",
+    "src/DeskTown.Godot/Bootstrap/CatalogArtSmoke.cs": "e9e804ed14b6fdbb1596bf52b85235a2b9009ac2008297bcb93187a82298abc9"
+  }
+}

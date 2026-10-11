@@ -1,0 +1,1016 @@
+{
+  "reviewOnly": true,
+  "reviewKind": "npc",
+  "expectedCaptures": 120,
+  "sourceRevision": "845390480507120ab51c2ef3c0e73ed965a08a70",
+  "runtimeCatalog": false,
+  "runtimeWorkingTreeFiles": {
+    "scenes/town/TownScene.tscn": "5fa5486d97d7f654af84cb2ed0f4d19b5dbc399b99b03f0f51e5544fe955cec3",
+    "src/DeskTown.Godot/Presentation/TownScene.cs": "6ee8395d0b308dad15ba61218e1ae8587373c85f2d2a83b81d39e641508eda62",
+    "src/DeskTown.Godot/Display/TownEnvironment.cs": "6bd8a306218052dac5e18ddefaeb7d2c20daba14deb330850f505a28cd93f4f5",
+    "assets/catalogs/asset_catalog.json": "ad43a01f5a7c32e25bc95b13ab864d8702eab7702a8d291b635957302a6509ef"
+  },
+  "personalSaveAccess": false,
+  "engineUserDirectoryIsolated": true,
+  "candidateAssets": [
+    {
+      "id": "BLD-HOU-001",
+      "file": "bld_house.png",
+      "size": [
+        128,
+        128
+      ],
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 1,
+      "pivot": [
+        64,
+        128
+      ],
+      "sha256": "c08a25b0ebc2fdda69c91a1ac5ef4e49336c4d2a261d24ced2ca1dfe3534bb47"
+    },
+    {
+      "id": "BLD-WRK-001",
+      "file": "bld_workshop_states.png",
+      "size": [
+        480,
+        128
+      ],
+      "cell": [
+        160,
+        128
+      ],
+      "frames": 3,
+      "pivot": [
+        80,
+        128
+      ],
+      "sha256": "a1d62f076d31616ae07049daed4de47cd3ea635dda3c2f7f8f0886b0e7990644"
+    },
+    {
+      "id": "BLD-LCK-001",
+      "file": "bld_library_locked.png",
+      "size": [
+        128,
+        128
+      ],
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 1,
+      "pivot": [
+        64,
+        128
+      ],
+      "sha256": "15f0d90456a89d62ca3889be6e78735d1be43b15a2f624b026a9311367d04467"
+    },
+    {
+      "id": "ENV-GRA-001",
+      "file": "env_grass_tiles.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "623897dce0a34873a0ffaa65e0caa14ce56c9e713aff41de25dde30f4f8ce486"
+    },
+    {
+      "id": "ENV-DIR-001",
+      "file": "env_dirt_tile.png",
+      "size": [
+        32,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "b2c9f27ea39bb5742360db02d1a1334dbbdb2bf43a27359aa6a84e04346303b3"
+    },
+    {
+      "id": "ENV-PTH-001",
+      "file": "env_path_tiles.png",
+      "size": [
+        96,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 3,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "b7ddef97ee89490b4bb488745a83adba336cf2f8aa7bc33e19da9fdb09c70abc"
+    },
+    {
+      "id": "ENV-TRE-001",
+      "file": "env_tree_variants.png",
+      "size": [
+        128,
+        96
+      ],
+      "cell": [
+        64,
+        96
+      ],
+      "frames": 2,
+      "pivot": [
+        32,
+        96
+      ],
+      "sha256": "5b00b0259d52b4ce7f00b4a1c7f25ec767a1517c8dd7fa3ab9b82983cf144885"
+    },
+    {
+      "id": "ENV-BUS-001",
+      "file": "env_bush_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "6e9c658fafa1d945a807837225e5d1c902ed422aff7454ea0ef3e93d23cf72fd"
+    },
+    {
+      "id": "ENV-FLW-001",
+      "file": "env_flower_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "1dee64c5cb12ae2b4c95df81f720dea16810e988987d8d121d89e30a8f8c3893"
+    },
+    {
+      "id": "ENV-FEN-001",
+      "file": "env_fence_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "7592b156a01d6105975644a0f8b50b96bf980955e3cf62d0c47170a03e103b1d"
+    },
+    {
+      "id": "ENV-ROC-001",
+      "file": "env_rock_variants.png",
+      "size": [
+        64,
+        32
+      ],
+      "cell": [
+        32,
+        32
+      ],
+      "frames": 2,
+      "pivot": [
+        16,
+        32
+      ],
+      "sha256": "4ff1b785dc5ead5f281287b39211bfa173228da0b5f86d1e0fc7fc840dcae7d6"
+    }
+  ],
+  "runtimeCatalogSha256": "ad43a01f5a7c32e25bc95b13ab864d8702eab7702a8d291b635957302a6509ef",
+  "probeSha256": "274ef7e0a417bcf380d91c59d0b036ad553e7f516e440a65fec64e6655336a4c",
+  "layoutProposal": "Approved Town runtime unchanged; five NPC sheets only in isolated fixture",
+  "candidateClips": [
+    {
+      "id": "CHR-NOA-001",
+      "file": "chr_noah_idle.png",
+      "frames": 4,
+      "fps": 2,
+      "loop": true,
+      "cell": [
+        48,
+        48
+      ],
+      "size": [
+        192,
+        48
+      ],
+      "source": "docs/art/reviews/2026-10-12/npc-v1/sources/noah-idle.png",
+      "sourceSha256": "1f1e6c167e582cab44e3bf757fb82f3dcdecf09d44bdb9d8dfd5c53f191d54d4",
+      "sha256": "7ccfc323b6fe0946e24e46c14aeddc755894e7554e4279a5d43efa0a020ea6ef",
+      "details": [
+        {
+          "frame": 0,
+          "sourceCell": [
+            0,
+            0,
+            543,
+            724
+          ],
+          "sourceBounds": [
+            194,
+            115,
+            411,
+            671
+          ],
+          "scale": 0.07194244604316546,
+          "destination": [
+            16,
+            5
+          ],
+          "bounds": [
+            16,
+            5,
+            32,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "4481163c9c3b18891eeb3cb5a4ac89b83e6d55aa165209a5d454c92412c8d5db"
+        },
+        {
+          "frame": 1,
+          "sourceCell": [
+            543,
+            0,
+            1086,
+            724
+          ],
+          "sourceBounds": [
+            149,
+            114,
+            366,
+            671
+          ],
+          "scale": 0.07194244604316546,
+          "destination": [
+            16,
+            5
+          ],
+          "bounds": [
+            16,
+            5,
+            32,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "52fcc2f4e0a6d71132210a931210dd32942efee3c688861c502956ac031ce8ea"
+        },
+        {
+          "frame": 2,
+          "sourceCell": [
+            1086,
+            0,
+            1629,
+            724
+          ],
+          "sourceBounds": [
+            149,
+            114,
+            366,
+            671
+          ],
+          "scale": 0.07194244604316546,
+          "destination": [
+            16,
+            5
+          ],
+          "bounds": [
+            16,
+            5,
+            32,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "306e49d88198ce7a7721aca0d14410d1d00ef6e8679a9e36b60ec83f082675a0"
+        },
+        {
+          "frame": 3,
+          "sourceCell": [
+            1629,
+            0,
+            2172,
+            724
+          ],
+          "sourceBounds": [
+            149,
+            115,
+            366,
+            671
+          ],
+          "scale": 0.07194244604316546,
+          "destination": [
+            16,
+            5
+          ],
+          "bounds": [
+            16,
+            5,
+            32,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "a6c1145deeb822481852c3180527c36cdc850087b2286d15117f92a782ea2c54"
+        }
+      ]
+    },
+    {
+      "id": "CHR-NOA-002",
+      "file": "chr_noah_walk.png",
+      "frames": 6,
+      "fps": 8,
+      "loop": true,
+      "cell": [
+        48,
+        48
+      ],
+      "size": [
+        288,
+        48
+      ],
+      "source": "docs/art/reviews/2026-10-12/npc-v1/sources/noah-walk.png",
+      "sourceSha256": "97968e6461c90b20347f475cfe93f6b72a1eea59e0170845e85d037107ab47fb",
+      "sha256": "8afe5cfc38ef3941ba8a8776735a8e730215993c6b7812277db5509df8436dd9",
+      "details": [
+        {
+          "frame": 0,
+          "sourceCell": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "sourceBounds": [
+            148,
+            77,
+            368,
+            497
+          ],
+          "scale": 0.09523809523809523,
+          "destination": [
+            13,
+            5
+          ],
+          "bounds": [
+            13,
+            5,
+            34,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "ab3410eba89ec9bf54b2ea6b9ae02ab24bf221b4fd341ca17301c709df7e8a65"
+        },
+        {
+          "frame": 1,
+          "sourceCell": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "sourceBounds": [
+            170,
+            80,
+            353,
+            497
+          ],
+          "scale": 0.09523809523809523,
+          "destination": [
+            15,
+            5
+          ],
+          "bounds": [
+            15,
+            5,
+            32,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 2,
+          "pixelSha256": "94dda68372419a5f420cae09515f5af1496b4170f726392dc680b296dc4196ab"
+        },
+        {
+          "frame": 2,
+          "sourceCell": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "sourceBounds": [
+            158,
+            77,
+            375,
+            497
+          ],
+          "scale": 0.09523809523809523,
+          "destination": [
+            13,
+            5
+          ],
+          "bounds": [
+            13,
+            5,
+            34,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "fedea2ffb6cfc6410a3bebc98cc840f9f597daaae92a357b32b23e978bfce49a"
+        },
+        {
+          "frame": 3,
+          "sourceCell": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "sourceBounds": [
+            139,
+            35,
+            368,
+            452
+          ],
+          "scale": 0.09523809523809523,
+          "destination": [
+            12,
+            5
+          ],
+          "bounds": [
+            12,
+            5,
+            34,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 1,
+          "pixelSha256": "1754a6155b4413b6ddaa6f8a5a123cbed418ba224352e07747ac070e71c7ae0c"
+        },
+        {
+          "frame": 4,
+          "sourceCell": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "sourceBounds": [
+            158,
+            32,
+            348,
+            454
+          ],
+          "scale": 0.09523809523809523,
+          "destination": [
+            15,
+            5
+          ],
+          "bounds": [
+            15,
+            5,
+            33,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 1,
+          "pixelSha256": "aae5bb0f6abec9a359952c4b10c348a30bd6021b6c9ef64f022d6b78c8573774"
+        },
+        {
+          "frame": 5,
+          "sourceCell": [
+            1024,
+            512,
+            1536,
+            1024
+          ],
+          "sourceBounds": [
+            158,
+            36,
+            388,
+            454
+          ],
+          "scale": 0.09523809523809523,
+          "destination": [
+            13,
+            5
+          ],
+          "bounds": [
+            13,
+            5,
+            35,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "fb7c648d82af1ad046931c47d67a25545e47e6a3f28d78ea24a5478fc5a66629"
+        }
+      ]
+    },
+    {
+      "id": "CHR-NOA-003",
+      "file": "chr_noah_read.png",
+      "frames": 4,
+      "fps": 2,
+      "loop": true,
+      "cell": [
+        48,
+        48
+      ],
+      "size": [
+        192,
+        48
+      ],
+      "source": "docs/art/reviews/2026-10-12/npc-v1/sources/noah-read.png",
+      "sourceSha256": "596efa634490182eb6d51c523f8b81ab1870847ec28bd0d5a43568258be45caa",
+      "sha256": "69aa7415e1f9471dcf892a9f8361b7b2e39063b146705431ac91d2ae07c691c0",
+      "details": [
+        {
+          "frame": 0,
+          "sourceCell": [
+            0,
+            0,
+            543,
+            724
+          ],
+          "sourceBounds": [
+            159,
+            111,
+            400,
+            671
+          ],
+          "scale": 0.07142857142857142,
+          "destination": [
+            16,
+            5
+          ],
+          "bounds": [
+            16,
+            5,
+            33,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 1,
+          "pixelSha256": "b1d14dcea977f37e5b083b1e90a11e0ce1a3f652d01e8414659af156f1cf727e"
+        },
+        {
+          "frame": 1,
+          "sourceCell": [
+            543,
+            0,
+            1086,
+            724
+          ],
+          "sourceBounds": [
+            145,
+            112,
+            384,
+            671
+          ],
+          "scale": 0.07142857142857142,
+          "destination": [
+            16,
+            5
+          ],
+          "bounds": [
+            16,
+            5,
+            33,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "87338d082207eb1a9ba68dcbfe147eec4b075d95f1ed15a903b059520862349c"
+        },
+        {
+          "frame": 2,
+          "sourceCell": [
+            1086,
+            0,
+            1629,
+            724
+          ],
+          "sourceBounds": [
+            128,
+            112,
+            394,
+            671
+          ],
+          "scale": 0.07142857142857142,
+          "destination": [
+            16,
+            5
+          ],
+          "bounds": [
+            16,
+            5,
+            35,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 1,
+          "pixelSha256": "3a72e31eb22bebaf1ce0455b728b632148946a99871f5109014394bcfadb46dc"
+        },
+        {
+          "frame": 3,
+          "sourceCell": [
+            1629,
+            0,
+            2172,
+            724
+          ],
+          "sourceBounds": [
+            136,
+            111,
+            377,
+            671
+          ],
+          "scale": 0.07142857142857142,
+          "destination": [
+            16,
+            5
+          ],
+          "bounds": [
+            16,
+            5,
+            33,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "aa26c7d81597a89dbc535773bd6ca2080f80d443119fe275820557491ede0a4f"
+        }
+      ]
+    },
+    {
+      "id": "CHR-RUM-001",
+      "file": "chr_rumi_idle.png",
+      "frames": 4,
+      "fps": 2,
+      "loop": true,
+      "cell": [
+        48,
+        48
+      ],
+      "size": [
+        192,
+        48
+      ],
+      "source": "docs/art/reviews/2026-10-12/npc-v1/sources/rumi-idle.png",
+      "sourceSha256": "ad9f6e976709702d723a82a444044fc993bc65747373383c8e8f670e3c72d30e",
+      "sha256": "996d948785ed61d322fab0a7a8bd50d5b6b3086cbfc2282bc5586ffd030b2c89",
+      "details": [
+        {
+          "frame": 0,
+          "sourceCell": [
+            0,
+            0,
+            543,
+            724
+          ],
+          "sourceBounds": [
+            304,
+            84,
+            543,
+            657
+          ],
+          "scale": 0.06631762652705062,
+          "destination": [
+            16,
+            7
+          ],
+          "bounds": [
+            16,
+            7,
+            32,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "464ff658776f86e01625a4906066e8c2b7ee02e7f993e339ac2f2eb751652c5d"
+        },
+        {
+          "frame": 1,
+          "sourceCell": [
+            543,
+            0,
+            1086,
+            724
+          ],
+          "sourceBounds": [
+            0,
+            84,
+            441,
+            657
+          ],
+          "scale": 0.06631762652705062,
+          "destination": [
+            10,
+            7
+          ],
+          "bounds": [
+            10,
+            7,
+            39,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "84ebf091d2a54584606a9b7042a685fda7a7d33dac0ca5cf5feca5480053dfd4"
+        },
+        {
+          "frame": 2,
+          "sourceCell": [
+            1086,
+            0,
+            1629,
+            724
+          ],
+          "sourceBounds": [
+            73,
+            84,
+            543,
+            657
+          ],
+          "scale": 0.06631762652705062,
+          "destination": [
+            8,
+            7
+          ],
+          "bounds": [
+            8,
+            7,
+            39,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "f61da4131383e757ae2ff3bbc588688fa1c117de2bee2c9f9031c7afab235034"
+        },
+        {
+          "frame": 3,
+          "sourceCell": [
+            1629,
+            0,
+            2172,
+            724
+          ],
+          "sourceBounds": [
+            0,
+            84,
+            236,
+            657
+          ],
+          "scale": 0.06631762652705062,
+          "destination": [
+            16,
+            7
+          ],
+          "bounds": [
+            16,
+            7,
+            32,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "dc8adf6a20a34433b2e74e1ba371e12fc20c3dc8ddda3b8da54852b0afc628e8"
+        }
+      ]
+    },
+    {
+      "id": "CHR-RUM-002",
+      "file": "chr_rumi_walk.png",
+      "frames": 6,
+      "fps": 8,
+      "loop": true,
+      "cell": [
+        48,
+        48
+      ],
+      "size": [
+        288,
+        48
+      ],
+      "source": "docs/art/reviews/2026-10-12/npc-v1/sources/rumi-walk.png",
+      "sourceSha256": "8d45a6aa519293944233fb674c944814d2b027b147f632415c49b1fc3ce6436e",
+      "sha256": "979cfd88ac1acfaeea0f7c6a61d9a2242bcfb862ddcb86db5c239346066da4f1",
+      "details": [
+        {
+          "frame": 0,
+          "sourceCell": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "sourceBounds": [
+            169,
+            26,
+            399,
+            504
+          ],
+          "scale": 0.0794979079497908,
+          "destination": [
+            15,
+            7
+          ],
+          "bounds": [
+            15,
+            7,
+            33,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "7f565f65df1c37348f83b8e916286db90dc4930fbf25b5d9d343eaec4f94f08b"
+        },
+        {
+          "frame": 1,
+          "sourceCell": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "sourceBounds": [
+            140,
+            26,
+            368,
+            504
+          ],
+          "scale": 0.0794979079497908,
+          "destination": [
+            15,
+            7
+          ],
+          "bounds": [
+            15,
+            7,
+            33,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "f1b87d9b897520da2f19a98994ff80fbd8612e6d5a2cd3f79efa137ca9a1394f"
+        },
+        {
+          "frame": 2,
+          "sourceCell": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "sourceBounds": [
+            106,
+            26,
+            337,
+            506
+          ],
+          "scale": 0.0794979079497908,
+          "destination": [
+            15,
+            7
+          ],
+          "bounds": [
+            15,
+            7,
+            33,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "3bedcc617aa6307a81ea16f5b54a0df038e94a31dbbb994278c9fa453db4b6af"
+        },
+        {
+          "frame": 3,
+          "sourceCell": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "sourceBounds": [
+            166,
+            20,
+            408,
+            492
+          ],
+          "scale": 0.0794979079497908,
+          "destination": [
+            15,
+            7
+          ],
+          "bounds": [
+            15,
+            7,
+            34,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "f8fbde0c25105f97ad361661c45225e4a75fd71aba0befb3e79dfe20da8de2f5"
+        },
+        {
+          "frame": 4,
+          "sourceCell": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "sourceBounds": [
+            137,
+            21,
+            368,
+            492
+          ],
+          "scale": 0.0794979079497908,
+          "destination": [
+            15,
+            8
+          ],
+          "bounds": [
+            15,
+            8,
+            33,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "67958e4c840f10601c0e5a4ded60b60faa8da0c3c174fcf22e92cfa02c379565"
+        },
+        {
+          "frame": 5,
+          "sourceCell": [
+            1024,
+            512,
+            1536,
+            1024
+          ],
+          "sourceBounds": [
+            103,
+            20,
+            340,
+            492
+          ],
+          "scale": 0.0794979079497908,
+          "destination": [
+            15,
+            7
+          ],
+          "bounds": [
+            15,
+            7,
+            34,
+            45
+          ],
+          "footRow": 44,
+          "isolatedSpecksRemoved": 0,
+          "pixelSha256": "e78d90558717f7feb3f8d2eecd25b6cfc44a37aa8b66d1e34a5ba3c9ba4919f9"
+        }
+      ]
+    }
+  ]
+}

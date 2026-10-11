@@ -1,0 +1,78 @@
+// Review-only: candidate frames and actual Town NPC idle/read bindings. No AppRoot/saves.
+using DeskTown.Domain.Focus;
+using DeskTown.Domain.Projects;
+using DeskTown.Domain.Simulation;
+using DeskTown.Presentation.Display;
+using global::Godot;
+using System.Text.Json;
+
+namespace DeskTown.Presentation.Bootstrap;
+public partial class NpcArtReview : Node
+{
+    private readonly List<string> _captures = new();
+    private static void Require(bool value,string message) { if(!value) throw new InvalidOperationException(message); }
+    public override void _Ready() => Callable.From(()=>{_=Run();}).CallDeferred();
+    private async Task Run()
+    {
+        try
+        {
+            GetWindow().Unfocusable=true;
+            Require(Path.GetFileName(OS.GetUserDataDir()).StartsWith("DeskTownArtReview-"),"User directory not isolated");
+            var output=ProjectSettings.GlobalizePath("res://../captures");Directory.CreateDirectory(output);
+            foreach(var (clip,id,count) in new[]{("noah-idle","CHR-NOA-001",4),("noah-walk","CHR-NOA-002",6),
+                ("noah-read","CHR-NOA-003",4),("rumi-idle","CHR-RUM-001",4),("rumi-walk","CHR-RUM-002",6)})
+            {
+                Require(VisualAssetCatalog.Frame(id,count) is null,"Out-of-range NPC frame");
+                foreach(var scale in new[]{75,100,125,150})
+                    for(var frame=0;frame<count;frame++)
+                    {
+                        var viewport=ViewportAt(160,128,scale);
+                        var source=VisualAssetCatalog.Frame(id,frame)!.Value;
+                        var sprite=new Sprite2D {Texture=source.Sheet,RegionEnabled=true,RegionRect=source.Source,
+                            Centered=false,Position=new Vector2(32,16),Scale=new Vector2(2,2),
+                            TextureFilter=CanvasItem.TextureFilterEnum.Nearest};viewport.AddChild(sprite);
+                        await Save(viewport,output,$"{clip}-{scale}-f{frame:00}.png");
+                    }
+            }
+            foreach(var state in Enum.GetValues<WorkshopState>())
+                foreach(var reading in new[]{false,true})
+                    foreach(var scale in new[]{75,100,125,150})
+                    {
+                        var viewport=ViewportAt(1280,720,scale);
+                        var town=GD.Load<PackedScene>("res://scenes/town/TownScene.tscn").Instantiate<TownScene>();
+                        town.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);town.Size=new Vector2(1280,720);viewport.AddChild(town);
+                        foreach(var timer in town.GetChildren().OfType<global::Godot.Timer>()) timer.Stop();
+                        var elapsed=TimeSpan.FromMinutes(state==WorkshopState.Broken?0:state==WorkshopState.Repairing?10:25);
+                        var simulation=TownSimulation.Create();
+                        simulation.AdvanceTo(elapsed,FocusEnergy.FromCountedDuration(elapsed),state==WorkshopState.Repairing?FocusSessionStatus.Running:null,TimeSpan.Zero);
+                        if(state==WorkshopState.Complete)simulation.RevealWorkshopCompletion();
+                        town.Bind(simulation.Snapshot.Town,elapsed);town.BindAmbient(TimeSpan.Zero);
+                        town.GetNode<MinaPlaceholderView>("World/MinaView").SetProcess(false);
+                        var noah=town.GetNode<TownNpcPlaceholderView>("World/NoahView");noah.SetReading(reading);noah.SetProcess(false);
+                        town.GetNode<TownNpcPlaceholderView>("World/RumiView").SetProcess(false);
+                        await Save(viewport,output,$"town-{state.ToString().ToLowerInvariant()}-{(reading?"read":"idle")}-{scale}.png");
+                    }
+            File.WriteAllText(Path.Combine(output,"result.json"),JsonSerializer.Serialize(new {
+                success=true,reviewOnly=true,nativeInputQa=false,engine=Engine.GetVersionInfo()["string"].AsString(),
+                renderer=RenderingServer.GetVideoAdapterName(),captures=_captures,
+                limits="Walk sheets rendered in isolation; runtime ambient movement and clip selection unchanged. Effects/UI are unfinished."
+            },new JsonSerializerOptions {WriteIndented=true}));
+            GD.Print("DESKTOWN_NPC_REVIEW_OK");GetTree().Quit();
+        }
+        catch(Exception error) {GD.PrintErr(error.ToString());GetTree().Quit(1);}
+    }
+    private SubViewport ViewportAt(int width,int height,int scale)
+    {
+        var viewport=new SubViewport {Size=new Vector2I(width*scale/100,height*scale/100),
+            Size2DOverride=new Vector2I(width,height),Size2DOverrideStretch=true,
+            TransparentBg=width==160,RenderTargetUpdateMode=SubViewport.UpdateMode.Always,
+            CanvasItemDefaultTextureFilter=Viewport.DefaultCanvasItemTextureFilter.Nearest};AddChild(viewport);return viewport;
+    }
+    private async Task Save(SubViewport viewport,string output,string name)
+    {
+        await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
+        await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
+        Require(viewport.GetTexture().GetImage().SavePng(Path.Combine(output,name))==Error.Ok,"Save failed");
+        _captures.Add(name);viewport.QueueFree();await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+    }
+}

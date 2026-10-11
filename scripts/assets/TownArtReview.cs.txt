@@ -11,6 +11,7 @@ namespace DeskTown.Presentation.Bootstrap;
 public partial class TownArtReview : Node
 {
     private readonly List<string> _captures = new();
+    private bool RuntimeCatalog => OS.GetEnvironment("DESKTOWN_ART_REVIEW_RUNTIME_CATALOG") == "1";
     private static void Require(bool value, string message)
     { if (!value) throw new InvalidOperationException(message); }
     public override void _Ready() => Callable.From(() => { _ = Run(); }).CallDeferred();
@@ -35,7 +36,7 @@ public partial class TownArtReview : Node
             }
             foreach (var state in Enum.GetValues<WorkshopState>())
             {
-                await Capture(output, state, 100, false);
+                if (!RuntimeCatalog) await Capture(output, state, 100, false);
                 foreach (var percent in new[] {75,100,125,150})
                     await Capture(output, state, percent, true);
             }
@@ -44,7 +45,8 @@ public partial class TownArtReview : Node
                 renderer=RenderingServer.GetVideoAdapterName(), captures=_captures,
                 reviewOnly=true, nativeInputQa=false, stateBindings=3,
                 layouts=new[]{"existing scene coordinates", "proposed 640x360 world at 2x; original HUD"},
-                limits="Noah/Rumi and campfire remain geometric; NPC/UI/effects are next art work. No runtime delivery assignment."
+                runtimeCatalog=RuntimeCatalog,
+                limits="Noah/Rumi and campfire remain geometric; NPC/UI/effects are next art work."
             }, new JsonSerializerOptions { WriteIndented=true }));
             GD.Print("DESKTOWN_TOWN_REVIEW_OK");
             GetTree().Quit();
@@ -68,7 +70,9 @@ public partial class TownArtReview : Node
         var simulation=TownSimulation.Create();
         var minutes=state==WorkshopState.Broken ? 0 : state==WorkshopState.Repairing ? 10 : 25;
         var elapsed=TimeSpan.FromMinutes(minutes);
-        simulation.AdvanceTo(elapsed,FocusEnergy.FromCountedDuration(elapsed),null,TimeSpan.Zero);
+        simulation.AdvanceTo(elapsed,FocusEnergy.FromCountedDuration(elapsed),
+            RuntimeCatalog && state == WorkshopState.Repairing ? FocusSessionStatus.Running : null,TimeSpan.Zero);
+        if (RuntimeCatalog && state == WorkshopState.Complete) simulation.RevealWorkshopCompletion();
         town.Bind(simulation.Snapshot.Town,elapsed, state);
         var mina=town.GetNode<MinaPlaceholderView>("World/MinaView");
         mina.Play(new MinaPresentationIntent(state==WorkshopState.Broken ? MinaAnimationClip.Idle :
@@ -76,7 +80,15 @@ public partial class TownArtReview : Node
         mina.SetProcess(false);
         town.GetNode<TownNpcPlaceholderView>("World/NoahView").SetProcess(false);
         town.GetNode<TownNpcPlaceholderView>("World/RumiView").SetProcess(false);
-        if(proposed) ApplyProposal(town, state);
+        if (RuntimeCatalog)
+        {
+            // Legacy comparison snapshots predate the deterministic ambient binding.
+            var method = typeof(TownScene).GetMethod("BindAmbient",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            Require(method is not null,"Runtime ambient binding missing");
+            method!.Invoke(town,new object[]{TimeSpan.Zero});
+        }
+        else if(proposed) ApplyProposal(town, state);
         var frame=VisualAssetCatalog.Frame("BLD-WRK-001",(int)state)!.Value;
         var workshop=town.GetNode<ColorRect>("World/Workshop");
         var art=workshop.GetNode<Sprite2D>("CatalogArt");

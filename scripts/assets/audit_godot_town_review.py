@@ -19,13 +19,18 @@ def audit(review):
     assert sha(ROOT/'assets/catalogs/asset_catalog.json')==preparation['runtimeCatalogSha256']
     assert sha(review/'project/src/DeskTown.Godot/Bootstrap/TownArtReview.cs')==preparation['probeSha256']
     sheets={}
+    runtime=preparation.get('runtimeCatalog',False)
+    for relative,digest in preparation.get('runtimeWorkingTreeFiles',{}).items():
+        assert sha(review/'project'/relative)==digest,relative
     for row in preparation['candidateAssets']:
-        path=review/'project/assets/art/town-review-only'/row['file']
+        path=review/'project/assets/art'/('' if runtime else 'town-review-only')/row['file']
         assert sha(path)==row['sha256'],row['id']
         sheets[row['id']]=Image.open(path).convert('RGBA')
     expected={f'existing-{state}-100.png':(1280,720) for state in ('broken','repairing','complete')}
     expected.update({f'proposed-{state}-{scale}.png':(1280*scale//100,720*scale//100)
         for state in ('broken','repairing','complete') for scale in (75,100,125,150)})
+    if runtime:
+        expected={name:size for name,size in expected.items() if name.startswith('proposed-')}
     assert set(result['captures'])==set(expected)
     hashes={}
     checked=0
@@ -61,10 +66,16 @@ def audit(review):
                         checked+=1
     assert len({hashes[f'proposed-{state}-100.png'] for state in ('broken','repairing','complete')})==3
     report={'success':True,'reviewOnly':True,'sourceRevision':preparation['sourceRevision'],
-        'engine':result['engine'],'renderer':result['renderer'],'captures':15,'candidateSheets':11,
+        'engine':result['engine'],'renderer':result['renderer'],'captures':len(expected),'candidateSheets':11,
+        'runtimeCatalog':runtime,
         'nearestBuildingAndTerrainPixelsChecked':checked,'mainCatalogUnchanged':True,
         'candidateSourceHashesPreserved':True,'probeHashPreserved':True,'sha256':hashes,
         'limits':'Partial unoccluded pixel checks plus visual review. No native window/DPI/input QA or production assignment.'}
+    if runtime:
+        approved=ROOT/'docs/art/reviews/2026-10-12/town-complete-v1/godot-v1/captures'
+        report['approvedRenderBytesMatch']=all((approved/name).read_bytes()==(review/'captures'/name).read_bytes() for name in expected)
+        assert report['approvedRenderBytesMatch'],'Runtime render differs from approved review'
+        report['limits']='Approved Town runtime art and layout; NPC/effects/UI unfinished. No native input/DPI QA.'
     (review/'verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({k:v for k,v in report.items() if k!='sha256'},ensure_ascii=True))
 

@@ -31,22 +31,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+scale = Vector2(2, 2)
 
 [node name="Path" type="ColorRect" parent="World"]
 layout_mode = 0
-offset_left = 95.0
-offset_top = 502.0
-offset_right = 1165.0
-offset_bottom = 548.0
+offset_left = 16.0
+offset_top = 264.0
+offset_right = 640.0
+offset_bottom = 296.0
 mouse_filter = 2
 color = Color(0.635294, 0.556863, 0.435294, 1)
 
 [node name="House" type="ColorRect" parent="World"]
 layout_mode = 0
-offset_left = 228.0
-offset_top = 278.0
-offset_right = 414.0
-offset_bottom = 447.0
+offset_left = 104.0
+offset_top = 111.0
+offset_right = 232.0
+offset_bottom = 239.0
 mouse_filter = 2
 color = Color(0.74902, 0.603922, 0.466667, 1)
 
@@ -60,10 +61,10 @@ text = "House"
 
 [node name="Workshop" type="ColorRect" parent="World"]
 layout_mode = 0
-offset_left = 744.0
-offset_top = 272.0
-offset_right = 1008.0
-offset_bottom = 452.0
+offset_left = 365.0
+offset_top = 111.0
+offset_right = 525.0
+offset_bottom = 239.0
 mouse_filter = 2
 color = Color(0.501961, 0.435294, 0.4, 1)
 
@@ -77,10 +78,10 @@ text = "Broken Workshop"
 
 [node name="LockedArea" type="ColorRect" parent="World"]
 layout_mode = 0
-offset_left = 1015.0
-offset_top = 120.0
-offset_right = 1175.0
-offset_bottom = 245.0
+offset_left = 489.0
+offset_top = 14.0
+offset_right = 617.0
+offset_bottom = 142.0
 mouse_filter = 2
 color = Color(0.333333, 0.384314, 0.352941, 1)
 
@@ -94,23 +95,24 @@ text = "Locked Library"
 
 [node name="Tree" type="ColorRect" parent="World"]
 layout_mode = 0
-offset_left = 99.0
-offset_top = 170.0
-offset_right = 160.0
-offset_bottom = 330.0
+offset_left = 28.0
+offset_top = 78.0
+offset_right = 92.0
+offset_bottom = 174.0
 mouse_filter = 2
 color = Color(0.176471, 0.321569, 0.258824, 1)
 
 [node name="Campfire" type="ColorRect" parent="World"]
 layout_mode = 0
-offset_left = 590.0
-offset_top = 565.0
-offset_right = 615.0
-offset_bottom = 599.0
+offset_left = 316.0
+offset_top = 294.0
+offset_right = 341.0
+offset_bottom = 328.0
 mouse_filter = 2
 color = Color(0.921569, 0.560784, 0.317647, 1)
 
 [node name="Mina" type="Label" parent="World"]
+visible = false
 layout_mode = 0
 offset_left = 680.0
 offset_top = 458.0
@@ -123,6 +125,7 @@ position = Vector2(680, 415)
 script = ExtResource("2_mina")
 
 [node name="Noah" type="Label" parent="World"]
+visible = false
 layout_mode = 0
 offset_left = 510.0
 offset_top = 461.0
@@ -135,6 +138,7 @@ position = Vector2(510, 418)
 script = ExtResource("3_npc")
 
 [node name="Rumi" type="Label" parent="World"]
+visible = false
 layout_mode = 0
 offset_left = 370.0
 offset_top = 567.0

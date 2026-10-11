@@ -375,10 +375,21 @@
         128,
         128
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/bld_house.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved repository Python pixel preparation",
+        "license": "AI-generated output; user approved Town delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/town-complete-v1/prepared-v2/bld_house.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "c08a25b0ebc2fdda69c91a1ac5ef4e49336c4d2a261d24ced2ca1dfe3534bb47",
+        "approval": "A: Town 아트·납품·2배 배치 승인 — 적용 후 나머지 제작"
+      },
+      "pivot": [
+        64,
+        128
+      ],
       "events": [],
       "alpha": true
     },
@@ -400,10 +411,21 @@
         160,
         128
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/bld_workshop_states.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved repository Python pixel preparation",
+        "license": "AI-generated output; user approved Town delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/town-complete-v1/prepared-v2/bld_workshop_states.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "a1d62f076d31616ae07049daed4de47cd3ea635dda3c2f7f8f0886b0e7990644",
+        "approval": "A: Town 아트·납품·2배 배치 승인 — 적용 후 나머지 제작"
+      },
+      "pivot": [
+        80,
+        128
+      ],
       "events": [],
       "alpha": true
     },
@@ -425,10 +447,21 @@
         128,
         128
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/bld_library_locked.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved repository Python pixel preparation",
+        "license": "AI-generated output; user approved Town delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/town-complete-v1/prepared-v2/bld_library_locked.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "15f0d90456a89d62ca3889be6e78735d1be43b15a2f624b026a9311367d04467",
+        "approval": "A: Town 아트·납품·2배 배치 승인 — 적용 후 나머지 제작"
+      },
+      "pivot": [
+        64,
+        128
+      ],
       "events": [],
       "alpha": true
     },
@@ -450,10 +483,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/env_grass_tiles.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved repository Python pixel preparation",
+        "license": "AI-generated output; user approved Town delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/town-complete-v1/prepared-v2/env_grass_tiles.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "623897dce0a34873a0ffaa65e0caa14ce56c9e713aff41de25dde30f4f8ce486",
+        "approval": "A: Town 아트·납품·2배 배치 승인 — 적용 후 나머지 제작"
+      },
+      "pivot": [
+        16,
+        32
+      ],
       "events": [],
       "alpha": false
     },
@@ -475,10 +519,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/env_dirt_tile.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved repository Python pixel preparation",
+        "license": "AI-generated output; user approved Town delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/town-complete-v1/prepared-v2/env_dirt_tile.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "b2c9f27ea39bb5742360db02d1a1334dbbdb2bf43a27359aa6a84e04346303b3",
+        "approval": "A: Town 아트·납품·2배 배치 승인 — 적용 후 나머지 제작"
+      },
+      "pivot": [
+        16,
+        32
+      ],
       "events": [],
       "alpha": false
     },
@@ -500,10 +555,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/env_path_tiles.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved repository Python pixel preparation",
+        "license": "AI-generated output; user approved Town delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/town-complete-v1/prepared-v2/env_path_tiles.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "b7ddef97ee89490b4bb488745a83adba336cf2f8aa7bc33e19da9fdb09c70abc",
+        "approval": "A: Town 아트·납품·2배 배치 승인 — 적용 후 나머지 제작"
+      },
+      "pivot": [
+        16,
+        32
+      ],
       "events": [],
       "alpha": true
     },
@@ -525,10 +591,21 @@
         64,
         96
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/env_tree_variants.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved repository Python pixel preparation",
+        "license": "AI-generated output; user approved Town delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/town-complete-v1/prepared-v2/env_tree_variants.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "5b00b0259d52b4ce7f00b4a1c7f25ec767a1517c8dd7fa3ab9b82983cf144885",
+        "approval": "A: Town 아트·납품·2배 배치 승인 — 적용 후 나머지 제작"
+      },
+      "pivot": [
+        32,
+        96
+      ],
       "events": [],
       "alpha": true
     },
@@ -550,10 +627,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/env_bush_variants.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved repository Python pixel preparation",
+        "license": "AI-generated output; user approved Town delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/town-complete-v1/prepared-v2/env_bush_variants.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "6e9c658fafa1d945a807837225e5d1c902ed422aff7454ea0ef3e93d23cf72fd",
+        "approval": "A: Town 아트·납품·2배 배치 승인 — 적용 후 나머지 제작"
+      },
+      "pivot": [
+        16,
+        32
+      ],
       "events": [],
       "alpha": true
     },
@@ -575,10 +663,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/env_flower_variants.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved repository Python pixel preparation",
+        "license": "AI-generated output; user approved Town delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/town-complete-v1/prepared-v2/env_flower_variants.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "1dee64c5cb12ae2b4c95df81f720dea16810e988987d8d121d89e30a8f8c3893",
+        "approval": "A: Town 아트·납품·2배 배치 승인 — 적용 후 나머지 제작"
+      },
+      "pivot": [
+        16,
+        32
+      ],
       "events": [],
       "alpha": true
     },
@@ -600,10 +699,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/env_fence_variants.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved repository Python pixel preparation",
+        "license": "AI-generated output; user approved Town delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/town-complete-v1/prepared-v2/env_fence_variants.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "7592b156a01d6105975644a0f8b50b96bf980955e3cf62d0c47170a03e103b1d",
+        "approval": "A: Town 아트·납품·2배 배치 승인 — 적용 후 나머지 제작"
+      },
+      "pivot": [
+        16,
+        32
+      ],
       "events": [],
       "alpha": true
     },
@@ -625,10 +735,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/env_rock_variants.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved repository Python pixel preparation",
+        "license": "AI-generated output; user approved Town delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/town-complete-v1/prepared-v2/env_rock_variants.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "4ff1b785dc5ead5f281287b39211bfa173228da0b5f86d1e0fc7fc840dcae7d6",
+        "approval": "A: Town 아트·납품·2배 배치 승인 — 적용 후 나머지 제작"
+      },
+      "pivot": [
+        16,
+        32
+      ],
       "events": [],
       "alpha": true
     },
