@@ -37,7 +37,7 @@ HUD의 `Completed today`는 컴퓨터의 현지 날짜를 기준으로 완료된
 
 ## 재현 가능한 데모 저장 데이터
 
-QA 키트에는 분리된 데모 시나리오 세 개가 들어 있다. 별도 CI 아티팩트 `desktown-demo-saves`에도 같은 샘플이 있다. 생성기는 고정 날짜·세션 ID, 도메인 상태 전이, 실제 저장 코덱을 사용한다. 지정한 UTC 날짜의 샘플은 `dotnet run --project tools/DeskTown.DemoSaves -- <output-dir> <yyyy-MM-dd>`로 생성한다. 날짜를 생략하면 2026-09-25를 사용한다. 압축을 푼 QA 키트에서는 `preflight.ps1` 실행 후 다음 명령을 사용한다.
+QA 키트에는 초기 온보딩 first-launch와 기존 진행 상태를 포함한 분리된 데모 시나리오 네 개가 들어 있다. Start-QA.cmd로 시작한 이름 있는 분리 세션은 재실행 시 저장을 유지하므로 사용자 Focus·복구 QA에 사용할 수 있다. 별도 CI 아티팩트 `desktown-demo-saves`에도 같은 샘플이 있다. 생성기는 고정 날짜·세션 ID, 도메인 상태 전이, 실제 저장 코덱을 사용한다. 지정한 UTC 날짜의 샘플은 `dotnet run --project tools/DeskTown.DemoSaves -- <output-dir> <yyyy-MM-dd>`로 생성한다. 날짜를 생략하면 2026-09-25를 사용한다. 압축을 푼 QA 키트에서는 `preflight.ps1` 실행 후 다음 명령을 사용한다.
 
 ```powershell
 ./launch-demo.ps1 -Scenario workshop-reveal-pending `

@@ -10,7 +10,7 @@ try {
   $env:DESKTOWN_DEMO_SAVE = 'caller-path-must-not-be-used'
   $env:DESKTOWN_CI_SMOKE = '1'
   $env:DESKTOWN_CI_ART_SMOKE = '1'
-  foreach ($scenario in @('workshop-repairing', 'workshop-reveal-pending', 'railway-teaser')) {
+  foreach ($scenario in @('first-launch', 'workshop-repairing', 'workshop-reveal-pending', 'railway-teaser')) {
     $fixture = Join-Path (Join-Path $DemoSaves $scenario) 'save.json'
     $before = (Get-FileHash -LiteralPath $fixture -Algorithm SHA256).Hash
     $output = @(& (Join-Path $PSScriptRoot 'qa/launch-demo.ps1') -Scenario $scenario `
@@ -29,6 +29,19 @@ try {
     }
     Write-Output "Launcher passed: $scenario ($($PSVersionTable.PSVersion))"
   }
+  $sessionName = 'launcher-test-' + [guid]::NewGuid().ToString('N')
+  $sessionPath = Join-Path (Join-Path $PSScriptRoot 'qa/qa-sessions') $sessionName
+  & (Join-Path $PSScriptRoot 'qa/launch-demo.ps1') -Scenario first-launch `
+    -WindowsExport $WindowsExport -DemoSaves $DemoSaves -Headless -SessionName $sessionName
+  $saved = (Get-FileHash -LiteralPath (Join-Path $sessionPath 'save.json')).Hash
+  # A different fixture must not reset the existing session on reopening.
+  & (Join-Path $PSScriptRoot 'qa/launch-demo.ps1') -Scenario railway-teaser `
+    -WindowsExport $WindowsExport -DemoSaves $DemoSaves -Headless -SessionName $sessionName
+  if ((Get-FileHash -LiteralPath (Join-Path $sessionPath 'save.json')).Hash -ne $saved -or
+      @(Get-ChildItem -LiteralPath $sessionPath -Directory -Filter 'run-*').Count -ne 2) {
+    throw 'Named QA session was reset or its launch logs were overwritten.'
+  }
+  Write-Output "Persistent QA session passed: $sessionPath"
 }
 finally {
   $env:DESKTOWN_DEMO_SAVE = $previousDemo

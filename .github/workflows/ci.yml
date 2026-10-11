@@ -303,6 +303,7 @@ jobs:
           New-Item -ItemType Directory -Path $kit | Out-Null
           Copy-Item build/package/* $kit
           Copy-Item scripts/qa/*.ps1 $kit
+          Copy-Item scripts/qa/*.cmd $kit
           Copy-Item scripts/qa/QA-README.md $kit
           Copy-Item docs/qa/WINDOWS_GATE.md $kit
           Copy-Item build/demo-saves (Join-Path $kit 'demo-saves') -Recurse

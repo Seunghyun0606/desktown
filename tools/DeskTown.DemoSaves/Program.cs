@@ -16,6 +16,7 @@ var output = Path.GetFullPath(args[0]);
 
 foreach (var (name, duration, completed, railway) in new[]
 {
+    ("first-launch", TimeSpan.Zero, false, false),
     ("workshop-repairing", TimeSpan.FromMinutes(10), false, false),
     ("workshop-reveal-pending", TimeSpan.FromMinutes(25), true, false),
     ("railway-teaser", TimeSpan.FromMinutes(25), true, true)
@@ -29,7 +30,8 @@ foreach (var (name, duration, completed, railway) in new[]
     if (completed) session.Complete(start + duration);
     else session.Stop(start + duration);
     var ledger = new SessionLedger();
-    if (!ledger.TryRecord(session)) throw new InvalidDataException("Demo ledger rejected a session.");
+    if (duration > TimeSpan.Zero && !ledger.TryRecord(session))
+        throw new InvalidDataException("Demo ledger rejected a session.");
 
     var town = TownSimulation.Create();
     town.AdvanceTo(duration, FocusEnergy.FromCountedDuration(duration), null, TimeSpan.Zero);
@@ -42,10 +44,10 @@ foreach (var (name, duration, completed, railway) in new[]
     var state = town.CaptureCheckpoint();
     var project = ProjectSystem.RestoreWorkshop(state.ProjectProgress, state.LastObservedEnergy);
     var snapshot = new GameStateSnapshot(
-        new SettingsSnapshot("Hidden",
+        new SettingsSnapshot(name == "first-launch" ? "Companion" : "Hidden",
             new WindowPlacementSnapshot("screen:0", "BottomRight", 24, 24),
             new WindowPlacementSnapshot("screen:0", "BottomRight", 48, 48),
-            100, 65, false, true, false),
+            100, 65, name == "first-launch", name != "first-launch", false),
         new FocusSnapshot(ledger, null, []),
         EventSaveMapper.Town(project, state.Events),
         new MinaSnapshot(state.Mina.State.Activity.ToString(),
@@ -56,6 +58,9 @@ foreach (var (name, duration, completed, railway) in new[]
 
     var bytes = JsonSaveCodec.Encode(snapshot, 1, start + duration);
     var restored = JsonSaveCodec.Decode(bytes).Snapshot;
+    if (name == "first-launch" && (restored.Settings.OnboardingCompleted ||
+        restored.Focus.Ledger.Entries.Count != 0 || restored.Player.TotalFocusTicks != 0))
+        throw new InvalidDataException("First-launch fixture is not an empty onboarding state.");
     if (restored.Focus.ActiveCheckpoint is not null ||
         restored.Town.Project.WorkshopState != project.WorkshopState ||
         restored.Town.Project.Progress.CountedDuration != duration ||

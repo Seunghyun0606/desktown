@@ -32,3 +32,4 @@ save.backup.json
 save.tmp
 
 desktown-windows-qa-kit*
+scripts/qa/qa-sessions/
