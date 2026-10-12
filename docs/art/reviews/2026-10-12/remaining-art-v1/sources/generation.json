@@ -1,0 +1,79 @@
+{
+  "tool": "built-in image_gen",
+  "reviewOnly": true,
+  "generations": [
+    {
+      "asset": "smoke",
+      "prompt": "Use case: stylized-concept. Asset type: DeskTown pixel-art animation sprite sheet. Create exactly FOUR consecutive looping frames of gentle Workshop chimney smoke, in one horizontal row of equally wide cells. The reference is the approved smoke style only. Each cell has ample transparent gutters and the SAME fixed origin, size, and emission point at bottom-left. Small curved diagonal cream and muted stone-gray pixel puffs drift towards upper-right; swelling and separation change, not translated duplicate frames. Smooth loop. Fits a 32x32 logical cell at later normalization, large readable pixel clusters. Warm low-contrast palette #635c56 #8d8273 #c6b9a2 #eedcbe #fdf2da. Genuine transparent RGBA background; no chimney, building, text, labels, grid, checkerboard, borders or watermark. Crisp stepped pixel art, matte, no bloom or antialiased haze.",
+      "referenceImages": [
+        "docs/art/reviews/2026-10-11/reward-v1/prepared-v2/smoke-3x.png"
+      ],
+      "originalOutput": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-628ed944-1caa-42f0-a32c-f30f24c3ac2f.png",
+      "savedSource": "smoke.png"
+    },
+    {
+      "asset": "campfire",
+      "prompt": "Use case: stylized-concept. Asset type: pixel-art animation sprite sheet for DeskTown, a calm miniature desktop village. Genuine transparent RGBA background; NO checkerboard, ground, captions, grid lines, numbers, text, borders or watermark. Very crisp pixel clusters, nearest-neighbor look, no bloom, no antialiased haze. Each animation cell must have ample transparent gutters and the SAME fixed origin, visual size and baseline. Frame-to-frame form changes, not translated duplicate frames. Arranged in exactly one horizontal row of equally wide cells. Warm restrained colors and upper-left lighting. No buildings and characters. Exactly FOUR consecutive looping frames of a small cozy campfire, NOT an explosion. The reference village sets color and outline density only. Two crossed dark brown wooden logs remain pixel-identical in bottom quarter across all cells, stable base. Compact muted amber outer flame, pale cream center, gently alternating two lobes with subtly different silhouettes. No flying embers, no dark smoke, no halo. Fits a 32x32 logical cell; small overall form with empty transparent margin. Amber and cream, brown gray logs; understated campfire not bright red inferno.",
+      "referenceImages": [
+        "docs/art/reviews/2026-10-12/town-delivery-v1/captures/proposed-complete-100.png"
+      ],
+      "originalOutput": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-b07de75b-ba1c-4176-a422-dbffb9abf780.png",
+      "savedSource": "campfire.png"
+    },
+    {
+      "asset": "grass",
+      "prompt": "Use case: stylized-concept. Asset type: pixel-art animation sprite sheet for DeskTown, a calm miniature desktop village. Genuine transparent RGBA background; NO checkerboard, ground, captions, grid lines, numbers, text, borders or watermark. Very crisp pixel clusters, nearest-neighbor look, no bloom, no antialiased haze. Each animation cell must have ample transparent gutters and the SAME fixed origin, visual size and baseline. Frame-to-frame form changes, not translated duplicate frames. Arranged in exactly one horizontal row of equally wide cells. Warm restrained colors and upper-left lighting. No buildings and characters. Exactly TWO looping frames of one tiny tuft of 5 grass blades, for barely perceptible breeze. Color and pixel style from muted olive grass in reference village. Fixed root at identical bottom-center in both cells. First calm upright slight left lean; second slight right lean by about 1 or 2 logical pixels at blade tips. No roots moved. No dirt tile or opaque rectangular background, NO character or sparkles. Both fit 32x32 logical cell with generous empty space, tuft width about 18 and height 13 logical pixels. Muted olive, ochre-green and brown shadows, low contrast.",
+      "referenceImages": [
+        "docs/art/reviews/2026-10-12/town-delivery-v1/captures/proposed-complete-100.png"
+      ],
+      "originalOutput": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-f04bbffd-9fb1-4ea8-b83f-e293e46eb188.png",
+      "savedSource": "grass.png"
+    },
+    {
+      "asset": "spark",
+      "prompt": "Use case: stylized-concept. Asset type: pixel-art animation sprite sheet for DeskTown, a calm miniature desktop village. Genuine transparent RGBA background; NO checkerboard, ground, captions, grid lines, numbers, text, borders or watermark. Very crisp pixel clusters, nearest-neighbor look, no bloom, no antialiased haze. Each animation cell must have ample transparent gutters and the SAME fixed origin, visual size and baseline. Frame-to-frame form changes, not translated duplicate frames. Arranged in exactly one horizontal row of equally wide cells. Warm restrained colors and upper-left lighting. No buildings and characters. Exactly FOUR consecutive NONLOOPING frames of a tiny local work-contact sparkle, matching approved four-point amber/cream reference. 16x16 logical cell after normalization. Frame1 one tiny amber diamond, frame2 compact four-point cream star with amber edge, frame3 two or three small fading flecks, frame4 one single very small faint cream speck almost gone. Common effect center, absolutely no outward firework shower. No circle, smoke, weapon, letters, large explosion, glow. Restrained colors #b97b20 #eedcbe #fdf2da. Four different phases small / peak / fading / almost gone.",
+      "referenceImages": [
+        "docs/art/reviews/2026-10-11/reward-v1/prepared-v2/spark-3x.png"
+      ],
+      "originalOutput": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-8dee458f-e7ba-46e2-9d3b-bea6c36e9f6f.png",
+      "savedSource": "spark.png"
+    },
+    {
+      "asset": "steam",
+      "prompt": "Use case: stylized-concept. Asset type: pixel-art animation sprite sheet for DeskTown, a calm miniature desktop village. Genuine transparent RGBA background; NO checkerboard, ground, captions, grid lines, numbers, text, borders or watermark. Very crisp pixel clusters, nearest-neighbor look, no bloom, no antialiased haze. Each animation cell must have ample transparent gutters and the SAME fixed origin, visual size and baseline. Frame-to-frame form changes, not translated duplicate frames. Arranged in exactly one horizontal row of equally wide cells. Warm restrained colors and upper-left lighting. No buildings and characters. Exactly FOUR looping frames of a SINGLE delicate warm tea-steam wisp only. No cup, teapot, person or other object. Not heavy chimney smoke: a thin broken S curve of cream/beige pixel segments, only about 4 logical pixels wide and 10 high inside a 16x16 logical cell. Fixed emission bottom-center, subtle curvature phase change and tiny top segment separation, smoothly loops. Sparse matte pixels no halo, no blur. Colors #8d8273 #c6b9a2 #eedcbe #fdf2da, low contrast.",
+      "referenceImages": [
+        "docs/art/reviews/2026-10-11/reward-v1/prepared-v2/smoke-3x.png"
+      ],
+      "originalOutput": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-4266bc14-2332-4b48-a5fc-e3785ea8eecb.png",
+      "savedSource": "steam.png"
+    },
+    {
+      "asset": "decor",
+      "prompt": "Use case: stylized-concept. Asset type: DeskTown pixel-art prop variant sheet. Exactly TWO static variants side by side in one row, equally wide cells. Left: a tiny leafy indoor plant in a squat warm terracotta pot, 3 broad muted olive leaves. Right: a small closed wooden keepsake box, simple lid seam, brass clasp. Warm handmade cozy dollhouse corner, upper-left light, dark brown outlines, chunky readable pixel clusters, few cream highlights, muted clay/olive colors, no photoreal detail or blur. Each fits a 32x32 logical cell at normalization, root/base fixed same bottom-center baseline and generous transparent margin. True transparent RGBA background. No text, letters, grid, labels, pedestal, floor, shadows outside objects, borders or watermark.",
+      "referenceImages": [],
+      "originalOutput": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-03949b09-d86d-412b-8c3f-781337d51f46.png",
+      "savedSource": "decor.png"
+    },
+    {
+      "asset": "logo",
+      "prompt": "Use case: logo-brand. Asset type: pixel-art wordmark PNG for DeskTown cozy desktop village. Exact text, case sensitive: \"DeskTown\" (D e s k T o w n). No other text. A small warm terracotta roof and cream window house mark on the LEFT, a clean readable pixel letter wordmark DeskTown to its RIGHT. Integrated compact horizontal composition with breathing room for a final 256x96 logical canvas. Text is dark warm brown with restrained cream inner highlights, handmade pixel letterforms with consistent stroke and spacing. Warm brown/cream/terracotta/muted olive palette. No taglines, badges, weapons, neon, shiny 3D, RPG plaques, dropshadow halo, unreadable flourishes. True transparent RGBA background, crisp stepped outlines, no antialias, no checkerboard, no labels or watermark.",
+      "referenceImages": [],
+      "originalOutput": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-0119ea60-e549-44e3-9f42-312efe23c457.png",
+      "savedSource": "logo.png"
+    },
+    {
+      "asset": "icons",
+      "prompt": "Use case: stylized-concept. Asset type: DeskTown nine small pixel UI icons in exactly a THREE BY THREE grid, each equal cell with generous transparent gutter, no grid lines. Order row1: Focus (simple clock with two hands), Workshop (small roof and hammer), Companion (small framed window with tiny person inside). Row2: Hidden (eye closed with simple slash), Ghost (friendly outlined wispy spirit), Settings (simple six-tooth cog). Row3: Audio (speaker with ONE wave), Project (small clipboard with one check), Discovery (folded map with tiny dotted path). Each icon must remain readable after 16x16 logical cell normalization: only 2-3 flat colors, consistent thick pixel strokes, muted warm brown outline and cream fill with ONE ochre accent, no gradients, no tiny textures. Cozy calm UI, all same optical size. Actual transparent RGBA background. NO text, captions, numbers, letters, labels, checkerboard, tile background, grid, shadow, borders or watermark.",
+      "referenceImages": [],
+      "originalOutput": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-7eb311e0-2c7f-449e-a8fa-5c32de6b0896.png",
+      "savedSource": "icons.png"
+    },
+    {
+      "asset": "map",
+      "prompt": "Use case: stylized-concept. Asset type: DeskTown Old Railway Map discovery focal sprite. A single old cream parchment map laid mostly flat with very slightly curled worn corners and 3 soft fold creases, landscape 3:2 proportions for 96x64 logical cell. Hand-drawn pixel symbols: winding muted brown railway with short parallel sleepers traveling from lower-left towards an old station building near upper-right; two olive trees and a small river curve. No text, no letters, no numbers, no modern UI pins or glowing treasure cross, no quest markers. Warm calm handmade narrative object, readable restrained clusters, dark warm brown controlled edge, cream paper, muted olive landscape, upper-left light. Pixel-art medium, crisp steps, no photoreal grain, no glow, no background scene. Generous transparent margins, true transparent RGBA canvas, no border, label or watermark.",
+      "referenceImages": [],
+      "originalOutput": "C:\\Users\\limse\\.codex\\generated_images\\01a0e389-e95e-7dc0-8907-5b4fb12a6f3c\\exec-b879ce69-ce5d-47ee-9126-8db99bcaa9bf.png",
+      "savedSource": "map.png"
+    }
+  ]
+}

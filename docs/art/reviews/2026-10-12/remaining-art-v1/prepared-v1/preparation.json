@@ -1,0 +1,1065 @@
+{
+  "reviewOnly": true,
+  "runtimeAssigned": false,
+  "pendingHumanApproval": true,
+  "corePaletteSha256": "7159392f53c516fded526541ac2b9a9d4eb0e005056d594bd61ad9ca2eca638b",
+  "effectPaletteSha256": "ecb6120bf7819e4d22694fbae1cd99a9f4fc2a42c216fd561cb57c162ad4c803",
+  "assets": [
+    {
+      "id": "FX-SMK-001",
+      "name": "smoke",
+      "file": "fx_workshop_smoke.png",
+      "sha256": "5baed959ad28907ba3baf2bf642d758b666a1e1e4313923b978c234f2dbf43a6",
+      "source": "docs/art/reviews/2026-10-12/remaining-art-v1/sources/smoke.png",
+      "sourceSha256": "5761b4422f363053285ba3df6f7ebd3d59f8d8728cc6cf50501c3d4533aa70c5",
+      "frames": 4,
+      "frameSize": [
+        32,
+        32
+      ],
+      "fps": 4,
+      "loop": true,
+      "palette": "effects",
+      "stableBaseRows": 0,
+      "details": [
+        {
+          "sourceCell": [
+            0,
+            0,
+            543,
+            724
+          ],
+          "sourceCrop": [
+            62,
+            123,
+            535,
+            647
+          ],
+          "normalizedSize": [
+            25,
+            28
+          ],
+          "destination": [
+            3,
+            2
+          ],
+          "bounds": [
+            4,
+            3,
+            28,
+            30
+          ]
+        },
+        {
+          "sourceCell": [
+            543,
+            0,
+            1086,
+            724
+          ],
+          "sourceCrop": [
+            62,
+            123,
+            535,
+            647
+          ],
+          "normalizedSize": [
+            25,
+            28
+          ],
+          "destination": [
+            3,
+            2
+          ],
+          "bounds": [
+            4,
+            2,
+            26,
+            30
+          ]
+        },
+        {
+          "sourceCell": [
+            1086,
+            0,
+            1629,
+            724
+          ],
+          "sourceCrop": [
+            62,
+            123,
+            535,
+            647
+          ],
+          "normalizedSize": [
+            25,
+            28
+          ],
+          "destination": [
+            3,
+            2
+          ],
+          "bounds": [
+            3,
+            2,
+            27,
+            30
+          ]
+        },
+        {
+          "sourceCell": [
+            1629,
+            0,
+            2172,
+            724
+          ],
+          "sourceCrop": [
+            62,
+            123,
+            535,
+            647
+          ],
+          "normalizedSize": [
+            25,
+            28
+          ],
+          "destination": [
+            3,
+            2
+          ],
+          "bounds": [
+            3,
+            2,
+            26,
+            29
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FX-FIR-001",
+      "name": "campfire",
+      "file": "fx_campfire.png",
+      "sha256": "464e490202d497113a8d884cc6ed5209819bbb9c6b714b594b7dec97db273d18",
+      "source": "docs/art/reviews/2026-10-12/remaining-art-v1/sources/campfire.png",
+      "sourceSha256": "03337d983dcf2997fa93919a3a973a5e510117242f3f27ff4b42e41365e63cea",
+      "frames": 4,
+      "frameSize": [
+        32,
+        32
+      ],
+      "fps": 6,
+      "loop": true,
+      "palette": "both",
+      "stableBaseRows": 6,
+      "details": [
+        {
+          "sourceCell": [
+            0,
+            0,
+            543,
+            724
+          ],
+          "sourceCrop": [
+            152,
+            244,
+            392,
+            655
+          ],
+          "normalizedSize": [
+            16,
+            27
+          ],
+          "destination": [
+            8,
+            2
+          ],
+          "bounds": [
+            8,
+            6,
+            24,
+            29
+          ]
+        },
+        {
+          "sourceCell": [
+            543,
+            0,
+            1086,
+            724
+          ],
+          "sourceCrop": [
+            152,
+            244,
+            392,
+            655
+          ],
+          "normalizedSize": [
+            16,
+            27
+          ],
+          "destination": [
+            8,
+            2
+          ],
+          "bounds": [
+            8,
+            2,
+            24,
+            29
+          ]
+        },
+        {
+          "sourceCell": [
+            1086,
+            0,
+            1629,
+            724
+          ],
+          "sourceCrop": [
+            152,
+            244,
+            392,
+            655
+          ],
+          "normalizedSize": [
+            16,
+            27
+          ],
+          "destination": [
+            8,
+            2
+          ],
+          "bounds": [
+            8,
+            8,
+            24,
+            29
+          ]
+        },
+        {
+          "sourceCell": [
+            1629,
+            0,
+            2172,
+            724
+          ],
+          "sourceCrop": [
+            152,
+            244,
+            392,
+            655
+          ],
+          "normalizedSize": [
+            16,
+            27
+          ],
+          "destination": [
+            8,
+            2
+          ],
+          "bounds": [
+            8,
+            5,
+            24,
+            29
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FX-GRS-001",
+      "name": "grass",
+      "file": "fx_grass_movement.png",
+      "sha256": "10f1d422564404d80d88e90ace53e48c83efac0cf5bf3ee11c976bb403b992db",
+      "source": "docs/art/reviews/2026-10-12/remaining-art-v1/sources/grass.png",
+      "sourceSha256": "c18d4a83692c4b8079f68685a0dbf2f7e8bb5fb61d9e3732e3dcc2cffe832a29",
+      "frames": 2,
+      "frameSize": [
+        32,
+        32
+      ],
+      "fps": 2,
+      "loop": true,
+      "palette": "core",
+      "stableBaseRows": 2,
+      "details": [
+        {
+          "sourceCell": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "sourceCrop": [
+            224,
+            391,
+            680,
+            665
+          ],
+          "normalizedSize": [
+            20,
+            12
+          ],
+          "destination": [
+            2,
+            17
+          ],
+          "bounds": [
+            8,
+            17,
+            22,
+            29
+          ]
+        },
+        {
+          "sourceCell": [
+            887,
+            0,
+            1774,
+            887
+          ],
+          "sourceCrop": [
+            224,
+            391,
+            680,
+            665
+          ],
+          "normalizedSize": [
+            20,
+            12
+          ],
+          "destination": [
+            10,
+            17
+          ],
+          "bounds": [
+            11,
+            18,
+            24,
+            29
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FX-SPK-001",
+      "name": "spark",
+      "file": "fx_work_spark.png",
+      "sha256": "2328e8ca0bd2616385fe4948307357dc9f90d4be95e5548783ebc18f92e07822",
+      "source": "docs/art/reviews/2026-10-12/remaining-art-v1/sources/spark.png",
+      "sourceSha256": "f9f06e32ed76e23663de21d4ff1eff04e0ef713c41492fc11f02570e052a1549",
+      "frames": 4,
+      "frameSize": [
+        16,
+        16
+      ],
+      "fps": 8,
+      "loop": false,
+      "palette": "effects",
+      "stableBaseRows": 0,
+      "details": [
+        {
+          "sourceCell": [
+            0,
+            0,
+            543,
+            724
+          ],
+          "sourceCrop": [
+            172,
+            267,
+            370,
+            464
+          ],
+          "normalizedSize": [
+            12,
+            12
+          ],
+          "destination": [
+            2,
+            2
+          ],
+          "bounds": [
+            7,
+            5,
+            12,
+            11
+          ]
+        },
+        {
+          "sourceCell": [
+            543,
+            0,
+            1086,
+            724
+          ],
+          "sourceCrop": [
+            172,
+            267,
+            370,
+            464
+          ],
+          "normalizedSize": [
+            12,
+            12
+          ],
+          "destination": [
+            2,
+            2
+          ],
+          "bounds": [
+            2,
+            2,
+            14,
+            14
+          ]
+        },
+        {
+          "sourceCell": [
+            1086,
+            0,
+            1629,
+            724
+          ],
+          "sourceCrop": [
+            172,
+            267,
+            370,
+            464
+          ],
+          "normalizedSize": [
+            12,
+            12
+          ],
+          "destination": [
+            2,
+            2
+          ],
+          "bounds": [
+            4,
+            4,
+            12,
+            12
+          ]
+        },
+        {
+          "sourceCell": [
+            1629,
+            0,
+            2172,
+            724
+          ],
+          "sourceCrop": [
+            172,
+            267,
+            370,
+            464
+          ],
+          "normalizedSize": [
+            12,
+            12
+          ],
+          "destination": [
+            2,
+            2
+          ],
+          "bounds": [
+            5,
+            7,
+            7,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FX-TEA-001",
+      "name": "steam",
+      "file": "fx_tea_steam.png",
+      "sha256": "5c7dc10ce9fed4db5f8a89e8291be3f89b415edeab184cfd37b345308a886260",
+      "source": "docs/art/reviews/2026-10-12/remaining-art-v1/sources/steam.png",
+      "sourceSha256": "dc531288de023edcc2137c195a153f4d4e345740ff5d9ea4e3a53edd312aed10",
+      "frames": 4,
+      "frameSize": [
+        16,
+        16
+      ],
+      "fps": 4,
+      "loop": true,
+      "palette": "effects",
+      "stableBaseRows": 0,
+      "details": [
+        {
+          "sourceCell": [
+            0,
+            0,
+            495,
+            793
+          ],
+          "sourceCrop": [
+            151,
+            172,
+            334,
+            553
+          ],
+          "normalizedSize": [
+            5,
+            11
+          ],
+          "destination": [
+            4,
+            3
+          ],
+          "bounds": [
+            5,
+            5,
+            9,
+            13
+          ]
+        },
+        {
+          "sourceCell": [
+            495,
+            0,
+            991,
+            793
+          ],
+          "sourceCrop": [
+            151,
+            172,
+            334,
+            553
+          ],
+          "normalizedSize": [
+            5,
+            11
+          ],
+          "destination": [
+            5,
+            3
+          ],
+          "bounds": [
+            6,
+            4,
+            9,
+            13
+          ]
+        },
+        {
+          "sourceCell": [
+            991,
+            0,
+            1487,
+            793
+          ],
+          "sourceCrop": [
+            151,
+            172,
+            334,
+            553
+          ],
+          "normalizedSize": [
+            5,
+            11
+          ],
+          "destination": [
+            6,
+            2
+          ],
+          "bounds": [
+            7,
+            2,
+            11,
+            13
+          ]
+        },
+        {
+          "sourceCell": [
+            1487,
+            0,
+            1983,
+            793
+          ],
+          "sourceCrop": [
+            151,
+            172,
+            334,
+            553
+          ],
+          "normalizedSize": [
+            5,
+            11
+          ],
+          "destination": [
+            6,
+            3
+          ],
+          "bounds": [
+            6,
+            5,
+            10,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CMP-DEC-001",
+      "name": "decor",
+      "file": "prop_companion_decor.png",
+      "sha256": "1206191a4bd3b37a15d595e29d7b5a6386894ab3ff124d64b51660f588451487",
+      "source": "docs/art/reviews/2026-10-12/remaining-art-v1/sources/decor.png",
+      "sourceSha256": "cdfc8588a1a240f434cbc5d6185677c8ea0c475215c2148f35228a385b924f92",
+      "frames": 2,
+      "frameSize": [
+        32,
+        32
+      ],
+      "fps": null,
+      "loop": false,
+      "palette": "core",
+      "stableBaseRows": 0,
+      "details": [
+        {
+          "sourceCell": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "sourceCrop": [
+            125,
+            86,
+            827,
+            818
+          ],
+          "normalizedSize": [
+            26,
+            27
+          ],
+          "destination": [
+            2,
+            2
+          ],
+          "bounds": [
+            2,
+            2,
+            28,
+            29
+          ]
+        },
+        {
+          "sourceCell": [
+            887,
+            0,
+            1774,
+            887
+          ],
+          "sourceCrop": [
+            112,
+            309,
+            764,
+            846
+          ],
+          "normalizedSize": [
+            27,
+            22
+          ],
+          "destination": [
+            0,
+            7
+          ],
+          "bounds": [
+            0,
+            7,
+            27,
+            29
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UI-LOG-001",
+      "name": "logo",
+      "file": "ui_logo_desktown.png",
+      "sha256": "2d9754a084e5bcca5239d967ed19a2fd491333b8513bddd8ea83a0598cca18b6",
+      "source": "docs/art/reviews/2026-10-12/remaining-art-v1/sources/logo.png",
+      "sourceSha256": "147548911ea3a90fd3129ab642a3307d62bb3db24d2dc5be1f954a615ce5bf60",
+      "frames": 1,
+      "frameSize": [
+        256,
+        96
+      ],
+      "fps": null,
+      "loop": false,
+      "palette": "core",
+      "stableBaseRows": 0,
+      "details": [
+        {
+          "sourceCell": [
+            0,
+            0,
+            1983,
+            793
+          ],
+          "sourceCrop": [
+            48,
+            188,
+            1936,
+            601
+          ],
+          "normalizedSize": [
+            224,
+            49
+          ],
+          "destination": [
+            16,
+            23
+          ],
+          "bounds": [
+            16,
+            23,
+            240,
+            72
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UI-ICO-001",
+      "name": "icons",
+      "file": "ui_icons_core.png",
+      "sha256": "6d15d701f667076cf000ec3253d9e7cbd9249edc41b65e2f85bad20122d6e5f9",
+      "source": "docs/art/reviews/2026-10-12/remaining-art-v1/sources/icons.png",
+      "sourceSha256": "43040c409041e24f6825de0e38e7081998d8ca6cff6da47f0f679e284c2889be",
+      "frames": 9,
+      "frameSize": [
+        16,
+        16
+      ],
+      "fps": null,
+      "loop": false,
+      "palette": "core",
+      "stableBaseRows": 0,
+      "details": [
+        {
+          "sourceCell": [
+            317,
+            107,
+            566,
+            356
+          ],
+          "sourceCrop": [
+            2,
+            10,
+            246,
+            249
+          ],
+          "normalizedSize": [
+            13,
+            13
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "bounds": [
+            1,
+            1,
+            14,
+            14
+          ]
+        },
+        {
+          "sourceCell": [
+            645,
+            107,
+            896,
+            356
+          ],
+          "sourceCrop": [
+            0,
+            0,
+            247,
+            245
+          ],
+          "normalizedSize": [
+            13,
+            13
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "bounds": [
+            1,
+            1,
+            14,
+            14
+          ]
+        },
+        {
+          "sourceCell": [
+            976,
+            107,
+            1233,
+            356
+          ],
+          "sourceCrop": [
+            16,
+            10,
+            241,
+            240
+          ],
+          "normalizedSize": [
+            13,
+            13
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "bounds": [
+            1,
+            1,
+            14,
+            14
+          ]
+        },
+        {
+          "sourceCell": [
+            317,
+            407,
+            566,
+            649
+          ],
+          "sourceCrop": [
+            0,
+            20,
+            249,
+            232
+          ],
+          "normalizedSize": [
+            13,
+            11
+          ],
+          "destination": [
+            1,
+            2
+          ],
+          "bounds": [
+            1,
+            2,
+            14,
+            13
+          ]
+        },
+        {
+          "sourceCell": [
+            645,
+            407,
+            896,
+            649
+          ],
+          "sourceCrop": [
+            0,
+            0,
+            251,
+            237
+          ],
+          "normalizedSize": [
+            13,
+            12
+          ],
+          "destination": [
+            1,
+            2
+          ],
+          "bounds": [
+            1,
+            2,
+            14,
+            14
+          ]
+        },
+        {
+          "sourceCell": [
+            976,
+            407,
+            1233,
+            649
+          ],
+          "sourceCrop": [
+            12,
+            0,
+            244,
+            242
+          ],
+          "normalizedSize": [
+            12,
+            13
+          ],
+          "destination": [
+            2,
+            1
+          ],
+          "bounds": [
+            2,
+            1,
+            14,
+            14
+          ]
+        },
+        {
+          "sourceCell": [
+            317,
+            688,
+            566,
+            926
+          ],
+          "sourceCrop": [
+            0,
+            19,
+            236,
+            235
+          ],
+          "normalizedSize": [
+            13,
+            12
+          ],
+          "destination": [
+            1,
+            2
+          ],
+          "bounds": [
+            1,
+            2,
+            14,
+            14
+          ]
+        },
+        {
+          "sourceCell": [
+            645,
+            688,
+            896,
+            926
+          ],
+          "sourceCrop": [
+            21,
+            0,
+            225,
+            238
+          ],
+          "normalizedSize": [
+            11,
+            13
+          ],
+          "destination": [
+            2,
+            1
+          ],
+          "bounds": [
+            2,
+            1,
+            13,
+            14
+          ]
+        },
+        {
+          "sourceCell": [
+            976,
+            688,
+            1233,
+            926
+          ],
+          "sourceCrop": [
+            0,
+            14,
+            257,
+            233
+          ],
+          "normalizedSize": [
+            13,
+            11
+          ],
+          "destination": [
+            1,
+            2
+          ],
+          "bounds": [
+            1,
+            2,
+            14,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ITM-MAP-001",
+      "name": "map",
+      "file": "item_old_railway_map.png",
+      "sha256": "c63403bff37f1c44bb690eb713351187a5abd61609b09187bbc2f6bb323038af",
+      "source": "docs/art/reviews/2026-10-12/remaining-art-v1/sources/map.png",
+      "sourceSha256": "b82b9653badda4a89fb1887008949f84776602d180a773ba12ed554ddb5b400c",
+      "frames": 1,
+      "frameSize": [
+        96,
+        64
+      ],
+      "fps": null,
+      "loop": false,
+      "palette": "core",
+      "stableBaseRows": 0,
+      "details": [
+        {
+          "sourceCell": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceCrop": [
+            86,
+            121,
+            1467,
+            880
+          ],
+          "normalizedSize": [
+            90,
+            49
+          ],
+          "destination": [
+            3,
+            7
+          ],
+          "bounds": [
+            3,
+            7,
+            93,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CMP-TOL-001",
+      "name": "tool",
+      "file": "prop_mina_tool.png",
+      "sha256": "f3f66c6d98f9a2b25692fd7957bc62db21853b03566442d867d5675e5eb58a41",
+      "source": "docs/art/reviews/2026-10-11/companion-props-v1/prepared-v1/prop_mina_tool.png",
+      "sourceSha256": "f3f66c6d98f9a2b25692fd7957bc62db21853b03566442d867d5675e5eb58a41",
+      "frames": 2,
+      "frameSize": [
+        32,
+        32
+      ],
+      "fps": null,
+      "loop": false,
+      "palette": "core",
+      "note": "Approved prop direction reused; standalone tabletop prop only, no duplicate handheld tool."
+    }
+  ]
+}

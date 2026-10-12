@@ -5,9 +5,10 @@ dimensions match `docs/art/ASSET_MANIFEST.md`; the `key` field is a stable
 semantic name. The human approved delivery/use and production assignment of
 six shared Mina clips and six Companion props on 2026-10-11, followed by eleven
 Town building/environment assets and the 2x world layout on 2026-10-12.
-Those 23 IDs resolve actual art; 15 visual and 8 audio entries remain unassigned.
+Five Noah/Rumi clips were then approved and assigned on 2026-10-12.
+Those 28 IDs resolve actual art; 10 visual and 8 audio entries remain unassigned.
 See the delivery records for [Mina/Companion](../art/DELIVERY_2026-10-11.md) and
-[Town](../art/DELIVERY_2026-10-12.md). Five NPC clips are isolated review candidates.
+[Town and NPCs](../art/DELIVERY_2026-10-12.md).
 
 To assign an asset, add the file under `assets/art/`, change its entry to
 `placeholder` or `production`, set `resource` to its `res://assets/art/...`
@@ -32,7 +33,7 @@ Companion also resolves the character shadow through a draw-only Sprite2D;
 an unassigned or invalid shadow stays hidden. The human-approved integer
 Workbench/Stool/Lamp placement and runtime binding reproduce the approved
 [Godot captures](../../docs/art/reviews/2026-10-11/companion-runtime-v1/README.md).
-Mina/Companion and Town delivery/use approval and the 23-ID runtime assignment are complete.
+Mina/Companion, Town and NPC delivery/use approval and the 28-ID runtime assignment are complete.
 Each binder uses the declared frame size and count, and falls back to geometric
 drawing if the file is absent or has the wrong sheet dimensions. The Workshop
 sheet cells are Broken, Repairing, Complete, in that order. Lamp and Decor use

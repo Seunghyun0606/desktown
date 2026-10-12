@@ -235,9 +235,17 @@
         48,
         48
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
+      "status": "production",
+      "resource": "res://assets/art/chr_noah_idle.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel normalization",
+        "license": "AI-generated output; user approved NPC delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/npc-v1/prepared-v2/chr_noah_idle.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "7ccfc323b6fe0946e24e46c14aeddc755894e7554e4279a5d43efa0a020ea6ef",
+        "approval": "A: NPC delivery and use approved; assign five Noah and Rumi clips"
+      },
       "pivot": [
         24,
         44
@@ -263,9 +271,17 @@
         48,
         48
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
+      "status": "production",
+      "resource": "res://assets/art/chr_noah_walk.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel normalization",
+        "license": "AI-generated output; user approved NPC delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/npc-v1/prepared-v2/chr_noah_walk.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "8afe5cfc38ef3941ba8a8776735a8e730215993c6b7812277db5509df8436dd9",
+        "approval": "A: NPC delivery and use approved; assign five Noah and Rumi clips"
+      },
       "pivot": [
         24,
         44
@@ -291,9 +307,17 @@
         48,
         48
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
+      "status": "production",
+      "resource": "res://assets/art/chr_noah_read.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel normalization",
+        "license": "AI-generated output; user approved NPC delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/npc-v1/prepared-v2/chr_noah_read.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "69aa7415e1f9471dcf892a9f8361b7b2e39063b146705431ac91d2ae07c691c0",
+        "approval": "A: NPC delivery and use approved; assign five Noah and Rumi clips"
+      },
       "pivot": [
         24,
         44
@@ -319,9 +343,17 @@
         48,
         48
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
+      "status": "production",
+      "resource": "res://assets/art/chr_rumi_idle.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel normalization",
+        "license": "AI-generated output; user approved NPC delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/npc-v1/prepared-v2/chr_rumi_idle.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "996d948785ed61d322fab0a7a8bd50d5b6b3086cbfc2282bc5586ffd030b2c89",
+        "approval": "A: NPC delivery and use approved; assign five Noah and Rumi clips"
+      },
       "pivot": [
         24,
         44
@@ -347,9 +379,17 @@
         48,
         48
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
+      "status": "production",
+      "resource": "res://assets/art/chr_rumi_walk.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel normalization",
+        "license": "AI-generated output; user approved NPC delivery and use on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/npc-v1/prepared-v2/chr_rumi_walk.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "979cfd88ac1acfaeea0f7c6a61d9a2242bcfb862ddcb86db5c239346066da4f1",
+        "approval": "A: NPC delivery and use approved; assign five Noah and Rumi clips"
+      },
       "pivot": [
         24,
         44

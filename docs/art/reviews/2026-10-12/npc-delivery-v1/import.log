@@ -1,0 +1,2534 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started 프로젝트 초기화 (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | 파일 구조 스캔 중...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | 전역 클래스 이름을 불러오는 중...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | GDExtensions 검증 중...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | 오토로드 스크립트를 만드는 중...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | 플러그인을 초기화 중...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | 파일 스캔 시작 중...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started 전역 클래스를 등록하는 중... (175 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   1% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   1% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   2% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   2% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   3% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   3% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   4% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   5% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   5% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   6% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   6% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   7% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   7% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   8% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   9% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   9% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  10% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  10% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  11% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  11% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  12% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  13% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  13% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  14% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  14% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  15% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  15% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  16% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  17% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  17% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  18% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  18% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  19% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  19% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  20% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  21% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  21% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  22% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  22% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  23% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  23% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  24% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  25% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  25% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  26% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  26% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  27% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  27% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  28% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  28% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  29% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  30% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  30% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  31% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  31% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  32% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  32% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  33% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  34% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  34% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  35% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  35% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  36% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  36% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  37% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  38% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  38% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  39% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  39% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  40% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  40% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  41% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  42% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  42% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  43% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  43% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  44% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  44% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  45% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  46% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  46% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  47% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  47% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  48% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  48% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  49% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  51% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  51% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  52% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  52% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  53% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  53% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  54% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  55% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  55% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  56% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  56% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  57% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  57% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  58% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  59% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  59% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  60% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  60% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  61% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  61% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  62% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  63% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  63% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  64% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  64% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  65% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  65% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  66% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  67% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  67% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  68% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  68% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  69% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  69% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  70% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  71% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  71% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  72% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  72% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  73% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  73% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  74% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  75% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  75% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  76% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  76% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  77% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  77% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  78% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  78% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  79% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  80% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  80% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  81% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  81% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  82% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  82% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  83% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  84% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  84% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  85% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  85% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  86% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  86% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  87% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  88% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  88% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  89% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  89% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  90% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  90% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  91% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  92% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  92% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  93% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  93% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  94% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  94% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  95% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  96% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  96% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  97% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  97% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  98% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  98% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started 액션 스캔 중... (776 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | bld_house.png[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | bld_library_locked.png[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | bld_workshop_states.png[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | chr_mina_celebrate.png[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | chr_mina_idle.png[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | chr_mina_rest.png[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | chr_mina_stretch.png[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | chr_mina_walk.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | chr_mina_work.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | chr_noah_idle.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | chr_noah_read.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | chr_noah_walk.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | chr_rumi_idle.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | chr_rumi_walk.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | env_bush_variants.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | env_dirt_tile.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | env_fence_variants.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | env_flower_variants.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | env_grass_tiles.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | env_path_tiles.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | env_rock_variants.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | env_tree_variants.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | prop_character_shadow.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | prop_companion_floor.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | prop_lamp_states.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | prop_small_window.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | prop_stool.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | prop_workbench.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | comparison-board.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | floor-2x.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | floor-3x.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | floor-gray.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | prop_character_shadow.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | prop_companion_floor.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | prop_stool.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | rest-current-animated.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | rest-current-contact-strip-2x.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | rest-current-contact-strip.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | rest-current-f00.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | rest-current-f01.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | rest-current-f02.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | rest-current-f03.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | rest-proposal-animated.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | rest-proposal-contact-strip-2x.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | rest-proposal-contact-strip.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | rest-proposal-f00.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | rest-proposal-f01.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | rest-proposal-f02.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | rest-proposal-f03.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | shadow-2x.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | shadow-3x.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | shadow-gray.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | stool-2x.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | stool-3x.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | stool-gray.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | work-current-animated.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | work-current-contact-strip-2x.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | work-current-contact-strip.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | work-current-f00.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | work-current-f01.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | work-current-f02.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | work-current-f03.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | work-current-f04.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | work-current-f05.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | work-proposal-animated.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | work-proposal-contact-strip-2x.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | work-proposal-contact-strip.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | work-proposal-f00.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | work-proposal-f01.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | work-proposal-f02.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | work-proposal-f03.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | work-proposal-f04.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | work-proposal-f05.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | floor.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | shadow.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | stool.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | ghost-work-40.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | ghost-work-65.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | ghost-work-85.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | town-idle.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | celebrate-75-f00.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | celebrate-75-f01.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | celebrate-75-f02.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | celebrate-75-f03.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | celebrate-75-f04.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | celebrate-75-f05.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | celebrate-100-f00.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | celebrate-100-f01.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | celebrate-100-f02.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | celebrate-100-f03.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | celebrate-100-f04.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | celebrate-100-f05.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | celebrate-125-f00.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | celebrate-125-f01.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | celebrate-125-f02.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | celebrate-125-f03.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | celebrate-125-f04.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | celebrate-125-f05.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | celebrate-150-f00.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | celebrate-150-f01.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | celebrate-150-f02.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | celebrate-150-f03.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | celebrate-150-f04.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | celebrate-150-f05.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | idle-75-f00.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | idle-75-f01.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | idle-75-f02.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | idle-75-f03.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | idle-100-f00.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | idle-100-f01.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | idle-100-f02.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | idle-100-f03.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | idle-125-f00.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | idle-125-f01.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | idle-125-f02.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | idle-125-f03.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | idle-150-f00.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | idle-150-f01.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | idle-150-f02.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | idle-150-f03.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | lamp-on-75.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | lamp-on-100.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | lamp-on-125.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | lamp-on-150.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | rest-75-f00.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | rest-75-f01.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | rest-75-f02.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | rest-75-f03.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | rest-100-f00.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | rest-100-f01.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | rest-100-f02.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | rest-100-f03.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | rest-125-f00.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | rest-125-f01.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | rest-125-f02.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | rest-125-f03.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | rest-150-f00.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | rest-150-f01.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | rest-150-f02.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | rest-150-f03.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | stretch-75-f00.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | stretch-75-f01.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | stretch-75-f02.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | stretch-75-f03.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | stretch-100-f00.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | stretch-100-f01.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | stretch-100-f02.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | stretch-100-f03.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | stretch-125-f00.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | stretch-125-f01.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | stretch-125-f02.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | stretch-125-f03.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | stretch-150-f00.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | stretch-150-f01.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | stretch-150-f02.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | stretch-150-f03.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | walk-75-f00.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | walk-75-f01.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | walk-75-f02.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | walk-75-f03.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | walk-75-f04.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | walk-75-f05.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | walk-100-f00.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | walk-100-f01.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | walk-100-f02.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | walk-100-f03.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | walk-100-f04.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | walk-100-f05.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | walk-125-f00.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | walk-125-f01.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | walk-125-f02.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | walk-125-f03.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | walk-125-f04.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | walk-125-f05.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | walk-150-f00.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | walk-150-f01.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | walk-150-f02.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | walk-150-f03.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | walk-150-f04.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | walk-150-f05.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | work-75-f00.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | work-75-f01.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | work-75-f02.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | work-75-f03.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | work-75-f04.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | work-75-f05.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | work-100-f00.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | work-100-f01.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | work-100-f02.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | work-100-f03.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | work-100-f04.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | work-100-f05.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | work-125-f00.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | work-125-f01.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | work-125-f02.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | work-125-f03.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | work-125-f04.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | work-125-f05.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | work-150-f00.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | work-150-f01.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | work-150-f02.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | work-150-f03.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | work-150-f04.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | work-150-f05.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | comparison-board.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | lamp-f00-gray.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | lamp-f00.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | lamp-f01-gray.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | lamp-f01.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | lamp-sheet-2x.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | lamp-sheet-3x.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | prop_lamp_states.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | prop_mina_tool.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | prop_small_window.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | prop_workbench.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | stage-current-lamp0-gray.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | stage-current-lamp0.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | stage-current-lamp1-gray.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | stage-current-lamp1.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | stage-proposal-lamp0-gray.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | stage-proposal-lamp0.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | stage-proposal-lamp1-gray.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | stage-proposal-lamp1.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | tool-f00-gray.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | tool-f00.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | tool-f01-gray.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | tool-f01.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | tool-sheet-2x.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | tool-sheet-3x.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | window-f00-gray.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | window-f00.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | window-sheet-2x.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | window-sheet-3x.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | workbench-f00-gray.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | workbench-f00.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | workbench-sheet-2x.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | workbench-sheet-3x.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | lamp.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | tool.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | window.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | workbench.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | chr_mina_idle.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | chr_mina_work.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | idle-companion-1x.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | idle-companion-2x.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | idle-companion-3x.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | idle-f00.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | idle-f01.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | idle-f02.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | idle-f03.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | idle-ghost-dark-1x.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | idle-ghost-dark-2x.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | idle-ghost-dark-3x.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | idle-ghost-dark-40-1x.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | idle-ghost-dark-40-2x.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | idle-ghost-dark-40-3x.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | idle-ghost-light-1x.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | idle-ghost-light-2x.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | idle-ghost-light-3x.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | idle-ghost-light-40-1x.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | idle-ghost-light-40-2x.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | idle-ghost-light-40-3x.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | idle-strip-3x.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | work-companion-1x.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | work-companion-2x.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | work-companion-3x.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | work-f00.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | work-f01.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | work-f02.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | work-f03.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | work-f04.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | work-f05.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | work-ghost-dark-1x.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | work-ghost-dark-2x.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | work-ghost-dark-3x.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | work-ghost-dark-40-1x.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | work-ghost-dark-40-2x.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | work-ghost-dark-40-3x.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | work-ghost-light-1x.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | work-ghost-light-2x.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | work-ghost-light-3x.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | work-ghost-light-40-1x.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | work-ghost-light-40-2x.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | work-ghost-light-40-3x.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | work-strip-3x.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | idle-grid.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | work-grid.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | celebrate-1x-animated.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | celebrate-3x-animated.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | celebrate-f00.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | celebrate-f01.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | celebrate-f02.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | celebrate-f03.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | celebrate-f04.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | celebrate-f05.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | celebrate-strip-3x.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | chr_mina_celebrate.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | chr_mina_rest.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | chr_mina_stretch.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | chr_mina_walk.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | comparison-board.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | rest-1x-animated.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | rest-3x-animated.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | rest-f00.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | rest-f01.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | rest-f02.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | rest-f03.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | rest-strip-3x.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | stretch-1x-animated.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | stretch-3x-animated.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | stretch-f00.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | stretch-f01.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | stretch-f02.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | stretch-f03.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | stretch-strip-3x.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | walk-1x-animated.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | walk-3x-animated.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | walk-f00.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | walk-f01.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | walk-f02.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | walk-f03.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | walk-f04.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | walk-f05.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | walk-strip-3x.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | celebrate-grid.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | rest-grid.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | stretch-grid.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | walk-grid-initial.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | walk-grid.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | mina-neutral-48-v1-1x.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | mina-neutral-48-v1-2x.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | mina-neutral-48-v1-3x.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | review-board.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | beat-1x.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | beat-2x.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | beat-3x.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | before-1x.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | before-2x.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | before-3x.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | broken-1x.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | bush-1x.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | calm-1x.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | calm-2x.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | calm-3x.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | complete-1x.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | grass-1x.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | house-1x.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | idle-1x.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | mina-backgrounds.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | neutral-1x.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | path-1x.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | reduced-1x.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | reduced-2x.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | reduced-3x.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | work-1x.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | beat-1x.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | beat-2x.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | beat-3x.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | before-1x.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | before-2x.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | before-3x.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | broken-1x.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | bush-1x.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | calm-1x.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | calm-2x.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | calm-3x.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | complete-1x.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | grass-1x.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | house-1x.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | idle-1x.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | mina-backgrounds.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | neutral-1x.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | path-1x.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | reduced-1x.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | reduced-2x.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | reduced-3x.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | swatches.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | work-1x.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | beat-1x.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | beat-2x.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | beat-3x.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | before-1x.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | before-2x.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | before-3x.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | broken-1x.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | bush-1x.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | calm-1x.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | calm-2x.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | calm-3x.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | complete-1x.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | grass-1x.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | house-1x.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | idle-1x.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | mina-backgrounds.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | neutral-1x.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | path-1x.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | reduced-1x.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | reduced-2x.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | reduced-3x.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | swatches.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | work-1x.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | comparison-board.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | beat-1x.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | beat-2x.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | beat-3x.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | beat-gray-1x.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | before-1x.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | before-2x.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | before-3x.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | before-gray-1x.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | calm-1x.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | calm-2x.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | calm-3x.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | calm-gray-1x.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | comparison-board.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | reduced-1x.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | reduced-2x.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | reduced-3x.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | reduced-gray-1x.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | smoke-1x.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | smoke-2x.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | smoke-3x.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | spark-1x.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | spark-2x.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | spark-3x.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | smoke.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | spark.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | bush-1x.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | bush-2x.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | bush-3x.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | cluster-1x.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | cluster-2x.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | cluster-3x.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | cluster-gray-1x.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | comparison-board.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | grass-1x.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | grass-2x.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | grass-3x.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | grass-repeat-3x3.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | house-1x.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | house-2x.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | house-3x.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | path-1x.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | path-2x.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | path-3x.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | path-repeat-3x3.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | bush.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | grass.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | house.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | path.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | bld_workshop_states.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | cluster-broken-1x.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | cluster-complete-1x.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | cluster-repairing-1x.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | comparison-board.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | repairing-normalized-reference.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | town-broken-1x.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | town-complete-1x.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | town-repairing-1x.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | workshop-broken-1x.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | workshop-broken-2x.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | workshop-broken-3x.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | workshop-broken-gray.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | workshop-complete-1x.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | workshop-complete-2x.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | workshop-complete-3x.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | workshop-complete-gray.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | workshop-repairing-1x.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | workshop-repairing-2x.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | workshop-repairing-3x.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | workshop-repairing-gray.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | repairing.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | comparison-board.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | town-broken-1x.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | town-complete-1x.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | workshop-broken-1x.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | workshop-broken-2x.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | workshop-broken-3x.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | workshop-broken-gray.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | workshop-complete-1x.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | workshop-complete-2x.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | workshop-complete-3x.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | workshop-complete-gray.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | broken.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | complete.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | mina-neutral-edit-v2.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | mina-neutral-v1.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | noah-idle-75-f00.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | noah-idle-75-f01.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | noah-idle-75-f02.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | noah-idle-75-f03.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | noah-idle-100-f00.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | noah-idle-100-f01.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | noah-idle-100-f02.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | noah-idle-100-f03.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | noah-idle-125-f00.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | noah-idle-125-f01.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | noah-idle-125-f02.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | noah-idle-125-f03.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | noah-idle-150-f00.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | noah-idle-150-f01.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | noah-idle-150-f02.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | noah-idle-150-f03.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | noah-read-75-f00.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | noah-read-75-f01.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | noah-read-75-f02.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | noah-read-75-f03.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | noah-read-100-f00.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | noah-read-100-f01.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | noah-read-100-f02.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | noah-read-100-f03.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | noah-read-125-f00.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | noah-read-125-f01.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | noah-read-125-f02.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | noah-read-125-f03.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | noah-read-150-f00.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | noah-read-150-f01.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | noah-read-150-f02.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | noah-read-150-f03.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | noah-walk-75-f00.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | noah-walk-75-f01.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | noah-walk-75-f02.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | noah-walk-75-f03.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | noah-walk-75-f04.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | noah-walk-75-f05.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | noah-walk-100-f00.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | noah-walk-100-f01.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | noah-walk-100-f02.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | noah-walk-100-f03.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | noah-walk-100-f04.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | noah-walk-100-f05.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | noah-walk-125-f00.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | noah-walk-125-f01.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | noah-walk-125-f02.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | noah-walk-125-f03.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | noah-walk-125-f04.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | noah-walk-125-f05.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | noah-walk-150-f00.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | noah-walk-150-f01.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | noah-walk-150-f02.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | noah-walk-150-f03.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | noah-walk-150-f04.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | noah-walk-150-f05.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | rumi-idle-75-f00.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | rumi-idle-75-f01.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | rumi-idle-75-f02.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | rumi-idle-75-f03.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | rumi-idle-100-f00.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | rumi-idle-100-f01.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | rumi-idle-100-f02.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | rumi-idle-100-f03.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | rumi-idle-125-f00.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | rumi-idle-125-f01.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | rumi-idle-125-f02.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | rumi-idle-125-f03.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | rumi-idle-150-f00.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | rumi-idle-150-f01.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | rumi-idle-150-f02.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | rumi-idle-150-f03.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | rumi-walk-75-f00.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | rumi-walk-75-f01.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | rumi-walk-75-f02.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | rumi-walk-75-f03.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | rumi-walk-75-f04.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | rumi-walk-75-f05.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | rumi-walk-100-f00.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | rumi-walk-100-f01.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | rumi-walk-100-f02.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | rumi-walk-100-f03.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | rumi-walk-100-f04.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | rumi-walk-100-f05.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | rumi-walk-125-f00.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | rumi-walk-125-f01.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | rumi-walk-125-f02.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | rumi-walk-125-f03.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | rumi-walk-125-f04.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | rumi-walk-125-f05.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | rumi-walk-150-f00.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | rumi-walk-150-f01.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | rumi-walk-150-f02.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | rumi-walk-150-f03.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | rumi-walk-150-f04.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | rumi-walk-150-f05.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | town-broken-idle-75.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | town-broken-idle-100.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | town-broken-idle-125.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | town-broken-idle-150.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | town-broken-read-75.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | town-broken-read-100.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | town-broken-read-125.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | town-broken-read-150.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | town-complete-idle-75.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | town-complete-idle-100.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | town-complete-idle-125.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | town-complete-idle-150.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | town-complete-read-75.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | town-complete-read-100.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | town-complete-read-125.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | town-complete-read-150.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | town-repairing-idle-75.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | town-repairing-idle-100.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | town-repairing-idle-125.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | town-repairing-idle-150.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | town-repairing-read-75.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | town-repairing-read-100.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | town-repairing-read-125.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | town-repairing-read-150.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | chr_noah_idle.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | chr_noah_read.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | chr_noah_walk.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | chr_rumi_idle.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | chr_rumi_walk.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | noah-idle-1x-animated.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | noah-idle-3x-animated.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | noah-idle-f00.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | noah-idle-f01.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | noah-idle-f02.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | noah-idle-f03.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | noah-idle-strip-3x.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | noah-read-1x-animated.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | noah-read-3x-animated.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | noah-read-f00.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | noah-read-f01.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | noah-read-f02.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | noah-read-f03.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | noah-read-strip-3x.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | noah-walk-1x-animated.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | noah-walk-3x-animated.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | noah-walk-f00.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | noah-walk-f01.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | noah-walk-f02.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | noah-walk-f03.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | noah-walk-f04.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | noah-walk-f05.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | noah-walk-strip-3x.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | rumi-idle-1x-animated.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | rumi-idle-3x-animated.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | rumi-idle-f00.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | rumi-idle-f01.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | rumi-idle-f02.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | rumi-idle-f03.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | rumi-idle-strip-3x.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | rumi-walk-1x-animated.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | rumi-walk-3x-animated.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | rumi-walk-f00.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | rumi-walk-f01.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | rumi-walk-f02.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | rumi-walk-f03.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | rumi-walk-f04.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | rumi-walk-f05.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | rumi-walk-strip-3x.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | chr_noah_idle.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | chr_noah_read.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | chr_noah_walk.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | chr_rumi_idle.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | chr_rumi_walk.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | noah-idle-1x-animated.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | noah-idle-3x-animated.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | noah-idle-f00.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | noah-idle-f01.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | noah-idle-f02.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | noah-idle-f03.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | noah-idle-strip-3x.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | noah-read-1x-animated.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | noah-read-3x-animated.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | noah-read-f00.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | noah-read-f01.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | noah-read-f02.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | noah-read-f03.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | noah-read-strip-3x.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | noah-walk-1x-animated.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | noah-walk-3x-animated.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | noah-walk-f00.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | noah-walk-f01.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | noah-walk-f02.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | noah-walk-f03.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | noah-walk-f04.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | noah-walk-f05.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | noah-walk-strip-3x.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | rumi-idle-1x-animated.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | rumi-idle-3x-animated.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | rumi-idle-f00.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | rumi-idle-f01.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | rumi-idle-f02.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | rumi-idle-f03.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | rumi-idle-strip-3x.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | rumi-walk-1x-animated.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | rumi-walk-3x-animated.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | rumi-walk-f00.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | rumi-walk-f01.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | rumi-walk-f02.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | rumi-walk-f03.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | rumi-walk-f04.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | rumi-walk-f05.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | rumi-walk-strip-3x.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | noah-idle.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | noah-read.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | noah-walk.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | rumi-idle.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | rumi-walk.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | existing-broken-100.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | existing-complete-100.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | existing-repairing-100.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | proposed-broken-75.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | proposed-broken-100.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | proposed-broken-125.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | proposed-broken-150.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | proposed-complete-75.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | proposed-complete-100.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | proposed-complete-125.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | proposed-complete-150.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | proposed-repairing-75.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | proposed-repairing-100.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | proposed-repairing-125.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | proposed-repairing-150.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | bld_house-3x.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | bld_house.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | bld_library_locked-3x.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | bld_library_locked.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | bld_workshop_states-3x.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | bld_workshop_states.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | env_bush_variants-3x.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | env_bush_variants.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | env_dirt_tile-3x.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | env_dirt_tile.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | env_fence_variants-3x.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | env_fence_variants.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | env_flower_variants-3x.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | env_flower_variants.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | env_grass_tiles-3x.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | env_grass_tiles.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | env_path_tiles-3x.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | env_path_tiles.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | env_rock_variants-3x.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | env_rock_variants.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | env_tree_variants-3x.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | env_tree_variants.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | bld_house-3x.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | bld_house.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | bld_library_locked-3x.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | bld_library_locked.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | bld_workshop_states-3x.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | bld_workshop_states.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | env_bush_variants-3x.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | env_bush_variants.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | env_dirt_tile-3x.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | env_dirt_tile.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | env_fence_variants-3x.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | env_fence_variants.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | env_flower_variants-3x.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | env_flower_variants.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | env_grass_tiles-3x.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | env_grass_tiles.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | env_path_tiles-3x.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | env_path_tiles.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | env_rock_variants-3x.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | env_rock_variants.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | env_tree_variants-3x.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | env_tree_variants.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | fence.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | flower.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | library.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | rock.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | tree.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | proposed-broken-75.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | proposed-broken-100.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | proposed-broken-125.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | proposed-broken-150.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | proposed-complete-75.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | proposed-complete-100.png[39m[0m
+[  99% ] [90m[1m_update_scan_actions[22m | proposed-complete-125.png[39m[0m
+[  99% ] [90m[1m_update_scan_actions[22m | proposed-complete-150.png[39m[0m
+[  99% ] [90m[1m_update_scan_actions[22m | proposed-repairing-75.png[39m[0m
+[  99% ] [90m[1m_update_scan_actions[22m | proposed-repairing-100.png[39m[0m
+[  99% ] [90m[1m_update_scan_actions[22m | proposed-repairing-125.png[39m[0m
+[  99% ] [90m[1m_update_scan_actions[22m | proposed-repairing-150.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started 애셋 (다시) 가져오는 중 (776 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   0% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   0% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   0% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   0% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   0% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   0% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   0% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   1% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   1% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   1% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   1% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   1% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   1% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   1% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   1% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   2% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   2% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   2% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   2% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   2% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   2% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   2% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   2% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   3% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   3% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   3% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   3% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   3% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   3% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   3% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   3% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   4% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   4% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   4% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   4% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   4% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   4% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   4% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   5% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   5% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   5% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   5% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   5% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   5% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   5% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   5% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   6% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   6% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   6% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   6% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   6% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   6% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   6% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   6% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   7% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   7% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   7% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   7% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   7% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   7% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   7% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   7% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   8% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   8% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   8% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   8% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   8% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   8% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   8% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   9% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   9% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   9% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   9% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   9% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   9% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   9% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   9% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  10% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  10% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  10% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  10% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  10% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  10% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  10% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  10% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  11% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  11% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  11% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  11% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  11% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  11% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  11% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  11% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  12% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  12% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  12% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  12% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  12% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  12% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  12% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  12% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  13% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  13% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  13% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  13% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  13% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  13% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  13% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  14% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  14% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  14% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  14% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  14% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  14% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  14% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  14% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  15% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  15% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  15% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  15% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  15% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  15% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  15% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  15% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  16% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  16% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  16% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  16% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  16% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  16% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  16% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  16% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  17% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  17% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  17% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  17% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  17% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  17% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  17% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  18% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  18% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  18% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  18% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  18% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  18% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  18% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  18% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  19% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  19% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  19% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  19% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  19% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  19% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  19% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  19% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  20% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  20% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  20% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  20% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  20% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  20% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  20% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  20% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  21% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  21% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  21% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  21% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  21% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  21% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  21% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  22% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  22% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  22% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  22% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  22% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  22% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  22% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  22% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  23% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  23% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  23% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  23% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  23% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  23% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  23% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  23% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  24% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  24% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  24% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  24% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  24% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  24% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  24% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  24% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  25% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  25% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  25% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  25% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  25% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  25% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  25% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  25% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  26% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  26% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  26% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  26% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  26% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  26% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  26% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  27% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  27% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  27% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  27% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  27% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  27% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  27% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  27% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  28% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  28% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  28% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  28% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  28% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  28% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  28% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  28% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  29% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  29% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  29% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  29% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  29% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  29% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  29% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  29% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  30% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  30% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  30% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  30% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  30% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  30% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  30% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  31% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  31% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  31% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  31% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  31% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  31% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  31% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  31% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  32% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  32% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  32% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  32% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  32% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  32% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  32% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  32% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  33% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  33% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  33% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  33% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  33% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  33% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  33% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  33% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  34% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  34% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  34% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  34% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  34% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  34% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  34% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  35% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  35% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  35% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  35% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  35% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  35% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  35% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  35% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  36% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  36% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  36% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  36% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  36% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  36% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  36% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  36% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  37% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  37% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  37% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  37% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  37% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  37% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  37% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  37% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  38% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  38% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  38% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  38% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  38% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  38% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  38% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  38% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  39% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  39% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  39% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  39% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  39% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  39% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  39% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  40% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  40% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  40% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  40% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  40% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  40% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  40% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  40% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  41% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  41% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  41% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  41% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  41% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  41% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  41% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  41% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  42% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  42% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  42% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  42% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  42% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  42% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  42% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  42% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  43% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  43% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  43% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  43% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  43% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  43% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  43% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  44% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  44% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  44% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  44% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  44% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  44% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  44% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  44% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  45% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  45% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  45% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  45% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  45% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  45% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  45% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  45% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  46% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  46% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  46% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  46% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  46% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  46% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  46% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  46% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  47% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  47% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  47% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  47% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  47% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  47% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  47% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  48% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  48% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  48% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  48% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  48% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  48% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  48% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  48% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  49% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  49% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  49% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  49% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  49% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  49% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  49% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  49% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  50% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  50% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  50% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  50% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  50% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  50% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  50% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  50% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  51% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  51% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  51% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  51% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  51% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  51% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  51% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  51% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  52% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  52% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  52% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  52% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  52% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  52% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  52% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  53% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  53% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  53% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  53% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  53% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  53% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  53% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  53% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  54% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  54% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  54% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  54% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  54% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  54% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  54% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  54% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  55% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  55% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  55% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  55% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  55% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  55% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  55% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  55% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  56% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  56% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  56% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  56% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  56% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  56% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  56% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  57% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  57% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  57% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  57% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  57% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  57% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  57% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  57% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  58% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  58% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  58% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  58% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  58% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  58% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  58% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  58% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  59% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  59% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  59% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  59% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  59% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  59% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  59% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  59% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  60% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  60% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  60% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  60% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  60% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  60% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  60% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  61% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  61% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  61% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  61% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  61% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  61% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  61% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  61% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  62% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  62% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  62% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  62% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  62% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  62% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  62% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  62% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  63% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  63% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  63% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  63% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  63% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  63% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  63% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  63% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  64% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  64% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  64% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  64% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  64% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  64% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  64% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  64% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  65% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  65% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  65% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  65% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  65% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  65% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  65% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  66% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  66% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  66% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  66% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  66% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  66% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  66% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  66% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  67% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  67% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  67% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  67% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  67% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  67% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  67% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  67% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  68% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  68% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  68% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  68% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  68% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  68% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  68% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  68% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  69% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  69% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  69% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  69% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  69% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  69% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  69% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  70% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  70% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  70% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  70% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  70% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  70% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  70% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  70% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  71% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  71% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  71% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  71% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  71% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  71% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  71% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  71% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  72% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  72% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  72% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  72% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  72% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  72% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  72% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  72% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  73% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  73% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  73% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  73% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  73% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  73% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  73% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  74% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  74% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  74% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  74% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  74% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  74% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  74% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  74% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  75% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  75% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  75% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  75% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  75% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  75% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  75% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  75% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  76% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  76% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  76% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  76% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  76% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  76% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  76% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  76% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  77% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  77% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  77% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  77% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  77% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  77% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  77% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  77% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  78% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  78% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  78% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  78% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  78% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  78% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  78% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  79% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  79% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  79% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  79% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  79% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  79% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  79% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  79% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  80% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  80% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  80% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  80% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  80% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  80% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  80% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  80% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  81% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  81% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  81% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  81% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  81% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  81% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  81% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  81% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  82% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  82% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  82% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  82% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  82% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  82% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  82% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  83% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  83% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  83% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  83% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  83% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  83% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  83% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  83% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  84% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  84% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  84% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  84% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  84% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  84% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  84% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  84% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  85% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  85% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  85% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  85% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  85% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  85% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  85% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  85% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  86% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  86% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  86% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  86% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  86% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  86% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  86% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  87% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  87% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  87% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  87% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  87% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  87% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  87% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  87% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  88% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  88% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  88% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  88% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  88% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  88% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  88% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  88% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  89% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  89% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  89% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  89% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  89% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  89% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  89% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  89% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  90% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  90% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  90% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  90% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  90% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  90% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  90% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  90% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  91% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  91% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  91% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  91% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  91% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  91% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  91% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  92% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  92% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  92% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  92% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  92% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  92% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  92% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  92% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  93% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  93% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  93% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  93% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  93% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  93% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  93% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  93% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  94% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  94% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  94% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  94% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  94% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  94% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  94% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  94% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  95% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  95% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  95% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  95% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  95% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  95% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  95% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  96% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  96% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  96% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  96% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  96% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  96% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  96% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  96% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  97% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  97% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  97% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  97% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  97% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  97% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  97% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  97% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  98% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  98% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  98% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  98% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  98% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  98% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  98% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  98% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  99% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  99% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  99% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  99% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  99% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[  99% ] [90m[1mreimport[22m | 다시 가져올 파일을 준비 중...[39m[0m
+[   0% ] [90m[1mreimport[22m | 다시 가져오기 전 작업을 수행 중...[39m[0m
+[   0% ] [90m[1mreimport[22m | noah-read-100-f02.png[39m[0m
+[   0% ] [90m[1mreimport[22m | noah-read-100-f03.png[39m[0m
+[   0% ] [90m[1mreimport[22m | noah-read-125-f00.png[39m[0m
+[   0% ] [90m[1mreimport[22m | noah-read-125-f01.png[39m[0m
+[   0% ] [90m[1mreimport[22m | noah-read-125-f02.png[39m[0m
+[   0% ] [90m[1mreimport[22m | noah-read-125-f03.png[39m[0m
+[   0% ] [90m[1mreimport[22m | noah-read-150-f00.png[39m[0m
+[   0% ] [90m[1mreimport[22m | noah-read-150-f01.png[39m[0m
+[   1% ] [90m[1mreimport[22m | noah-read-150-f02.png[39m[0m
+[   1% ] [90m[1mreimport[22m | noah-read-150-f03.png[39m[0m
+[   1% ] [90m[1mreimport[22m | noah-walk-75-f00.png[39m[0m
+[   1% ] [90m[1mreimport[22m | noah-walk-75-f01.png[39m[0m
+[   1% ] [90m[1mreimport[22m | noah-walk-75-f02.png[39m[0m
+[   1% ] [90m[1mreimport[22m | noah-walk-75-f03.png[39m[0m
+[   1% ] [90m[1mreimport[22m | noah-walk-75-f04.png[39m[0m
+[   1% ] [90m[1mreimport[22m | noah-walk-75-f05.png[39m[0m
+[   2% ] [90m[1mreimport[22m | noah-walk-100-f00.png[39m[0m
+[   2% ] [90m[1mreimport[22m | noah-walk-100-f01.png[39m[0m
+[   2% ] [90m[1mreimport[22m | noah-walk-100-f02.png[39m[0m
+[   2% ] [90m[1mreimport[22m | noah-walk-100-f03.png[39m[0m
+[   2% ] [90m[1mreimport[22m | noah-walk-100-f04.png[39m[0m
+[   2% ] [90m[1mreimport[22m | noah-walk-100-f05.png[39m[0m
+[   2% ] [90m[1mreimport[22m | noah-walk-125-f00.png[39m[0m
+[   2% ] [90m[1mreimport[22m | noah-walk-125-f01.png[39m[0m
+[   3% ] [90m[1mreimport[22m | mina-neutral-edit-v2.png[39m[0m
+[   3% ] [90m[1mreimport[22m | mina-neutral-v1.png[39m[0m
+[   3% ] [90m[1mreimport[22m | noah-idle-75-f00.png[39m[0m
+[   3% ] [90m[1mreimport[22m | noah-idle-75-f01.png[39m[0m
+[   3% ] [90m[1mreimport[22m | noah-idle-75-f02.png[39m[0m
+[   3% ] [90m[1mreimport[22m | noah-idle-75-f03.png[39m[0m
+[   3% ] [90m[1mreimport[22m | noah-idle-100-f00.png[39m[0m
+[   3% ] [90m[1mreimport[22m | noah-idle-100-f01.png[39m[0m
+[   4% ] [90m[1mreimport[22m | noah-idle-100-f02.png[39m[0m
+[   4% ] [90m[1mreimport[22m | noah-idle-100-f03.png[39m[0m
+[   4% ] [90m[1mreimport[22m | noah-idle-125-f00.png[39m[0m
+[   4% ] [90m[1mreimport[22m | noah-idle-125-f01.png[39m[0m
+[   4% ] [90m[1mreimport[22m | noah-idle-125-f02.png[39m[0m
+[   4% ] [90m[1mreimport[22m | noah-idle-125-f03.png[39m[0m
+[   4% ] [90m[1mreimport[22m | noah-idle-150-f00.png[39m[0m
+[   5% ] [90m[1mreimport[22m | noah-idle-150-f01.png[39m[0m
+[   5% ] [90m[1mreimport[22m | noah-idle-150-f02.png[39m[0m
+[   5% ] [90m[1mreimport[22m | noah-idle-150-f03.png[39m[0m
+[   5% ] [90m[1mreimport[22m | noah-read-75-f00.png[39m[0m
+[   5% ] [90m[1mreimport[22m | noah-read-75-f01.png[39m[0m
+[   5% ] [90m[1mreimport[22m | noah-read-75-f02.png[39m[0m
+[   5% ] [90m[1mreimport[22m | noah-read-75-f03.png[39m[0m
+[   5% ] [90m[1mreimport[22m | noah-read-100-f00.png[39m[0m
+[   6% ] [90m[1mreimport[22m | noah-read-100-f01.png[39m[0m
+[   6% ] [90m[1mreimport[22m | rumi-idle-150-f03.png[39m[0m
+[   6% ] [90m[1mreimport[22m | rumi-walk-75-f00.png[39m[0m
+[   6% ] [90m[1mreimport[22m | rumi-walk-75-f01.png[39m[0m
+[   6% ] [90m[1mreimport[22m | rumi-walk-75-f02.png[39m[0m
+[   6% ] [90m[1mreimport[22m | rumi-walk-75-f03.png[39m[0m
+[   6% ] [90m[1mreimport[22m | rumi-walk-75-f04.png[39m[0m
+[   6% ] [90m[1mreimport[22m | rumi-walk-75-f05.png[39m[0m
+[   7% ] [90m[1mreimport[22m | rumi-walk-100-f00.png[39m[0m
+[   7% ] [90m[1mreimport[22m | rumi-walk-100-f01.png[39m[0m
+[   7% ] [90m[1mreimport[22m | rumi-walk-100-f02.png[39m[0m
+[   7% ] [90m[1mreimport[22m | rumi-walk-100-f03.png[39m[0m
+[   7% ] [90m[1mreimport[22m | rumi-walk-100-f04.png[39m[0m
+[   7% ] [90m[1mreimport[22m | rumi-walk-100-f05.png[39m[0m
+[   7% ] [90m[1mreimport[22m | rumi-walk-125-f00.png[39m[0m
+[   7% ] [90m[1mreimport[22m | rumi-walk-125-f01.png[39m[0m
+[   8% ] [90m[1mreimport[22m | rumi-walk-125-f02.png[39m[0m
+[   8% ] [90m[1mreimport[22m | rumi-walk-125-f03.png[39m[0m
+[   8% ] [90m[1mreimport[22m | rumi-walk-125-f04.png[39m[0m
+[   8% ] [90m[1mreimport[22m | rumi-walk-125-f05.png[39m[0m
+[   8% ] [90m[1mreimport[22m | rumi-walk-150-f00.png[39m[0m
+[   8% ] [90m[1mreimport[22m | rumi-walk-150-f01.png[39m[0m
+[   8% ] [90m[1mreimport[22m | rumi-walk-150-f02.png[39m[0m
+[   9% ] [90m[1mreimport[22m | rumi-walk-150-f03.png[39m[0m
+[   9% ] [90m[1mreimport[22m | rumi-walk-150-f04.png[39m[0m
+[   9% ] [90m[1mreimport[22m | noah-walk-125-f02.png[39m[0m
+[   9% ] [90m[1mreimport[22m | noah-walk-125-f03.png[39m[0m
+[   9% ] [90m[1mreimport[22m | noah-walk-125-f04.png[39m[0m
+[   9% ] [90m[1mreimport[22m | noah-walk-125-f05.png[39m[0m
+[   9% ] [90m[1mreimport[22m | noah-walk-150-f00.png[39m[0m
+[   9% ] [90m[1mreimport[22m | noah-walk-150-f01.png[39m[0m
+[  10% ] [90m[1mreimport[22m | noah-walk-150-f02.png[39m[0m
+[  10% ] [90m[1mreimport[22m | noah-walk-150-f03.png[39m[0m
+[  10% ] [90m[1mreimport[22m | noah-walk-150-f04.png[39m[0m
+[  10% ] [90m[1mreimport[22m | noah-walk-150-f05.png[39m[0m
+[  10% ] [90m[1mreimport[22m | rumi-idle-75-f00.png[39m[0m
+[  10% ] [90m[1mreimport[22m | rumi-idle-75-f01.png[39m[0m
+[  10% ] [90m[1mreimport[22m | rumi-idle-75-f02.png[39m[0m
+[  10% ] [90m[1mreimport[22m | rumi-idle-75-f03.png[39m[0m
+[  11% ] [90m[1mreimport[22m | rumi-idle-100-f00.png[39m[0m
+[  11% ] [90m[1mreimport[22m | rumi-idle-100-f01.png[39m[0m
+[  11% ] [90m[1mreimport[22m | rumi-idle-100-f02.png[39m[0m
+[  11% ] [90m[1mreimport[22m | rumi-idle-100-f03.png[39m[0m
+[  11% ] [90m[1mreimport[22m | rumi-idle-125-f00.png[39m[0m
+[  11% ] [90m[1mreimport[22m | rumi-idle-125-f01.png[39m[0m
+[  11% ] [90m[1mreimport[22m | rumi-idle-125-f02.png[39m[0m
+[  11% ] [90m[1mreimport[22m | rumi-idle-125-f03.png[39m[0m
+[  12% ] [90m[1mreimport[22m | rumi-idle-150-f00.png[39m[0m
+[  12% ] [90m[1mreimport[22m | rumi-idle-150-f01.png[39m[0m
+[  12% ] [90m[1mreimport[22m | rumi-idle-150-f02.png[39m[0m
+[  12% ] [90m[1mreimport[22m | calm-3x.png[39m[0m
+[  12% ] [90m[1mreimport[22m | calm-gray-1x.png[39m[0m
+[  12% ] [90m[1mreimport[22m | comparison-board.png[39m[0m
+[  12% ] [90m[1mreimport[22m | reduced-1x.png[39m[0m
+[  12% ] [90m[1mreimport[22m | reduced-2x.png[39m[0m
+[  13% ] [90m[1mreimport[22m | reduced-3x.png[39m[0m
+[  13% ] [90m[1mreimport[22m | reduced-gray-1x.png[39m[0m
+[  13% ] [90m[1mreimport[22m | smoke-1x.png[39m[0m
+[  13% ] [90m[1mreimport[22m | smoke-2x.png[39m[0m
+[  13% ] [90m[1mreimport[22m | smoke-3x.png[39m[0m
+[  13% ] [90m[1mreimport[22m | spark-1x.png[39m[0m
+[  13% ] [90m[1mreimport[22m | spark-2x.png[39m[0m
+[  14% ] [90m[1mreimport[22m | spark-3x.png[39m[0m
+[  14% ] [90m[1mreimport[22m | smoke.png[39m[0m
+[  14% ] [90m[1mreimport[22m | spark.png[39m[0m
+[  14% ] [90m[1mreimport[22m | bush-1x.png[39m[0m
+[  14% ] [90m[1mreimport[22m | bush-2x.png[39m[0m
+[  14% ] [90m[1mreimport[22m | bush-3x.png[39m[0m
+[  14% ] [90m[1mreimport[22m | cluster-1x.png[39m[0m
+[  14% ] [90m[1mreimport[22m | cluster-2x.png[39m[0m
+[  15% ] [90m[1mreimport[22m | cluster-3x.png[39m[0m
+[  15% ] [90m[1mreimport[22m | cluster-gray-1x.png[39m[0m
+[  15% ] [90m[1mreimport[22m | comparison-board.png[39m[0m
+[  15% ] [90m[1mreimport[22m | grass-1x.png[39m[0m
+[  15% ] [90m[1mreimport[22m | calm-3x.png[39m[0m
+[  15% ] [90m[1mreimport[22m | complete-1x.png[39m[0m
+[  15% ] [90m[1mreimport[22m | grass-1x.png[39m[0m
+[  15% ] [90m[1mreimport[22m | house-1x.png[39m[0m
+[  16% ] [90m[1mreimport[22m | idle-1x.png[39m[0m
+[  16% ] [90m[1mreimport[22m | mina-backgrounds.png[39m[0m
+[  16% ] [90m[1mreimport[22m | neutral-1x.png[39m[0m
+[  16% ] [90m[1mreimport[22m | path-1x.png[39m[0m
+[  16% ] [90m[1mreimport[22m | reduced-1x.png[39m[0m
+[  16% ] [90m[1mreimport[22m | reduced-2x.png[39m[0m
+[  16% ] [90m[1mreimport[22m | reduced-3x.png[39m[0m
+[  16% ] [90m[1mreimport[22m | swatches.png[39m[0m
+[  17% ] [90m[1mreimport[22m | work-1x.png[39m[0m
+[  17% ] [90m[1mreimport[22m | comparison-board.png[39m[0m
+[  17% ] [90m[1mreimport[22m | beat-1x.png[39m[0m
+[  17% ] [90m[1mreimport[22m | beat-2x.png[39m[0m
+[  17% ] [90m[1mreimport[22m | beat-3x.png[39m[0m
+[  17% ] [90m[1mreimport[22m | beat-gray-1x.png[39m[0m
+[  17% ] [90m[1mreimport[22m | before-1x.png[39m[0m
+[  18% ] [90m[1mreimport[22m | before-2x.png[39m[0m
+[  18% ] [90m[1mreimport[22m | before-3x.png[39m[0m
+[  18% ] [90m[1mreimport[22m | before-gray-1x.png[39m[0m
+[  18% ] [90m[1mreimport[22m | calm-1x.png[39m[0m
+[  18% ] [90m[1mreimport[22m | calm-2x.png[39m[0m
+[  18% ] [90m[1mreimport[22m | workshop-broken-3x.png[39m[0m
+[  18% ] [90m[1mreimport[22m | workshop-broken-gray.png[39m[0m
+[  18% ] [90m[1mreimport[22m | workshop-complete-1x.png[39m[0m
+[  19% ] [90m[1mreimport[22m | workshop-complete-2x.png[39m[0m
+[  19% ] [90m[1mreimport[22m | workshop-complete-3x.png[39m[0m
+[  19% ] [90m[1mreimport[22m | workshop-complete-gray.png[39m[0m
+[  19% ] [90m[1mreimport[22m | workshop-repairing-1x.png[39m[0m
+[  19% ] [90m[1mreimport[22m | workshop-repairing-2x.png[39m[0m
+[  19% ] [90m[1mreimport[22m | workshop-repairing-3x.png[39m[0m
+[  19% ] [90m[1mreimport[22m | workshop-repairing-gray.png[39m[0m
+[  19% ] [90m[1mreimport[22m | repairing.png[39m[0m
+[  20% ] [90m[1mreimport[22m | comparison-board.png[39m[0m
+[  20% ] [90m[1mreimport[22m | town-broken-1x.png[39m[0m
+[  20% ] [90m[1mreimport[22m | town-complete-1x.png[39m[0m
+[  20% ] [90m[1mreimport[22m | workshop-broken-1x.png[39m[0m
+[  20% ] [90m[1mreimport[22m | workshop-broken-2x.png[39m[0m
+[  20% ] [90m[1mreimport[22m | workshop-broken-3x.png[39m[0m
+[  20% ] [90m[1mreimport[22m | workshop-broken-gray.png[39m[0m
+[  20% ] [90m[1mreimport[22m | workshop-complete-1x.png[39m[0m
+[  21% ] [90m[1mreimport[22m | workshop-complete-2x.png[39m[0m
+[  21% ] [90m[1mreimport[22m | workshop-complete-3x.png[39m[0m
+[  21% ] [90m[1mreimport[22m | workshop-complete-gray.png[39m[0m
+[  21% ] [90m[1mreimport[22m | broken.png[39m[0m
+[  21% ] [90m[1mreimport[22m | complete.png[39m[0m
+[  21% ] [90m[1mreimport[22m | grass-2x.png[39m[0m
+[  21% ] [90m[1mreimport[22m | grass-3x.png[39m[0m
+[  22% ] [90m[1mreimport[22m | grass-repeat-3x3.png[39m[0m
+[  22% ] [90m[1mreimport[22m | house-1x.png[39m[0m
+[  22% ] [90m[1mreimport[22m | house-2x.png[39m[0m
+[  22% ] [90m[1mreimport[22m | house-3x.png[39m[0m
+[  22% ] [90m[1mreimport[22m | path-1x.png[39m[0m
+[  22% ] [90m[1mreimport[22m | path-2x.png[39m[0m
+[  22% ] [90m[1mreimport[22m | path-3x.png[39m[0m
+[  22% ] [90m[1mreimport[22m | path-repeat-3x3.png[39m[0m
+[  23% ] [90m[1mreimport[22m | bush.png[39m[0m
+[  23% ] [90m[1mreimport[22m | grass.png[39m[0m
+[  23% ] [90m[1mreimport[22m | house.png[39m[0m
+[  23% ] [90m[1mreimport[22m | path.png[39m[0m
+[  23% ] [90m[1mreimport[22m | bld_workshop_states.png[39m[0m
+[  23% ] [90m[1mreimport[22m | cluster-broken-1x.png[39m[0m
+[  23% ] [90m[1mreimport[22m | cluster-complete-1x.png[39m[0m
+[  23% ] [90m[1mreimport[22m | cluster-repairing-1x.png[39m[0m
+[  24% ] [90m[1mreimport[22m | comparison-board.png[39m[0m
+[  24% ] [90m[1mreimport[22m | repairing-normalized-reference.png[39m[0m
+[  24% ] [90m[1mreimport[22m | town-broken-1x.png[39m[0m
+[  24% ] [90m[1mreimport[22m | town-complete-1x.png[39m[0m
+[  24% ] [90m[1mreimport[22m | town-repairing-1x.png[39m[0m
+[  24% ] [90m[1mreimport[22m | workshop-broken-1x.png[39m[0m
+[  24% ] [90m[1mreimport[22m | workshop-broken-2x.png[39m[0m
+[  24% ] [90m[1mreimport[22m | proposed-broken-75.png[39m[0m
+[  25% ] [90m[1mreimport[22m | proposed-broken-100.png[39m[0m
+[  25% ] [90m[1mreimport[22m | proposed-broken-125.png[39m[0m
+[  25% ] [90m[1mreimport[22m | proposed-broken-150.png[39m[0m
+[  25% ] [90m[1mreimport[22m | proposed-complete-75.png[39m[0m
+[  25% ] [90m[1mreimport[22m | proposed-complete-100.png[39m[0m
+[  25% ] [90m[1mreimport[22m | proposed-complete-125.png[39m[0m
+[  25% ] [90m[1mreimport[22m | proposed-complete-150.png[39m[0m
+[  25% ] [90m[1mreimport[22m | proposed-repairing-75.png[39m[0m
+[  26% ] [90m[1mreimport[22m | proposed-repairing-100.png[39m[0m
+[  26% ] [90m[1mreimport[22m | proposed-repairing-125.png[39m[0m
+[  26% ] [90m[1mreimport[22m | proposed-repairing-150.png[39m[0m
+[  26% ] [90m[1mreimport[22m | bld_house-3x.png[39m[0m
+[  26% ] [90m[1mreimport[22m | bld_house.png[39m[0m
+[  26% ] [90m[1mreimport[22m | bld_library_locked-3x.png[39m[0m
+[  26% ] [90m[1mreimport[22m | bld_library_locked.png[39m[0m
+[  27% ] [90m[1mreimport[22m | bld_workshop_states-3x.png[39m[0m
+[  27% ] [90m[1mreimport[22m | bld_workshop_states.png[39m[0m
+[  27% ] [90m[1mreimport[22m | env_bush_variants-3x.png[39m[0m
+[  27% ] [90m[1mreimport[22m | env_bush_variants.png[39m[0m
+[  27% ] [90m[1mreimport[22m | env_dirt_tile-3x.png[39m[0m
+[  27% ] [90m[1mreimport[22m | env_dirt_tile.png[39m[0m
+[  27% ] [90m[1mreimport[22m | env_fence_variants-3x.png[39m[0m
+[  27% ] [90m[1mreimport[22m | env_fence_variants.png[39m[0m
+[  28% ] [90m[1mreimport[22m | rumi-idle-1x-animated.png[39m[0m
+[  28% ] [90m[1mreimport[22m | rumi-idle-3x-animated.png[39m[0m
+[  28% ] [90m[1mreimport[22m | rumi-idle-f00.png[39m[0m
+[  28% ] [90m[1mreimport[22m | rumi-idle-f01.png[39m[0m
+[  28% ] [90m[1mreimport[22m | rumi-idle-f02.png[39m[0m
+[  28% ] [90m[1mreimport[22m | rumi-idle-f03.png[39m[0m
+[  28% ] [90m[1mreimport[22m | rumi-idle-strip-3x.png[39m[0m
+[  28% ] [90m[1mreimport[22m | rumi-walk-1x-animated.png[39m[0m
+[  29% ] [90m[1mreimport[22m | rumi-walk-3x-animated.png[39m[0m
+[  29% ] [90m[1mreimport[22m | rumi-walk-f00.png[39m[0m
+[  29% ] [90m[1mreimport[22m | rumi-walk-f01.png[39m[0m
+[  29% ] [90m[1mreimport[22m | rumi-walk-f02.png[39m[0m
+[  29% ] [90m[1mreimport[22m | rumi-walk-f03.png[39m[0m
+[  29% ] [90m[1mreimport[22m | rumi-walk-f04.png[39m[0m
+[  29% ] [90m[1mreimport[22m | rumi-walk-f05.png[39m[0m
+[  29% ] [90m[1mreimport[22m | rumi-walk-strip-3x.png[39m[0m
+[  30% ] [90m[1mreimport[22m | noah-idle.png[39m[0m
+[  30% ] [90m[1mreimport[22m | noah-read.png[39m[0m
+[  30% ] [90m[1mreimport[22m | noah-walk.png[39m[0m
+[  30% ] [90m[1mreimport[22m | rumi-idle.png[39m[0m
+[  30% ] [90m[1mreimport[22m | rumi-walk.png[39m[0m
+[  30% ] [90m[1mreimport[22m | existing-broken-100.png[39m[0m
+[  30% ] [90m[1mreimport[22m | existing-complete-100.png[39m[0m
+[  31% ] [90m[1mreimport[22m | existing-repairing-100.png[39m[0m
+[  31% ] [90m[1mreimport[22m | env_grass_tiles.png[39m[0m
+[  31% ] [90m[1mreimport[22m | env_path_tiles-3x.png[39m[0m
+[  31% ] [90m[1mreimport[22m | env_path_tiles.png[39m[0m
+[  31% ] [90m[1mreimport[22m | env_rock_variants-3x.png[39m[0m
+[  31% ] [90m[1mreimport[22m | env_rock_variants.png[39m[0m
+[  31% ] [90m[1mreimport[22m | env_tree_variants-3x.png[39m[0m
+[  31% ] [90m[1mreimport[22m | env_tree_variants.png[39m[0m
+[  32% ] [90m[1mreimport[22m | fence.png[39m[0m
+[  32% ] [90m[1mreimport[22m | flower.png[39m[0m
+[  32% ] [90m[1mreimport[22m | library.png[39m[0m
+[  32% ] [90m[1mreimport[22m | rock.png[39m[0m
+[  32% ] [90m[1mreimport[22m | tree.png[39m[0m
+[  32% ] [90m[1mreimport[22m | proposed-broken-75.png[39m[0m
+[  32% ] [90m[1mreimport[22m | proposed-broken-100.png[39m[0m
+[  32% ] [90m[1mreimport[22m | proposed-broken-125.png[39m[0m
+[  33% ] [90m[1mreimport[22m | proposed-broken-150.png[39m[0m
+[  33% ] [90m[1mreimport[22m | proposed-complete-75.png[39m[0m
+[  33% ] [90m[1mreimport[22m | proposed-complete-100.png[39m[0m
+[  33% ] [90m[1mreimport[22m | proposed-complete-125.png[39m[0m
+[  33% ] [90m[1mreimport[22m | proposed-complete-150.png[39m[0m
+[  33% ] [90m[1mreimport[22m | proposed-repairing-75.png[39m[0m
+[  33% ] [90m[1mreimport[22m | proposed-repairing-100.png[39m[0m
+[  33% ] [90m[1mreimport[22m | proposed-repairing-125.png[39m[0m
+[  34% ] [90m[1mreimport[22m | proposed-repairing-150.png[39m[0m
+[  34% ] [90m[1mreimport[22m | env_flower_variants-3x.png[39m[0m
+[  34% ] [90m[1mreimport[22m | env_flower_variants.png[39m[0m
+[  34% ] [90m[1mreimport[22m | env_grass_tiles-3x.png[39m[0m
+[  34% ] [90m[1mreimport[22m | env_grass_tiles.png[39m[0m
+[  34% ] [90m[1mreimport[22m | env_path_tiles-3x.png[39m[0m
+[  34% ] [90m[1mreimport[22m | env_path_tiles.png[39m[0m
+[  35% ] [90m[1mreimport[22m | env_rock_variants-3x.png[39m[0m
+[  35% ] [90m[1mreimport[22m | env_rock_variants.png[39m[0m
+[  35% ] [90m[1mreimport[22m | env_tree_variants-3x.png[39m[0m
+[  35% ] [90m[1mreimport[22m | env_tree_variants.png[39m[0m
+[  35% ] [90m[1mreimport[22m | bld_house-3x.png[39m[0m
+[  35% ] [90m[1mreimport[22m | bld_house.png[39m[0m
+[  35% ] [90m[1mreimport[22m | bld_library_locked-3x.png[39m[0m
+[  35% ] [90m[1mreimport[22m | bld_library_locked.png[39m[0m
+[  36% ] [90m[1mreimport[22m | bld_workshop_states-3x.png[39m[0m
+[  36% ] [90m[1mreimport[22m | bld_workshop_states.png[39m[0m
+[  36% ] [90m[1mreimport[22m | env_bush_variants-3x.png[39m[0m
+[  36% ] [90m[1mreimport[22m | env_bush_variants.png[39m[0m
+[  36% ] [90m[1mreimport[22m | env_dirt_tile-3x.png[39m[0m
+[  36% ] [90m[1mreimport[22m | env_dirt_tile.png[39m[0m
+[  36% ] [90m[1mreimport[22m | env_fence_variants-3x.png[39m[0m
+[  36% ] [90m[1mreimport[22m | env_fence_variants.png[39m[0m
+[  37% ] [90m[1mreimport[22m | env_flower_variants-3x.png[39m[0m
+[  37% ] [90m[1mreimport[22m | env_flower_variants.png[39m[0m
+[  37% ] [90m[1mreimport[22m | env_grass_tiles-3x.png[39m[0m
+[  37% ] [90m[1mreimport[22m | town-repairing-read-150.png[39m[0m
+[  37% ] [90m[1mreimport[22m | chr_noah_idle.png[39m[0m
+[  37% ] [90m[1mreimport[22m | chr_noah_read.png[39m[0m
+[  37% ] [90m[1mreimport[22m | chr_noah_walk.png[39m[0m
+[  37% ] [90m[1mreimport[22m | chr_rumi_idle.png[39m[0m
+[  38% ] [90m[1mreimport[22m | chr_rumi_walk.png[39m[0m
+[  38% ] [90m[1mreimport[22m | noah-idle-1x-animated.png[39m[0m
+[  38% ] [90m[1mreimport[22m | noah-idle-3x-animated.png[39m[0m
+[  38% ] [90m[1mreimport[22m | noah-idle-f00.png[39m[0m
+[  38% ] [90m[1mreimport[22m | noah-idle-f01.png[39m[0m
+[  38% ] [90m[1mreimport[22m | noah-idle-f02.png[39m[0m
+[  38% ] [90m[1mreimport[22m | noah-idle-f03.png[39m[0m
+[  38% ] [90m[1mreimport[22m | noah-idle-strip-3x.png[39m[0m
+[  39% ] [90m[1mreimport[22m | noah-read-1x-animated.png[39m[0m
+[  39% ] [90m[1mreimport[22m | noah-read-3x-animated.png[39m[0m
+[  39% ] [90m[1mreimport[22m | noah-read-f00.png[39m[0m
+[  39% ] [90m[1mreimport[22m | noah-read-f01.png[39m[0m
+[  39% ] [90m[1mreimport[22m | noah-read-f02.png[39m[0m
+[  39% ] [90m[1mreimport[22m | noah-read-f03.png[39m[0m
+[  39% ] [90m[1mreimport[22m | noah-read-strip-3x.png[39m[0m
+[  40% ] [90m[1mreimport[22m | noah-walk-1x-animated.png[39m[0m
+[  40% ] [90m[1mreimport[22m | noah-walk-3x-animated.png[39m[0m
+[  40% ] [90m[1mreimport[22m | noah-walk-f00.png[39m[0m
+[  40% ] [90m[1mreimport[22m | noah-walk-f01.png[39m[0m
+[  40% ] [90m[1mreimport[22m | rumi-walk-150-f05.png[39m[0m
+[  40% ] [90m[1mreimport[22m | town-broken-idle-75.png[39m[0m
+[  40% ] [90m[1mreimport[22m | town-broken-idle-100.png[39m[0m
+[  40% ] [90m[1mreimport[22m | town-broken-idle-125.png[39m[0m
+[  41% ] [90m[1mreimport[22m | town-broken-idle-150.png[39m[0m
+[  41% ] [90m[1mreimport[22m | town-broken-read-75.png[39m[0m
+[  41% ] [90m[1mreimport[22m | town-broken-read-100.png[39m[0m
+[  41% ] [90m[1mreimport[22m | town-broken-read-125.png[39m[0m
+[  41% ] [90m[1mreimport[22m | town-broken-read-150.png[39m[0m
+[  41% ] [90m[1mreimport[22m | town-complete-idle-75.png[39m[0m
+[  41% ] [90m[1mreimport[22m | town-complete-idle-100.png[39m[0m
+[  41% ] [90m[1mreimport[22m | town-complete-idle-125.png[39m[0m
+[  42% ] [90m[1mreimport[22m | town-complete-idle-150.png[39m[0m
+[  42% ] [90m[1mreimport[22m | town-complete-read-75.png[39m[0m
+[  42% ] [90m[1mreimport[22m | town-complete-read-100.png[39m[0m
+[  42% ] [90m[1mreimport[22m | town-complete-read-125.png[39m[0m
+[  42% ] [90m[1mreimport[22m | town-complete-read-150.png[39m[0m
+[  42% ] [90m[1mreimport[22m | town-repairing-idle-75.png[39m[0m
+[  42% ] [90m[1mreimport[22m | town-repairing-idle-100.png[39m[0m
+[  42% ] [90m[1mreimport[22m | town-repairing-idle-125.png[39m[0m
+[  43% ] [90m[1mreimport[22m | town-repairing-idle-150.png[39m[0m
+[  43% ] [90m[1mreimport[22m | town-repairing-read-75.png[39m[0m
+[  43% ] [90m[1mreimport[22m | town-repairing-read-100.png[39m[0m
+[  43% ] [90m[1mreimport[22m | town-repairing-read-125.png[39m[0m
+[  43% ] [90m[1mreimport[22m | chr_rumi_walk.png[39m[0m
+[  43% ] [90m[1mreimport[22m | noah-idle-1x-animated.png[39m[0m
+[  43% ] [90m[1mreimport[22m | noah-idle-3x-animated.png[39m[0m
+[  44% ] [90m[1mreimport[22m | noah-idle-f00.png[39m[0m
+[  44% ] [90m[1mreimport[22m | noah-idle-f01.png[39m[0m
+[  44% ] [90m[1mreimport[22m | noah-idle-f02.png[39m[0m
+[  44% ] [90m[1mreimport[22m | noah-idle-f03.png[39m[0m
+[  44% ] [90m[1mreimport[22m | noah-idle-strip-3x.png[39m[0m
+[  44% ] [90m[1mreimport[22m | noah-read-1x-animated.png[39m[0m
+[  44% ] [90m[1mreimport[22m | noah-read-3x-animated.png[39m[0m
+[  44% ] [90m[1mreimport[22m | noah-read-f00.png[39m[0m
+[  45% ] [90m[1mreimport[22m | noah-read-f01.png[39m[0m
+[  45% ] [90m[1mreimport[22m | noah-read-f02.png[39m[0m
+[  45% ] [90m[1mreimport[22m | noah-read-f03.png[39m[0m
+[  45% ] [90m[1mreimport[22m | noah-read-strip-3x.png[39m[0m
+[  45% ] [90m[1mreimport[22m | noah-walk-1x-animated.png[39m[0m
+[  45% ] [90m[1mreimport[22m | noah-walk-3x-animated.png[39m[0m
+[  45% ] [90m[1mreimport[22m | noah-walk-f00.png[39m[0m
+[  45% ] [90m[1mreimport[22m | noah-walk-f01.png[39m[0m
+[  46% ] [90m[1mreimport[22m | noah-walk-f02.png[39m[0m
+[  46% ] [90m[1mreimport[22m | noah-walk-f03.png[39m[0m
+[  46% ] [90m[1mreimport[22m | noah-walk-f04.png[39m[0m
+[  46% ] [90m[1mreimport[22m | noah-walk-f05.png[39m[0m
+[  46% ] [90m[1mreimport[22m | noah-walk-strip-3x.png[39m[0m
+[  46% ] [90m[1mreimport[22m | noah-walk-f02.png[39m[0m
+[  46% ] [90m[1mreimport[22m | noah-walk-f03.png[39m[0m
+[  46% ] [90m[1mreimport[22m | noah-walk-f04.png[39m[0m
+[  47% ] [90m[1mreimport[22m | noah-walk-f05.png[39m[0m
+[  47% ] [90m[1mreimport[22m | noah-walk-strip-3x.png[39m[0m
+[  47% ] [90m[1mreimport[22m | rumi-idle-1x-animated.png[39m[0m
+[  47% ] [90m[1mreimport[22m | rumi-idle-3x-animated.png[39m[0m
+[  47% ] [90m[1mreimport[22m | rumi-idle-f00.png[39m[0m
+[  47% ] [90m[1mreimport[22m | rumi-idle-f01.png[39m[0m
+[  47% ] [90m[1mreimport[22m | rumi-idle-f02.png[39m[0m
+[  48% ] [90m[1mreimport[22m | rumi-idle-f03.png[39m[0m
+[  48% ] [90m[1mreimport[22m | rumi-idle-strip-3x.png[39m[0m
+[  48% ] [90m[1mreimport[22m | rumi-walk-1x-animated.png[39m[0m
+[  48% ] [90m[1mreimport[22m | rumi-walk-3x-animated.png[39m[0m
+[  48% ] [90m[1mreimport[22m | rumi-walk-f00.png[39m[0m
+[  48% ] [90m[1mreimport[22m | rumi-walk-f01.png[39m[0m
+[  48% ] [90m[1mreimport[22m | rumi-walk-f02.png[39m[0m
+[  48% ] [90m[1mreimport[22m | rumi-walk-f03.png[39m[0m
+[  49% ] [90m[1mreimport[22m | rumi-walk-f04.png[39m[0m
+[  49% ] [90m[1mreimport[22m | rumi-walk-f05.png[39m[0m
+[  49% ] [90m[1mreimport[22m | rumi-walk-strip-3x.png[39m[0m
+[  49% ] [90m[1mreimport[22m | chr_noah_idle.png[39m[0m
+[  49% ] [90m[1mreimport[22m | chr_noah_read.png[39m[0m
+[  49% ] [90m[1mreimport[22m | chr_noah_walk.png[39m[0m
+[  49% ] [90m[1mreimport[22m | chr_rumi_idle.png[39m[0m
+[  49% ] [90m[1mreimport[22m | lamp-on-100.png[39m[0m
+[  50% ] [90m[1mreimport[22m | lamp-on-125.png[39m[0m
+[  50% ] [90m[1mreimport[22m | lamp-on-150.png[39m[0m
+[  50% ] [90m[1mreimport[22m | rest-75-f00.png[39m[0m
+[  50% ] [90m[1mreimport[22m | rest-75-f01.png[39m[0m
+[  50% ] [90m[1mreimport[22m | rest-75-f02.png[39m[0m
+[  50% ] [90m[1mreimport[22m | rest-75-f03.png[39m[0m
+[  50% ] [90m[1mreimport[22m | rest-100-f00.png[39m[0m
+[  50% ] [90m[1mreimport[22m | rest-100-f01.png[39m[0m
+[  51% ] [90m[1mreimport[22m | rest-100-f02.png[39m[0m
+[  51% ] [90m[1mreimport[22m | rest-100-f03.png[39m[0m
+[  51% ] [90m[1mreimport[22m | rest-125-f00.png[39m[0m
+[  51% ] [90m[1mreimport[22m | rest-125-f01.png[39m[0m
+[  51% ] [90m[1mreimport[22m | rest-125-f02.png[39m[0m
+[  51% ] [90m[1mreimport[22m | rest-125-f03.png[39m[0m
+[  51% ] [90m[1mreimport[22m | rest-150-f00.png[39m[0m
+[  51% ] [90m[1mreimport[22m | rest-150-f01.png[39m[0m
+[  52% ] [90m[1mreimport[22m | rest-150-f02.png[39m[0m
+[  52% ] [90m[1mreimport[22m | rest-150-f03.png[39m[0m
+[  52% ] [90m[1mreimport[22m | stretch-75-f00.png[39m[0m
+[  52% ] [90m[1mreimport[22m | stretch-75-f01.png[39m[0m
+[  52% ] [90m[1mreimport[22m | stretch-75-f02.png[39m[0m
+[  52% ] [90m[1mreimport[22m | stretch-75-f03.png[39m[0m
+[  52% ] [90m[1mreimport[22m | stretch-100-f00.png[39m[0m
+[  53% ] [90m[1mreimport[22m | celebrate-125-f05.png[39m[0m
+[  53% ] [90m[1mreimport[22m | celebrate-150-f00.png[39m[0m
+[  53% ] [90m[1mreimport[22m | celebrate-150-f01.png[39m[0m
+[  53% ] [90m[1mreimport[22m | celebrate-150-f02.png[39m[0m
+[  53% ] [90m[1mreimport[22m | celebrate-150-f03.png[39m[0m
+[  53% ] [90m[1mreimport[22m | celebrate-150-f04.png[39m[0m
+[  53% ] [90m[1mreimport[22m | celebrate-150-f05.png[39m[0m
+[  53% ] [90m[1mreimport[22m | idle-75-f00.png[39m[0m
+[  54% ] [90m[1mreimport[22m | idle-75-f01.png[39m[0m
+[  54% ] [90m[1mreimport[22m | idle-75-f02.png[39m[0m
+[  54% ] [90m[1mreimport[22m | idle-75-f03.png[39m[0m
+[  54% ] [90m[1mreimport[22m | idle-100-f00.png[39m[0m
+[  54% ] [90m[1mreimport[22m | idle-100-f01.png[39m[0m
+[  54% ] [90m[1mreimport[22m | idle-100-f02.png[39m[0m
+[  54% ] [90m[1mreimport[22m | idle-100-f03.png[39m[0m
+[  54% ] [90m[1mreimport[22m | idle-125-f00.png[39m[0m
+[  55% ] [90m[1mreimport[22m | idle-125-f01.png[39m[0m
+[  55% ] [90m[1mreimport[22m | idle-125-f02.png[39m[0m
+[  55% ] [90m[1mreimport[22m | idle-125-f03.png[39m[0m
+[  55% ] [90m[1mreimport[22m | idle-150-f00.png[39m[0m
+[  55% ] [90m[1mreimport[22m | idle-150-f01.png[39m[0m
+[  55% ] [90m[1mreimport[22m | idle-150-f02.png[39m[0m
+[  55% ] [90m[1mreimport[22m | idle-150-f03.png[39m[0m
+[  55% ] [90m[1mreimport[22m | lamp-on-75.png[39m[0m
+[  56% ] [90m[1mreimport[22m | walk-125-f02.png[39m[0m
+[  56% ] [90m[1mreimport[22m | walk-125-f03.png[39m[0m
+[  56% ] [90m[1mreimport[22m | walk-125-f04.png[39m[0m
+[  56% ] [90m[1mreimport[22m | walk-125-f05.png[39m[0m
+[  56% ] [90m[1mreimport[22m | walk-150-f00.png[39m[0m
+[  56% ] [90m[1mreimport[22m | walk-150-f01.png[39m[0m
+[  56% ] [90m[1mreimport[22m | walk-150-f02.png[39m[0m
+[  57% ] [90m[1mreimport[22m | walk-150-f03.png[39m[0m
+[  57% ] [90m[1mreimport[22m | walk-150-f04.png[39m[0m
+[  57% ] [90m[1mreimport[22m | walk-150-f05.png[39m[0m
+[  57% ] [90m[1mreimport[22m | work-75-f00.png[39m[0m
+[  57% ] [90m[1mreimport[22m | work-75-f01.png[39m[0m
+[  57% ] [90m[1mreimport[22m | work-75-f02.png[39m[0m
+[  57% ] [90m[1mreimport[22m | work-75-f03.png[39m[0m
+[  57% ] [90m[1mreimport[22m | work-75-f04.png[39m[0m
+[  58% ] [90m[1mreimport[22m | work-75-f05.png[39m[0m
+[  58% ] [90m[1mreimport[22m | work-100-f00.png[39m[0m
+[  58% ] [90m[1mreimport[22m | work-100-f01.png[39m[0m
+[  58% ] [90m[1mreimport[22m | work-100-f02.png[39m[0m
+[  58% ] [90m[1mreimport[22m | work-100-f03.png[39m[0m
+[  58% ] [90m[1mreimport[22m | work-100-f04.png[39m[0m
+[  58% ] [90m[1mreimport[22m | work-100-f05.png[39m[0m
+[  58% ] [90m[1mreimport[22m | work-125-f00.png[39m[0m
+[  59% ] [90m[1mreimport[22m | work-125-f01.png[39m[0m
+[  59% ] [90m[1mreimport[22m | stretch-100-f01.png[39m[0m
+[  59% ] [90m[1mreimport[22m | stretch-100-f02.png[39m[0m
+[  59% ] [90m[1mreimport[22m | stretch-100-f03.png[39m[0m
+[  59% ] [90m[1mreimport[22m | stretch-125-f00.png[39m[0m
+[  59% ] [90m[1mreimport[22m | stretch-125-f01.png[39m[0m
+[  59% ] [90m[1mreimport[22m | stretch-125-f02.png[39m[0m
+[  59% ] [90m[1mreimport[22m | stretch-125-f03.png[39m[0m
+[  60% ] [90m[1mreimport[22m | stretch-150-f00.png[39m[0m
+[  60% ] [90m[1mreimport[22m | stretch-150-f01.png[39m[0m
+[  60% ] [90m[1mreimport[22m | stretch-150-f02.png[39m[0m
+[  60% ] [90m[1mreimport[22m | stretch-150-f03.png[39m[0m
+[  60% ] [90m[1mreimport[22m | walk-75-f00.png[39m[0m
+[  60% ] [90m[1mreimport[22m | walk-75-f01.png[39m[0m
+[  60% ] [90m[1mreimport[22m | walk-75-f02.png[39m[0m
+[  61% ] [90m[1mreimport[22m | walk-75-f03.png[39m[0m
+[  61% ] [90m[1mreimport[22m | walk-75-f04.png[39m[0m
+[  61% ] [90m[1mreimport[22m | walk-75-f05.png[39m[0m
+[  61% ] [90m[1mreimport[22m | walk-100-f00.png[39m[0m
+[  61% ] [90m[1mreimport[22m | walk-100-f01.png[39m[0m
+[  61% ] [90m[1mreimport[22m | walk-100-f02.png[39m[0m
+[  61% ] [90m[1mreimport[22m | walk-100-f03.png[39m[0m
+[  61% ] [90m[1mreimport[22m | walk-100-f04.png[39m[0m
+[  62% ] [90m[1mreimport[22m | walk-100-f05.png[39m[0m
+[  62% ] [90m[1mreimport[22m | walk-125-f00.png[39m[0m
+[  62% ] [90m[1mreimport[22m | walk-125-f01.png[39m[0m
+[  62% ] [90m[1mreimport[22m | prop_lamp_states.png[39m[0m
+[  62% ] [90m[1mreimport[22m | prop_small_window.png[39m[0m
+[  62% ] [90m[1mreimport[22m | prop_stool.png[39m[0m
+[  62% ] [90m[1mreimport[22m | prop_workbench.png[39m[0m
+[  62% ] [90m[1mreimport[22m | comparison-board.png[39m[0m
+[  63% ] [90m[1mreimport[22m | floor-2x.png[39m[0m
+[  63% ] [90m[1mreimport[22m | floor-3x.png[39m[0m
+[  63% ] [90m[1mreimport[22m | floor-gray.png[39m[0m
+[  63% ] [90m[1mreimport[22m | prop_character_shadow.png[39m[0m
+[  63% ] [90m[1mreimport[22m | prop_companion_floor.png[39m[0m
+[  63% ] [90m[1mreimport[22m | prop_stool.png[39m[0m
+[  63% ] [90m[1mreimport[22m | rest-current-animated.png[39m[0m
+[  63% ] [90m[1mreimport[22m | rest-current-contact-strip-2x.png[39m[0m
+[  64% ] [90m[1mreimport[22m | rest-current-contact-strip.png[39m[0m
+[  64% ] [90m[1mreimport[22m | rest-current-f00.png[39m[0m
+[  64% ] [90m[1mreimport[22m | rest-current-f01.png[39m[0m
+[  64% ] [90m[1mreimport[22m | rest-current-f02.png[39m[0m
+[  64% ] [90m[1mreimport[22m | rest-current-f03.png[39m[0m
+[  64% ] [90m[1mreimport[22m | rest-proposal-animated.png[39m[0m
+[  64% ] [90m[1mreimport[22m | rest-proposal-contact-strip-2x.png[39m[0m
+[  64% ] [90m[1mreimport[22m | rest-proposal-contact-strip.png[39m[0m
+[  65% ] [90m[1mreimport[22m | rest-proposal-f00.png[39m[0m
+[  65% ] [90m[1mreimport[22m | rest-proposal-f01.png[39m[0m
+[  65% ] [90m[1mreimport[22m | rest-proposal-f02.png[39m[0m
+[  65% ] [90m[1mreimport[22m | bld_house.png[39m[0m
+[  65% ] [90m[1mreimport[22m | bld_library_locked.png[39m[0m
+[  65% ] [90m[1mreimport[22m | bld_workshop_states.png[39m[0m
+[  65% ] [90m[1mreimport[22m | chr_mina_celebrate.png[39m[0m
+[  66% ] [90m[1mreimport[22m | chr_mina_idle.png[39m[0m
+[  66% ] [90m[1mreimport[22m | chr_mina_rest.png[39m[0m
+[  66% ] [90m[1mreimport[22m | chr_mina_stretch.png[39m[0m
+[  66% ] [90m[1mreimport[22m | chr_mina_walk.png[39m[0m
+[  66% ] [90m[1mreimport[22m | chr_mina_work.png[39m[0m
+[  66% ] [90m[1mreimport[22m | chr_noah_idle.png[39m[0m
+[  66% ] [90m[1mreimport[22m | chr_noah_read.png[39m[0m
+[  66% ] [90m[1mreimport[22m | chr_noah_walk.png[39m[0m
+[  67% ] [90m[1mreimport[22m | chr_rumi_idle.png[39m[0m
+[  67% ] [90m[1mreimport[22m | chr_rumi_walk.png[39m[0m
+[  67% ] [90m[1mreimport[22m | env_bush_variants.png[39m[0m
+[  67% ] [90m[1mreimport[22m | env_dirt_tile.png[39m[0m
+[  67% ] [90m[1mreimport[22m | env_fence_variants.png[39m[0m
+[  67% ] [90m[1mreimport[22m | env_flower_variants.png[39m[0m
+[  67% ] [90m[1mreimport[22m | env_grass_tiles.png[39m[0m
+[  67% ] [90m[1mreimport[22m | env_path_tiles.png[39m[0m
+[  68% ] [90m[1mreimport[22m | env_rock_variants.png[39m[0m
+[  68% ] [90m[1mreimport[22m | env_tree_variants.png[39m[0m
+[  68% ] [90m[1mreimport[22m | prop_character_shadow.png[39m[0m
+[  68% ] [90m[1mreimport[22m | prop_companion_floor.png[39m[0m
+[  68% ] [90m[1mreimport[22m | floor.png[39m[0m
+[  68% ] [90m[1mreimport[22m | shadow.png[39m[0m
+[  68% ] [90m[1mreimport[22m | stool.png[39m[0m
+[  68% ] [90m[1mreimport[22m | ghost-work-40.png[39m[0m
+[  69% ] [90m[1mreimport[22m | ghost-work-65.png[39m[0m
+[  69% ] [90m[1mreimport[22m | ghost-work-85.png[39m[0m
+[  69% ] [90m[1mreimport[22m | town-idle.png[39m[0m
+[  69% ] [90m[1mreimport[22m | celebrate-75-f00.png[39m[0m
+[  69% ] [90m[1mreimport[22m | celebrate-75-f01.png[39m[0m
+[  69% ] [90m[1mreimport[22m | celebrate-75-f02.png[39m[0m
+[  69% ] [90m[1mreimport[22m | celebrate-75-f03.png[39m[0m
+[  70% ] [90m[1mreimport[22m | celebrate-75-f04.png[39m[0m
+[  70% ] [90m[1mreimport[22m | celebrate-75-f05.png[39m[0m
+[  70% ] [90m[1mreimport[22m | celebrate-100-f00.png[39m[0m
+[  70% ] [90m[1mreimport[22m | celebrate-100-f01.png[39m[0m
+[  70% ] [90m[1mreimport[22m | celebrate-100-f02.png[39m[0m
+[  70% ] [90m[1mreimport[22m | celebrate-100-f03.png[39m[0m
+[  70% ] [90m[1mreimport[22m | celebrate-100-f04.png[39m[0m
+[  70% ] [90m[1mreimport[22m | celebrate-100-f05.png[39m[0m
+[  71% ] [90m[1mreimport[22m | celebrate-125-f00.png[39m[0m
+[  71% ] [90m[1mreimport[22m | celebrate-125-f01.png[39m[0m
+[  71% ] [90m[1mreimport[22m | celebrate-125-f02.png[39m[0m
+[  71% ] [90m[1mreimport[22m | celebrate-125-f03.png[39m[0m
+[  71% ] [90m[1mreimport[22m | celebrate-125-f04.png[39m[0m
+[  71% ] [90m[1mreimport[22m | rest-proposal-f03.png[39m[0m
+[  71% ] [90m[1mreimport[22m | shadow-2x.png[39m[0m
+[  71% ] [90m[1mreimport[22m | shadow-3x.png[39m[0m
+[  72% ] [90m[1mreimport[22m | shadow-gray.png[39m[0m
+[  72% ] [90m[1mreimport[22m | stool-2x.png[39m[0m
+[  72% ] [90m[1mreimport[22m | stool-3x.png[39m[0m
+[  72% ] [90m[1mreimport[22m | stool-gray.png[39m[0m
+[  72% ] [90m[1mreimport[22m | work-current-animated.png[39m[0m
+[  72% ] [90m[1mreimport[22m | work-current-contact-strip-2x.png[39m[0m
+[  72% ] [90m[1mreimport[22m | work-current-contact-strip.png[39m[0m
+[  72% ] [90m[1mreimport[22m | work-current-f00.png[39m[0m
+[  73% ] [90m[1mreimport[22m | work-current-f01.png[39m[0m
+[  73% ] [90m[1mreimport[22m | work-current-f02.png[39m[0m
+[  73% ] [90m[1mreimport[22m | work-current-f03.png[39m[0m
+[  73% ] [90m[1mreimport[22m | work-current-f04.png[39m[0m
+[  73% ] [90m[1mreimport[22m | work-current-f05.png[39m[0m
+[  73% ] [90m[1mreimport[22m | work-proposal-animated.png[39m[0m
+[  73% ] [90m[1mreimport[22m | work-proposal-contact-strip-2x.png[39m[0m
+[  74% ] [90m[1mreimport[22m | work-proposal-contact-strip.png[39m[0m
+[  74% ] [90m[1mreimport[22m | work-proposal-f00.png[39m[0m
+[  74% ] [90m[1mreimport[22m | work-proposal-f01.png[39m[0m
+[  74% ] [90m[1mreimport[22m | work-proposal-f02.png[39m[0m
+[  74% ] [90m[1mreimport[22m | work-proposal-f03.png[39m[0m
+[  74% ] [90m[1mreimport[22m | work-proposal-f04.png[39m[0m
+[  74% ] [90m[1mreimport[22m | work-proposal-f05.png[39m[0m
+[  74% ] [90m[1mreimport[22m | walk-1x-animated.png[39m[0m
+[  75% ] [90m[1mreimport[22m | walk-3x-animated.png[39m[0m
+[  75% ] [90m[1mreimport[22m | walk-f00.png[39m[0m
+[  75% ] [90m[1mreimport[22m | walk-f01.png[39m[0m
+[  75% ] [90m[1mreimport[22m | walk-f02.png[39m[0m
+[  75% ] [90m[1mreimport[22m | walk-f03.png[39m[0m
+[  75% ] [90m[1mreimport[22m | walk-f04.png[39m[0m
+[  75% ] [90m[1mreimport[22m | walk-f05.png[39m[0m
+[  75% ] [90m[1mreimport[22m | walk-strip-3x.png[39m[0m
+[  76% ] [90m[1mreimport[22m | celebrate-grid.png[39m[0m
+[  76% ] [90m[1mreimport[22m | rest-grid.png[39m[0m
+[  76% ] [90m[1mreimport[22m | stretch-grid.png[39m[0m
+[  76% ] [90m[1mreimport[22m | walk-grid-initial.png[39m[0m
+[  76% ] [90m[1mreimport[22m | walk-grid.png[39m[0m
+[  76% ] [90m[1mreimport[22m | mina-neutral-48-v1-1x.png[39m[0m
+[  76% ] [90m[1mreimport[22m | mina-neutral-48-v1-2x.png[39m[0m
+[  76% ] [90m[1mreimport[22m | mina-neutral-48-v1-3x.png[39m[0m
+[  77% ] [90m[1mreimport[22m | review-board.png[39m[0m
+[  77% ] [90m[1mreimport[22m | beat-1x.png[39m[0m
+[  77% ] [90m[1mreimport[22m | beat-2x.png[39m[0m
+[  77% ] [90m[1mreimport[22m | beat-3x.png[39m[0m
+[  77% ] [90m[1mreimport[22m | before-1x.png[39m[0m
+[  77% ] [90m[1mreimport[22m | before-2x.png[39m[0m
+[  77% ] [90m[1mreimport[22m | before-3x.png[39m[0m
+[  77% ] [90m[1mreimport[22m | celebrate-f02.png[39m[0m
+[  78% ] [90m[1mreimport[22m | celebrate-f03.png[39m[0m
+[  78% ] [90m[1mreimport[22m | celebrate-f04.png[39m[0m
+[  78% ] [90m[1mreimport[22m | celebrate-f05.png[39m[0m
+[  78% ] [90m[1mreimport[22m | celebrate-strip-3x.png[39m[0m
+[  78% ] [90m[1mreimport[22m | chr_mina_celebrate.png[39m[0m
+[  78% ] [90m[1mreimport[22m | chr_mina_rest.png[39m[0m
+[  78% ] [90m[1mreimport[22m | chr_mina_stretch.png[39m[0m
+[  79% ] [90m[1mreimport[22m | chr_mina_walk.png[39m[0m
+[  79% ] [90m[1mreimport[22m | comparison-board.png[39m[0m
+[  79% ] [90m[1mreimport[22m | rest-1x-animated.png[39m[0m
+[  79% ] [90m[1mreimport[22m | rest-3x-animated.png[39m[0m
+[  79% ] [90m[1mreimport[22m | rest-f00.png[39m[0m
+[  79% ] [90m[1mreimport[22m | rest-f01.png[39m[0m
+[  79% ] [90m[1mreimport[22m | rest-f02.png[39m[0m
+[  79% ] [90m[1mreimport[22m | rest-f03.png[39m[0m
+[  80% ] [90m[1mreimport[22m | rest-strip-3x.png[39m[0m
+[  80% ] [90m[1mreimport[22m | stretch-1x-animated.png[39m[0m
+[  80% ] [90m[1mreimport[22m | stretch-3x-animated.png[39m[0m
+[  80% ] [90m[1mreimport[22m | stretch-f00.png[39m[0m
+[  80% ] [90m[1mreimport[22m | stretch-f01.png[39m[0m
+[  80% ] [90m[1mreimport[22m | stretch-f02.png[39m[0m
+[  80% ] [90m[1mreimport[22m | stretch-f03.png[39m[0m
+[  80% ] [90m[1mreimport[22m | stretch-strip-3x.png[39m[0m
+[  81% ] [90m[1mreimport[22m | calm-2x.png[39m[0m
+[  81% ] [90m[1mreimport[22m | calm-3x.png[39m[0m
+[  81% ] [90m[1mreimport[22m | complete-1x.png[39m[0m
+[  81% ] [90m[1mreimport[22m | grass-1x.png[39m[0m
+[  81% ] [90m[1mreimport[22m | house-1x.png[39m[0m
+[  81% ] [90m[1mreimport[22m | idle-1x.png[39m[0m
+[  81% ] [90m[1mreimport[22m | mina-backgrounds.png[39m[0m
+[  81% ] [90m[1mreimport[22m | neutral-1x.png[39m[0m
+[  82% ] [90m[1mreimport[22m | path-1x.png[39m[0m
+[  82% ] [90m[1mreimport[22m | reduced-1x.png[39m[0m
+[  82% ] [90m[1mreimport[22m | reduced-2x.png[39m[0m
+[  82% ] [90m[1mreimport[22m | reduced-3x.png[39m[0m
+[  82% ] [90m[1mreimport[22m | swatches.png[39m[0m
+[  82% ] [90m[1mreimport[22m | work-1x.png[39m[0m
+[  82% ] [90m[1mreimport[22m | beat-1x.png[39m[0m
+[  83% ] [90m[1mreimport[22m | beat-2x.png[39m[0m
+[  83% ] [90m[1mreimport[22m | beat-3x.png[39m[0m
+[  83% ] [90m[1mreimport[22m | before-1x.png[39m[0m
+[  83% ] [90m[1mreimport[22m | before-2x.png[39m[0m
+[  83% ] [90m[1mreimport[22m | before-3x.png[39m[0m
+[  83% ] [90m[1mreimport[22m | broken-1x.png[39m[0m
+[  83% ] [90m[1mreimport[22m | bush-1x.png[39m[0m
+[  83% ] [90m[1mreimport[22m | calm-1x.png[39m[0m
+[  84% ] [90m[1mreimport[22m | calm-2x.png[39m[0m
+[  84% ] [90m[1mreimport[22m | broken-1x.png[39m[0m
+[  84% ] [90m[1mreimport[22m | bush-1x.png[39m[0m
+[  84% ] [90m[1mreimport[22m | calm-1x.png[39m[0m
+[  84% ] [90m[1mreimport[22m | calm-2x.png[39m[0m
+[  84% ] [90m[1mreimport[22m | calm-3x.png[39m[0m
+[  84% ] [90m[1mreimport[22m | complete-1x.png[39m[0m
+[  84% ] [90m[1mreimport[22m | grass-1x.png[39m[0m
+[  85% ] [90m[1mreimport[22m | house-1x.png[39m[0m
+[  85% ] [90m[1mreimport[22m | idle-1x.png[39m[0m
+[  85% ] [90m[1mreimport[22m | mina-backgrounds.png[39m[0m
+[  85% ] [90m[1mreimport[22m | neutral-1x.png[39m[0m
+[  85% ] [90m[1mreimport[22m | path-1x.png[39m[0m
+[  85% ] [90m[1mreimport[22m | reduced-1x.png[39m[0m
+[  85% ] [90m[1mreimport[22m | reduced-2x.png[39m[0m
+[  85% ] [90m[1mreimport[22m | reduced-3x.png[39m[0m
+[  86% ] [90m[1mreimport[22m | work-1x.png[39m[0m
+[  86% ] [90m[1mreimport[22m | beat-1x.png[39m[0m
+[  86% ] [90m[1mreimport[22m | beat-2x.png[39m[0m
+[  86% ] [90m[1mreimport[22m | beat-3x.png[39m[0m
+[  86% ] [90m[1mreimport[22m | before-1x.png[39m[0m
+[  86% ] [90m[1mreimport[22m | before-2x.png[39m[0m
+[  86% ] [90m[1mreimport[22m | before-3x.png[39m[0m
+[  87% ] [90m[1mreimport[22m | broken-1x.png[39m[0m
+[  87% ] [90m[1mreimport[22m | bush-1x.png[39m[0m
+[  87% ] [90m[1mreimport[22m | calm-1x.png[39m[0m
+[  87% ] [90m[1mreimport[22m | stage-current-lamp1.png[39m[0m
+[  87% ] [90m[1mreimport[22m | stage-proposal-lamp0-gray.png[39m[0m
+[  87% ] [90m[1mreimport[22m | stage-proposal-lamp0.png[39m[0m
+[  87% ] [90m[1mreimport[22m | stage-proposal-lamp1-gray.png[39m[0m
+[  87% ] [90m[1mreimport[22m | stage-proposal-lamp1.png[39m[0m
+[  88% ] [90m[1mreimport[22m | tool-f00-gray.png[39m[0m
+[  88% ] [90m[1mreimport[22m | tool-f00.png[39m[0m
+[  88% ] [90m[1mreimport[22m | tool-f01-gray.png[39m[0m
+[  88% ] [90m[1mreimport[22m | tool-f01.png[39m[0m
+[  88% ] [90m[1mreimport[22m | tool-sheet-2x.png[39m[0m
+[  88% ] [90m[1mreimport[22m | tool-sheet-3x.png[39m[0m
+[  88% ] [90m[1mreimport[22m | window-f00-gray.png[39m[0m
+[  88% ] [90m[1mreimport[22m | window-f00.png[39m[0m
+[  89% ] [90m[1mreimport[22m | window-sheet-2x.png[39m[0m
+[  89% ] [90m[1mreimport[22m | window-sheet-3x.png[39m[0m
+[  89% ] [90m[1mreimport[22m | workbench-f00-gray.png[39m[0m
+[  89% ] [90m[1mreimport[22m | workbench-f00.png[39m[0m
+[  89% ] [90m[1mreimport[22m | workbench-sheet-2x.png[39m[0m
+[  89% ] [90m[1mreimport[22m | workbench-sheet-3x.png[39m[0m
+[  89% ] [90m[1mreimport[22m | lamp.png[39m[0m
+[  89% ] [90m[1mreimport[22m | tool.png[39m[0m
+[  90% ] [90m[1mreimport[22m | window.png[39m[0m
+[  90% ] [90m[1mreimport[22m | workbench.png[39m[0m
+[  90% ] [90m[1mreimport[22m | chr_mina_idle.png[39m[0m
+[  90% ] [90m[1mreimport[22m | work-125-f02.png[39m[0m
+[  90% ] [90m[1mreimport[22m | work-125-f03.png[39m[0m
+[  90% ] [90m[1mreimport[22m | work-125-f04.png[39m[0m
+[  90% ] [90m[1mreimport[22m | work-125-f05.png[39m[0m
+[  90% ] [90m[1mreimport[22m | work-150-f00.png[39m[0m
+[  91% ] [90m[1mreimport[22m | work-150-f01.png[39m[0m
+[  91% ] [90m[1mreimport[22m | work-150-f02.png[39m[0m
+[  91% ] [90m[1mreimport[22m | work-150-f03.png[39m[0m
+[  91% ] [90m[1mreimport[22m | work-150-f04.png[39m[0m
+[  91% ] [90m[1mreimport[22m | work-150-f05.png[39m[0m
+[  91% ] [90m[1mreimport[22m | comparison-board.png[39m[0m
+[  91% ] [90m[1mreimport[22m | lamp-f00-gray.png[39m[0m
+[  92% ] [90m[1mreimport[22m | lamp-f00.png[39m[0m
+[  92% ] [90m[1mreimport[22m | lamp-f01-gray.png[39m[0m
+[  92% ] [90m[1mreimport[22m | lamp-f01.png[39m[0m
+[  92% ] [90m[1mreimport[22m | lamp-sheet-2x.png[39m[0m
+[  92% ] [90m[1mreimport[22m | lamp-sheet-3x.png[39m[0m
+[  92% ] [90m[1mreimport[22m | prop_lamp_states.png[39m[0m
+[  92% ] [90m[1mreimport[22m | prop_mina_tool.png[39m[0m
+[  92% ] [90m[1mreimport[22m | prop_small_window.png[39m[0m
+[  93% ] [90m[1mreimport[22m | prop_workbench.png[39m[0m
+[  93% ] [90m[1mreimport[22m | stage-current-lamp0-gray.png[39m[0m
+[  93% ] [90m[1mreimport[22m | stage-current-lamp0.png[39m[0m
+[  93% ] [90m[1mreimport[22m | stage-current-lamp1-gray.png[39m[0m
+[  93% ] [90m[1mreimport[22m | work-f01.png[39m[0m
+[  93% ] [90m[1mreimport[22m | work-f02.png[39m[0m
+[  93% ] [90m[1mreimport[22m | work-f03.png[39m[0m
+[  93% ] [90m[1mreimport[22m | work-f04.png[39m[0m
+[  94% ] [90m[1mreimport[22m | work-f05.png[39m[0m
+[  94% ] [90m[1mreimport[22m | work-ghost-dark-1x.png[39m[0m
+[  94% ] [90m[1mreimport[22m | work-ghost-dark-2x.png[39m[0m
+[  94% ] [90m[1mreimport[22m | work-ghost-dark-3x.png[39m[0m
+[  94% ] [90m[1mreimport[22m | work-ghost-dark-40-1x.png[39m[0m
+[  94% ] [90m[1mreimport[22m | work-ghost-dark-40-2x.png[39m[0m
+[  94% ] [90m[1mreimport[22m | work-ghost-dark-40-3x.png[39m[0m
+[  94% ] [90m[1mreimport[22m | work-ghost-light-1x.png[39m[0m
+[  95% ] [90m[1mreimport[22m | work-ghost-light-2x.png[39m[0m
+[  95% ] [90m[1mreimport[22m | work-ghost-light-3x.png[39m[0m
+[  95% ] [90m[1mreimport[22m | work-ghost-light-40-1x.png[39m[0m
+[  95% ] [90m[1mreimport[22m | work-ghost-light-40-2x.png[39m[0m
+[  95% ] [90m[1mreimport[22m | work-ghost-light-40-3x.png[39m[0m
+[  95% ] [90m[1mreimport[22m | work-strip-3x.png[39m[0m
+[  95% ] [90m[1mreimport[22m | idle-grid.png[39m[0m
+[  96% ] [90m[1mreimport[22m | work-grid.png[39m[0m
+[  96% ] [90m[1mreimport[22m | celebrate-1x-animated.png[39m[0m
+[  96% ] [90m[1mreimport[22m | celebrate-3x-animated.png[39m[0m
+[  96% ] [90m[1mreimport[22m | celebrate-f00.png[39m[0m
+[  96% ] [90m[1mreimport[22m | celebrate-f01.png[39m[0m
+[  96% ] [90m[1mreimport[22m | chr_mina_work.png[39m[0m
+[  96% ] [90m[1mreimport[22m | idle-companion-1x.png[39m[0m
+[  96% ] [90m[1mreimport[22m | idle-companion-2x.png[39m[0m
+[  97% ] [90m[1mreimport[22m | idle-companion-3x.png[39m[0m
+[  97% ] [90m[1mreimport[22m | idle-f00.png[39m[0m
+[  97% ] [90m[1mreimport[22m | idle-f01.png[39m[0m
+[  97% ] [90m[1mreimport[22m | idle-f02.png[39m[0m
+[  97% ] [90m[1mreimport[22m | idle-f03.png[39m[0m
+[  97% ] [90m[1mreimport[22m | idle-ghost-dark-1x.png[39m[0m
+[  97% ] [90m[1mreimport[22m | idle-ghost-dark-2x.png[39m[0m
+[  97% ] [90m[1mreimport[22m | idle-ghost-dark-3x.png[39m[0m
+[  98% ] [90m[1mreimport[22m | idle-ghost-dark-40-1x.png[39m[0m
+[  98% ] [90m[1mreimport[22m | idle-ghost-dark-40-2x.png[39m[0m
+[  98% ] [90m[1mreimport[22m | idle-ghost-dark-40-3x.png[39m[0m
+[  98% ] [90m[1mreimport[22m | idle-ghost-light-1x.png[39m[0m
+[  98% ] [90m[1mreimport[22m | idle-ghost-light-2x.png[39m[0m
+[  98% ] [90m[1mreimport[22m | idle-ghost-light-3x.png[39m[0m
+[  98% ] [90m[1mreimport[22m | idle-ghost-light-40-1x.png[39m[0m
+[  98% ] [90m[1mreimport[22m | idle-ghost-light-40-2x.png[39m[0m
+[  99% ] [90m[1mreimport[22m | idle-ghost-light-40-3x.png[39m[0m
+[  99% ] [90m[1mreimport[22m | idle-strip-3x.png[39m[0m
+[  99% ] [90m[1mreimport[22m | work-companion-1x.png[39m[0m
+[  99% ] [90m[1mreimport[22m | work-companion-2x.png[39m[0m
+[  99% ] [90m[1mreimport[22m | work-companion-3x.png[39m[0m
+[  99% ] [90m[1mreimport[22m | work-f00.png[39m[0m
+[  99% ] [90m[1mreimport[22m | 애셋 가져오기 마무리 중...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started 애셋 (다시) 가져오는 중 (776 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | 다시 가져오기 후 작업을 수행 중...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started 편집기를 불러오는 중 (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | 편집기 레이아웃을 불러오는 중...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | 독을 불러오는 중...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

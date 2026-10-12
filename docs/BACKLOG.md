@@ -9,7 +9,8 @@ separately from exported Windows and production-art review.
 - 사용자는 QA를 모두 확인했다고 보고했다. 전체 DPI·앱 입력 매트릭스의 개별 결과는 제공되지 않았으므로 Ghost 출시 합격으로 확대하지 않는다.
 - 현재 우선 목표: 승인된 32색 기준으로 남은 시각 아트를 완성하고 실제 Godot 화면에서 최종 외형을 검토한다. 음향 8항목의 제작·믹스는 별도 상태로 유지한다.
 - [Town 실제 배정 검증](art/reviews/2026-10-12/town-delivery-v1/README.md): 사용자 납품·2× 배치 승인에 따라 11개를 적용했다. 실제 카탈로그 23 production, 12개 캡처가 승인본과 바이트 단위 일치. 미배정 바닥·길·소품 대체 표시 검사도 통과했다. Focus·저장·창 정책은 유지한다.
-- [NPC 5클립 검토](art/reviews/2026-10-12/npc-v1/review.html): Noah Idle/Walk/Read, Rumi Idle/Walk 24프레임을 준비했다. 실제 GPU 캡처 120장, 픽셀 221,184개와 NPC 영역 밖 Town 보존 검사 통과. 외형·동작·납품·실제 배정 승인 대기. 승인·배정 후 시각 10개와 음향 8개가 남는다.
+- [NPC 실제 배정 검증](art/reviews/2026-10-12/npc-delivery-v1/README.md): 사용자 승인에 따라 Noah Idle/Walk/Read, Rumi Idle/Walk 5클립을 배정했다. 실제 카탈로그로 GPU 캡처 120장이 승인본과 바이트 단위 일치했고 픽셀 221,184개·NPC 밖 Town 보존을 확인했다. 현재 28 production·시각 10개/음향 8개 미배정. 기존 NPC 이동 스케줄은 유지한다.
+- [남은 시각 아트 10개 검토](art/reviews/2026-10-12/remaining-art-v1/review.html): 효과 5개·장식·도구·로고·아이콘·지도 5개를 33셀로 준비했다. 실제 Godot 캡처 204개·픽셀 49,408개와 추가 영역 밖 기존 아트 보존을 확인했다. 외형·납품·배치·연결 승인 후 시각 38개 실제 적용과 전체 최종 화면·새 QA 빌드로 진행한다. 창 정책은 변경하지 않는다.
 
 Current Foundation status:
 

@@ -1,0 +1,138 @@
+// Isolated draw-only proposals. Never runs AppRoot, grants progress, or writes saves.
+using DeskTown.Domain.Focus;
+using DeskTown.Domain.Simulation;
+using DeskTown.Presentation.Display;
+using global::Godot;
+using System.Text.Json;
+namespace DeskTown.Presentation.Bootstrap;
+public partial class RemainingArtReview : Node
+{
+    private readonly List<string> _captures=new();
+    private readonly int[] _scales={75,100,125,150};
+    private static readonly (string Name,string Id,int Count,int Width,int Height)[] Assets={
+        ("smoke","FX-SMK-001",4,32,32),("campfire","FX-FIR-001",4,32,32),("grass","FX-GRS-001",2,32,32),
+        ("spark","FX-SPK-001",4,16,16),("steam","FX-TEA-001",4,16,16),("decor","CMP-DEC-001",2,32,32),
+        ("tool","CMP-TOL-001",2,32,32),("logo","UI-LOG-001",1,256,96),("icons","UI-ICO-001",9,16,16),
+        ("map","ITM-MAP-001",1,96,64)};
+    public override void _Ready()=>Callable.From(()=>{_=Run();}).CallDeferred();
+    private static void Require(bool ok,string message){if(!ok)throw new InvalidOperationException(message);}
+    private Sprite2D Sprite(Node parent,string id,int frame,int x,int y)
+    {
+        var art=VisualAssetCatalog.Frame(id,frame)!.Value;
+        var sprite=new Sprite2D {Texture=art.Sheet,RegionEnabled=true,RegionRect=art.Source,
+            Centered=false,Position=new Vector2(x,y),TextureFilter=CanvasItem.TextureFilterEnum.Nearest};
+        parent.AddChild(sprite);return sprite;
+    }
+    private SubViewport ViewportAt(int w,int h,int scale,bool transparent=false)
+    {
+        var viewport=new SubViewport {Size=new Vector2I(w*scale/100,h*scale/100),Size2DOverride=new Vector2I(w,h),
+            Size2DOverrideStretch=true,TransparentBg=transparent,RenderTargetUpdateMode=SubViewport.UpdateMode.Always,
+            CanvasItemDefaultTextureFilter=Viewport.DefaultCanvasItemTextureFilter.Nearest};AddChild(viewport);return viewport;
+    }
+    private async Task Save(SubViewport view,string output,string name)
+    {
+        await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
+        await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
+        Require(view.GetTexture().GetImage().SavePng(Path.Combine(output,name))==Error.Ok,"Save failed");
+        _captures.Add(name);view.QueueFree();await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+    }
+    private TownScene Town(SubViewport view)
+    {
+        var town=GD.Load<PackedScene>("res://scenes/town/TownScene.tscn").Instantiate<TownScene>();
+        town.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);town.Size=new Vector2(1280,720);view.AddChild(town);
+        foreach(var timer in town.GetChildren().OfType<global::Godot.Timer>())timer.Stop();
+        var elapsed=TimeSpan.FromMinutes(25);var simulation=TownSimulation.Create();
+        simulation.AdvanceTo(elapsed,FocusEnergy.FromCountedDuration(elapsed),null,TimeSpan.Zero);simulation.RevealWorkshopCompletion();
+        town.Bind(simulation.Snapshot.Town,elapsed);town.BindAmbient(TimeSpan.Zero);
+        town.GetNode<MinaPlaceholderView>("World/MinaView").SetProcess(false);
+        town.GetNode<TownNpcPlaceholderView>("World/NoahView").SetProcess(false);
+        town.GetNode<TownNpcPlaceholderView>("World/RumiView").SetProcess(false);return town;
+    }
+    private async Task Run()
+    {
+        try
+        {
+            GetWindow().Unfocusable=true;
+            Require(Path.GetFileName(OS.GetUserDataDir()).StartsWith("DeskTownArtReview-"),"User directory not isolated");
+            var output=ProjectSettings.GlobalizePath("res://../captures");Directory.CreateDirectory(output);
+            foreach(var (name,id,count,w,h) in Assets)
+                foreach(var scale in _scales)
+                    for(var frame=0;frame<count;frame++)
+                    {
+                        var view=ViewportAt(w+16,h+16,scale,true);Sprite(view,id,frame,8,8);
+                        await Save(view,output,$"asset-{name}-{scale}-f{frame:00}.png");
+                    }
+            foreach(var reduced in new[]{false,true})
+                foreach(var scale in _scales)
+                    for(var frame=0;frame<(reduced?1:4);frame++)
+                    {
+                        var view=ViewportAt(1280,720,scale);var town=Town(view);var world=town.GetNode<Control>("World");
+                        // Static campfire communicates state even with reduced motion.
+                        world.GetNode<ColorRect>("Campfire").Hide();Sprite(world,"FX-FIR-001",frame,312,296);
+                        if(!reduced)
+                        {
+                            // Flip the trail left to keep it above Workshop, away from Library.
+                            Sprite(world,"FX-SMK-001",frame,461,118).FlipH=true;
+                            Sprite(world,"FX-GRS-001",frame%2,96,296);Sprite(world,"FX-GRS-001",frame%2,564,278);
+                        }
+                        await Save(view,output,$"town-{(reduced?"reduced":"effect")}-{scale}-f{frame:00}.png");
+                    }
+            foreach(var pose in new[]{"work","rest"})
+                foreach(var reduced in new[]{false,true})
+                    foreach(var scale in _scales)
+                        for(var frame=0;frame<(reduced?1:4);frame++)
+                        {
+                            var view=ViewportAt(360,200,scale);var stage=GD.Load<PackedScene>("res://scenes/companion/CompanionStage.tscn").Instantiate<CompanionStage>();
+                            stage.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);stage.Size=new Vector2(360,200);view.AddChild(stage);
+                            stage.GetNode<Label>("DragLabel").Text=$"DeskTown  •  drag here  •  {scale}%";
+                            var mina=stage.GetNode<MinaPlaceholderView>("MinaView");mina.SetProcess(false);
+                            mina.Play(new MinaPresentationIntent(pose=="work"?MinaAnimationClip.Work:MinaAnimationClip.Rest));
+                            mina._Process(pose=="work"?2.0/6+0.000001:0);
+                            // Optional tool stays on the far side of the bench, never duplicates Mina's held tool.
+                            Sprite(stage,"CMP-TOL-001",0,198,103);
+                            if(!reduced)Sprite(stage,pose=="work"?"FX-SPK-001":"FX-TEA-001",frame,pose=="work"?137:129,pose=="work"?119:116);
+                            await Save(view,output,$"companion-{pose}-{(reduced?"reduced":"effect")}-{scale}-f{frame:00}.png");
+                        }
+            foreach(var kind in new[]{"first-launch","discovery","focus"})
+                foreach(var scale in _scales)
+                {
+                    var view=ViewportAt(1280,720,scale);Town(view);
+                    var path=kind=="first-launch"?"app/FirstLaunch":kind=="discovery"?"town/DiscoveryEvent":"focus/FocusSetup";
+                    var panel=GD.Load<PackedScene>($"res://scenes/{path}.tscn").Instantiate<Control>();
+                    panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);panel.Size=new Vector2(1280,720);view.AddChild(panel);panel.Show();
+                    // Review-only warm opaque panel keeps the new focal art and text readable.
+                    var paper=new StyleBoxFlat {BgColor=Color.FromHtml("29241f"),BorderColor=Color.FromHtml("79664f"),
+                        BorderWidthLeft=1,BorderWidthRight=1,BorderWidthTop=1,BorderWidthBottom=1,
+                        ContentMarginLeft=12,ContentMarginRight=12,ContentMarginTop=12,ContentMarginBottom=12};
+                    panel.GetNode<PanelContainer>("Panel").AddThemeStyleboxOverride("panel",paper);
+                    if(kind=="focus")
+                    {
+                        var mode=panel.GetNode<OptionButton>("Panel/Content/Mode");
+                        foreach(var (index,icon) in new[]{(0,2),(2,3),(3,4)})mode.SetItemIcon(index,Atlas("UI-ICO-001",icon));
+                        panel.GetNode<Button>("Panel/Content/Start").Icon=Atlas("UI-ICO-001",0);
+                    }
+                    else
+                    {
+                        var content=panel.GetNode<VBoxContainer>("Panel/Content");
+                        var texture=new TextureRect {Texture=Atlas(kind=="first-launch"?"UI-LOG-001":"ITM-MAP-001",0),
+                            CustomMinimumSize=kind=="first-launch"?new Vector2(256,96):new Vector2(192,128),
+                            ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,
+                            MouseFilter=Control.MouseFilterEnum.Ignore,TextureFilter=CanvasItem.TextureFilterEnum.Nearest};
+                        content.AddChild(texture);content.MoveChild(texture,kind=="first-launch"?0:2);
+                        if(kind=="first-launch")content.GetNode<Label>("Title").Hide();
+                        else {var container=panel.GetNode<PanelContainer>("Panel");container.OffsetTop=-190;container.OffsetBottom=190;}
+                    }
+                    await Save(view,output,$"ui-{kind}-{scale}.png");
+                }
+            File.WriteAllText(Path.Combine(output,"result.json"),JsonSerializer.Serialize(new {success=true,reviewOnly=true,
+                personalSaveAccess=false,productionAssignment=false,nativeInputQa=false,engine=Engine.GetVersionInfo()["string"].AsString(),
+                renderer=RenderingServer.GetVideoAdapterName(),captures=_captures},new JsonSerializerOptions {WriteIndented=true}));
+            Require(_captures.Count==204,"Incomplete capture set");GD.Print("DESKTOWN_REMAINING_REVIEW_OK");GetTree().Quit();
+        }
+        catch(Exception error){GD.PrintErr(error.ToString());GetTree().Quit(1);}
+    }
+    private static AtlasTexture Atlas(string id,int frame)
+    {
+        var art=VisualAssetCatalog.Frame(id,frame)!.Value;return new AtlasTexture {Atlas=art.Sheet,Region=art.Source};
+    }
+}

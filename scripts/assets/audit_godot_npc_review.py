@@ -14,8 +14,11 @@ def audit(review):
     for relative,digest in preparation['runtimeWorkingTreeFiles'].items():
         if relative!='assets/catalogs/asset_catalog.json':assert sha(review/'project'/relative)==digest
     expected={};pixels=0
+    runtime=preparation.get('runtimeCatalog',False)
+    catalog=json.loads((review/'project/assets/catalogs/asset_catalog.json').read_text(encoding='utf-8'))
+    rows={row['id']:row for row in catalog['assets']}
     for row in preparation['candidateClips']:
-        sheet_path=review/'project/assets/art/npc-review-only'/row['file'];assert sha(sheet_path)==row['sha256']
+        sheet_path=review/'project'/rows[row['id']]['resource'].removeprefix('res://');assert sha(sheet_path)==row['sha256']
         sheet=Image.open(sheet_path).convert('RGBA');clip=row['file'].removeprefix('chr_').removesuffix('.png').replace('_','-')
         for scale in (75,100,125,150):
             for frame in range(row['frames']):
@@ -44,10 +47,14 @@ def audit(review):
     hashes={}
     for name,size in expected.items():
         path=review/'captures'/name;assert Image.open(path).size==size,name;hashes[name]=sha(path)
+        if runtime:
+            approved=ROOT/'docs/art/reviews/2026-10-12/npc-v1/godot-v1/captures'/name
+            assert hashes[name]==sha(approved),('Approved NPC render changed',name)
     report={'success':True,'reviewOnly':True,'reviewKind':'npc','sourceRevision':preparation['sourceRevision'],'engine':result['engine'],
         'renderer':result['renderer'],'captures':120,'clips':5,'frames':24,'framePixelsChecked':pixels,
+        'runtimeCatalog':runtime,'approvedNpcCapturesByteIdentical':runtime,
         'approvedTownOutsideNpcCellsPreserved':True,'mainCatalogUnchanged':True,'sha256':hashes,
-        'limits':'Walk sheet review only; current runtime ambient movement is unchanged. Identity/motion/delivery approval pending. No native input/DPI QA.'}
+        'limits':'Walk sheet review only; current runtime ambient movement is unchanged. No native input/DPI QA.' if runtime else 'Identity/motion/delivery approval pending. Walk sheet review only. No native input/DPI QA.'}
     (review/'verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({k:v for k,v in report.items() if k!='sha256'},ensure_ascii=True))
 

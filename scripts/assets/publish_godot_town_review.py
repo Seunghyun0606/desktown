@@ -16,8 +16,9 @@ def publish(review):
     report=json.loads((review/'verification.json').read_text(encoding='utf-8'))
     runtime=report.get('runtimeCatalog',False)
     npc=report.get('reviewKind')=='npc'
-    destination=ROOT/'docs/art/reviews/2026-10-12/npc-v1/godot-v1' if npc else ROOT/'docs/art/reviews/2026-10-12/town-delivery-v1' if runtime else DESTINATION
-    assert report['success'] and report['reviewOnly'] and report['captures']==(120 if npc else 12 if runtime else 15)
+    remaining=report.get('reviewKind')=='remaining'
+    destination=ROOT/'docs/art/reviews/2026-10-12/remaining-art-v1/godot-v1' if remaining else ROOT/'docs/art/reviews/2026-10-12/npc-delivery-v1' if npc and runtime else ROOT/'docs/art/reviews/2026-10-12/npc-v1/godot-v1' if npc else ROOT/'docs/art/reviews/2026-10-12/town-delivery-v1' if runtime else DESTINATION
+    assert report['success'] and report['reviewOnly'] and report['captures']==(204 if remaining else 120 if npc else 12 if runtime else 15)
     assert hashlib.sha256((ROOT/'assets/catalogs/asset_catalog.json').read_bytes()).hexdigest()==json.loads(
         (review/'preparation.json').read_text(encoding='utf-8'))['runtimeCatalogSha256']
     logs=[p for p in review.glob('logs-*') if json.loads((p/'result.json').read_text(encoding='utf-8')).get('success')]
