@@ -14,6 +14,7 @@ public partial class TownNpcPlaceholderView : Node2D
     private bool _externallyClocked;
     private double _frameElapsed;
     private int _frame;
+    public event Action<int>? WalkingFrameChanged;
 
     public override void _Ready()
     {
@@ -52,6 +53,7 @@ public partial class TownNpcPlaceholderView : Node2D
 
     public void BindPose(NpcAmbientPose pose)
     {
+        var previous = (_walking, _frame);
         _externallyClocked = true;
         _reading = pose.Action == NpcAmbientAction.Read;
         _walking = pose.Action == NpcAmbientAction.Walk;
@@ -59,6 +61,7 @@ public partial class TownNpcPlaceholderView : Node2D
         _frame = (int)(pose.ClipElapsed.TotalSeconds * (_walking ? 8 : 2)) % (_walking ? 6 : 4);
         // Town owns the shared visible-time clock; don't run a second clock.
         SetProcess(false);
+        if (_walking && previous != (_walking, _frame)) WalkingFrameChanged?.Invoke(_frame);
         QueueRedraw();
     }
 

@@ -21,6 +21,7 @@ def main():
     parser.add_argument('--demo-saves', required=True, type=Path)
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--behavior-preview', type=Path)
+    parser.add_argument('--audio-preview', type=Path)
     args = parser.parse_args()
     export = args.export.resolve()
     output = args.output.resolve()
@@ -44,11 +45,13 @@ def main():
         for row in files:
             data = bundle.read(row['path'])
             assert len(data) == row['bytes'] and hashlib.sha256(data).hexdigest() == row['sha256'], row['path']
-    manifest = {'product': 'DeskTown Prototype v0.1 playable visual MVP', 'commit': revision,
+    catalog = json.loads((ROOT / 'assets/catalogs/asset_catalog.json').read_text(encoding='utf-8'))
+    audio_count = sum(row['kind'] == 'audio' and row['status'] == 'production' for row in catalog['assets'])
+    manifest = {'product': 'DeskTown Prototype v0.1 playable MVP', 'commit': revision,
         'godot': '4.7.2', 'dotnetSdk': '8.0.425', 'signed': False,
-        'productionVisualAssets': 38, 'unassignedAudioAssets': 8,
+        'productionVisualAssets': 38, 'productionAudioAssets': audio_count, 'unassignedAudioAssets': 8 - audio_count,
         'knownIssues': ['Previous visual MVP confirmed by user; new character behavior visual review pending',
-            'Clean-PC release QA pending', 'Audio not delivered; Ghost Focus disabled'], 'files': files}
+            'Clean-PC release QA pending', 'Ghost Focus disabled'], 'files': files}
     (output / 'build-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
     (output / 'SHA256SUMS.txt').write_text(f'{digest(app_zip)}  {app_zip.name}\n', encoding='ascii')
     for pattern in ('*.ps1', '*.cmd', '*README.md'):
@@ -66,6 +69,8 @@ def main():
     shutil.copytree(source / 'captures', preview / 'captures')
     if args.behavior_preview:
         shutil.copytree(args.behavior_preview, output / 'behavior-preview')
+    if args.audio_preview:
+        shutil.copytree(args.audio_preview, output / 'audio-preview')
     with zipfile.ZipFile(portable, 'w', zipfile.ZIP_DEFLATED) as bundle:
         for path in sorted(output.rglob('*')):
             if path.is_file():

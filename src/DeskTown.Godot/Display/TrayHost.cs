@@ -20,6 +20,7 @@ public partial class TrayHost : Node
     public event Action? AudioToggleRequested;
     public event Action? CompletionNoticeToggleRequested;
     public event Action? ReducedMotionToggleRequested;
+    public event Action? CommandRequested;
 
     public override void _Ready()
     {
@@ -51,7 +52,7 @@ public partial class TrayHost : Node
         _menu.AddItem("65%", 41);
         _menu.AddItem("85%", 42);
         _menu.AddSeparator();
-        _menu.AddItem("Audio", 50);
+        _menu.AddCheckItem("Audio", 50);
         _menu.AddCheckItem("Completion notice (otherwise Tray only)", 51);
         _menu.SetItemChecked(_menu.GetItemIndex(51), true);
         _menu.AddCheckItem("Reduced motion", 52);
@@ -99,8 +100,14 @@ public partial class TrayHost : Node
         if (_menu is not null) _menu.SetItemChecked(_menu.GetItemIndex(52), enabled);
     }
 
+    public void SetAudio(bool enabled)
+    {
+        if (_menu is not null) _menu.SetItemChecked(_menu.GetItemIndex(50), enabled);
+    }
+
     private void Dispatch(int id)
     {
+        CommandRequested?.Invoke();
         switch (id)
         {
             case 1: OpenRequested?.Invoke(); break;

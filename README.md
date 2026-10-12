@@ -5,7 +5,7 @@ moves Mina and a small town forward without turning activity tracking into
 employee monitoring or a productivity score.
 
 This repository contains the Prototype v0.1 design and a playable vertical slice
-with all 38 approved visual assets applied. Eight audio assets and release checks
+with all 38 approved visual assets and eight approved sound assets applied. Release checks
 remain open. The PiP duplicate Town window is fixed with native transition checks;
 the user confirmed the preceding playable MVP and requested richer character behavior.
 Use the [playable MVP instructions](scripts/qa/PLAY-README.md) to start a persistent
@@ -13,8 +13,8 @@ isolated play session or immediately preview the Workshop completion.
 The character behavior update connects continuous NPC walks, independent daily
 routes, Mina travel and Work breaks; see the [actual motion preview](docs/art/reviews/2026-10-12/behavior-v1/review.html).
 The [sound review](docs/art/reviews/2026-10-12/audio-v1/review.html) contains eight
-quiet sound candidates and four scene mixes. Listening/delivery approval and runtime
-connection are pending; the playable MVP remains silent.
+approved quiet sounds and four scene mix references. Audio follows visible actions,
+stops on hiding or muting, and obeys the saved Audio setting.
 See the [final visual views](docs/art/reviews/2026-10-12/final-views-v1/review.html)
 and [isolated Windows QA kit](docs/qa/USER_QA_START.md).
 

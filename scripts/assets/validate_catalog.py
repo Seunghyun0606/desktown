@@ -130,8 +130,10 @@ def validate(catalog, records, require_production=False):
                     raise ValueError("dimensions or RGB/RGBA8 format differs")
             except (OSError, ValueError, struct.error) as error:
                 errors.append(f"{row['id']}: invalid PNG: {error}")
-        elif path.open("rb").read(4) != b"OggS":
-            errors.append(f"{row['id']}: invalid Ogg header")
+        else:
+            with path.open("rb") as audio:
+                if audio.read(4) != b"OggS":
+                    errors.append(f"{row['id']}: invalid Ogg header")
         if not isinstance(row.get("events"), list):
             errors.append(f"{row['id']}: events must be an array")
     return errors

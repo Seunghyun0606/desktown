@@ -6,6 +6,8 @@ using DeskTown.Application.Display;
 using DeskTown.Application.Runtime;
 using DeskTown.Presentation.Bootstrap;
 using DeskTown.Presentation.Display;
+using DeskTown.Presentation;
+using DeskTown.Domain.Simulation;
 using Godot;
 
 public partial class WindowPresentationProbe : Node
@@ -28,6 +30,77 @@ public partial class WindowPresentationProbe : Node
         await Settle();
     }
     private async Task Settle() => await ToSignal(GetTree().CreateTimer(0.25), SceneTreeTimer.SignalName.Timeout);
+    private PresentationAudioHost Audio => (PresentationAudioHost)typeof(PrototypeAppController)
+        .GetField("_audio", Private)!.GetValue(_controller)!;
+    private Dictionary<string, AudioStreamOggVorbis> Sounds => (Dictionary<string, AudioStreamOggVorbis>)typeof(PresentationAudioHost)
+        .GetField("_sounds", Private)!.GetValue(Audio)!;
+    private AudioStreamPlayer[] Players => Audio.GetChildren().OfType<AudioStreamPlayer>().ToArray();
+    private void AudioCheck(bool pass, string label)
+    {
+        Require(pass, "Audio: " + label);
+        GD.Print("AUDIO_CHECK_OK " + label);
+    }
+    private bool CuePlaying(string id) => Players.Any(p => p.Playing && p.Stream == Sounds[id]);
+    private async Task Mute(bool mute)
+    {
+        await Game.ChangeSettingsAsync(Game.Settings with { AudioEnabled = !mute });
+        await Command("ApplyAudioPreference");
+    }
+    private async Task CheckAudio(Node app)
+    {
+        AudioCheck(Sounds.Count == 8 && Sounds.All(p => p.Value.GetLength() > 0), "eight exported streams loaded");
+        AudioCheck(Sounds.Count(p => p.Value.Loop) == 2, "only ambient and fire loop");
+        AudioCheck(Players.Count(p => p.Playing) == 2, "Town two quiet loops");
+        await Mute(true);
+        AudioCheck(Players.All(p => !p.Playing) && !Game.Settings.AudioEnabled, "master mute stops everything and saves false");
+        Audio.Click();
+        app.GetNode<MinaPlaceholderView>("MainShell/Town/World/MinaView").Play(new(MinaAnimationClip.Walk));
+        app.GetNode<MinaPlaceholderView>("MainShell/Town/World/MinaView")._Process(.125);
+        AudioCheck(Players.All(p => !p.Playing), "muted clicks and walk frames cannot play");
+        await Mute(false);
+        AudioCheck(Players.Count(p => p.Playing) == 2, "unmute resumes loops without queued effects");
+        Audio._Process(9);
+        AudioCheck(CuePlaying("SND-BRD-001"), "sparse bird visible only");
+        var town = app.GetNode<TownScene>("MainShell/Town");
+        town.Hide(); await Settle();
+        AudioCheck(Players.All(p => !p.Playing), "hidden Town stops loops and one-shots");
+        town.Show(); await Settle();
+        AudioCheck(Players.Count(p => p.Playing) == 2, "Town reopen has no caught-up bird");
+        GetWindow().Mode = Window.ModeEnum.Minimized; await Settle();
+        AudioCheck(Players.All(p => !p.Playing), "native minimize stops audio");
+        GetWindow().Mode = Window.ModeEnum.Windowed; await Settle();
+        AudioCheck(Players.Count(p => p.Playing) == 2, "native restore restarts only loops");
+        Audio.SetPaused(true);
+        AudioCheck(Players.All(p => !p.Playing), "system pause stops immediately");
+        Audio.SetPaused(false); await Settle();
+        AudioCheck(Players.Count(p => p.Playing) == 2, "system resume does not replay missed cues");
+        var mina = app.GetNode<MinaPlaceholderView>("MainShell/Town/World/MinaView");
+        mina.Play(new(MinaAnimationClip.Walk)); mina._Process(.125);
+        AudioCheck(CuePlaying("SND-STP-001"), "Town walk contact frame plays footstep");
+        await Settle(); await Settle();
+        for (var i = 0; i < 80; i++) { Audio._Process(.1); Audio.Click(); }
+        AudioCheck(Players.Length <= 6 && Players.Count(p => p.Playing) <= 6, "two loops plus four reusable voices bounded");
+        await Mute(true); await Mute(false);
+        var setup = app.GetNode<Control>("MainShell/FocusSetup");
+        setup.Show(); await Settle();
+        AudioCheck(Players.All(p => !p.Playing), "modal stops Town presentation audio");
+        setup.Hide(); await Settle();
+        var reveal = app.GetNode<RewardReveal>("MainShell/RewardReveal");
+        var revealTask = reveal.PlayAsync(false);
+        AudioCheck(CuePlaying("SND-HMR-001"), "visible reveal last hammer");
+        await revealTask;
+        AudioCheck(CuePlaying("SND-CMP-001"), "Workshop visual change plays completion once");
+        reveal.Finish(); await Settle();
+        AudioCheck(!CuePlaying("SND-CMP-001"), "hidden reveal stops its cue");
+        var discovery = app.GetNode<DiscoveryEvent>("MainShell/DiscoveryEvent");
+        discovery.Show();
+        AudioCheck(CuePlaying("SND-DSC-001"), "visible discovery uses distinct cue");
+        await Mute(true); discovery.Hide(); discovery.Show();
+        AudioCheck(Players.All(p => !p.Playing), "muted discovery is dropped");
+        await Mute(false);
+        AudioCheck(!CuePlaying("SND-DSC-001"), "enabling sound does not replay discovery");
+        discovery.Hide(); await Settle();
+    }
     private static void Require([DoesNotReturnIf(false)] bool condition, string message)
     {
         if (!condition) throw new InvalidOperationException(message);
@@ -70,16 +143,24 @@ public partial class WindowPresentationProbe : Node
             Require(_controller is not null && Game is not null, "Controller initialization timed out");
             _companion = app.GetNode<CompanionWindowHost>("CompanionWindow");
             await Command("CompleteOnboardingAsync");
+            await CheckAudio(app);
             await Game.ChangeSettingsAsync(Game.Settings with { CompletionNoticeEnabled = false });
             await Command("StartFocusAsync", TimeSpan.FromMinutes(25), Array.Empty<string>(), DisplayMode.Companion, 100);
             var session = Game.ActiveSession!.Id;
             Check("start-pip", true, true);
+            await ToSignal(GetTree().CreateTimer(.95), SceneTreeTimer.SignalName.Timeout);
+            AudioCheck(CuePlaying("SND-HMR-001"), "PiP Work actual frame plays hammer");
+            AudioCheck(!CuePlaying("SND-AMB-001") && !CuePlaying("SND-FIR-001"), "PiP has no hidden Town loops");
+            await Mute(true);
+            AudioCheck(Players.All(p => !p.Playing), "mute stops active PiP hammer");
+            await Mute(false);
             for (var round = 0; round < 2; round++)
             {
                 foreach (var mode in new[] { DisplayMode.Minimized, DisplayMode.Hidden, DisplayMode.Companion })
                 {
                     await Command("ChangeModeAsync", mode);
                     Check($"switch-{round}-{mode}", mode == DisplayMode.Companion, mode != DisplayMode.Minimized);
+                    if (mode != DisplayMode.Companion) AudioCheck(Players.All(p => !p.Playing), "no audio in " + mode + " round " + round);
                     Require(Game.ActiveSession!.Id == session, "Mode switch replaced the session");
                 }
                 _controller.OpenTown(); await Settle(); CheckTown("tray-open-" + round);

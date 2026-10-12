@@ -33,6 +33,7 @@ public partial class PrototypeAppController : Node
     private Window.ModeEnum _townWindowMode = Window.ModeEnum.Windowed;
     private bool _townMinimizedForFocus;
     private bool _townObservedMinimized;
+    private PresentationAudioHost? _audio;
 
     public bool IsFocusActive => _game?.ActiveSession is not null;
 
@@ -45,6 +46,9 @@ public partial class PrototypeAppController : Node
 
     public void Start()
     {
+        _audio = new PresentationAudioHost();
+        AddChild(_audio);
+        _audio.Configure(GetParent());
         if (OperatingSystem.IsWindows() && DisplayServer.GetName() != "headless")
         {
             try
@@ -58,6 +62,7 @@ public partial class PrototypeAppController : Node
             }
         }
         var tray = Root<TrayHost>("TrayHost");
+        tray.CommandRequested += _audio.Click;
         tray.OpenRequested += OpenTown;
         tray.ModeRequested += mode => _ = RunAsync(() => ChangeModeAsync(mode));
         tray.CompanionScaleRequested += scale => _ = RunAsync(() => ChangeScaleAsync(scale));
@@ -83,9 +88,12 @@ public partial class PrototypeAppController : Node
             { Ghost = _game.Settings.Ghost with { MonitorId = monitors[screen].Id } });
             ConfigureGhostPreview();
         });
-        tray.AudioToggleRequested += () => _ = RunAsync(() =>
-            _game!.ChangeSettingsAsync(_game.Settings with
-            { AudioEnabled = !_game.Settings.AudioEnabled }));
+        tray.AudioToggleRequested += () => _ = RunAsync(async () =>
+        {
+            if (_game is null) return;
+            await _game.ChangeSettingsAsync(_game.Settings with { AudioEnabled = !_game.Settings.AudioEnabled });
+            ApplyAudioPreference();
+        });
         tray.CompletionNoticeToggleRequested += () => _ = RunAsync(async () =>
         {
             if (_game is null) return;
@@ -172,6 +180,7 @@ public partial class PrototypeAppController : Node
             while (_systemEvents.TryDequeue(out var change))
             {
                 _pauseState.Set(change.Reason, change.Paused);
+                _audio?.SetPaused(_pauseState.IsPaused);
                 if (_game?.ActiveSession is not { } session) continue;
                 if (_pauseState.IsPaused && session.Status == FocusSessionStatus.Running)
                     await _game.SuspendForSystemAsync();
@@ -210,6 +219,7 @@ public partial class PrototypeAppController : Node
             Root<CompanionWindowHost>("CompanionWindow").Configure(
                 _game.Settings.Companion, _game.Settings.CompanionScalePercent);
             Root<TrayHost>("TrayHost").SetCompletionNotice(_game.Settings.CompletionNoticeEnabled);
+            ApplyAudioPreference();
             ApplyMotionPreference();
             ConfigureGhostPreview();
             Root<Label>("MainShell/Center/Message").Visible = false;
@@ -350,6 +360,13 @@ public partial class PrototypeAppController : Node
         Root<CompanionWindowHost>("CompanionWindow").SetReducedMotion(reduced);
         Root<GhostWindowHost>("GhostWindow").SetReducedMotion(reduced);
         Root<TrayHost>("TrayHost").SetReducedMotion(reduced);
+    }
+
+    private void ApplyAudioPreference()
+    {
+        if (_game is null) return;
+        _audio?.SetEnabled(_game.Settings.AudioEnabled);
+        Root<TrayHost>("TrayHost").SetAudio(_game.Settings.AudioEnabled);
     }
 
     private async Task ResolveRecoveryAsync(RecoveryChoice choice)

@@ -72,7 +72,7 @@ def main():
             '--audio-driver', 'Dummy', '--', '--desktown-demo'], project, env, output / 'probe.log', 60)
         if 'DESKTOWN_WINDOW_PRESENTATION_OK' not in log:
             raise RuntimeError('Missing completion marker')
-        report.update(success=True, checks=log.count('WINDOW_CHECK_OK'))
+        report.update(success=True, checks=log.count('WINDOW_CHECK_OK'), audioChecks=log.count('AUDIO_CHECK_OK'))
     except (OSError, RuntimeError, subprocess.SubprocessError) as error:
         report['error'] = str(error)
     (output / 'result.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
