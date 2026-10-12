@@ -22,6 +22,7 @@ def main():
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--behavior-preview', type=Path)
     parser.add_argument('--audio-preview', type=Path)
+    parser.add_argument('--daily-preview', type=Path)
     args = parser.parse_args()
     export = args.export.resolve()
     output = args.output.resolve()
@@ -72,6 +73,8 @@ def main():
         shutil.copytree(args.behavior_preview, output / 'behavior-preview')
     if args.audio_preview:
         shutil.copytree(args.audio_preview, output / 'audio-preview')
+    if args.daily_preview:
+        shutil.copytree(args.daily_preview, output / 'daily-preview')
     with zipfile.ZipFile(portable, 'w', zipfile.ZIP_DEFLATED) as bundle:
         for path in sorted(output.rglob('*')):
             if path.is_file():

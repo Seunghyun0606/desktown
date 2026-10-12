@@ -1,5 +1,9 @@
 # 최종 시각본 사용자 QA 시작 — 2026-10-12
 
+## 최신 일상 Focus MVP — 2026-10-13
+
+승인된 완료 후 반복 Focus가 연결됐다. `build/DeskTown-MVP-Daily-2026-10-13.zip`의 **Start-Play.cmd**로 플레이하거나 **Start-Daily-Focus.cmd**로 완료된 별도 마을에서 바로 시작한다. **Focus with Mina**는 일일·총 시간을 계속 누적하며 Workshop과 지도 보상은 중복되지 않는다. [검증·전달 기록](QA_EXECUTION_2026-10-13_DAILY_FOCUS.md)을 따른다. 아래 음향·아트 키트는 이전 빌드다.
+
 ## 최신 음향 적용 MVP — 2026-10-13
 
 사용자가 음향 8종·믹스·사용을 승인했다. 새 키트는 `build/DeskTown-MVP-Audio-2026-10-13.zip`이다. 전부 풀고 **Start-Play.cmd** 또는 **Start-Quick-Look.cmd**로 실행한다. 시각 38개와 음향 8개가 모두 적용됐으며 [새 검증 기록](QA_EXECUTION_2026-10-13_AUDIO_MVP.md)을 따른다. 트레이 **Audio** 체크를 끄면 소리가 멈추고 설정이 저장된다. PiP·Hidden·재열기·완성·발견의 소리와 실제 장치에서의 음량을 확인한다. 기존 진행을 이어가려면 앱을 종료하고 이전 `qa-sessions/play`를 새 키트의 빈 같은 위치로 복사하며 이미 진행이 있으면 덮어쓰지 않는다. 아래 빌드·무음·승인 대기는 이전 기록이다.

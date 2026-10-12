@@ -11,6 +11,7 @@
 3. 사용자가 작업하는 동안 완료는 조용히 처리한다. 세션이 끝났다고 Town을 자동으로 열지 않는다.
 4. Town은 보상을 보는 곳이다. 집중 화면은 조용하게 유지한다.
 5. 프로토타입에는 완성 가능한 프로젝트 한 개와 다음 프로젝트 예고 한 개가 있다.
+6. 2026-10-13 승인: Workshop 완성·지도 확인 후 `Focus with Mina`로 일상 Focus를 반복할 수 있다. 집중 기록은 누적하고 Workshop 완료·발견 보상은 한 번만 지급한다. Railway는 예고로 유지한다.
 
 ### v0.1 Focus Energy 규칙
 
@@ -110,6 +111,8 @@ sequenceDiagram
 **동작과 전환**
 
 - Workshop 또는 `Focus`를 선택하면 현재 프로젝트의 Focus 설정을 연다.
+- 완료·지도 확인 이후에는 `Workshop restored`와 `Focus with Mina`를 표시한다. 추가 Focus가 Railway 진행으로 보이지 않도록 Town 예고에서 `0 / 45` 진행 문구를 쓰지 않는다.
+- 완료 후 설정 제목은 `Focus with Mina`, 설명은 `The Workshop is restored. Stay a while.`이다. 기존 시간·앱·표시 모드 선택을 유지한다.
 - 잠긴 지역은 별도 기능 화면 대신 비모달 “아직 열리지 않았어요” 표시를 보여준다.
 - 설정은 Town 위에 패널로 열린다.
 - 보상 연출이 대기 중이면 연출 종료 전까지 일반 조작을 기다린다. 처음 2초가 지난 뒤 `Skip`을 선택할 수 있다.
@@ -269,7 +272,7 @@ sequenceDiagram
 
 **동작과 전환**
 
-- `Continue`는 새 프로젝트를 선택·저장한 Town으로 돌아간다.
+- `Continue`는 지도 확인을 저장하고 복구된 Town으로 돌아간다. Workshop 25/25와 Railway 예고를 유지하고 일상 Focus 진입을 연다.
 - 소비된 이벤트 ID를 사용해 저장 데이터당 한 번만 보여준다.
 
 ### J. 설정과 트레이

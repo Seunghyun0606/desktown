@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "revision": "b6f62ae",
+  "isolatedSave": true,
+  "checks": 26,
+  "audioChecks": 29,
+  "dailyChecks": 21,
+  "captures": "captures-v2",
+  "runtimeCodeCommit": "b6f62ae8801c79702916b8f54cf4bcb541380730",
+  "simulatedFocusTime": true,
+  "personalSaveUsed": false,
+  "captureSha256": {
+    "focus-setup.png": "4ea8b0ccecfba8684cf212e9cec1dad32dd6c9e6381aedc3c1dae268a78b52e0",
+    "town-after-second-session.png": "8e28dfd420df08658eed70da9e0fc428eda30c73963381630bba48e846e6578f",
+    "town-ready.png": "e9e1dd461c9fdddbec65a8934e24a047dce909fcb02d3277c7952cc51cea9ed3"
+  },
+  "probeSha256": "3443d67bfe4b902a2706eb8b00ff1248d04e11ed53fd36bbc8ebdf02e43429be"
+}
