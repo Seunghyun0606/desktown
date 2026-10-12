@@ -35,3 +35,7 @@ python scripts/assets/run_godot_companion_review.py build/behavior-review-new `
 ## 플레이 전달
 
 새 키트는 `build/DeskTown-MVP-Behavior-2026-10-12.zip`이다. Start-Play는 `qa-sessions/play`에 저장하며 Start-Quick-Look은 매번 새로운 분리 저장으로 완성 연출을 보여준다. 두 키트의 진행을 합치거나 덮어쓰지 않는다. 정확한 코드 SHA·파일 해시는 키트 manifest/checksum으로 확인한다. 내보내기·분리 저장 검사 결과는 패키징 후 기록한다.
+
+실행 코드 SHA는 `105de0fa4f6468340055f88960c4fef8cf43b54f`다. 실제 Windows 내보내기는 98.61초·196개 파일로 완료됐고, 새 Source의 창 전환 26개 검사와 Focus 종료 후 Companion Idle 재바인딩 검사가 통과했다. 전체 ZIP은 79,241,420 bytes이며 SHA-256은 `e1845c9bdbba000b1bd76f8dd0e29665ecc7482a2be027c426df4973c4903e09`다. 배포 파일 크기·해시와 ZIP CRC를 대조했고, 압축 해제된 앱에서 분리 저장 write/recover/check와 네 데모·이름 있는 세션 재실행이 통과했다.
+
+741개 최종 GPU 캡처는 `build/behavior-review-v5`에서 생성했다. 숨김 중 변경된 논리 위치는 재열기 시 이미 도착한 상태로 바인딩하고, 보이는 위치 변경만 걷기로 표현하는 경계를 추가 확인했다. 해당 Source의 무손실 미리보기는 키트의 `behavior-preview/review.html`에도 포함됐다. 기존 플레이 저장을 자동 복사하거나 검사에 사용하지 않았다. 원래 미추적 162개 파일을 보존했고 이번 생성 import/UID 메타데이터 1,510개는 `build/behavior-generated-import-backup`으로 분리했다.
