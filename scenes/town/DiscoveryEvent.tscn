@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/DeskTown.Godot/Presentation/DiscoveryEvent.cs" id="1_discovery"]
 
 [node name="DiscoveryEvent" type="Control"]
+z_index = 1000
 visible = false
 layout_mode = 3
 anchors_preset = 15

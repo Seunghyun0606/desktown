@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/DeskTown.Godot/Presentation/FirstLaunch.cs" id="1_first"]
 
 [node name="FirstLaunch" type="Control"]
+z_index = 1000
 visible = false
 layout_mode = 3
 anchors_preset = 15

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/DeskTown.Godot/Presentation/RecoveryPrompt.cs" id="1_recovery"]
 
 [node name="RecoveryPrompt" type="Control"]
+z_index = 1000
 visible = false
 layout_mode = 3
 anchors_preset = 15
