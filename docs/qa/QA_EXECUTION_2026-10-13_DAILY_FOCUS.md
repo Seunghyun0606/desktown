@@ -25,3 +25,12 @@
 `build/DeskTown-MVP-Daily-2026-10-13.zip`을 빈 폴더에 풀고 **Start-Play.cmd**로 시작한다. 이미 복구된 마을부터 보려면 **Start-Daily-Focus.cmd**, 완성·지도부터 보려면 **Start-Quick-Look.cmd**를 사용한다. 새로운 일상 데모와 play 진행을 자동으로 합치지 않는다. 이전 play를 이어가려면 앱을 종료하고 새 키트의 같은 위치가 비어 있을 때만 이전 `qa-sessions/play`를 복사한다.
 
 트레이 Audio·Reduced motion·표시 모드와 저장은 그대로 사용한다. 보상·발견 화면을 확인한 뒤 반복 Focus 버튼을 사용한다.
+
+## 최종 전달 검사
+
+- 최종 내보내기 `build/windows-daily-2026-10-13-final`: Godot 4.7.2 .NET / SDK 8.0.425, 27.06초·196파일. 실행 코드 기준 `b6f62ae`, 패키지 commit `d432c569c71c0e978287bf7dd4dd76bab3927217`이며 이후 변경은 전달 문서뿐이다.
+- 전체 ZIP 80,328,034 bytes, SHA-256 `083b746deb258885841d355f05f60d3c06671ed92b7e60ef2a2e35b53f7c8dd0`. 파일 크기·SHA-256 196개, 버전별 ZIP·체크섬·전체 ZIP CRC, 새 시작 버튼·미리보기 포함과 사용자 세션 미포함을 확인했다.
+- Windows PowerShell 5.1 preflight write/recover/check, 네 데모, 이름 있는 세션을 다른 fixture로 다시 여는 검사가 통과했다. 최종 키트의 완료된 마을용 실행 경로도 두 번 열어 V1·Complete 상태와 저장 해시를 유지했다.
+- 생성된 import 1,512개·UID 7개는 `build/daily-generated-import-backup`으로 분리했다. 작업 전 기록한 원래 미추적 162개 파일의 SHA-256과 남은 목록이 모두 일치한다. 기존 MVP·개인 저장·기존 플레이 진행을 덮어쓰지 않았다.
+
+서명·깨끗한 Windows PC·전체 입력/DPI·실제 장치 청취 검증은 별도다. 현재 PC에서 사용자가 플레이할 수 있는 MVP 전달 범위다.
