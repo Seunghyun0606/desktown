@@ -8,6 +8,11 @@ using DeskTown.Presentation.Bootstrap;
 using DeskTown.Presentation.Display;
 using DeskTown.Presentation;
 using DeskTown.Domain.Simulation;
+using DeskTown.Application.Ports;
+using DeskTown.Application.Activity;
+using DeskTown.Application.Lifecycle;
+using DeskTown.Domain.Projects;
+using DeskTown.Persistence;
 using Godot;
 
 public partial class WindowPresentationProbe : Node
@@ -128,6 +133,108 @@ public partial class WindowPresentationProbe : Node
             label + ": Town restore failed");
         GD.Print("WINDOW_CHECK_OK " + label);
     }
+
+    private sealed class AssessmentClock : IMonotonicClock, IWallClock
+    {
+        public TimeSpan Elapsed { get; private set; }
+        public DateTimeOffset UtcNow { get; private set; } = new(2026, 10, 13, 0, 0, 0, TimeSpan.Zero);
+        public void Advance(double minutes) { Elapsed += TimeSpan.FromMinutes(minutes); UtcNow += TimeSpan.FromMinutes(minutes); }
+    }
+    private sealed class AssessmentActivity : IActivityTracker
+    {
+        public TimeSpan SampleInterval => TimeSpan.FromSeconds(1);
+        public ActivitySample Sample() => ActivitySample.Unknown;
+    }
+    private void DailyCheck(bool pass, string label)
+    {
+        Require(pass, "Daily Focus: " + label); GD.Print("DAILY_CHECK_OK " + label);
+    }
+    private async Task CaptureDaily(string name)
+    {
+        await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+        var directory = System.Environment.GetEnvironmentVariable("DESKTOWN_DAILY_CAPTURE_DIR")!;
+        Directory.CreateDirectory(directory);
+        using var image = GetWindow().GetTexture().GetImage();
+        Require(image.SavePng(Path.Combine(directory, name + ".png")) == Error.Ok, "Daily capture failed");
+    }
+    private async Task CheckDaily(Node app)
+    {
+        // Only this disposable probe swaps in a fake clock and fresh isolated store.
+        var directory = System.Environment.GetEnvironmentVariable("DESKTOWN_DAILY_CAPTURE_DIR")!;
+        Directory.CreateDirectory(directory);
+        var store = new JsonGameStateStore(Path.Combine(directory, "daily-save.json"));
+        var clock = new AssessmentClock();
+        var game = await PrototypeRuntime.OpenAsync(store, new AssessmentActivity(), clock, clock, TimeSpan.FromSeconds(15));
+        await game.CompleteOnboardingAsync();
+        await game.ChangeSettingsAsync(game.Settings with { AudioEnabled = false, CompletionNoticeEnabled = false });
+        typeof(PrototypeAppController).GetField("_game", Private)!.SetValue(_controller, game);
+        await Command("ApplyAudioPreference");
+        GetWindow().Mode = Window.ModeEnum.Windowed; GetWindow().Size = new Vector2I(1280, 720);
+        await Command("StartFocusAsync", TimeSpan.FromMinutes(25), Array.Empty<string>(), DisplayMode.Hidden, 100);
+        clock.Advance(25); await Command("TickAsync");
+        DailyCheck(Game.World.Town.Workshop == WorkshopState.Complete && Game.ActiveSession is null, "initial Workshop completion");
+        var town = app.GetNode<TownScene>("MainShell/Town");
+        var setup = app.GetNode<FocusSetup>("MainShell/FocusSetup");
+        await Command("OpenSetup");
+        DailyCheck(!setup.Visible, "setup blocked before pending reveal");
+        await Command("StartFocusAsync", TimeSpan.FromMinutes(25), Array.Empty<string>(), DisplayMode.Hidden, 100);
+        DailyCheck(Game.ActiveSession is null, "start blocked before pending reveal");
+        _controller.OpenTown(); await Settle();
+        DailyCheck(town.GetNode<Button>("Hud/Focus").Disabled, "Town button waits for reward");
+        await Command("OpenSetup");
+        DailyCheck(!setup.Visible, "setup blocked during actual reward");
+        await ToSignal(GetTree().CreateTimer(2.1), SceneTreeTimer.SignalName.Timeout);
+        app.GetNode<Button>("MainShell/RewardReveal/Panel/Content/Skip").EmitSignal(BaseButton.SignalName.Pressed);
+        await Settle();
+        DailyCheck(Game.World.Town.Events.RailwayDiscoveryPending && town.GetNode<Button>("Hud/Focus").Disabled,
+            "discovery must be acknowledged before next Focus");
+        await Command("OpenSetup"); DailyCheck(!setup.Visible, "setup blocked during discovery");
+        app.GetNode<Button>("MainShell/DiscoveryEvent/Panel/Content/Continue").EmitSignal(BaseButton.SignalName.Pressed);
+        await Settle();
+        var events = Game.World.Town.Events;
+        DailyCheck(!town.GetNode<Button>("Hud/Focus").Disabled && town.GetNode<Button>("Hud/Focus").Text == "Focus with Mina",
+            "completed V1 Town exposes daily Focus");
+        DailyCheck(town.GetNode<Label>("Hud/Project").Text.Contains("Workshop restored") &&
+            !town.GetNode<Label>("Hud/Project").Text.Contains("0 / 45"), "Railway remains a non-progress teaser");
+        await CaptureDaily("town-ready");
+        town.GetNode<Button>("Hud/Focus").EmitSignal(BaseButton.SignalName.Pressed); await Settle();
+        DailyCheck(setup.Visible && setup.GetNode<Label>("Panel/Content/Title").Text == "Focus with Mina" &&
+            setup.GetNode<Label>("Panel/Content/Progress").Text == "Workshop restored", "real button opens daily setup copy");
+        var duration = setup.GetNode<OptionButton>("Panel/Content/Duration");
+        DailyCheck(Enumerable.Range(0, duration.ItemCount).Select(duration.GetItemId).SequenceEqual(new[] {25,45,60}), "duration presets retained");
+        var mode = setup.GetNode<OptionButton>("Panel/Content/Mode");
+        DailyCheck(mode.IsItemDisabled(mode.GetItemIndex((int)DisplayMode.Ghost)), "Ghost remains gated");
+        await CaptureDaily("focus-setup");
+        mode.Select(mode.GetItemIndex((int)DisplayMode.Companion));
+        var start = setup.GetNode<Button>("Panel/Content/Start");
+        start.EmitSignal(BaseButton.SignalName.Pressed);
+        start.EmitSignal(BaseButton.SignalName.Pressed); await Settle();
+        var session = Game.ActiveSession!.Id;
+        DailyCheck(_companion.Visible && !setup.Visible, "second session starts PiP from actual setup button");
+        await Command("StartFocusAsync", TimeSpan.FromMinutes(25), Array.Empty<string>(), DisplayMode.Hidden, 100);
+        DailyCheck(Game.ActiveSession!.Id == session, "duplicate start cannot replace daily session");
+        clock.Advance(25); await Command("TickAsync");
+        _controller.OpenTown(); await Settle();
+        DailyCheck(Game.TotalFocus == TimeSpan.FromMinutes(50) && Game.TodayFocus == TimeSpan.FromMinutes(50), "two completed sessions counted");
+        DailyCheck(Game.World.Town.Progress.CountedDuration == TimeSpan.FromMinutes(25) && Game.World.Town.Events == events,
+            "Workshop and consumed rewards remain unchanged");
+        DailyCheck(!app.GetNode<Control>("MainShell/RewardReveal").Visible && !app.GetNode<Control>("MainShell/DiscoveryEvent").Visible,
+            "no repeated completion or map presentation");
+        await CaptureDaily("town-after-second-session");
+        await Command("StartFocusAsync", TimeSpan.FromMinutes(25), Array.Empty<string>(), DisplayMode.Hidden, 100);
+        clock.Advance(1); await Command("TickAsync");
+        _controller.GetChildren().OfType<Godot.Timer>().Single().Stop();
+        game = await PrototypeRuntime.OpenAsync(store, new AssessmentActivity(), clock, clock, TimeSpan.FromSeconds(15));
+        typeof(PrototypeAppController).GetField("_game", Private)!.SetValue(_controller, game);
+        await Command("OpenSetup");
+        DailyCheck(game.PendingRecovery is not null && !setup.Visible, "unresolved daily checkpoint blocks new setup");
+        await Command("StartFocusAsync", TimeSpan.FromMinutes(25), Array.Empty<string>(), DisplayMode.Companion, 100);
+        DailyCheck(game.ActiveSession is null, "unresolved checkpoint blocks start command");
+        await Command("ResolveRecoveryAsync", RecoveryChoice.EndAtCheckpoint);
+        DailyCheck(Game.TotalFocus == TimeSpan.FromMinutes(51) && Game.World.Town.Events == events, "recovery preserves daily time and one-shot rewards");
+        using var saved = System.Text.Json.JsonDocument.Parse(File.ReadAllText(Path.Combine(directory, "daily-save.json")));
+        DailyCheck(saved.RootElement.GetProperty("schemaVersion").GetInt32() == 1, "no save migration introduced");
+    }
     private async Task Run()
     {
         try
@@ -198,6 +305,7 @@ public partial class WindowPresentationProbe : Node
                 Check("finish-" + mode, false, mode == DisplayMode.Hidden);
                 _controller.OpenTown(); await Settle(); CheckTown("reopen-" + mode);
             }
+            await CheckDaily(app);
             GD.Print("DESKTOWN_WINDOW_PRESENTATION_OK");
             typeof(PrototypeAppController).GetMethod("RequestQuit", Private)!.Invoke(_controller, null);
         }

@@ -1,5 +1,6 @@
 using DeskTown.Application.Display;
 using DeskTown.Domain.Simulation;
+using DeskTown.Domain.Projects;
 using DeskTown.Presentation.Display;
 using global::Godot;
 
@@ -45,8 +46,17 @@ public partial class FocusSetup : Control
     public void Bind(TownProjection town, IReadOnlyList<string> processNames,
         DisplayMode savedMode, int companionScalePercent)
     {
+        var restored = town.Workshop == WorkshopState.Complete;
+        GetNode<Label>("Panel/Content/Title").Text = restored ? "Focus with Mina" : "RESTORE WORKSHOP";
+        GetNode<Label>("Panel/Content/Npc").Text = restored
+            ? "The Workshop is restored. Stay a while."
+            : "Mina wants to restore the abandoned workshop.";
         GetNode<Label>("Panel/Content/Progress").Text =
-            $"Restore Workshop  {Math.Floor(town.Progress.CountedDuration.TotalMinutes):0} / 25 Focus";
+            restored ? "Workshop restored"
+                : $"Restore Workshop  {Math.Floor(town.Progress.CountedDuration.TotalMinutes):0} / 25 Focus";
+        GetNode<Label>("Panel/Content/Equal").Text = restored
+            ? "Every display choice counts the same Focus."
+            : "Every display choice builds the same Workshop.";
         var apps = GetNode<OptionButton>("Panel/Content/App");
         apps.Clear();
         apps.AddItem("Any App", 0);

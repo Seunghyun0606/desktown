@@ -19,6 +19,8 @@ ZIP을 빈 폴더에 전부 압축 해제하고 **Start-Play.cmd**를 더블클�
 
 ## 이번 빌드 범위
 
+- Workshop 완성·지도 확인 후 **Focus with Mina**로 25/45/60분 세션을 반복할 수 있습니다. 일일·총 집중 기록은 이어지고 Workshop과 완료·지도 보상은 다시 지급되지 않습니다.
+- **Start-Daily-Focus.cmd**는 복구가 끝난 별도 데모에서 바로 시작하고 `qa-sessions/daily`에 진행을 유지합니다. 처음부터 플레이하는 `play` 저장과 분리됩니다. Railway는 후속 빌드 예고입니다.
 - Noah는 독서·산책·모닥불 곁 휴식을, Rumi는 Library·Workshop 주변 탐색을 서로 다른 동선과 리듬으로 보여줍니다.
 - Mina는 집 앞을 걷고, 작업 중 짧은 살펴보기·스트레칭 후 작업을 이어갑니다. Walk 뒤 Work가 이어지고 그림자도 함께 움직입니다.
 - 새 행동 미리보기는 `behavior-preview/review.html`입니다. 화면을 숨기면 일상 행동 시간이 멈추며 Reduced motion에서 선택적 이동·스트레칭이 꺼집니다.

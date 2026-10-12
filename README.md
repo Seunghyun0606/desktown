@@ -10,6 +10,9 @@ remain open. The PiP duplicate Town window is fixed with native transition check
 the user confirmed the preceding playable MVP and requested richer character behavior.
 Use the [playable MVP instructions](scripts/qa/PLAY-README.md) to start a persistent
 isolated play session or immediately preview the Workshop completion.
+After restoring the Workshop and viewing the map, **Focus with Mina** supports
+repeated sessions with existing saves. **Start-Daily-Focus.cmd** opens a separate
+completed-town demo. Old Railway remains a teaser, and completion rewards stay one-shot.
 The character behavior update connects continuous NPC walks, independent daily
 routes, Mina travel and Work breaks; see the [actual motion preview](docs/art/reviews/2026-10-12/behavior-v1/review.html).
 The [sound review](docs/art/reviews/2026-10-12/audio-v1/review.html) contains eight

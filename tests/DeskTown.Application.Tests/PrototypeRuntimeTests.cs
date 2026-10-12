@@ -159,6 +159,61 @@ public sealed class PrototypeRuntimeTests
         finally { Directory.Delete(directory, recursive: true); }
     }
 
+    [Theory]
+    [InlineData(DisplayMode.Companion, RecoveryChoice.Resume)]
+    [InlineData(DisplayMode.Minimized, RecoveryChoice.Resume)]
+    [InlineData(DisplayMode.Hidden, RecoveryChoice.Resume)]
+    [InlineData(DisplayMode.Companion, RecoveryChoice.EndAtCheckpoint)]
+    [InlineData(DisplayMode.Minimized, RecoveryChoice.EndAtCheckpoint)]
+    [InlineData(DisplayMode.Hidden, RecoveryChoice.EndAtCheckpoint)]
+    public async Task Daily_focus_after_Workshop_preserves_rewards_and_survives_recovery(
+        DisplayMode mode, RecoveryChoice recovery)
+    {
+        var directory = NewDirectory();
+        try
+        {
+            var store = new JsonGameStateStore(Path.Combine(directory, "save.json"));
+            var wall = new FakeWallClock(new DateTimeOffset(2026, 10, 13, 8, 0, 0, TimeSpan.Zero));
+            var clock = new FakeMonotonicClock();
+            var game = await PrototypeRuntime.OpenAsync(store, new FakeActivityTracker(), wall, clock, TimeSpan.FromSeconds(15));
+            await game.CompleteOnboardingAsync();
+            await game.StartAsync(TimeSpan.FromMinutes(25), [], mode);
+            clock.Advance(TimeSpan.FromMinutes(25)); wall.Advance(TimeSpan.FromMinutes(25));
+            await game.TickAsync(TimeSpan.Zero);
+            await game.RevealWorkshopAsync();
+            await game.AcknowledgeWorkshopAsync();
+            await game.AcknowledgeRailwayAsync();
+            var events = game.World.Town.Events;
+            game = await PrototypeRuntime.OpenAsync(store, new FakeActivityTracker(), wall, clock, TimeSpan.FromSeconds(15));
+            await game.StartAsync(TimeSpan.FromMinutes(25), [], mode);
+            clock.Advance(TimeSpan.FromMinutes(1)); wall.Advance(TimeSpan.FromMinutes(1));
+            await game.TickAsync(TimeSpan.Zero);
+            var resumedClock = new FakeMonotonicClock();
+            game = await PrototypeRuntime.OpenAsync(store, new FakeActivityTracker(), wall, resumedClock, TimeSpan.FromSeconds(15));
+            Assert.Equal(TimeSpan.FromMinutes(1), game.PendingRecovery!.CountedDuration);
+            wall.Advance(TimeSpan.FromHours(1));
+            await game.ResolveRecoveryAsync(recovery);
+            if (recovery == RecoveryChoice.Resume)
+            {
+                resumedClock.Advance(TimeSpan.FromMinutes(24)); wall.Advance(TimeSpan.FromMinutes(24));
+                await game.TickAsync(TimeSpan.Zero);
+            }
+            var expected = TimeSpan.FromMinutes(recovery == RecoveryChoice.Resume ? 50 : 26);
+            game = await PrototypeRuntime.OpenAsync(store, new FakeActivityTracker(), wall, new FakeMonotonicClock(), TimeSpan.FromSeconds(15));
+            Assert.Null(game.ActiveSession);
+            Assert.Null(game.PendingRecovery);
+            Assert.Equal(expected, game.TotalFocus);
+            Assert.Equal(expected, game.TodayFocus);
+            Assert.Equal(WorkshopState.Complete, game.World.Town.Workshop);
+            Assert.Equal(TimeSpan.FromMinutes(25), game.World.Town.Progress.CountedDuration);
+            Assert.Equal(events, game.World.Town.Events);
+            Assert.False(game.World.Town.Events.WorkshopRevealPending);
+            Assert.False(game.World.Town.Events.RailwayDiscoveryPending);
+            Assert.Equal(mode.ToString(), game.Settings.DisplayMode);
+        }
+        finally { Directory.Delete(directory, recursive: true); }
+    }
+
     private static string NewDirectory()
     {
         var directory = Path.Combine(Path.GetTempPath(), "desktown-runtime-" + Guid.NewGuid().ToString("N"));

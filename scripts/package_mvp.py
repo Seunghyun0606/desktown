@@ -50,6 +50,7 @@ def main():
     manifest = {'product': 'DeskTown Prototype v0.1 playable MVP', 'commit': revision,
         'godot': '4.7.2', 'dotnetSdk': '8.0.425', 'signed': False,
         'productionVisualAssets': 38, 'productionAudioAssets': audio_count, 'unassignedAudioAssets': 8 - audio_count,
+        'postWorkshopDailyFocus': True,
         'knownIssues': ['Previous visual MVP confirmed by user; new character behavior visual review pending',
             'Clean-PC release QA pending', 'Ghost Focus disabled'], 'files': files}
     (output / 'build-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')

@@ -74,10 +74,12 @@ public partial class TownScene : Control
         CatalogRectArt.Bind(workshop, "BLD-WRK-001", (int)state,
             placeholderLabel: label);
         GetNode<Label>("Hud/Project").Text =
-            snapshot.Events.RailwayTeaserUnlocked
-                ? "Explore Old Railway  0 / 45 Focus  •  Coming in the next build"
+            snapshot.Events.WorkshopRevealConsumed
+                ? "Workshop restored  •  Old Railway coming in the next build"
                 : $"Restore Workshop  {Math.Floor(snapshot.Progress.CountedDuration.TotalMinutes):0} / 25 Focus";
-        GetNode<Button>("Hud/Focus").Disabled = snapshot.Workshop == WorkshopState.Complete;
+        var focus = GetNode<Button>("Hud/Focus");
+        focus.Text = snapshot.Workshop == WorkshopState.Complete ? "Focus with Mina" : "Focus";
+        focus.Disabled = snapshot.Events.WorkshopRevealPending || snapshot.Events.RailwayDiscoveryPending;
         if (todayFocus is { } elapsed)
             GetNode<Label>("Hud/Today").Text = $"Completed today  {Math.Floor(elapsed.TotalMinutes):0} min";
         var mina = GetNode<MinaPlaceholderView>("World/MinaView");

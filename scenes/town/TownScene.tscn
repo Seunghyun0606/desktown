@@ -178,7 +178,7 @@ horizontal_alignment = 2
 
 [node name="Focus" type="Button" parent="Hud"]
 layout_mode = 0
-offset_left = 1120.0
+offset_left = 1080.0
 offset_top = 645.0
 offset_right = 1250.0
 offset_bottom = 691.0

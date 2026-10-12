@@ -37,6 +37,13 @@ public partial class PrototypeAppController : Node
     private bool _quitting;
 
     public bool IsFocusActive => _game?.ActiveSession is not null;
+    private bool CanStartFocus => _game is not null && _game.OnboardingCompleted
+        && !IsFocusActive && _game.PendingRecovery is null && !_revealing && !_quitting
+        && !_game.World.Town.Events.WorkshopRevealPending
+        && !_game.World.Town.Events.RailwayDiscoveryPending
+        && !Root<Control>("MainShell/RewardReveal").Visible
+        && !Root<Control>("MainShell/DiscoveryEvent").Visible
+        && !Root<Control>("MainShell/RecoveryPrompt").Visible;
 
     public void Configure(DisplayModeController display, TimeSpan tick, TimeSpan checkpoint)
     {
@@ -246,7 +253,7 @@ public partial class PrototypeAppController : Node
 
     private void OpenSetup()
     {
-        if (_game is null || IsFocusActive) return;
+        if (_game is null || !CanStartFocus) return;
         var setup = Root<FocusSetup>("MainShell/FocusSetup");
         var selectedMode = Enum.TryParse<DisplayMode>(_game.Settings.DisplayMode, out var savedMode)
             ? savedMode : DisplayMode.Hidden;
@@ -258,7 +265,7 @@ public partial class PrototypeAppController : Node
     private async Task StartFocusAsync(TimeSpan duration,
         IReadOnlyCollection<string> apps, DisplayMode mode, int companionScalePercent)
     {
-        if (_game is null || IsFocusActive || mode == DisplayMode.Ghost) return;
+        if (_game is null || !CanStartFocus || mode == DisplayMode.Ghost) return;
         if (OperatingSystem.IsWindows() && _systemPauseEvents is null)
             throw new InvalidOperationException("Windows session monitoring is unavailable.");
         if (_pauseState.IsPaused)

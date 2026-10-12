@@ -55,7 +55,7 @@ def main():
     sdk = args.dotnet_root.resolve()
     env.update(DOTNET_ROOT=str(sdk), PATH=str(sdk) + os.pathsep + env.get('PATH', ''),
         UseSharedCompilation='false', MSBUILDDISABLENODEREUSE='1', DOTNET_CLI_USE_MSBUILD_SERVER='0',
-        DESKTOWN_DEMO_SAVE=str(save))
+        DESKTOWN_DEMO_SAVE=str(save), DESKTOWN_DAILY_CAPTURE_DIR=str(output / 'captures'))
     godot = args.godot.resolve()
     if godot.name.endswith('_console.exe'):
         godot = godot.with_name(godot.name.replace('_console.exe', '.exe'))
@@ -72,7 +72,8 @@ def main():
             '--audio-driver', 'Dummy', '--', '--desktown-demo'], project, env, output / 'probe.log', 60)
         if 'DESKTOWN_WINDOW_PRESENTATION_OK' not in log:
             raise RuntimeError('Missing completion marker')
-        report.update(success=True, checks=log.count('WINDOW_CHECK_OK'), audioChecks=log.count('AUDIO_CHECK_OK'))
+        report.update(success=True, checks=log.count('WINDOW_CHECK_OK'), audioChecks=log.count('AUDIO_CHECK_OK'),
+                      dailyChecks=log.count('DAILY_CHECK_OK'))
     except (OSError, RuntimeError, subprocess.SubprocessError) as error:
         report['error'] = str(error)
     (output / 'result.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
