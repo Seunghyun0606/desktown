@@ -103,7 +103,7 @@ public partial class PresentationAudioHost : Node
 
     private bool Allows(Surface surface)
     {
-        if (!_enabled || _paused || _root is null) return false;
+        if (!_enabled || _paused || _root is null || DisplayServer.GetName() == "headless") return false;
         return surface switch
         {
             Surface.Town => TownWindowVisible && !OverlayVisible &&

@@ -34,6 +34,7 @@ public partial class PrototypeAppController : Node
     private bool _townMinimizedForFocus;
     private bool _townObservedMinimized;
     private PresentationAudioHost? _audio;
+    private bool _quitting;
 
     public bool IsFocusActive => _game?.ActiveSession is not null;
 
@@ -516,12 +517,15 @@ public partial class PrototypeAppController : Node
 
     private async Task QuitAsync()
     {
+        if (_quitting) return;
+        _quitting = true;
         if (_audio is not null) await _audio.PrepareQuitAsync();
         GetTree().Quit();
     }
 
     private async Task RunAsync(Func<Task> action)
     {
+        if (_quitting) return;
         try { await action(); }
         catch (Exception error) { ShowError(error); }
     }
