@@ -4,8 +4,11 @@ DeskTown is a Windows-first cozy desktop companion game. A real focus session
 moves Mina and a small town forward without turning activity tracking into
 employee monitoring or a productivity score.
 
-This repository contains the Prototype v0.1 design and a playable placeholder
-vertical slice. Exported Windows behavior and final art still require review.
+This repository contains the Prototype v0.1 design and a playable vertical slice
+with all 38 approved visual assets applied. Eight audio assets and native Windows
+input/DPI review remain open; the reported PiP duplicate Town window is deferred.
+See the [final visual views](docs/art/reviews/2026-10-12/final-views-v1/review.html)
+and [isolated Windows QA kit](docs/qa/USER_QA_START.md).
 
 ## Prototype invariant
 

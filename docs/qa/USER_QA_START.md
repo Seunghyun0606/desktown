@@ -1,10 +1,10 @@
-# 사용자 QA 시작 — 2026-10-11
+# 최종 시각본 사용자 QA 시작 — 2026-10-12
 
-Windows 프로토타입의 사용자 QA를 시작할 수 있다. 검사 대상 빌드는 `4ba5a2eeb256f9a7d56748ca0a2912b80b7835f6`이며 Mina 6클립·Companion 소품 6개가 적용됐다. 나머지 아트·음향 34개는 미배정이므로 Town 건물·일부 소품은 대체 표시다. 이번 검사는 기능·창·입력·저장 흐름이며 전체 아트 완성이나 출시 합격 판정은 아니다.
+검사 대상 빌드는 `06ac9136969f97700a8efb3221d0edf2e337000d`다. 승인된 **시각 아트 38개가 모두 적용**됐고 음향 8개는 미배정이다. [전체 최종 화면 55장](../art/reviews/2026-10-12/final-views-v1/review.html)을 먼저 볼 수 있다. 이번 키트는 최종 시각 적용본의 기능·창·입력·저장 검사이며 출시 합격 판정은 아니다. PiP에서 Town 창이 함께 나타나는 **QA-PIP-001은 알려진 TODO**다.
 
 ## 현재 PC에서 실행
 
-키트는 저장소의 `build/qa-kit-userqa-4ba5a2ee`에 있다. 편집기와 SDK 없이 실행 가능하다. 다른 DeskTown을 종료하고 다음 순서로 검사한다.
+키트는 저장소의 `build/qa-kit-final-art-06ac9136`에 있다. 이동용 전체 ZIP은 `build/DeskTown-final-art-QA-06ac9136.zip`이다. 편집기와 SDK 없이 실행 가능하다. 다른 DeskTown을 종료하고 다음 순서로 검사한다.
 
 1. 키트 폴더의 **Start-QA.cmd**를 더블클릭한다. ZIP·전체 파일을 확인한 다음 초기 온보딩으로 실행한다.
 2. 창 제목의 **[Demo — isolated save]**를 확인한다. 개인 저장 대신 `qa-sessions/focus/save.json`을 사용한다.
@@ -12,6 +12,18 @@ Windows 프로토타입의 사용자 QA를 시작할 수 있다. 검사 대상 �
 4. **qa-results.md**의 실제 Windows 배율과 Pass/Fail/Not tested를 채운다. 실패에는 재현 순서, 기대/실제 동작, 발생 모드를 기록한다. 작업 문서·개인 저장·타이핑 내용은 첨부하지 않는다.
 
 이 PC에서 실행 정책은 RemoteSigned였다. 시작 버튼은 실행 정책을 변경하지 않는다. 다른 PC에서 정책이 실행을 차단하면 오류를 기록하고 해당 환경의 허용 절차를 따른다.
+
+## 최종 아트부터 보기
+
+| 키트 파일 | 내용 |
+| --- | --- |
+| `art-preview/review.html` | 실행 없이 55개 실제 GPU 최종 화면·배율 비교 |
+| `Start-Town-Art.cmd` | 복구된 Town·NPC·연기·모닥불·식생을 분리된 Railway 예고 저장으로 실행 |
+| `Start-Workshop-Reveal.cmd` | 새 분리 저장으로 수리 중 → 완성 연출 → Old Railway Map 발견을 재현 |
+| `Start-Repairing-Art.cmd` | 수리 중 Town에서 시작해 일반 Focus/Companion도 확인 |
+| `Start-QA.cmd` | 0분 온보딩·Focus·재시작·복구용 이름 있는 QA 세션 |
+
+각 앱 검사를 마치면 트레이에서 종료한 뒤 다른 버튼을 사용한다. Art 시작 버튼은 매번 새 데모 저장을 사용한다. `Start-QA.cmd`만 `qa-sessions/focus`를 재사용한다. 개인 저장 위치는 사용하지 않는다. 트레이 `Reduced motion`의 효과 감소와 재시작 후 저장 유지도 확인한다.
 
 ## 권장 검사 순서
 
@@ -51,4 +63,4 @@ Focus QA 앱을 종료한 뒤 키트 폴더의 PowerShell에서 실행한다. �
 
 같은 저장을 다시 열려면 같은 SessionName을 사용한다. 일반 저장 위치·설치·업데이트 검사는 별도 계정 또는 저장 백업 후 앱 직접 실행으로 진행한다. QA 런처로는 일반 `user://` 위치를 검증하지 않는다.
 
-다른 PC에는 `build/DeskTown-user-qa-4ba5a2ee.zip` 전체를 전달하고 빈 폴더에 압축을 푼다. 포함된 SHA256SUMS와 preflight로 안쪽 앱 ZIP을 확인한다. 이미 작성한 결과 양식은 덮어쓰지 말고 보존하며 새 회차에는 `collect-evidence.ps1 -Scaling '실제 배율' -OutputPath './qa-results-new.md'`를 사용한다.
+다른 PC에는 `build/DeskTown-final-art-QA-06ac9136.zip` 전체를 전달하고 빈 폴더에 압축을 푼다. 포함된 SHA256SUMS와 preflight로 안쪽 앱 ZIP을 확인한다. 이미 작성한 결과 양식은 덮어쓰지 말고 보존하며 새 회차에는 `collect-evidence.ps1 -Scaling '실제 배율' -OutputPath './qa-results-new.md'`를 사용한다.
