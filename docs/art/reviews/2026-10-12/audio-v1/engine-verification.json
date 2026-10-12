@@ -1,0 +1,67 @@
+{
+  "assets": [
+    {
+      "boundaryPlaybackPass": true,
+      "id": "SND-AMB-001",
+      "lengthSeconds": 60.0,
+      "loop": true,
+      "stopPass": true
+    },
+    {
+      "boundaryPlaybackPass": true,
+      "id": "SND-BRD-001",
+      "lengthSeconds": 1.64999997615814,
+      "loop": false,
+      "stopPass": true
+    },
+    {
+      "boundaryPlaybackPass": true,
+      "id": "SND-STP-001",
+      "lengthSeconds": 0.300000011920929,
+      "loop": false,
+      "stopPass": true
+    },
+    {
+      "boundaryPlaybackPass": true,
+      "id": "SND-HMR-001",
+      "lengthSeconds": 0.419999986886978,
+      "loop": false,
+      "stopPass": true
+    },
+    {
+      "boundaryPlaybackPass": true,
+      "id": "SND-FIR-001",
+      "lengthSeconds": 12.0,
+      "loop": true,
+      "stopPass": true
+    },
+    {
+      "boundaryPlaybackPass": true,
+      "id": "SND-UI-001",
+      "lengthSeconds": 0.129999995231628,
+      "loop": false,
+      "stopPass": true
+    },
+    {
+      "boundaryPlaybackPass": true,
+      "id": "SND-CMP-001",
+      "lengthSeconds": 1.75,
+      "loop": false,
+      "stopPass": true
+    },
+    {
+      "boundaryPlaybackPass": true,
+      "id": "SND-DSC-001",
+      "lengthSeconds": 1.54999995231628,
+      "loop": false,
+      "stopPass": true
+    }
+  ],
+  "audioDriver": "Dummy",
+  "engine": "4.7.2-stable (official)",
+  "failures": [],
+  "isolated": true,
+  "realDeviceListeningTest": false,
+  "probeSha256": "1e1cf5393fe921ee66a9ff446bb9d68dedef0cf11e9866894344171a0098bb5b",
+  "candidateFileHashesVerified": 12
+}

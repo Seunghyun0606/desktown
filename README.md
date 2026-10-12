@@ -12,6 +12,9 @@ Use the [playable MVP instructions](scripts/qa/PLAY-README.md) to start a persis
 isolated play session or immediately preview the Workshop completion.
 The character behavior update connects continuous NPC walks, independent daily
 routes, Mina travel and Work breaks; see the [actual motion preview](docs/art/reviews/2026-10-12/behavior-v1/review.html).
+The [sound review](docs/art/reviews/2026-10-12/audio-v1/review.html) contains eight
+quiet sound candidates and four scene mixes. Listening/delivery approval and runtime
+connection are pending; the playable MVP remains silent.
 See the [final visual views](docs/art/reviews/2026-10-12/final-views-v1/review.html)
 and [isolated Windows QA kit](docs/qa/USER_QA_START.md).
 

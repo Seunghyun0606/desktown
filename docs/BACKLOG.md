@@ -1,5 +1,7 @@
 # DeskTown Prototype v0.1 Backlog
 
+최신 후속 작업: [음향 8종과 장면 믹스 청취](art/reviews/2026-10-12/audio-v1/review.html)를 준비했다. 기술 검사는 통과했으며 소리·믹스·납품 승인을 기다린다. 승인 후 기존 Audio 설정·화면 숨김·행동 타이밍에 연결하고 새 플레이 빌드를 만든다. 현재 production 카탈로그는 시각 38개·음향 미배정 8개이며 플레이 빌드는 무음이다. [음향 검증 기록](qa/QA_EXECUTION_2026-10-12_AUDIO.md).
+
 최신 사용자 확인: 이전 디자인 MVP를 모두 확인한 뒤 캐릭터 행동의 부자연스러움·패턴 부족을 후속 과제로 지정했다. [행동 개선 기록](qa/QA_EXECUTION_2026-10-12_BEHAVIOR.md)과 [실제 움직임 미리보기](art/reviews/2026-10-12/behavior-v1/review.html)를 제공한다. NPC 연속 보행·개별 동선, Mina 이동·작업 리듬을 연결했고 Focus/보상/저장 규칙은 유지한다. 아래 이전 승인·QA 대기 표기는 해당 빌드 당시 기록이다.
 
 Total: **34 tasks**. The tables and task-level notes below track implementation

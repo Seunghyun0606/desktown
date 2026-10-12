@@ -1,0 +1,45 @@
+extends SceneTree
+
+# Runs only in the temporary review project with the Dummy audio driver.
+# This is decoder/playback inspection, not a real-speaker listening verdict.
+func _initialize() -> void:
+    call_deferred("run_review")
+
+func run_review() -> void:
+    var args := OS.get_cmdline_user_args()
+    var root_path := args[0]
+    var record: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(root_path.path_join("verification.json")))
+    var results: Array = []
+    var failures: Array = []
+    for asset: Dictionary in record.assets:
+        var stream := AudioStreamOggVorbis.load_from_file(root_path.path_join("audio").path_join(asset.file))
+        if stream == null:
+            failures.append(asset.id + ": decode failed")
+            continue
+        var duration := stream.get_length()
+        if abs(duration - float(asset.durationSeconds)) > .001:
+            failures.append(asset.id + ": unexpected duration")
+        stream.loop = bool(asset.loop)
+        stream.loop_offset = 0.0
+        var player := AudioStreamPlayer.new()
+        player.stream = stream
+        get_root().add_child(player)
+        player.play(max(0, duration - .05))
+        await create_timer(.20).timeout
+        var wrapped_or_finished := player.playing == bool(asset.loop)
+        if not wrapped_or_finished:
+            failures.append(asset.id + ": loop/one-shot termination differs")
+        player.stop()
+        var stopped := not player.playing
+        if not stopped:
+            failures.append(asset.id + ": stop failed")
+        results.append({"id": asset.id, "lengthSeconds": duration, "loop": stream.loop,
+            "boundaryPlaybackPass": wrapped_or_finished, "stopPass": stopped})
+        player.queue_free()
+    var report := {"engine": Engine.get_version_info().string, "audioDriver": "Dummy",
+        "isolated": true, "realDeviceListeningTest": false, "assets": results, "failures": failures}
+    var output := FileAccess.open("res://engine-verification.json", FileAccess.WRITE)
+    output.store_string(JSON.stringify(report, "  ") + "\n")
+    output.close()
+    print("Audio review engine checks: ", results.size(), " assets, ", failures.size(), " failures")
+    quit(0 if failures.is_empty() and results.size() == 8 else 1)
