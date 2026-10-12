@@ -289,8 +289,8 @@ public partial class PrototypeAppController : Node
         _timer?.Stop();
         _display?.SetDisplayMode(DisplayMode.Hidden);
         Root<TrayHost>("TrayHost").SetStatus(false, true);
-        // Completion hides PiP and marks the Tray complete. A minimized Town stays
-        // minimized; a hidden Town stays hidden until the user explicitly opens it.
+        // Completion hides PiP and marks the Tray complete. Town keeps its
+        // taskbar policy until the user explicitly opens it.
         try
         {
             var message = _game?.World.Town.Workshop == WorkshopState.Complete
@@ -421,12 +421,13 @@ public partial class PrototypeAppController : Node
     private DisplayMode ApplyFocusPresentation(DisplayMode mode)
     {
         Root<TownScene>("MainShell/Town").Visible = false;
-        var activeMode = _display!.SetDisplayMode(mode);
-        if (activeMode == DisplayMode.Minimized)
+        if (mode == DisplayMode.Minimized)
             MinimizeTownWindow();
         else
             HideTownWindow();
-        return activeMode;
+        // Prepare the main window before showing PiP so two windows cannot
+        // briefly compete for focus during a mode transition.
+        return _display!.SetDisplayMode(mode);
     }
 
     private void MinimizeTownWindow()
@@ -435,8 +436,8 @@ public partial class PrototypeAppController : Node
         if (window.Mode != Window.ModeEnum.Minimized)
             _townWindowMode = window.Mode;
         _townMinimizedForFocus = true;
+        window.Unfocusable = false;
         window.Mode = Window.ModeEnum.Minimized;
-        window.Visible = true;
         _townObservedMinimized = window.Mode == Window.ModeEnum.Minimized;
     }
 
@@ -447,7 +448,11 @@ public partial class PrototypeAppController : Node
             _townWindowMode = window.Mode;
         _townMinimizedForFocus = false;
         _townObservedMinimized = false;
-        window.Visible = false;
+        // Godot's root Window cannot be hidden via Visible. Its supported tray
+        // pattern is minimized + unfocusable, removing it from taskbar/Alt-Tab.
+        // Keep the process and independently controlled Companion alive.
+        window.Unfocusable = true;
+        window.Mode = Window.ModeEnum.Minimized;
     }
 
     private void RestoreTownWindow()
@@ -455,7 +460,7 @@ public partial class PrototypeAppController : Node
         _townMinimizedForFocus = false;
         _townObservedMinimized = false;
         var window = GetWindow();
-        window.Visible = true;
+        window.Unfocusable = false;
         if (window.Mode == Window.ModeEnum.Minimized)
             window.Mode = _townWindowMode;
         window.GrabFocus();

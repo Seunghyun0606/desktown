@@ -6,7 +6,10 @@ employee monitoring or a productivity score.
 
 This repository contains the Prototype v0.1 design and a playable vertical slice
 with all 38 approved visual assets applied. Eight audio assets and native Windows
-input/DPI review remain open; the reported PiP duplicate Town window is deferred.
+input/DPI review remain open. The PiP duplicate Town window is fixed with native
+window transition regression checks; desktop/taskbar confirmation remains open.
+Use the [playable MVP instructions](scripts/qa/PLAY-README.md) to start a persistent
+isolated play session or immediately preview the Workshop completion.
 See the [final visual views](docs/art/reviews/2026-10-12/final-views-v1/review.html)
 and [isolated Windows QA kit](docs/qa/USER_QA_START.md).
 

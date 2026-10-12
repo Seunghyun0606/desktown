@@ -1,0 +1,122 @@
+// Compiled only in the disposable test project, never in the shipped app.
+using System.Reflection;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
+using DeskTown.Application.Display;
+using DeskTown.Application.Runtime;
+using DeskTown.Presentation.Bootstrap;
+using DeskTown.Presentation.Display;
+using Godot;
+
+public partial class WindowPresentationProbe : Node
+{
+    private PrototypeAppController _controller = null!;
+    private CompanionWindowHost _companion = null!;
+    private const BindingFlags Private = BindingFlags.Instance | BindingFlags.NonPublic;
+    [DllImport("user32.dll")] private static extern bool IsIconic(nint window);
+    [DllImport("user32.dll")] private static extern bool IsWindowVisible(nint window);
+    [DllImport("user32.dll", EntryPoint = "GetWindowLongPtrW")]
+    private static extern nint GetStyle(nint window, int index);
+
+    public override void _Ready() => Callable.From(() => { _ = Run(); }).CallDeferred();
+    private PrototypeRuntime Game => (PrototypeRuntime)typeof(PrototypeAppController)
+        .GetField("_game", Private)!.GetValue(_controller)!;
+    private async Task Command(string name, params object[] args)
+    {
+        var result = typeof(PrototypeAppController).GetMethod(name, Private)!.Invoke(_controller, args);
+        if (result is Task task) await task;
+        await Settle();
+    }
+    private async Task Settle() => await ToSignal(GetTree().CreateTimer(0.25), SceneTreeTimer.SignalName.Timeout);
+    private static void Require([DoesNotReturnIf(false)] bool condition, string message)
+    {
+        if (!condition) throw new InvalidOperationException(message);
+    }
+    private void Check(string label, bool pip, bool hidden)
+    {
+        var root = GetWindow();
+        var handle = (nint)DisplayServer.WindowGetNativeHandle(DisplayServer.HandleType.WindowHandle, root.GetWindowId());
+        var noActivate = (GetStyle(handle, -20).ToInt64() & 0x08000000) != 0;
+        Require(IsIconic(handle), label + ": Town is not natively minimized");
+        Require(noActivate == hidden && root.Unfocusable == hidden, label + ": taskbar/focus policy mismatch");
+        Require(_companion.Visible == pip, label + ": PiP visibility mismatch");
+        if (pip)
+        {
+            var child = (nint)DisplayServer.WindowGetNativeHandle(DisplayServer.HandleType.WindowHandle, _companion.GetWindowId());
+            Require(IsWindowVisible(child) && !IsIconic(child), label + ": PiP is not natively displayed");
+        }
+        GD.Print("WINDOW_CHECK_OK " + label);
+    }
+    private void CheckTown(string label)
+    {
+        var root = GetWindow();
+        var handle = (nint)DisplayServer.WindowGetNativeHandle(DisplayServer.HandleType.WindowHandle, root.GetWindowId());
+        Require(!IsIconic(handle) && IsWindowVisible(handle) && !root.Unfocusable && !_companion.Visible,
+            label + ": Town restore failed");
+        GD.Print("WINDOW_CHECK_OK " + label);
+    }
+    private async Task Run()
+    {
+        try
+        {
+            Require(OperatingSystem.IsWindows() && DisplayServer.GetName() != "headless", "Native Windows renderer required");
+            var app = GetTree().CurrentScene;
+            for (var attempt = 0; attempt < 80; attempt++)
+            {
+                _controller = app.GetChildren().OfType<PrototypeAppController>().SingleOrDefault()!;
+                if (_controller is not null && typeof(PrototypeAppController).GetField("_game", Private)!.GetValue(_controller) is not null) break;
+                await Settle();
+            }
+            Require(_controller is not null && Game is not null, "Controller initialization timed out");
+            _companion = app.GetNode<CompanionWindowHost>("CompanionWindow");
+            await Command("CompleteOnboardingAsync");
+            await Game.ChangeSettingsAsync(Game.Settings with { CompletionNoticeEnabled = false });
+            await Command("StartFocusAsync", TimeSpan.FromMinutes(25), Array.Empty<string>(), DisplayMode.Companion, 100);
+            var session = Game.ActiveSession!.Id;
+            Check("start-pip", true, true);
+            for (var round = 0; round < 2; round++)
+            {
+                foreach (var mode in new[] { DisplayMode.Minimized, DisplayMode.Hidden, DisplayMode.Companion })
+                {
+                    await Command("ChangeModeAsync", mode);
+                    Check($"switch-{round}-{mode}", mode == DisplayMode.Companion, mode != DisplayMode.Minimized);
+                    Require(Game.ActiveSession!.Id == session, "Mode switch replaced the session");
+                }
+                _controller.OpenTown(); await Settle(); CheckTown("tray-open-" + round);
+                await Command("ReturnToFocus"); Check("return-pip-" + round, true, true);
+            }
+            foreach (var scale in new[] { 75, 125, 150, 100 })
+            {
+                await Command("ChangeScaleAsync", scale); Check("scale-" + scale, true, true);
+                Require(Game.Settings.CompanionScalePercent == scale && Game.ActiveSession!.Id == session,
+                    "Scale changed Focus state");
+            }
+            _controller.CompanionClosed(); await Settle(); Check("pip-close", false, true);
+            Require(Game.ActiveSession!.Id == session, "PiP close ended Focus");
+            await Command("ChangeModeAsync", DisplayMode.Companion);
+            await Command("EndFocusAsync"); Check("finish-pip", false, true);
+            Require(Game.ActiveSession is null, "End Focus did not finalize");
+            _controller.OpenTown(); await Settle(); CheckTown("open-after-finish");
+            // A maximized Town must restore to its previous mode after PiP.
+            GetWindow().Mode = Window.ModeEnum.Maximized; await Settle();
+            await Command("StartFocusAsync", TimeSpan.FromMinutes(25), Array.Empty<string>(), DisplayMode.Hidden, 100);
+            Check("start-hidden-maximized", false, true);
+            _controller.OpenTown(); await Settle(); CheckTown("restore-maximized");
+            Require(GetWindow().Mode == Window.ModeEnum.Maximized, "Previous maximized state lost");
+            await Command("EndFocusAsync");
+            foreach (var mode in new[] { DisplayMode.Hidden, DisplayMode.Minimized })
+            {
+                await Command("StartFocusAsync", TimeSpan.FromMinutes(25), Array.Empty<string>(), mode, 100);
+                Check("start-" + mode, false, mode == DisplayMode.Hidden);
+                await Command("EndFocusAsync");
+                Check("finish-" + mode, false, mode == DisplayMode.Hidden);
+                _controller.OpenTown(); await Settle(); CheckTown("reopen-" + mode);
+            }
+            GD.Print("DESKTOWN_WINDOW_PRESENTATION_OK"); GetTree().Quit();
+        }
+        catch (Exception error)
+        {
+            GD.PrintErr("WINDOW_PROBE_FAILED " + error); GetTree().Quit(1);
+        }
+    }
+}

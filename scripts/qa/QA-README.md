@@ -27,6 +27,8 @@
    런처는 데모 경로를 자식 프로세스에만 전달하고 호출한 PowerShell 환경과 원본 샘플을 유지한다. 종료 코드와 오류 로그를 검사하며, 출력한 임시 폴더에 로그와 분리 저장을 보관한다. 창 조작 없이 기동을 검사하려면 `-Headless`를 추가한다. 이 경우 120프레임 뒤 종료하며 기본 45초 제한 시간을 넘으면 실패다. 헤드리스 통과는 실제 창·입력 검사 결과가 아니다.
 4. Focus·재시작·복구는 위의 이름 있는 분리 QA 세션으로 검사한다. 일반 저장 위치를 검사할 때만 런처를 종료한 뒤 `./app/DeskTown.exe`를 직접 실행한다. 일반 저장의 파괴적인 복구 검사 전에는 별도 Windows 계정을 쓰거나 기존 DeskTown 저장 데이터를 백업한다. 결과를 `qa-results.md`에 기록하고 `WINDOWS_GATE.md`의 절차를 따른다.
 
+최신 플레이 MVP의 QA-PIP-001은 루트 창 최소화·Unfocusable 처리와 26개 native 창 상태 검사로 수정했다. 사용자 Desktop/작업 표시줄 재확인은 남아 있다. 위의 알려진 TODO 설명은 이전 최종 아트 빌드 기록이다. 빠른 플레이는 `Start-Play.cmd`, 완성 연출은 `Start-Quick-Look.cmd`를 사용한다. `PLAY-README.md`를 참고한다.
+
 Focus 중 PiP는 작은 Companion 창만, Minimized는 Town 작업 표시줄 항목만, Hidden은 트레이만 남는다. 세 모드를 전환해도 세션은 유지돼야 한다. Ghost는 Town에서 F10으로 켜는 QA 미리보기이며 일반 Focus에서는 선택할 수 없다. 완료 알림은 현재 기본적으로 켜져 있다. 트레이에서 끄면 알림 창 없이 완료 상태를 표시하며 `Open DeskTown` 명령은 계속 사용할 수 있다.
 
 Focus 완료 시 PiP는 숨겨지고 트레이에 완료 상태를 표시한다. Minimized의 Town은 최소화 유지, Hidden의 Town은 숨김 유지이며 Town을 자동으로 열지 않는다. 다음 세션의 표시 모드 선택은 유지한다. 완료 알림 창은 `Completion notice` 설정에 따른다.
