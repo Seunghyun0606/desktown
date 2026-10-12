@@ -1,5 +1,6 @@
 using DeskTown.Application.Display;
 using DeskTown.Domain.Simulation;
+using DeskTown.Presentation.Display;
 using global::Godot;
 
 namespace DeskTown.Presentation;
@@ -11,6 +12,7 @@ public partial class FocusSetup : Control
 
     public override void _Ready()
     {
+        CatalogUiArt.Panel(this);
         var duration = GetNode<OptionButton>("Panel/Content/Duration");
         foreach (var minutes in new[] { 25, 45, 60 }) duration.AddItem($"{minutes} minutes", minutes);
         var apps = GetNode<OptionButton>("Panel/Content/App");
@@ -21,6 +23,10 @@ public partial class FocusSetup : Control
         mode.AddItem("Hide completely (Tray only)", (int)DisplayMode.Hidden);
         mode.AddItem("Ghost (Windows QA pending)", (int)DisplayMode.Ghost);
         mode.SetItemDisabled(3, true);
+        foreach (var (index, icon) in new[] { (0, 2), (2, 3), (3, 4) })
+            if (CatalogUiArt.Texture("UI-ICO-001", icon) is { } texture)
+                mode.SetItemIcon(index, texture);
+        GetNode<Button>("Panel/Content/Start").Icon = CatalogUiArt.Texture("UI-ICO-001", 0);
         var scale = GetNode<OptionButton>("Panel/Content/CompanionScale");
         foreach (var percent in new[] { 75, 100, 125, 150 })
             scale.AddItem($"{percent}%", percent);

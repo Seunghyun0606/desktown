@@ -811,10 +811,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/fx_workshop_smoke.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel preparation",
+        "license": "AI-generated output; user approved delivery, use and runtime placement on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/remaining-art-v1/prepared-v2/fx_workshop_smoke.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "5baed959ad28907ba3baf2bf642d758b666a1e1e4313923b978c234f2dbf43a6",
+        "approval": "A: remaining ten visual assets and placements approved; apply and prepare final views"
+      },
+      "pivot": [
+        3,
+        29
+      ],
       "events": [],
       "alpha": true
     },
@@ -836,10 +847,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/fx_campfire.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel preparation",
+        "license": "AI-generated output; user approved delivery, use and runtime placement on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/remaining-art-v1/prepared-v2/fx_campfire.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "464e490202d497113a8d884cc6ed5209819bbb9c6b714b594b7dec97db273d18",
+        "approval": "A: remaining ten visual assets and placements approved; apply and prepare final views"
+      },
+      "pivot": [
+        16,
+        29
+      ],
       "events": [],
       "alpha": true
     },
@@ -861,10 +883,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/fx_grass_movement.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel preparation",
+        "license": "AI-generated output; user approved delivery, use and runtime placement on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/remaining-art-v1/prepared-v2/fx_grass_movement.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "10f1d422564404d80d88e90ace53e48c83efac0cf5bf3ee11c976bb403b992db",
+        "approval": "A: remaining ten visual assets and placements approved; apply and prepare final views"
+      },
+      "pivot": [
+        16,
+        29
+      ],
       "events": [],
       "alpha": true
     },
@@ -886,10 +919,21 @@
         16,
         16
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/fx_work_spark.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel preparation",
+        "license": "AI-generated output; user approved delivery, use and runtime placement on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/remaining-art-v1/prepared-v2/fx_work_spark.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "2328e8ca0bd2616385fe4948307357dc9f90d4be95e5548783ebc18f92e07822",
+        "approval": "A: remaining ten visual assets and placements approved; apply and prepare final views"
+      },
+      "pivot": [
+        8,
+        8
+      ],
       "events": [],
       "alpha": true
     },
@@ -911,10 +955,21 @@
         16,
         16
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/fx_tea_steam.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel preparation",
+        "license": "AI-generated output; user approved delivery, use and runtime placement on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/remaining-art-v1/prepared-v2/fx_tea_steam.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "5c7dc10ce9fed4db5f8a89e8291be3f89b415edeab184cfd37b345308a886260",
+        "approval": "A: remaining ten visual assets and placements approved; apply and prepare final views"
+      },
+      "pivot": [
+        8,
+        13
+      ],
       "events": [],
       "alpha": true
     },
@@ -1116,10 +1171,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/prop_companion_decor.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel preparation",
+        "license": "AI-generated output; user approved delivery, use and runtime placement on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/remaining-art-v1/prepared-v2/prop_companion_decor.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "1206191a4bd3b37a15d595e29d7b5a6386894ab3ff124d64b51660f588451487",
+        "approval": "A: remaining ten visual assets and placements approved; apply and prepare final views"
+      },
+      "pivot": [
+        16,
+        29
+      ],
       "events": [],
       "alpha": true
     },
@@ -1141,10 +1207,21 @@
         32,
         32
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/prop_mina_tool.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel preparation",
+        "license": "AI-generated output; user approved delivery, use and runtime placement on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/remaining-art-v1/prepared-v2/prop_mina_tool.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "f3f66c6d98f9a2b25692fd7957bc62db21853b03566442d867d5675e5eb58a41",
+        "approval": "A: remaining ten visual assets and placements approved; apply and prepare final views"
+      },
+      "pivot": [
+        16,
+        29
+      ],
       "events": [],
       "alpha": true
     },
@@ -1202,10 +1279,21 @@
         256,
         96
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/ui_logo_desktown.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel preparation",
+        "license": "AI-generated output; user approved delivery, use and runtime placement on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/remaining-art-v1/prepared-v2/ui_logo_desktown.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "2d9754a084e5bcca5239d967ed19a2fd491333b8513bddd8ea83a0598cca18b6",
+        "approval": "A: remaining ten visual assets and placements approved; apply and prepare final views"
+      },
+      "pivot": [
+        0,
+        0
+      ],
       "events": [],
       "alpha": true
     },
@@ -1227,10 +1315,21 @@
         16,
         16
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/ui_icons_core.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel preparation",
+        "license": "AI-generated output; user approved delivery, use and runtime placement on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/remaining-art-v1/prepared-v2/ui_icons_core.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "6d15d701f667076cf000ec3253d9e7cbd9249edc41b65e2f85bad20122d6e5f9",
+        "approval": "A: remaining ten visual assets and placements approved; apply and prepare final views"
+      },
+      "pivot": [
+        8,
+        8
+      ],
       "events": [],
       "alpha": true
     },
@@ -1252,10 +1351,21 @@
         96,
         64
       ],
-      "status": "unassigned",
-      "resource": null,
-      "provenance": null,
-      "pivot": null,
+      "status": "production",
+      "resource": "res://assets/art/item_old_railway_map.png",
+      "provenance": {
+        "creator": "OpenAI image_gen; approved Python pixel preparation",
+        "license": "AI-generated output; user approved delivery, use and runtime placement on 2026-10-12; see assets/art/DELIVERY_2026-10-12.md",
+        "source": "docs/art/reviews/2026-10-12/remaining-art-v1/prepared-v2/item_old_railway_map.png",
+        "importDate": "2026-10-12",
+        "manifestRevision": "v0.1",
+        "sha256": "c63403bff37f1c44bb690eb713351187a5abd61609b09187bbc2f6bb323038af",
+        "approval": "A: remaining ten visual assets and placements approved; apply and prepare final views"
+      },
+      "pivot": [
+        48,
+        61
+      ],
       "events": [],
       "alpha": true
     },

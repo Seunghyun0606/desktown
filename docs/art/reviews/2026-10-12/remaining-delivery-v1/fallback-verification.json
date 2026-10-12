@@ -1,0 +1,7 @@
+{
+  "success": true,
+  "personalSaveAccess": false,
+  "fixtureOnly": true,
+  "mainCatalogSha256": "5476b8505359f88b2616a97ba21b49c0986b06a68401c113e33227489618d4eb",
+  "checks": "Missing terrain, library, companion prop/shadow and invalid Workshop frames retain safe fallback"
+}

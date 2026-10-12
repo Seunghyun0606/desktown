@@ -8,6 +8,7 @@ namespace DeskTown.Presentation.Display;
 public partial class MinaPlaceholderView : Node2D
 {
     private readonly MinaClipPlayback _playback = new();
+    public event Action<MinaAnimationClip, int>? FrameChanged;
 
     public override void _Ready()
     {
@@ -15,13 +16,27 @@ public partial class MinaPlaceholderView : Node2D
         SetProcess(IsVisibleInTree());
     }
 
-    public void Bind(MinaSimulationState state) => _playback.Apply(MinaClipPlayback.ForState(state));
+    public void Bind(MinaSimulationState state) => Play(MinaClipPlayback.ForState(state));
 
-    public void Play(MinaPresentationIntent intent) => _playback.Apply(intent);
+    public void Play(MinaPresentationIntent intent)
+    {
+        var before = (_playback.Clip, _playback.Frame);
+        _playback.Apply(intent);
+        NotifyFrame(before);
+    }
 
     public override void _Process(double delta)
     {
+        var before = (_playback.Clip, _playback.Frame);
         _playback.Advance(TimeSpan.FromSeconds(delta));
+        NotifyFrame(before);
+        QueueRedraw();
+    }
+
+    private void NotifyFrame((MinaAnimationClip Clip, int Frame) before)
+    {
+        if (before == (_playback.Clip, _playback.Frame)) return;
+        FrameChanged?.Invoke(_playback.Clip, _playback.Frame);
         QueueRedraw();
     }
 

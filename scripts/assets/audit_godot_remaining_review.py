@@ -7,14 +7,16 @@ from prepare_godot_town_review import ROOT
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def audit(review):
  prep=json.loads((review/'preparation.json').read_text(encoding='utf-8'));result=json.loads((review/'captures/result.json').read_text(encoding='utf-8'))
- assert result['success'] and result['reviewOnly'] and not result['productionAssignment'] and not result['personalSaveAccess']
+ runtime=prep.get('runtimeCatalog',False)
+ assert result['success'] and result['reviewOnly'] and result['productionAssignment']==runtime and not result['personalSaveAccess']
  assert result['renderer'].lower()!='dummy' and sha(ROOT/'assets/catalogs/asset_catalog.json')==prep['runtimeCatalogSha256']
  for relative,digest in prep['runtimeWorkingTreeFiles'].items():
   if relative!='assets/catalogs/asset_catalog.json':assert sha(review/'project'/relative)==digest,relative
  assert sha(review/'project/src/DeskTown.Godot/Bootstrap/RemainingArtReview.cs')==prep['probeSha256']
  expected={};pixels=0
+ catalog=json.loads((review/'project/assets/catalogs/asset_catalog.json').read_text(encoding='utf-8'));rows={a['id']:a for a in catalog['assets']}
  for row in prep['candidateAssets']:
-  path=review/'project/assets/art/remaining-review-only'/row['file'];assert sha(path)==row['sha256']
+  path=review/'project'/rows[row['id']]['resource'].removeprefix('res://');assert sha(path)==row['sha256']
   sheet=Image.open(path).convert('RGBA');w,h=row['frameSize']
   for scale in (75,100,125,150):
    for frame in range(row['frames']):
@@ -46,11 +48,20 @@ def audit(review):
  hashes={}
  for name,size in expected.items():
   p=review/'captures'/name;assert Image.open(p).size==size,name;hashes[name]=sha(p)
+  if runtime:
+   approved=ROOT/'docs/art/reviews/2026-10-12/remaining-art-v1/godot-v1/captures'/name
+   if name.startswith('asset-') or name.startswith('town-') or name.startswith('companion-'):
+    assert hashes[name]==sha(approved),('Approved render changed',name)
  report={'success':True,'reviewOnly':True,'reviewKind':'remaining','sourceRevision':prep['sourceRevision'],
          'engine':result['engine'],'renderer':result['renderer'],'captures':204,'assets':10,'cells':33,'framePixelsChecked':pixels,
          'mainCatalogUnchanged':True,'approvedTownAndCompanionArtOutsideProposalPreserved':True,
+         'runtimeCatalog':runtime,'approvedAssetAndSceneCapturesByteIdentical':runtime,
          'companionHeaderControlsExcludedFromArtPreservation':True,'sha256':hashes,
-         'limits':'Candidate sheets and draw-only proposals pending art/delivery/placement approval. Not native input, timing, Reduced Motion persistence or DPI QA.'}
+         'runtimeMotionChecksPassed':runtime,
+         'limits':'Approved runtime views and motion checks; not native input, Reduced Motion persistence or DPI QA.' if runtime else 'Candidate sheets and draw-only proposals pending art/delivery/placement approval. Not native input, timing, Reduced Motion persistence or DPI QA.'}
+ if runtime:
+  logs=[p for p in review.glob('logs-*') if json.loads((p/'result.json').read_text(encoding='utf-8')).get('success')]
+  assert len(logs)==1 and 'DESKTOWN_RUNTIME_MOTION_OK' in (logs[0]/'capture.log').read_text(encoding='utf-8')
  (review/'verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps({k:v for k,v in report.items() if k!='sha256'},ensure_ascii=True))
 
 if __name__=='__main__':

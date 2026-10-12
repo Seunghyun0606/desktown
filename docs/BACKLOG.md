@@ -14,6 +14,8 @@ separately from exported Windows and production-art review.
 
 Current Foundation status:
 
+2026-10-12 최신: 마지막 시각 10개의 외형·납품·배치·연결을 사용자가 승인했고 **38개 시각 아트 모두 실제 적용**했다. [전체 최종 화면](art/reviews/2026-10-12/final-views-v1/review.html) 55장과 [실제 배정/모션 검사](art/reviews/2026-10-12/remaining-delivery-v1/README.md) 204장을 제공한다. 이전 승인 대기·28개 집계는 당시 기록이다. Reduced motion은 기존 저장 필드를 트레이에 연결했다. 음향 8개·실제 Windows QA·QA-PIP-001은 남아 있다.
+
 | Task | Status | Note |
 | --- | --- | --- |
 | DT-E0-001 | IN REVIEW | Build/import/export and CI Windows `.exe` headless launch; interactive Windows 11 launch pending |

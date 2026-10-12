@@ -29,6 +29,8 @@ public partial class GhostWindowHost : Window
         GetNode<MinaPlaceholderView>("GhostStage/MinaView").Bind(snapshot.Mina);
     }
 
+    public void SetReducedMotion(bool reduced) => GetNode<GhostStage>("GhostStage").SetReducedMotion(reduced);
+
     public void Configure(WindowPlacementSnapshot placement, int opacityPercent)
     {
         if (opacityPercent is not (40 or 55 or 65 or 70 or 85))

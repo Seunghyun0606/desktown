@@ -26,6 +26,8 @@ $lines = @(
   '| Check | Result (Pass/Fail/Not tested) | Observed behavior / issue ID |',
   '| --- | --- | --- |',
   '| Extracted launch and onboarding | Not tested | |',
+  '| Final 38 visual assets: Town states, NPCs, Companion props/effects, logo and map | Not tested | |',
+  '| Reduced motion from Tray and persistence after restart | Not tested | |',
   '| PiP only: no Town taskbar entry; typing, click, drag, scroll in other apps | Not tested | |',
   '| PiP size presets, header drag, and saved monitor position | Not tested | |',
   '| Minimized: Town taskbar entry only, resource use | Not tested | |',

@@ -94,6 +94,12 @@ public partial class PrototypeAppController : Node
             tray.SetCompletionNotice(enabled);
             if (!enabled) Root<CompletionNotice>("CompletionNotice").Dismiss();
         });
+        tray.ReducedMotionToggleRequested += () => _ = RunAsync(async () =>
+        {
+            if (_game is null) return;
+            await _game.ChangeSettingsAsync(_game.Settings with { ReducedMotion = !_game.Settings.ReducedMotion });
+            ApplyMotionPreference();
+        });
         tray.EndFocusRequested += () => _ = RunAsync(EndFocusAsync);
         tray.QuitRequested += RequestQuit;
         Root<CompletionNotice>("CompletionNotice").OpenRequested += OpenTown;
@@ -204,6 +210,7 @@ public partial class PrototypeAppController : Node
             Root<CompanionWindowHost>("CompanionWindow").Configure(
                 _game.Settings.Companion, _game.Settings.CompanionScalePercent);
             Root<TrayHost>("TrayHost").SetCompletionNotice(_game.Settings.CompletionNoticeEnabled);
+            ApplyMotionPreference();
             ConfigureGhostPreview();
             Root<Label>("MainShell/Center/Message").Visible = false;
             Root<TownScene>("MainShell/Town").Bind(_game.World.Town, _game.TodayFocus);
@@ -322,6 +329,16 @@ public partial class PrototypeAppController : Node
         if (_game is null) return;
         Root<GhostWindowHost>("GhostWindow").Configure(
             _game.Settings.Ghost, _game.Settings.GhostOpacityPercent);
+    }
+
+    private void ApplyMotionPreference()
+    {
+        if (_game is null) return;
+        var reduced = _game.Settings.ReducedMotion;
+        Root<TownScene>("MainShell/Town").SetReducedMotion(reduced);
+        Root<CompanionWindowHost>("CompanionWindow").SetReducedMotion(reduced);
+        Root<GhostWindowHost>("GhostWindow").SetReducedMotion(reduced);
+        Root<TrayHost>("TrayHost").SetReducedMotion(reduced);
     }
 
     private async Task ResolveRecoveryAsync(RecoveryChoice choice)

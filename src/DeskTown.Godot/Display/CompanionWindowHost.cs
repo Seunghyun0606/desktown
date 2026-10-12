@@ -80,6 +80,8 @@ public partial class CompanionWindowHost : Window, IFocusDisplaySurface
 
     public void Bind(CompanionProjection snapshot) => _stage?.Bind(snapshot);
 
+    public void SetReducedMotion(bool reduced) => _stage?.SetReducedMotion(reduced);
+
     public void Play(MinaPresentationIntent presentation) => _stage?.Play(presentation);
 
     public WindowPlacementSnapshot CurrentPlacement()

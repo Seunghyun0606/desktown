@@ -1,5 +1,7 @@
 # 남은 시각 아트 10개 — 전체 연결 검토 후보
 
+후속 결정: 사용자가 **A: 10개 아트·배치 승인 — 적용 후 최종 화면 준비**를 승인했다. 10개 실제 배정·연결을 완료했고 [최종 화면](../final-views-v1/review.html)과 [실제 배정 검증](../remaining-delivery-v1/README.md)을 제공한다. 아래 후보·승인 대기 설명은 최초 검토 시점 기록이다. 최신 재현에는 `prepare_godot_remaining_review.py --runtime-catalog` 또는 `prepare_final_art_review.py`를 사용한다.
+
 [검토 페이지](review.html)는 실제 Godot 마을·Companion·First Launch·Discovery·Focus 캡처와 33셀 개별 재생을 제공한다. **외형·최종 납품·배치·런타임 연결 승인 대기**다. 실제 카탈로그는 이미 승인된 Mina/Companion/Town/NPC **28 production**을 유지한다. 새 10개를 승인·연결하면 시각 38개가 갖춰지고 음향 8개는 별도로 남는다. 아직 최종 런타임·사용자 QA 빌드 완료가 아니다.
 
 ## 입력과 규격

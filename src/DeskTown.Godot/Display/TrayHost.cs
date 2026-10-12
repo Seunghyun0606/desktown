@@ -19,6 +19,7 @@ public partial class TrayHost : Node
     public event Action<int>? GhostMonitorRequested;
     public event Action? AudioToggleRequested;
     public event Action? CompletionNoticeToggleRequested;
+    public event Action? ReducedMotionToggleRequested;
 
     public override void _Ready()
     {
@@ -53,9 +54,13 @@ public partial class TrayHost : Node
         _menu.AddItem("Audio", 50);
         _menu.AddCheckItem("Completion notice (otherwise Tray only)", 51);
         _menu.SetItemChecked(_menu.GetItemIndex(51), true);
+        _menu.AddCheckItem("Reduced motion", 52);
         _menu.AddItem("End Focus", 60);
         _menu.AddItem("Quit", 90);
         _menu.IdPressed += id => Dispatch((int)id);
+        foreach (var (id, icon) in new[] { (1, 1), (10, 2), (11, 3), (12, 4), (50, 6), (51, 7), (52, 5), (60, 0) })
+            if (CatalogUiArt.Texture("UI-ICO-001", icon) is { } texture)
+                _menu.SetItemIcon(_menu.GetItemIndex(id), texture);
 
         var image = Image.CreateEmpty(16, 16, false, Image.Format.Rgba8);
         image.Fill(Color.FromHtml("4b6955"));
@@ -74,8 +79,12 @@ public partial class TrayHost : Node
     public void SetStatus(bool focusing, bool workComplete)
     {
         if (_indicator is not null)
+        {
             _indicator.Tooltip = focusing ? "DeskTown • Focus"
                 : workComplete ? "DeskTown • Work complete" : "DeskTown";
+            if (VisualAssetCatalog.Frame("UI-ICO-001", focusing ? 0 : workComplete ? 1 : 2) is { } art)
+                _indicator.Icon = ImageTexture.CreateFromImage(art.Sheet.GetImage().GetRegion((Rect2I)art.Source));
+        }
         if (_menu is not null)
             _menu.SetItemDisabled(_menu.GetItemIndex(60), !focusing);
     }
@@ -83,6 +92,11 @@ public partial class TrayHost : Node
     public void SetCompletionNotice(bool enabled)
     {
         if (_menu is not null) _menu.SetItemChecked(_menu.GetItemIndex(51), enabled);
+    }
+
+    public void SetReducedMotion(bool enabled)
+    {
+        if (_menu is not null) _menu.SetItemChecked(_menu.GetItemIndex(52), enabled);
     }
 
     private void Dispatch(int id)
@@ -102,6 +116,7 @@ public partial class TrayHost : Node
             case >= 100: GhostMonitorRequested?.Invoke(id - 100); break;
             case 50: AudioToggleRequested?.Invoke(); break;
             case 51: CompletionNoticeToggleRequested?.Invoke(); break;
+            case 52: ReducedMotionToggleRequested?.Invoke(); break;
             case 60: EndFocusRequested?.Invoke(); break;
             case 90: QuitRequested?.Invoke(); break;
         }

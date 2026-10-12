@@ -9,6 +9,7 @@ public partial class RemainingArtReview : Node
 {
     private readonly List<string> _captures=new();
     private readonly int[] _scales={75,100,125,150};
+    private bool RuntimeCatalog => OS.GetEnvironment("DESKTOWN_ART_REVIEW_RUNTIME_CATALOG") == "1";
     private static readonly (string Name,string Id,int Count,int Width,int Height)[] Assets={
         ("smoke","FX-SMK-001",4,32,32),("campfire","FX-FIR-001",4,32,32),("grass","FX-GRS-001",2,32,32),
         ("spark","FX-SPK-001",4,16,16),("steam","FX-TEA-001",4,16,16),("decor","CMP-DEC-001",2,32,32),
@@ -67,6 +68,18 @@ public partial class RemainingArtReview : Node
                     for(var frame=0;frame<(reduced?1:4);frame++)
                     {
                         var view=ViewportAt(1280,720,scale);var town=Town(view);var world=town.GetNode<Control>("World");
+                        if(RuntimeCatalog)
+                        {
+                            town.SetReducedMotion(reduced);
+                            town.ProcessMode=ProcessModeEnum.Disabled;
+                            foreach(var effect in world.GetChildren().OfType<CatalogEffectView>())
+                                effect._Process(frame / (effect.Name.ToString().StartsWith("FX_FIR")?6.0:effect.Name.ToString().StartsWith("FX_GRS")?2.0:4.0));
+                            // Grass has only two authored phases.
+                            foreach(var grass in world.GetChildren().OfType<CatalogEffectView>().Where(e=>e.Name.ToString().StartsWith("FX_GRS")))
+                            { grass.SetEnabled(false);grass.SetEnabled(!reduced);grass._Process((frame%2)/2.0); }
+                        }
+                        else
+                        {
                         // Static campfire communicates state even with reduced motion.
                         world.GetNode<ColorRect>("Campfire").Hide();Sprite(world,"FX-FIR-001",frame,312,296);
                         if(!reduced)
@@ -74,6 +87,7 @@ public partial class RemainingArtReview : Node
                             // Flip the trail left to keep it above Workshop, away from Library.
                             Sprite(world,"FX-SMK-001",frame,461,118).FlipH=true;
                             Sprite(world,"FX-GRS-001",frame%2,96,296);Sprite(world,"FX-GRS-001",frame%2,564,278);
+                        }
                         }
                         await Save(view,output,$"town-{(reduced?"reduced":"effect")}-{scale}-f{frame:00}.png");
                     }
@@ -85,12 +99,22 @@ public partial class RemainingArtReview : Node
                             var view=ViewportAt(360,200,scale);var stage=GD.Load<PackedScene>("res://scenes/companion/CompanionStage.tscn").Instantiate<CompanionStage>();
                             stage.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);stage.Size=new Vector2(360,200);view.AddChild(stage);
                             stage.GetNode<Label>("DragLabel").Text=$"DeskTown  •  drag here  •  {scale}%";
+                            if(RuntimeCatalog){stage.SetReducedMotion(reduced);stage.ProcessMode=ProcessModeEnum.Disabled;}
                             var mina=stage.GetNode<MinaPlaceholderView>("MinaView");mina.SetProcess(false);
                             mina.Play(new MinaPresentationIntent(pose=="work"?MinaAnimationClip.Work:MinaAnimationClip.Rest));
                             mina._Process(pose=="work"?2.0/6+0.000001:0);
                             // Optional tool stays on the far side of the bench, never duplicates Mina's held tool.
-                            Sprite(stage,"CMP-TOL-001",0,198,103);
-                            if(!reduced)Sprite(stage,pose=="work"?"FX-SPK-001":"FX-TEA-001",frame,pose=="work"?137:129,pose=="work"?119:116);
+                            if(RuntimeCatalog)
+                            {
+                                var id=pose=="work"?"FX_SPK_001":"FX_TEA_001";
+                                var effect=stage.GetNodeOrNull<CatalogEffectView>(id);
+                                effect?._Process(frame/(pose=="work"?8.0:4.0));
+                            }
+                            else
+                            {
+                                Sprite(stage,"CMP-TOL-001",0,198,103);
+                                if(!reduced)Sprite(stage,pose=="work"?"FX-SPK-001":"FX-TEA-001",frame,pose=="work"?137:129,pose=="work"?119:116);
+                            }
                             await Save(view,output,$"companion-{pose}-{(reduced?"reduced":"effect")}-{scale}-f{frame:00}.png");
                         }
             foreach(var kind in new[]{"first-launch","discovery","focus"})
@@ -100,6 +124,8 @@ public partial class RemainingArtReview : Node
                     var path=kind=="first-launch"?"app/FirstLaunch":kind=="discovery"?"town/DiscoveryEvent":"focus/FocusSetup";
                     var panel=GD.Load<PackedScene>($"res://scenes/{path}.tscn").Instantiate<Control>();
                     panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);panel.Size=new Vector2(1280,720);view.AddChild(panel);panel.Show();
+                    if(!RuntimeCatalog)
+                    {
                     // Review-only warm opaque panel keeps the new focal art and text readable.
                     var paper=new StyleBoxFlat {BgColor=Color.FromHtml("29241f"),BorderColor=Color.FromHtml("79664f"),
                         BorderWidthLeft=1,BorderWidthRight=1,BorderWidthTop=1,BorderWidthBottom=1,
@@ -122,11 +148,17 @@ public partial class RemainingArtReview : Node
                         if(kind=="first-launch")content.GetNode<Label>("Title").Hide();
                         else {var container=panel.GetNode<PanelContainer>("Panel");container.OffsetTop=-190;container.OffsetBottom=190;}
                     }
+                    }
+                    if(RuntimeCatalog)
+                    {
+                        var town=view.GetChildren().OfType<TownScene>().Single();town.ProcessMode=ProcessModeEnum.Disabled;
+                    }
                     await Save(view,output,$"ui-{kind}-{scale}.png");
                 }
             File.WriteAllText(Path.Combine(output,"result.json"),JsonSerializer.Serialize(new {success=true,reviewOnly=true,
-                personalSaveAccess=false,productionAssignment=false,nativeInputQa=false,engine=Engine.GetVersionInfo()["string"].AsString(),
+                personalSaveAccess=false,productionAssignment=RuntimeCatalog,nativeInputQa=false,engine=Engine.GetVersionInfo()["string"].AsString(),
                 renderer=RenderingServer.GetVideoAdapterName(),captures=_captures},new JsonSerializerOptions {WriteIndented=true}));
+            if(RuntimeCatalog)CheckRuntimeMotion();
             Require(_captures.Count==204,"Incomplete capture set");GD.Print("DESKTOWN_REMAINING_REVIEW_OK");GetTree().Quit();
         }
         catch(Exception error){GD.PrintErr(error.ToString());GetTree().Quit(1);}
@@ -134,5 +166,35 @@ public partial class RemainingArtReview : Node
     private static AtlasTexture Atlas(string id,int frame)
     {
         var art=VisualAssetCatalog.Frame(id,frame)!.Value;return new AtlasTexture {Atlas=art.Sheet,Region=art.Source};
+    }
+    private void CheckRuntimeMotion()
+    {
+        var viewport=ViewportAt(360,200,100);
+        var stage=GD.Load<PackedScene>("res://scenes/companion/CompanionStage.tscn").Instantiate<CompanionStage>();
+        viewport.AddChild(stage);stage.ProcessMode=ProcessModeEnum.Disabled;
+        var mina=stage.GetNode<MinaPlaceholderView>("MinaView");
+        var spark=stage.GetNode<CatalogEffectView>("FX_SPK_001");
+        var steam=stage.GetNode<CatalogEffectView>("FX_TEA_001");
+        mina.Play(new MinaPresentationIntent(MinaAnimationClip.Work));mina._Process(2.0/6+0.000001);
+        Require(spark.Visible && spark.CurrentFrame==0,"Work contact did not trigger sparkle");
+        spark._Process(3.0/8);Require(spark.CurrentFrame==3,"Spark phases not stepped at 8 FPS");
+        mina.Play(new MinaPresentationIntent(MinaAnimationClip.Work));
+        Require(spark.CurrentFrame==3,"Repeated same intent restarted the contact effect");
+        spark._Process(1.0/8);Require(!spark.Visible && !spark.IsProcessing(),"Spark did not stop after one pass");
+        stage.SetReducedMotion(true);mina.Play(new MinaPresentationIntent(MinaAnimationClip.Idle));
+        mina.Play(new MinaPresentationIntent(MinaAnimationClip.Work));mina._Process(2.0/6+0.000001);
+        Require(!spark.Visible,"Reduced motion did not suppress contact");
+        mina.Play(new MinaPresentationIntent(MinaAnimationClip.Rest));Require(!steam.Visible,"Reduced motion did not suppress steam");
+        stage.SetReducedMotion(false);steam._Process(0.25);Require(steam.Visible && steam.CurrentFrame==1,"Steam did not resume at 4 FPS");
+        stage.Hide();Require(!steam.IsProcessing(),"Hidden stage continued processing effects");
+        steam._Process(2);Require(steam.CurrentFrame==1,"Hidden effect clock advanced");
+        stage.Show();Require(steam.IsProcessing(),"Visible stage did not resume effects");viewport.QueueFree();
+        var townViewport=ViewportAt(1280,720,100);var town=Town(townViewport);town.ProcessMode=ProcessModeEnum.Disabled;
+        var fire=town.GetNode<CatalogEffectView>("World/FX_FIR_001");var smoke=town.GetNode<CatalogEffectView>("World/FX_SMK_001");
+        Require(smoke.Visible,"Completed Workshop has no smoke");fire._Process(0.5);Require(fire.CurrentFrame==3,"Campfire FPS mismatch");
+        town.SetReducedMotion(true);Require(fire.Visible && fire.CurrentFrame==0 && !fire.IsProcessing() && !smoke.Visible,"Reduced Town effects incorrect");
+        town.SetReducedMotion(false);town.Bind(TownSimulation.Create().Snapshot.Town);
+        Require(!smoke.Visible,"Broken Workshop emitted smoke");town.Hide();Require(!fire.IsProcessing(),"Hidden Town effect continued processing");
+        townViewport.QueueFree();GD.Print("DESKTOWN_RUNTIME_MOTION_OK");
     }
 }

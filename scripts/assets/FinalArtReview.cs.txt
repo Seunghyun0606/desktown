@@ -1,0 +1,101 @@
+// Actual production views. Local simulation fixtures only; no AppRoot/personal saves.
+using DeskTown.Application.Display;
+using DeskTown.Domain.Focus;
+using DeskTown.Domain.Projects;
+using DeskTown.Domain.Simulation;
+using DeskTown.Presentation.Display;
+using global::Godot;
+using System.Text.Json;
+namespace DeskTown.Presentation.Bootstrap;
+public partial class FinalArtReview : Node
+{
+    private readonly List<string> _captures=new();
+    private readonly int[] _scales={75,100,125,150};
+    private static void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
+    public override void _Ready()=>Callable.From(()=>{_=Run();}).CallDeferred();
+    private SubViewport View(int w,int h,int scale,bool alpha=false)
+    {
+        var view=new SubViewport {Size=new Vector2I(w*scale/100,h*scale/100),Size2DOverride=new Vector2I(w,h),
+            Size2DOverrideStretch=true,TransparentBg=alpha,RenderTargetUpdateMode=SubViewport.UpdateMode.Always,
+            CanvasItemDefaultTextureFilter=Viewport.DefaultCanvasItemTextureFilter.Nearest};AddChild(view);return view;
+    }
+    private TownSimulation Simulation(WorkshopState state)
+    {
+        var game=TownSimulation.Create();var elapsed=TimeSpan.FromMinutes(state==WorkshopState.Broken?0:state==WorkshopState.Repairing?10:25);
+        game.AdvanceTo(elapsed,FocusEnergy.FromCountedDuration(elapsed),state==WorkshopState.Repairing?FocusSessionStatus.Running:null,TimeSpan.Zero);
+        if(state==WorkshopState.Complete)game.RevealWorkshopCompletion();return game;
+    }
+    private TownScene Town(SubViewport view,WorkshopState state,bool reduced=false)
+    {
+        var town=GD.Load<PackedScene>("res://scenes/town/TownScene.tscn").Instantiate<TownScene>();
+        town.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);town.Size=new Vector2(1280,720);view.AddChild(town);
+        town.Bind(Simulation(state).Snapshot.Town,TimeSpan.FromMinutes(state==WorkshopState.Broken?0:state==WorkshopState.Repairing?10:25));
+        town.BindAmbient(TimeSpan.Zero);town.SetReducedMotion(reduced);town.ProcessMode=ProcessModeEnum.Disabled;return town;
+    }
+    private async Task Save(SubViewport view,string output,string name,bool dispose=true)
+    {
+        await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
+        await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
+        Require(view.GetTexture().GetImage().SavePng(Path.Combine(output,name))==Error.Ok,"Capture failed");_captures.Add(name);
+        if(dispose){view.QueueFree();await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);}
+    }
+    private async Task Run()
+    {
+        try
+        {
+            GetWindow().Unfocusable=true;Require(Path.GetFileName(OS.GetUserDataDir()).StartsWith("DeskTownArtReview-"),"User dir is not isolated");
+            var output=ProjectSettings.GlobalizePath("res://../captures");Directory.CreateDirectory(output);
+            foreach(var scale in _scales)
+            {
+                foreach(var state in Enum.GetValues<WorkshopState>())
+                {var v=View(1280,720,scale);Town(v,state);await Save(v,output,$"town-{state.ToString().ToLowerInvariant()}-{scale}.png");}
+                var reduced=View(1280,720,scale);Town(reduced,WorkshopState.Complete,true);await Save(reduced,output,$"town-reduced-{scale}.png");
+                foreach(var kind in new[]{"first-launch","focus","discovery"})
+                {
+                    var v=View(1280,720,scale);
+                    // Onboarding keeps Town hidden, as the actual application does.
+                    if(kind!="first-launch")Town(v,kind=="focus"?WorkshopState.Broken:WorkshopState.Complete);
+                    var path=kind=="first-launch"?"app/FirstLaunch":kind=="focus"?"focus/FocusSetup":"town/DiscoveryEvent";
+                    var panel=GD.Load<PackedScene>($"res://scenes/{path}.tscn").Instantiate<Control>();
+                    panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);panel.Size=new Vector2(1280,720);v.AddChild(panel);panel.Show();
+                    if(panel is FocusSetup setup)setup.Bind(Simulation(WorkshopState.Broken).Snapshot.Town,Array.Empty<string>(),DisplayMode.Companion,100);
+                    await Save(v,output,$"ui-{kind}-{scale}.png");
+                }
+                var rewardView=View(1280,720,scale);var rewardTown=Town(rewardView,WorkshopState.Repairing);
+                var reward=GD.Load<PackedScene>("res://scenes/town/RewardReveal.tscn").Instantiate<RewardReveal>();
+                reward.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);reward.Size=new Vector2(1280,720);rewardView.AddChild(reward);reward.ProcessMode=ProcessModeEnum.Disabled;
+                var changes=0;var finishes=0;reward.WorkshopChanged+=()=>{changes++;rewardTown.Bind(Simulation(WorkshopState.Complete).Snapshot.Town,TimeSpan.FromMinutes(25));};reward.Finished+=()=>finishes++;
+                var playing=reward.PlayAsync(false);await Save(rewardView,output,$"reward-before-{scale}.png",false);await playing;
+                foreach(var effect in reward.GetNode<VBoxContainer>("Panel/Content").GetChildren().OfType<TextureRect>().SelectMany(n=>n.GetChildren().OfType<CatalogEffectView>()))effect._Process(0.125);
+                await Save(rewardView,output,$"reward-after-{scale}.png",false);
+                Require(changes==1 && finishes==0 && reward.GetNode<Button>("Panel/Content/Skip").Disabled==false,"Reward hold/callback incorrect");
+                reward.Finish();reward.Finish();Require(finishes==1 && !reward.Visible,"Reward finish was not idempotent");
+                changes=finishes=0;await reward.PlayAsync(true);Require(changes==1 && finishes==1 && !reward.Visible,"Reduced reward did not finish exactly once");
+                rewardView.QueueFree();await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+                foreach(var pose in new[]{"work","rest"})
+                    foreach(var reducedMotion in new[]{false,true})
+                    {
+                        var v=View(360,200,scale);var stage=GD.Load<PackedScene>("res://scenes/companion/CompanionStage.tscn").Instantiate<CompanionStage>();
+                        v.AddChild(stage);stage.ProcessMode=ProcessModeEnum.Disabled;stage.GetNode<Label>("DragLabel").Text=$"DeskTown  •  drag here  •  {scale}%";
+                        stage.SetReducedMotion(reducedMotion);var mina=stage.GetNode<MinaPlaceholderView>("MinaView");
+                        mina.Play(new MinaPresentationIntent(pose=="work"?MinaAnimationClip.Work:MinaAnimationClip.Rest));mina._Process(pose=="work"?2.0/6+0.000001:0);
+                        stage.GetNode<CatalogEffectView>(pose=="work"?"FX_SPK_001":"FX_TEA_001")._Process(pose=="work"?0.125:0.25);
+                        await Save(v,output,$"companion-{pose}-{(reducedMotion?"reduced":"normal")}-{scale}.png");
+                    }
+            }
+            foreach(var opacity in new[]{40,65,85})
+            {
+                var v=View(220,180,100,true);var ghost=GD.Load<PackedScene>("res://scenes/ghost/GhostStage.tscn").Instantiate<GhostStage>();
+                v.AddChild(ghost);ghost.Modulate=new Color(1,1,1,opacity/100f);ghost.ProcessMode=ProcessModeEnum.Disabled;
+                var mina=ghost.GetNode<MinaPlaceholderView>("MinaView");mina.Play(new MinaPresentationIntent(MinaAnimationClip.Work));mina._Process(2.0/6+0.000001);
+                ghost.GetNode<CatalogEffectView>("FX_SPK_001")._Process(0.125);await Save(v,output,$"ghost-{opacity}.png");
+            }
+            Require(_captures.Count==55,"Incomplete final views");
+            File.WriteAllText(Path.Combine(output,"result.json"),JsonSerializer.Serialize(new {success=true,reviewOnly=true,runtimeCatalog=true,
+                personalSaveAccess=false,nativeInputQa=false,rewardNormalAndReducedChecksPassed=true,
+                engine=Engine.GetVersionInfo()["string"].AsString(),renderer=RenderingServer.GetVideoAdapterName(),captures=_captures},new JsonSerializerOptions {WriteIndented=true}));
+            GD.Print("DESKTOWN_FINAL_REVIEW_OK");GetTree().Quit();
+        }
+        catch(Exception error){GD.PrintErr(error.ToString());GetTree().Quit(1);}
+    }
+}

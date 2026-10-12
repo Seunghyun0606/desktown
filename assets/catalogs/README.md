@@ -6,7 +6,8 @@ semantic name. The human approved delivery/use and production assignment of
 six shared Mina clips and six Companion props on 2026-10-11, followed by eleven
 Town building/environment assets and the 2x world layout on 2026-10-12.
 Five Noah/Rumi clips were then approved and assigned on 2026-10-12.
-Those 28 IDs resolve actual art; 10 visual and 8 audio entries remain unassigned.
+The final ten effect/prop/UI/map assets were approved and connected on 2026-10-12.
+All 38 visual IDs resolve production art; only 8 audio entries remain unassigned.
 See the delivery records for [Mina/Companion](../art/DELIVERY_2026-10-11.md) and
 [Town and NPCs](../art/DELIVERY_2026-10-12.md).
 
@@ -33,12 +34,12 @@ Companion also resolves the character shadow through a draw-only Sprite2D;
 an unassigned or invalid shadow stays hidden. The human-approved integer
 Workbench/Stool/Lamp placement and runtime binding reproduce the approved
 [Godot captures](../../docs/art/reviews/2026-10-11/companion-runtime-v1/README.md).
-Mina/Companion, Town and NPC delivery/use approval and the 28-ID runtime assignment are complete.
+Visual delivery/use approval and all 38 visual runtime assignments are complete.
 Each binder uses the declared frame size and count, and falls back to geometric
 drawing if the file is absent or has the wrong sheet dimensions. The Workshop
 sheet cells are Broken, Repairing, Complete, in that order. Lamp and Decor use
-cell 0 until their visual variants are approved. Noah/Rumi walking sheets and
-the remaining effect/tool/UI IDs still need scene decisions. Town's static
+cell 0 for their default variants. Noah/Rumi walking sheets are delivered; the
+existing ambient schedule continues to select Idle/Read. Town's static
 environment tiles use approved integer positions within its 640x360 world at
 2x; the HUD remains at 1x. Missing grass retains the geometric ground/path.
 

@@ -12,6 +12,11 @@ public partial class TownScene : Control
     private TownProjection? _pending;
     private global::Godot.Timer? _ambientTimer;
     private Sprite2D? _minaShadow;
+    private CatalogEffectView? _smoke;
+    private CatalogEffectView? _fire;
+    private readonly List<CatalogEffectView> _grass = new();
+    private bool _reducedMotion;
+    private WorkshopState _visualWorkshop;
     public event Action? FocusRequested;
 
     public override void _Ready()
@@ -38,6 +43,15 @@ public partial class TownScene : Control
             placeholderLabel: GetNode<Label>("World/LockedArea/Name"));
         CatalogRectArt.Bind(GetNode<ColorRect>("World/Tree"), "ENV-TRE-001");
         CatalogRectArt.Bind(GetNode<ColorRect>("World/Campfire"), "FX-FIR-001");
+        var world = GetNode<Control>("World");
+        _smoke = CatalogEffectView.Create(world, "FX-SMK-001", 4, 4, true, 461, 118);
+        if (_smoke is not null) _smoke.FlipH = true;
+        _fire = CatalogEffectView.Create(world, "FX-FIR-001", 4, 6, true, 312, 296);
+        if (_fire is not null) GetNode<ColorRect>("World/Campfire").Hide();
+        foreach (var (x, y) in new[] { (96, 296), (564, 278) })
+            if (CatalogEffectView.Create(world, "FX-GRS-001", 2, 2, true, x, y) is { } grass)
+                _grass.Add(grass);
+        BindEffects();
         if (Visible)
         {
             _ambientTimer.Start();
@@ -56,6 +70,8 @@ public partial class TownScene : Control
         var workshop = GetNode<ColorRect>("World/Workshop");
         var label = GetNode<Label>("World/Workshop/State");
         var state = visualWorkshop ?? snapshot.Workshop;
+        _visualWorkshop = state;
+        BindEffects();
         (workshop.Color, label.Text) = state switch
         {
             WorkshopState.Broken => (Color.FromHtml("806f66"), "Broken Workshop"),
@@ -86,6 +102,19 @@ public partial class TownScene : Control
     {
         if (!Visible) return;
         BindAmbient(TimeSpan.FromMilliseconds(Time.GetTicksMsec()));
+    }
+
+    public void SetReducedMotion(bool reduced)
+    {
+        _reducedMotion = reduced;
+        BindEffects();
+    }
+
+    private void BindEffects()
+    {
+        _smoke?.SetEnabled(!_reducedMotion && _visualWorkshop == WorkshopState.Complete);
+        _fire?.SetEnabled(true, !_reducedMotion);
+        foreach (var grass in _grass) grass.SetEnabled(!_reducedMotion);
     }
 
     internal void BindAmbient(TimeSpan elapsed)
