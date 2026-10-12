@@ -187,6 +187,16 @@ public partial class PresentationAudioHost : Node
         _loops.Clear();
     }
 
+    public async Task PrepareQuitAsync()
+    {
+        SetEnabled(false);
+        SetProcess(false);
+        foreach (var player in _voices.Select(v => v.Player).Concat(_loops.Values))
+            player.Stream = null;
+        // Let the audio mixer release stopped playbacks before engine teardown.
+        await ToSignal(GetTree().CreateTimer(.2), SceneTreeTimer.SignalName.Timeout);
+    }
+
     private void LoadSounds()
     {
         try

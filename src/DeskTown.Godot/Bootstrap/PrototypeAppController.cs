@@ -496,7 +496,7 @@ public partial class PrototypeAppController : Node
 
     private void RequestQuit()
     {
-        if (!IsFocusActive) { GetTree().Quit(); return; }
+        if (!IsFocusActive) { _ = RunAsync(QuitAsync); return; }
         OpenTown();
         var dialog = new ConfirmationDialog
         {
@@ -508,10 +508,16 @@ public partial class PrototypeAppController : Node
         {
             await EndFocusAsync();
             await _game!.SaveAsync(CheckpointReason.Quit);
-            GetTree().Quit();
+            await QuitAsync();
         });
         dialog.Canceled += dialog.QueueFree;
         dialog.PopupCentered();
+    }
+
+    private async Task QuitAsync()
+    {
+        if (_audio is not null) await _audio.PrepareQuitAsync();
+        GetTree().Quit();
     }
 
     private async Task RunAsync(Func<Task> action)

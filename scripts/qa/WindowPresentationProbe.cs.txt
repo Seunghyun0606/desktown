@@ -198,7 +198,8 @@ public partial class WindowPresentationProbe : Node
                 Check("finish-" + mode, false, mode == DisplayMode.Hidden);
                 _controller.OpenTown(); await Settle(); CheckTown("reopen-" + mode);
             }
-            GD.Print("DESKTOWN_WINDOW_PRESENTATION_OK"); GetTree().Quit();
+            GD.Print("DESKTOWN_WINDOW_PRESENTATION_OK");
+            typeof(PrototypeAppController).GetMethod("RequestQuit", Private)!.Invoke(_controller, null);
         }
         catch (Exception error)
         {
