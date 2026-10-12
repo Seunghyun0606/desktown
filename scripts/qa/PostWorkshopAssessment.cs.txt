@@ -1,0 +1,68 @@
+// Assessment only: compiled in build/, never into the shipped game.
+using System.Text.Json;
+using DeskTown.Application.Display;
+using DeskTown.Application.Lifecycle;
+using DeskTown.Application.Runtime;
+using DeskTown.Application.Tests.Fakes;
+using DeskTown.Domain.Focus;
+using DeskTown.Domain.Projects;
+using DeskTown.Persistence;
+
+var directory = Path.GetFullPath(args[0]);
+var save = Path.Combine(directory, "assessment-save.json");
+if (File.Exists(save)) throw new InvalidOperationException("Use a fresh assessment directory.");
+var store = new JsonGameStateStore(save);
+var wall = new FakeWallClock(new DateTimeOffset(2026, 10, 13, 0, 0, 0, TimeSpan.Zero));
+var mono = new FakeMonotonicClock();
+var checks = new List<string>();
+void Check(bool condition, string label)
+{
+    if (!condition) throw new InvalidOperationException(label);
+    checks.Add(label);
+}
+void Advance(double minutes)
+{
+    wall.Advance(TimeSpan.FromMinutes(minutes));
+    mono.Advance(TimeSpan.FromMinutes(minutes));
+}
+var game = await PrototypeRuntime.OpenAsync(store, new FakeActivityTracker(), wall, mono, TimeSpan.FromSeconds(15));
+await game.CompleteOnboardingAsync();
+await game.StartAsync(TimeSpan.FromMinutes(25), [], DisplayMode.Hidden);
+Advance(25);
+await game.TickAsync(TimeSpan.Zero);
+Check(game.World.Town.Workshop == WorkshopState.Complete && game.ActiveSession is null, "Workshop first completion");
+await game.RevealWorkshopAsync();
+await game.AcknowledgeWorkshopAsync();
+await game.AcknowledgeRailwayAsync();
+var consumed = game.World.Town.Events;
+
+foreach (var mode in new[] { DisplayMode.Companion, DisplayMode.Minimized, DisplayMode.Hidden })
+{
+    await game.StartAsync(TimeSpan.FromMinutes(1), [], mode);
+    Advance(1);
+    await game.TickAsync(TimeSpan.Zero);
+    Check(game.ActiveSession is null, "Existing runtime accepts post-completion Focus in " + mode);
+    Check(game.World.Town.Progress.CountedDuration == TimeSpan.FromMinutes(25) && game.World.Town.Events == consumed,
+        "Post-completion Focus preserves Workshop and consumed rewards in " + mode);
+}
+Check(game.TotalFocus == TimeSpan.FromMinutes(28) && game.TodayFocus == TimeSpan.FromMinutes(28), "Totals include later sessions without extra project reward");
+game = await PrototypeRuntime.OpenAsync(store, new FakeActivityTracker(), wall, mono, TimeSpan.FromSeconds(15));
+Check(game.TotalFocus == TimeSpan.FromMinutes(28) && game.World.Town.Events == consumed, "V1 reload preserves later Focus and consumed events");
+await game.StartAsync(TimeSpan.FromMinutes(25), [], DisplayMode.Hidden);
+Advance(1);
+await game.TickAsync(TimeSpan.Zero);
+game = await PrototypeRuntime.OpenAsync(store, new FakeActivityTracker(), wall, mono, TimeSpan.FromSeconds(15));
+Check(game.PendingRecovery?.CountedDuration == TimeSpan.FromMinutes(1), "Later session has recoverable checkpoint");
+Advance(60); // Time outside the application must not be awarded.
+await game.ResolveRecoveryAsync(RecoveryChoice.EndAtCheckpoint);
+Check(game.TotalFocus == TimeSpan.FromMinutes(29) && game.World.Town.Events == consumed, "Recovery excludes downtime and does not replay reward");
+using var json = JsonDocument.Parse(File.ReadAllText(save));
+Check(json.RootElement.GetProperty("schemaVersion").GetInt32() == 1, "Existing V1 shape is sufficient for free Focus proposal");
+File.WriteAllText(Path.Combine(directory, "runtime-assessment.json"), JsonSerializer.Serialize(new
+{
+    productionChanged = false, personalSaveUsed = false, simulatedTime = true,
+    checks, checksPassed = checks.Count, countedMinutes = game.TotalFocus.TotalMinutes,
+    workshopMinutes = game.World.Town.Progress.CountedDuration.TotalMinutes,
+    railwayPlayable = false, proposalApprovalPending = true
+}, new JsonSerializerOptions { WriteIndented = true }));
+Console.WriteLine($"Post-Workshop assessment: {checks.Count} checks passed, V1 retained, no production change");

@@ -1,0 +1,26 @@
+{
+  "productionChanged": false,
+  "personalSaveUsed": false,
+  "simulatedTime": true,
+  "checks": [
+    "Workshop first completion",
+    "Existing runtime accepts post-completion Focus in Companion",
+    "Post-completion Focus preserves Workshop and consumed rewards in Companion",
+    "Existing runtime accepts post-completion Focus in Minimized",
+    "Post-completion Focus preserves Workshop and consumed rewards in Minimized",
+    "Existing runtime accepts post-completion Focus in Hidden",
+    "Post-completion Focus preserves Workshop and consumed rewards in Hidden",
+    "Totals include later sessions without extra project reward",
+    "V1 reload preserves later Focus and consumed events",
+    "Later session has recoverable checkpoint",
+    "Recovery excludes downtime and does not replay reward",
+    "Existing V1 shape is sufficient for free Focus proposal"
+  ],
+  "checksPassed": 12,
+  "countedMinutes": 29,
+  "workshopMinutes": 25,
+  "railwayPlayable": false,
+  "proposalApprovalPending": true,
+  "baseCommit": "d082435704a805a59d3048fa3d572d4ccc9c116c",
+  "probeSha256": "ea3336eb16ded77644136560bd8fe03f1293b16db8e2d7de6abfb70629ca1973"
+}
