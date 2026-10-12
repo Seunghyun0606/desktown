@@ -24,4 +24,6 @@
 
 `build/DeskTown-MVP-Audio-2026-10-13.zip`을 빈 폴더에 풀고 **Start-Play.cmd**로 플레이한다. **Start-Quick-Look.cmd**는 완성·지도 발견을 새 분리 저장으로 보여준다. 트레이 **Audio**를 끄고 켜며 숨김/PiP/재시작 후 상태를 확인한다. 이전 진행을 자동 복사하거나 덮어쓰지 않는다. 기존 플레이를 이어갈 때는 앱 종료 후 이전 키트의 `qa-sessions/play`를 새 키트의 빈 같은 위치로 복사한다.
 
-패키지 manifest·SHA256SUMS·최종 ZIP 해시와 분리 저장 실행 결과는 전달 검증 후 아래에 기록한다. 현재 원래 미추적 162개 파일은 보존하며 생성된 import/UID만 build 아래로 분리한다.
+패키지 commit은 `cda44cb73da94078591c31f83086dcbc4395e49e`이며 실행 코드 `a4707699aec955f285b232e670362582a6704a04` 이후 문서만 추가한 상태다. 최종 ZIP은 79,989,269 bytes, SHA-256 `94b96f4d8bef04d1af07110fa003c62d431d69cc7e3b2d13c9906be748edb3a0`이다. 패키지 manifest·SHA256SUMS·ZIP CRC·내보낸 앱 196파일의 크기/해시를 검증했다.
+
+Windows PowerShell 5.1에서 preflight 분리 저장 write/recover/check와 네 데모가 통과했다. 이름 있는 세션을 서로 다른 초기 fixture로 두 번 실행해 기존 저장 해시와 별도 실행 로그 유지도 확인했다. 개인 저장과 기존 플레이 진행을 검사에 사용하지 않았다. 원래 미추적 162개를 보존했고 생성된 import 1,512개·UID 7개는 `build/audio-generated-import-backup`으로 분리했다. [납품 해시/검사 기록](../art/reviews/2026-10-13/audio-delivery-v1/verification.json)을 제공한다.

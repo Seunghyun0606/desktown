@@ -1,0 +1,79 @@
+{
+  "approvalDate": "2026-10-13",
+  "productionVisualAssets": 38,
+  "productionAudioAssets": 8,
+  "assets": [
+    {
+      "id": "SND-AMB-001",
+      "resource": "res://assets/art/production/audio/snd_town_ambient.ogg",
+      "sha256": "51eb4901d50c65d125976d2a63cb4e50ba76a7e790425f9247a2e100739ea7c5",
+      "durationSeconds": 60.0,
+      "loop": true
+    },
+    {
+      "id": "SND-BRD-001",
+      "resource": "res://assets/art/production/audio/snd_bird.ogg",
+      "sha256": "7b7f91dc507e7310ee10277f6e4e9fa5837fee59903996bc56032e2c2f05965e",
+      "durationSeconds": 1.65,
+      "loop": false
+    },
+    {
+      "id": "SND-STP-001",
+      "resource": "res://assets/art/production/audio/snd_footstep.ogg",
+      "sha256": "f4c80aa38322b83ed2f8a807e68f0384e68354fdbd76ada87bcffffb8222e498",
+      "durationSeconds": 0.3,
+      "loop": false
+    },
+    {
+      "id": "SND-HMR-001",
+      "resource": "res://assets/art/production/audio/snd_hammer.ogg",
+      "sha256": "26c49293ccad7e57484826eabfde8d14c51dc8cef04cab90ca402b4bf1abfb37",
+      "durationSeconds": 0.42,
+      "loop": false
+    },
+    {
+      "id": "SND-FIR-001",
+      "resource": "res://assets/art/production/audio/snd_fire_loop.ogg",
+      "sha256": "7afbb4b8b9a4598aad1184e95d0493ce5b04750a4864dc3221a375c934ffcdc7",
+      "durationSeconds": 12.0,
+      "loop": true
+    },
+    {
+      "id": "SND-UI-001",
+      "resource": "res://assets/art/production/audio/snd_ui_click.ogg",
+      "sha256": "2e53470ef51ca022caf5e7f205184d566e11217740620f47a6edd4a09ebe3fb9",
+      "durationSeconds": 0.13,
+      "loop": false
+    },
+    {
+      "id": "SND-CMP-001",
+      "resource": "res://assets/art/production/audio/snd_project_complete.ogg",
+      "sha256": "c744e5c3c48dda454c2df25909759e06b9ca6789876332ff406e62d184f89591",
+      "durationSeconds": 1.75,
+      "loop": false
+    },
+    {
+      "id": "SND-DSC-001",
+      "resource": "res://assets/art/production/audio/snd_discovery.ogg",
+      "sha256": "d5e772fff36febf033bbe27145aadb515bcc87af2f5d2ea2434762309be75b2b",
+      "durationSeconds": 1.55,
+      "loop": false
+    }
+  ],
+  "nativeChecks": {
+    "baseline": false,
+    "revision": "HEAD",
+    "success": true,
+    "isolatedSave": true,
+    "checks": 26,
+    "audioChecks": 29,
+    "testedCodeCommit": "fa0b55828b48368961d3ac2922c6b0cf285efead"
+  },
+  "finalRuntimeCodeCommit": "a4707699aec955f285b232e670362582a6704a04",
+  "packageCommit": "cda44cb73da94078591c31f83086dcbc4395e49e",
+  "finalAdditions": "Headless silence and command guard during shutdown; verified by final exported demo runs",
+  "runtimeAudioHostSha256": "e1fcb3948f2e8de5f2ee36fede631c5209161a930f61a0a7bacd6da374034c79",
+  "exportFilesVerified": 196,
+  "personalSaveUsed": false,
+  "realAudioDeviceVerdict": "User listening review approved; per-device output level QA remains manual"
+}
