@@ -34,6 +34,7 @@ public partial class GhostStage : Node2D
     public void SetReducedMotion(bool reduced)
     {
         _reducedMotion = reduced;
+        GetNode<MinaPlaceholderView>("MinaView").SetReducedMotion(reduced);
         if (reduced) _spark?.SetEnabled(false);
     }
 }

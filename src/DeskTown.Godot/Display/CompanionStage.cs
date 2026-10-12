@@ -11,6 +11,8 @@ public partial class CompanionStage : Control
     private CatalogEffectView? _steam;
     private bool _reducedMotion;
     private MinaAnimationClip _clip = MinaAnimationClip.Idle;
+    private bool _returningToBench;
+    private double _returnElapsed;
 
     public override void _Ready()
     {
@@ -32,6 +34,8 @@ public partial class CompanionStage : Control
     public void SetReducedMotion(bool reduced)
     {
         _reducedMotion = reduced;
+        if (reduced && _returningToBench) FinishReturn();
+        _mina?.SetReducedMotion(reduced);
         if (reduced) _spark?.SetEnabled(false);
         _steam?.SetEnabled(!reduced && _clip == MinaAnimationClip.Rest);
     }
@@ -39,6 +43,7 @@ public partial class CompanionStage : Control
     private void OnMinaFrame(MinaAnimationClip clip, int frame)
     {
         _clip = clip;
+        if (_returningToBench && clip != MinaAnimationClip.Walk) FinishReturn();
         _steam?.SetEnabled(!_reducedMotion && clip == MinaAnimationClip.Rest);
         if (_reducedMotion || clip != MinaAnimationClip.Work) _spark?.SetEnabled(false);
         else if (frame == 2) _spark?.Trigger();
@@ -66,7 +71,40 @@ public partial class CompanionStage : Control
         _mina?.Bind(_latest);
     }
 
-    public void Play(MinaPresentationIntent presentation) => _mina?.Play(presentation);
+    public void Play(MinaPresentationIntent presentation)
+    {
+        if (_returningToBench) FinishReturn();
+        if (_reducedMotion && presentation.PrimaryClip == MinaAnimationClip.Walk
+            && presentation.FollowUpClip is { } next) presentation = new(next);
+        if (!_reducedMotion && presentation.PrimaryClip == MinaAnimationClip.Walk
+            && presentation.FollowUpClip == MinaAnimationClip.Work)
+        {
+            _returningToBench = true;
+            _returnElapsed = 0;
+            if (_mina is not null) _mina.Position = new Vector2(88, 103);
+            GetNode<Sprite2D>("Shadow").Position = new Vector2(96, 141);
+        }
+        _mina?.Play(presentation);
+    }
 
-    public void Refresh() => _mina?.Bind(_latest);
+    public override void _Process(double delta)
+    {
+        if (!_returningToBench || _mina is null) return;
+        _returnElapsed += delta;
+        _mina.Position = new Vector2(88 + (float)Math.Round(12 * Math.Min(1, _returnElapsed / 0.75)), 103);
+        GetNode<Sprite2D>("Shadow").Position = _mina.Position + new Vector2(8, 38);
+    }
+
+    private void FinishReturn()
+    {
+        _returningToBench = false;
+        if (_mina is not null) _mina.Position = new Vector2(100, 103);
+        GetNode<Sprite2D>("Shadow").Position = new Vector2(108, 141);
+    }
+
+    public void Refresh()
+    {
+        if (_returningToBench) FinishReturn();
+        _mina?.Bind(_latest);
+    }
 }

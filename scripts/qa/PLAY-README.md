@@ -19,6 +19,9 @@ ZIP을 빈 폴더에 전부 압축 해제하고 **Start-Play.cmd**를 더블클�
 
 ## 이번 빌드 범위
 
+- Noah는 독서·산책·모닥불 곁 휴식을, Rumi는 Library·Workshop 주변 탐색을 서로 다른 동선과 리듬으로 보여줍니다.
+- Mina는 집 앞을 걷고, 작업 중 짧은 살펴보기·스트레칭 후 작업을 이어갑니다. Walk 뒤 Work가 이어지고 그림자도 함께 움직입니다.
+- 새 행동 미리보기는 `behavior-preview/review.html`입니다. 화면을 숨기면 일상 행동 시간이 멈추며 Reduced motion에서 선택적 이동·스트레칭이 꺼집니다.
 - 승인된 시각 아트 38개와 Town·Mina·NPC·효과·로고·아이콘·지도 적용.
 - PiP: 작은 창만 표시. Minimized: Town 작업 표시줄 항목 유지. Hidden: 트레이만 유지.
 - Focus 완료 시 PiP가 사라지고 트레이에서 완료 상태를 확인할 수 있습니다.

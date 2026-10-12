@@ -96,6 +96,11 @@ public partial class WindowPresentationProbe : Node
             await Command("ChangeModeAsync", DisplayMode.Companion);
             await Command("EndFocusAsync"); Check("finish-pip", false, true);
             Require(Game.ActiveSession is null, "End Focus did not finalize");
+            var worker = _companion.GetNode<MinaPlaceholderView>("Stage/MinaView");
+            var playback = (MinaPresentationPlayback)typeof(MinaPlaceholderView)
+                .GetField("_playback", Private)!.GetValue(worker)!;
+            Require(playback.Clip == DeskTown.Domain.Simulation.MinaAnimationClip.Idle,
+                "Focus end left stale Work animation in Companion");
             _controller.OpenTown(); await Settle(); CheckTown("open-after-finish");
             // A maximized Town must restore to its previous mode after PiP.
             GetWindow().Mode = Window.ModeEnum.Maximized; await Settle();

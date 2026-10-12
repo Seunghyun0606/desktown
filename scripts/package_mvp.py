@@ -20,6 +20,7 @@ def main():
     parser.add_argument('--export', required=True, type=Path)
     parser.add_argument('--demo-saves', required=True, type=Path)
     parser.add_argument('--output', required=True, type=Path)
+    parser.add_argument('--behavior-preview', type=Path)
     args = parser.parse_args()
     export = args.export.resolve()
     output = args.output.resolve()
@@ -46,8 +47,8 @@ def main():
     manifest = {'product': 'DeskTown Prototype v0.1 playable visual MVP', 'commit': revision,
         'godot': '4.7.2', 'dotnetSdk': '8.0.425', 'signed': False,
         'productionVisualAssets': 38, 'unassignedAudioAssets': 8,
-        'knownIssues': ['QA-PIP-001 fixed; user desktop/taskbar confirmation pending',
-            'Native typing/DPI/sleep/clean-PC QA pending', 'Audio not delivered; Ghost Focus disabled'], 'files': files}
+        'knownIssues': ['Previous visual MVP confirmed by user; new character behavior visual review pending',
+            'Clean-PC release QA pending', 'Audio not delivered; Ghost Focus disabled'], 'files': files}
     (output / 'build-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
     (output / 'SHA256SUMS.txt').write_text(f'{digest(app_zip)}  {app_zip.name}\n', encoding='ascii')
     for pattern in ('*.ps1', '*.cmd', '*README.md'):
@@ -63,6 +64,8 @@ def main():
     preview.mkdir()
     shutil.copyfile(source / 'review.html', preview / 'review.html')
     shutil.copytree(source / 'captures', preview / 'captures')
+    if args.behavior_preview:
+        shutil.copytree(args.behavior_preview, output / 'behavior-preview')
     with zipfile.ZipFile(portable, 'w', zipfile.ZIP_DEFLATED) as bundle:
         for path in sorted(output.rglob('*')):
             if path.is_file():

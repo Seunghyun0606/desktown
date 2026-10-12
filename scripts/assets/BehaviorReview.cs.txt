@@ -1,0 +1,136 @@
+// Disposable GPU review only. Never compiled into production.
+using System.Reflection;
+using System.Text.Json;
+using DeskTown.Application.Display;
+using DeskTown.Domain.Focus;
+using DeskTown.Domain.Projects;
+using DeskTown.Domain.Simulation;
+using DeskTown.Presentation.Display;
+using Godot;
+namespace DeskTown.Presentation.Bootstrap;
+public partial class BehaviorReview : Node
+{
+    private readonly List<string> _captures = new();
+    private static void Require(bool value, string message) { if (!value) throw new InvalidOperationException(message); }
+    public override void _Ready() => Callable.From(() => { _ = Run(); }).CallDeferred();
+    private SubViewport View(int width, int height)
+    {
+        var view = new SubViewport { Size = new(width, height), RenderTargetUpdateMode = SubViewport.UpdateMode.Always,
+            CanvasItemDefaultTextureFilter = Viewport.DefaultCanvasItemTextureFilter.Nearest };
+        AddChild(view); return view;
+    }
+    private TownScene Town(SubViewport view)
+    {
+        var town = GD.Load<PackedScene>("res://scenes/town/TownScene.tscn").Instantiate<TownScene>();
+        town.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft); town.Size = new(1280, 720); view.AddChild(town);
+        town.ProcessMode = ProcessModeEnum.Disabled;
+        var game = TownSimulation.Create();
+        var elapsed = TimeSpan.FromMinutes(25);
+        game.AdvanceTo(elapsed, FocusEnergy.FromCountedDuration(elapsed), null, TimeSpan.Zero);
+        game.RevealWorkshopCompletion(); game.AcknowledgeCelebration();
+        town.Bind(game.Snapshot.Town, elapsed); return town;
+    }
+    private static MinaPresentationPlayback Playback(MinaPlaceholderView mina) =>
+        (MinaPresentationPlayback)typeof(MinaPlaceholderView).GetField("_playback", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(mina)!;
+    private static void Step(TownScene town, double delta)
+    {
+        town._Process(delta); town.GetNode<MinaPlaceholderView>("World/MinaView")._Process(delta);
+        foreach (var effect in town.GetNode<Control>("World").GetChildren().OfType<CatalogEffectView>()) effect._Process(delta);
+    }
+    private static void Step(CompanionStage stage, double delta)
+    {
+        stage._Process(delta); stage.GetNode<MinaPlaceholderView>("MinaView")._Process(delta);
+        foreach (var effect in stage.GetChildren().OfType<CatalogEffectView>()) effect._Process(delta);
+    }
+    private async Task Save(SubViewport view, string output, string name)
+    {
+        await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+        Require(view.GetTexture().GetImage().SavePng(Path.Combine(output, name)) == Error.Ok, "Capture failed");
+        _captures.Add(name);
+    }
+    private async Task Run()
+    {
+        try
+        {
+            GetWindow().Unfocusable = true;
+            Require(Path.GetFileName(OS.GetUserDataDir()).StartsWith("DeskTownArtReview-"), "Nonisolated project");
+            var output = ProjectSettings.GlobalizePath("res://../captures"); Directory.CreateDirectory(output);
+            var townView = View(1280, 720); var town = Town(townView);
+            for (var i = 0; i < 320; i++) { if (i > 0) Step(town, 0.125); await Save(townView, output, $"town-a-{i:D4}.png"); }
+            Step(town, 42 - 319 * 0.125);
+            for (var i = 0; i < 200; i++) { if (i > 0) Step(town, 0.125); await Save(townView, output, $"town-b-{i:D4}.png"); }
+            // Clock freeze: hiding/reopening cannot teleport actors to wall-clock time.
+            var noah = town.GetNode<TownNpcPlaceholderView>("World/NoahView");
+            var rumi = town.GetNode<TownNpcPlaceholderView>("World/RumiView");
+            var prior = (noah.Position, rumi.Position);
+            town.Hide(); Step(town, 300); town.Show(); Step(town, 0);
+            Require(prior == (noah.Position, rumi.Position), "Hidden ambient clock advanced");
+            town.SetReducedMotion(true); prior = (noah.Position, rumi.Position); Step(town, 50);
+            Require(prior == (noah.Position, rumi.Position), "Reduced motion moved NPCs");
+            town.Hide(); town.Show();
+            Require(!noah.IsProcessing() && !rumi.IsProcessing(), "Visibility resumed a second NPC animation clock");
+            await Save(townView, output, "town-reduced.png");
+            // Home -> Workshop and back travel continuously and arrive in the steady clip.
+            town.SetReducedMotion(false);
+            var game = TownSimulation.Create();
+            var mina = town.GetNode<MinaPlaceholderView>("World/MinaView");
+            var previousX = mina.Position.X;
+            game.AdvanceTo(TimeSpan.Zero, FocusEnergy.Zero, FocusSessionStatus.Running, TimeSpan.Zero);
+            town.Bind(game.Snapshot.Town);
+            Require(mina.Position.X == previousX, "Bind teleported Mina");
+            for (var i = 0; i < 36; i++)
+            {
+                var before = mina.Position.X; Step(town, 0.5);
+                Require(Math.Abs(mina.Position.X - before) <= 10, "Mina travel jumped");
+            }
+            Require(mina.Position.X == 437 && Playback(mina).Clip == MinaAnimationClip.Work, "Mina did not arrive at Workshop");
+            await Save(townView, output, "town-mina-arrived.png");
+            game.AdvanceTo(TimeSpan.Zero, FocusEnergy.Zero, null, TimeSpan.Zero); town.Bind(game.Snapshot.Town);
+            for (var i = 0; i < 32; i++) Step(town, 0.5);
+            Require(Playback(mina).Clip == MinaAnimationClip.Idle && mina.Position.X <= 186, "Mina did not return home");
+            town.Hide();
+            game.AdvanceTo(TimeSpan.Zero, FocusEnergy.Zero, FocusSessionStatus.Running, TimeSpan.Zero);
+            town.Bind(game.Snapshot.Town);
+            Require(mina.Position.X == 437 && Playback(mina).Clip == MinaAnimationClip.Work,
+                "Reopened Town replayed an old hidden-state trip");
+            town.Show();
+            town.Hide(); game.AdvanceTo(TimeSpan.Zero, FocusEnergy.Zero, null, TimeSpan.Zero);
+            town.Bind(game.Snapshot.Town); town.Show();
+            Step(town, 8.125);
+            await Save(townView, output, "town-house-visit.png");
+            townView.QueueFree(); await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var companionView = View(360, 200);
+            var stage = GD.Load<PackedScene>("res://scenes/companion/CompanionStage.tscn").Instantiate<CompanionStage>();
+            companionView.AddChild(stage); stage.ProcessMode = ProcessModeEnum.Disabled;
+            stage.Play(new(MinaAnimationClip.Work)); Step(stage, 13);
+            for (var i = 0; i < 200; i++) { if (i > 0) Step(stage, 0.125); await Save(companionView, output, $"companion-{i:D4}.png"); }
+            stage.Play(new(MinaAnimationClip.Walk, MinaAnimationClip.Work)); Step(stage, 0.375);
+            var worker = stage.GetNode<MinaPlaceholderView>("MinaView");
+            Require(worker.Position.X == 94 && Playback(worker).Clip == MinaAnimationClip.Walk, "Walk did not move toward bench");
+            await Save(companionView, output, "companion-return-step.png");
+            Step(stage, 0.375);
+            Require(worker.Position.X == 100 && Playback(worker).Clip == MinaAnimationClip.Work, "Walk did not hand off to Work");
+            Require(stage.GetNode<Sprite2D>("Shadow").Position == new Vector2(108, 141), "Return shadow detached");
+            stage.Bind(new CompanionProjection(new(MinaLogicalActivity.Rest, MinaLocation.Workshop)));
+            stage.Refresh(); Require(Playback(worker).Clip == MinaAnimationClip.Rest, "Refresh lost current Rest");
+            await Save(companionView, output, "companion-rest.png");
+            stage.Play(new(MinaAnimationClip.Work)); Step(stage, 35.75);
+            Require(Playback(worker).Clip == MinaAnimationClip.Stretch, "Missing Work stretch");
+            await Save(companionView, output, "companion-stretch.png");
+            stage.SetReducedMotion(true); Require(Playback(worker).Clip == MinaAnimationClip.Work, "Reduced stretch did not cancel");
+            await Save(companionView, output, "companion-reduced.png");
+            for (var i = 0; i < 14; i++)
+            {
+                var pose = NpcAmbientSchedule.At(TimeSpan.FromSeconds(30 + i * 0.125)).Noah;
+                var npcView = View(48, 48);
+                var npc = new TownNpcPlaceholderView(); npcView.AddChild(npc); npc.Configure(false); npc.BindPose(pose);
+                await Save(npcView, output, $"noah-walk-{i:D2}.png"); npcView.QueueFree();
+            }
+            Require(_captures.Count == 741, "Incomplete captures");
+            File.WriteAllText(Path.Combine(output, "result.json"), JsonSerializer.Serialize(new { captures = _captures,
+                renderer = DisplayServer.GetName(), motionChecks = "hidden/reduced, travel/arrival, walk handoff, shadow, Rest refresh, Work cadence" }));
+            GD.Print("DESKTOWN_BEHAVIOR_REVIEW_OK"); GetTree().Quit();
+        }
+        catch (Exception error) { GD.PrintErr("BEHAVIOR_REVIEW_FAILED " + error); GetTree().Quit(1); }
+    }
+}

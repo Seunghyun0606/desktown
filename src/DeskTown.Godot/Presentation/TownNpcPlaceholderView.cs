@@ -1,5 +1,6 @@
 using global::Godot;
 using DeskTown.Presentation.Display;
+using DeskTown.Application.Display;
 
 namespace DeskTown.Presentation;
 
@@ -8,21 +9,26 @@ public partial class TownNpcPlaceholderView : Node2D
 {
     private bool _isRumi;
     private bool _reading;
+    private bool _walking;
+    private bool _facingLeft;
+    private bool _externallyClocked;
     private double _frameElapsed;
     private int _frame;
 
     public override void _Ready()
     {
-        VisibilityChanged += () => SetProcess(IsVisibleInTree());
+        VisibilityChanged += () => SetProcess(!_externallyClocked && IsVisibleInTree());
         SetProcess(IsVisibleInTree());
     }
 
     public override void _Process(double delta)
     {
         _frameElapsed += delta;
-        if (_frameElapsed < 0.5) return;
-        _frameElapsed %= 0.5;
-        _frame = (_frame + 1) % 4;
+        var period = _walking ? 0.125 : 0.5;
+        if (_frameElapsed < period) return;
+        var steps = (int)(_frameElapsed / period);
+        _frameElapsed %= period;
+        _frame = (_frame + steps) % (_walking ? 6 : 4);
         QueueRedraw();
     }
 
@@ -34,14 +40,33 @@ public partial class TownNpcPlaceholderView : Node2D
 
     public void SetReading(bool reading)
     {
+        _externallyClocked = false;
+        SetProcess(IsVisibleInTree());
         if (_reading == reading) return;
         _reading = reading;
+        _walking = false;
+        _frame = 0;
+        _frameElapsed = 0;
+        QueueRedraw();
+    }
+
+    public void BindPose(NpcAmbientPose pose)
+    {
+        _externallyClocked = true;
+        _reading = pose.Action == NpcAmbientAction.Read;
+        _walking = pose.Action == NpcAmbientAction.Walk;
+        _facingLeft = pose.FacingLeft;
+        _frame = (int)(pose.ClipElapsed.TotalSeconds * (_walking ? 8 : 2)) % (_walking ? 6 : 4);
+        // Town owns the shared visible-time clock; don't run a second clock.
+        SetProcess(false);
         QueueRedraw();
     }
 
     public override void _Draw()
     {
-        var assetId = _isRumi ? "CHR-RUM-001" : _reading ? "CHR-NOA-003" : "CHR-NOA-001";
+        if (_facingLeft) DrawSetTransform(new Vector2(48, 0), 0, new Vector2(-1, 1));
+        var assetId = _isRumi ? _walking ? "CHR-RUM-002" : "CHR-RUM-001"
+            : _walking ? "CHR-NOA-002" : _reading ? "CHR-NOA-003" : "CHR-NOA-001";
         if (VisualAssetCatalog.Frame(assetId, _frame) is { } image)
         {
             DrawTextureRectRegion(image.Sheet,

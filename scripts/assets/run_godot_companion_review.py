@@ -67,9 +67,9 @@ def main():
         # Keep the small helper window off the desktop; this is not native input QA.
         output = run_checked([str(godot), "--path", str(project), "--position", "-10000,-10000",
                               "--resolution", "64x64", "--audio-driver", "Dummy"],
-                             project, env, logs / "capture.log", 90)
+                             project, env, logs / "capture.log", 180 if preparation.get("reviewKind") == "behavior" else 90)
         review_kind = preparation.get("reviewKind", "companion")
-        marker = {"town":"DESKTOWN_TOWN_REVIEW_OK", "npc":"DESKTOWN_NPC_REVIEW_OK", "remaining":"DESKTOWN_REMAINING_REVIEW_OK", "final":"DESKTOWN_FINAL_REVIEW_OK"}.get(review_kind,"DESKTOWN_COMPANION_REVIEW_OK")
+        marker = {"town":"DESKTOWN_TOWN_REVIEW_OK", "npc":"DESKTOWN_NPC_REVIEW_OK", "remaining":"DESKTOWN_REMAINING_REVIEW_OK", "final":"DESKTOWN_FINAL_REVIEW_OK", "behavior":"DESKTOWN_BEHAVIOR_REVIEW_OK"}.get(review_kind,"DESKTOWN_COMPANION_REVIEW_OK")
         if marker not in output:
             raise RuntimeError("Missing review completion marker")
         result = json.loads((review / "captures/result.json").read_text(encoding="utf-8"))

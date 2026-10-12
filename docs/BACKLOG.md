@@ -1,5 +1,7 @@
 # DeskTown Prototype v0.1 Backlog
 
+최신 사용자 확인: 이전 디자인 MVP를 모두 확인한 뒤 캐릭터 행동의 부자연스러움·패턴 부족을 후속 과제로 지정했다. [행동 개선 기록](qa/QA_EXECUTION_2026-10-12_BEHAVIOR.md)과 [실제 움직임 미리보기](art/reviews/2026-10-12/behavior-v1/review.html)를 제공한다. NPC 연속 보행·개별 동선, Mina 이동·작업 리듬을 연결했고 Focus/보상/저장 규칙은 유지한다. 아래 이전 승인·QA 대기 표기는 해당 빌드 당시 기록이다.
+
 Total: **34 tasks**. The tables and task-level notes below track implementation
 separately from exported Windows and production-art review.
 

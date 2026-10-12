@@ -1,5 +1,9 @@
 # 최종 시각본 사용자 QA 시작 — 2026-10-12
 
+## 최신 캐릭터 행동 개선본
+
+사용자가 이전 MVP를 모두 확인했다고 보고했고 캐릭터 행동의 부자연스러움·패턴 부족을 후속 과제로 지정했다. 새 빌드는 `build/DeskTown-MVP-Behavior-2026-10-12.zip`이다. 압축 해제 후 Start-Play/Start-Quick-Look으로 실행한다. [행동 미리보기](../art/reviews/2026-10-12/behavior-v1/review.html)와 [행동 검증 기록](QA_EXECUTION_2026-10-12_BEHAVIOR.md)을 따른다. 기존 플레이를 이어가려면 앱을 종료하고 이전 키트의 `qa-sessions/play` 폴더를 새 키트의 같은 위치에 복사한다. 새 키트에 이미 진행이 있으면 덮어쓰지 말고 기존 키트를 계속 사용한다.
+
 ## 최신 플레이용 MVP
 
 아트 완성 후 PiP 메인 창 문제를 수정한 플레이용 키트는 `build/DeskTown-MVP-2026-10-12.zip`이다. 압축을 전부 풀고 **Start-Play.cmd**로 저장을 유지하며 플레이하거나 **Start-Quick-Look.cmd**로 완성 연출부터 확인한다. [플레이 안내](../../scripts/qa/PLAY-README.md)와 [새 창 검사 기록](QA_EXECUTION_2026-10-12_MVP.md)을 따른다. 아래 `06ac9136` 키트는 이전 최종 아트 검증 기록이다.

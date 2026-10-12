@@ -258,6 +258,8 @@ public partial class PrototypeAppController : Node
         Root<FocusSetup>("MainShell/FocusSetup").Visible = false;
         Root<CompanionWindowHost>("CompanionWindow").Bind(_game.World.Companion);
         ApplyFocusPresentation(mode);
+        if (_game.LastMinaTransition is { Changed: true } entering)
+            Root<CompanionWindowHost>("CompanionWindow").Play(entering.Presentation);
         Root<TrayHost>("TrayHost").SetStatus(true, false);
         _timer!.Start();
     }
@@ -270,7 +272,13 @@ public partial class PrototypeAppController : Node
         {
             var tick = await _game.TickAsync(_activity.LastIdleAge);
             if (_game.LastMinaTransition is { Changed: true } transition)
-                Root<CompanionWindowHost>("CompanionWindow").Play(transition.Presentation);
+            {
+                var companion = Root<CompanionWindowHost>("CompanionWindow");
+                companion.Bind(_game.World.Companion);
+                companion.Play(transition.Presentation);
+                var town = Root<TownScene>("MainShell/Town");
+                if (town.Visible) town.Bind(_game.World.Town, _game.TodayFocus);
+            }
             if (tick.Completed) FinishFocus();
         }
         catch (Exception error) { ShowError(error); }
@@ -289,6 +297,9 @@ public partial class PrototypeAppController : Node
         _timer?.Stop();
         _display?.SetDisplayMode(DisplayMode.Hidden);
         Root<TrayHost>("TrayHost").SetStatus(false, true);
+        if (_game is not null) Root<CompanionWindowHost>("CompanionWindow").Bind(_game.World.Companion);
+        var town = Root<TownScene>("MainShell/Town");
+        if (_game is not null && town.Visible) town.Bind(_game.World.Town, _game.TodayFocus);
         // Completion hides PiP and marks the Tray complete. Town keeps its
         // taskbar policy until the user explicitly opens it.
         try

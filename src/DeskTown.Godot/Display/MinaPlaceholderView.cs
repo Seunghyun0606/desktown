@@ -7,7 +7,8 @@ namespace DeskTown.Presentation.Display;
 /// <summary>48×48 geometric preview; production sheets replace this view through catalog IDs.</summary>
 public partial class MinaPlaceholderView : Node2D
 {
-    private readonly MinaClipPlayback _playback = new();
+    private readonly MinaPresentationPlayback _playback = new();
+    public bool FacingLeft { get; set; }
     public event Action<MinaAnimationClip, int>? FrameChanged;
 
     public override void _Ready()
@@ -17,6 +18,13 @@ public partial class MinaPlaceholderView : Node2D
     }
 
     public void Bind(MinaSimulationState state) => Play(MinaClipPlayback.ForState(state));
+
+    public void SetReducedMotion(bool reduced)
+    {
+        var before = (_playback.Clip, _playback.Frame);
+        _playback.ReducedMotion = reduced;
+        NotifyFrame(before);
+    }
 
     public void Play(MinaPresentationIntent intent)
     {
@@ -42,6 +50,7 @@ public partial class MinaPlaceholderView : Node2D
 
     public override void _Draw()
     {
+        if (FacingLeft) DrawSetTransform(new Vector2(48, 0), 0, new Vector2(-1, 1));
         var frame = _playback.Frame;
         var assetId = _playback.Clip switch
         {

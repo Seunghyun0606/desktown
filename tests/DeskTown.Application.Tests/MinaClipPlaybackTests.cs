@@ -39,4 +39,21 @@ public sealed class MinaClipPlaybackTests
             MinaLogicalActivity.Rest, MinaLocation.Workshop)));
         Assert.Equal(MinaAnimationClip.Rest, player.Clip);
     }
+
+    [Theory]
+    [InlineData(MinaAnimationClip.Walk, MinaAnimationClip.Work, 0.75)]
+    [InlineData(MinaAnimationClip.Work, MinaAnimationClip.Celebrate, 1.0)]
+    public void Explicit_follow_up_leaves_normally_looping_primary(
+        MinaAnimationClip primary, MinaAnimationClip next, double duration)
+    {
+        var player = new MinaClipPlayback();
+        player.Apply(new(primary, next));
+        player.Advance(TimeSpan.FromSeconds(duration - 0.01));
+        Assert.Equal(primary, player.Clip);
+        player.Advance(TimeSpan.FromSeconds(0.02));
+        Assert.Equal(next, player.Clip);
+        Assert.False(player.HasFollowUp);
+        player.Advance(TimeSpan.FromSeconds(2));
+        Assert.Equal(next, player.Clip);
+    }
 }
