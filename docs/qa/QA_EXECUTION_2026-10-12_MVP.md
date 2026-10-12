@@ -35,4 +35,6 @@ python scripts/qa/test_window_presentation.py --output build/window-probe-new `
 - 일반 플레이의 첫 Focus는 25분이다. 빠른 완성 확인은 별도 데모 버튼을 사용한다.
 - `qa-sessions/play`는 재실행 시 유지하며 개인 저장·기존 `focus` QA 세션과 분리한다. 원래 미추적 백업과 `.uid` 파일은 배포하지 않는다.
 
-내보내기 후 `scripts/package_mvp.py`로 완전한 앱 ZIP과 오프라인 최종 화면을 묶고, `preflight.ps1 -RunSmoke`와 데모 런처 검사 결과를 후속 기록한다. 이전 `06ac9136` 최종 아트 키트는 이전 빌드 증거로 보존한다.
+코드 SHA는 `48057b2c660791cc20b95f4b6de31c0a15be7571`이다. Windows 내보내기는 63.06초에 196개 파일을 생성했고, `scripts/package_mvp.py`는 모든 파일의 크기·SHA-256과 ZIP CRC를 확인했다. 이동용 ZIP은 77,222,586 bytes이며 SHA-256은 `38a29ec6fce8afd701f94b3e2d9fbb00d9faa19c730b755b422c446307d20d1a`다.
+
+압축 해제한 실제 앱에서 `preflight.ps1 -RunSmoke`의 write/recover/check 세 단계가 통과했다. Windows PowerShell 5.1 데모 런처의 네 시나리오와 이름 있는 저장 재실행 두 회가 통과했고 원본 샘플·호출 환경·저장이 유지됐다. 개인 저장과 플레이용 `play` 세션은 사용하지 않았다. 원래 미추적 162개 파일을 보존하며 이번 엔진이 새로 만든 import·UID 메타데이터는 `build/mvp-generated-import-backup`으로 분리한다. 이전 `06ac9136` 최종 아트 키트도 이전 빌드 증거로 보존한다.
