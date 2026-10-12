@@ -46,6 +46,7 @@ public partial class PresentationAudioHost : Node
             PlayCue("SND-DSC-001", Surface.Discovery, .9f, 0);
         };
         ConnectButtons(root.GetNode("MainShell"));
+        ConnectButtons(root.GetNode("CompanionWindow"));
     }
 
     private void ConnectMina(MinaPlaceholderView mina, Surface surface) => mina.FrameChanged += (clip, frame) =>
@@ -173,6 +174,17 @@ public partial class PresentationAudioHost : Node
         foreach (var voice in _voices) voice.Player.Stop();
         foreach (var loop in _loops.Values) loop.Stop();
         _birdWait = 8;
+    }
+
+    public override void _ExitTree()
+    {
+        StopAll();
+        foreach (var player in _voices.Select(v => v.Player).Concat(_loops.Values))
+            player.Stream = null;
+        foreach (var sound in _sounds.Values) sound.Dispose();
+        _sounds.Clear();
+        _voices.Clear();
+        _loops.Clear();
     }
 
     private void LoadSounds()
