@@ -1,5 +1,7 @@
 # DeskTown Prototype v0.1 Backlog
 
+2026-10-18 최신: 완료된 일상 Focus MVP의 다음 단계로 **실제 Windows 플레이 QA 전달**을 준비한다. [최신 시작 안내](qa/USER_QA_START.md)와 [QA 도구·전달 기록](qa/QA_EXECUTION_2026-10-18_QA_HANDOFF.md)을 따른다. 게임·V1·시각 38개·음향 8개는 유지한다. 남은 항목은 실제 입력/DPI·장치 청취·잠금/절전·깨끗한 Windows PC·일반 저장/업데이트 검사이며 새 콘텐츠 범위는 결정하지 않는다. 아래 과거 아트·음향 미배정/승인 대기는 당시 기록이다.
+
 2026-10-13 최신: 일상 Focus 반복 플레이(A)가 승인됐다. Workshop 완성·지도 확인 후 **Focus with Mina**로 세션을 이어가는 [새 MVP](qa/QA_EXECUTION_2026-10-13_DAILY_FOCUS.md)를 제공한다. 새 프로젝트·보상·저장 필드는 추가하지 않으며 Railway는 예고다. 이전 범위 결정 대기는 역사 기록이다.
 
 2026-10-13 다음 작업: [Workshop 이후 플레이 범위](implementation/POST_WORKSHOP_CONTINUATION_PROPOSAL.md)를 구체화했다. 완료 후 일상 Focus를 허용하는 작은 확장과 Railway를 실제 프로젝트로 만드는 확장을 비교한다. 현재 런타임의 반복 세션·V1·복구·보상 미중복 검사 12개는 통과했으며 UI/프로젝트 변경은 승인 대기다. 초기 v0.1의 단일 프로젝트 범위는 아직 바꾸지 않았다.

@@ -20,6 +20,10 @@ approved quiet sounds and four scene mix references. Audio follows visible actio
 stops on hiding or muting, and obeys the saved Audio setting.
 See the [final visual views](docs/art/reviews/2026-10-12/final-views-v1/review.html)
 and [isolated Windows QA kit](docs/qa/USER_QA_START.md).
+The current QA handoff adds **Prepare-QA.cmd**: verify the existing playable build,
+then create a fresh report for daily Focus, audio, recovery, and Windows input/DPI
+checks. Existing reports and play sessions are preserved; manual checks stay untested
+until observed on the target PC.
 
 ## Prototype invariant
 

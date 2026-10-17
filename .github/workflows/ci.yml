@@ -176,6 +176,14 @@ jobs:
           name: desktown-demo-saves
           path: build/demo-saves
 
+      - name: Verify QA reports in PowerShell 7
+        shell: pwsh
+        run: ./scripts/test_qa_evidence.ps1
+
+      - name: Verify QA reports in Windows PowerShell 5.1
+        shell: powershell
+        run: ./scripts/test_qa_evidence.ps1
+
       - name: Launch executable headlessly
         shell: pwsh
         run: |
@@ -304,7 +312,7 @@ jobs:
           Copy-Item build/package/* $kit
           Copy-Item scripts/qa/*.ps1 $kit
           Copy-Item scripts/qa/*.cmd $kit
-          Copy-Item scripts/qa/QA-README.md $kit
+          Copy-Item scripts/qa/*README.md $kit
           Copy-Item docs/qa/WINDOWS_GATE.md $kit
           Copy-Item build/demo-saves (Join-Path $kit 'demo-saves') -Recurse
           & (Join-Path $kit 'preflight.ps1') -KitDirectory $kit -RunSmoke

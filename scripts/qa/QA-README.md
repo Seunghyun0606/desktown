@@ -1,36 +1,63 @@
-# DeskTown Windows 11 노트북 QA 키트
+# DeskTown Windows 11 플레이·QA 키트
 
-이 키트에는 버전이 붙은 서명되지 않은 앱 ZIP, SHA-256 체크섬과 파일 목록, 분리된 데모 저장 데이터 네 개, PowerShell 스크립트가 들어 있다. 편집기나 SDK는 필요 없다. ZIP과 파일 목록을 함께 보관한다. 목록에 기록된 빌드 SHA를 이슈 보고의 식별자로 사용한다.
+시각 아트 38개·음향 8개와 Workshop 완료 후 일상 Focus가 적용된 MVP다. 전체 ZIP을 **새 빈 폴더**에 풀고 다른 DeskTown을 종료한다. 편집기·SDK는 필요 없다. 미서명 프로토타입이며 실제 Windows 입력·DPI·잠금·장치 청취와 깨끗한 PC 검증은 남아 있다. Ghost Focus는 비활성이다.
 
-## 개인 저장과 분리한 사용자 QA
+## 시작 버튼
 
-사전 검사 후 `Start-QA.cmd`를 실행하거나 키트 폴더의 PowerShell에서 다음 명령을 실행한다. 처음에는 온보딩·Focus 누적 0 상태로 시작하며, 이후 같은 명령은 `qa-sessions/focus/save.json`을 다시 연다. 개인 저장 대신 이 복사본으로 Focus, 모드 전환, 위치·설정 저장, 강제 종료 후 복구를 검사할 수 있다. 강제 종료 후에도 같은 명령으로 다시 열고, 처음부터 검사하려면 새 `SessionName`을 사용한다. 기존 세션을 덮어쓰지 않는다.
+| 버튼 | 용도 / 저장 |
+| --- | --- |
+| **Start-Play.cmd** | 처음부터 플레이, `qa-sessions/play` 유지 |
+| **Start-Daily-Focus.cmd** | 복구된 Town에서 반복 Focus, `qa-sessions/daily` 유지 |
+| **Start-Quick-Look.cmd** | 새 분리 데모로 Workshop 완성 → 지도 발견 보기 |
+| **Start-QA.cmd** | 온보딩·Focus·복구 QA, `qa-sessions/focus` 유지 |
+| **Prepare-QA.cmd** | ZIP·전체 파일·분리 저장/복구 사전 검사 후 새 결과 양식 생성 |
+
+플레이만 하려면 Start-Play 또는 Start-Daily-Focus를 사용한다. 조작 안내는 `PLAY-README.md`다. 각 런처는 개인 저장을 사용하지 않으며 창 제목에 `[Demo — isolated save]`가 표시된다. 스크립트는 실행 정책을 변경하지 않는다. 정책이 차단하면 오류와 해당 환경의 허용 절차를 확인한다. `app/DeskTown.exe` 직접 실행은 **일반 개인 저장**을 사용한다.
+
+## QA 준비와 결과 기록
+
+1. 앱을 종료하고 **Prepare-QA.cmd**를 실행한다. `preflight.ps1 -RunSmoke`가 안쪽 앱 ZIP·SHA-256·전체 파일 목록과 별도 세 프로세스의 저장/복구/재읽기를 검사한다. 성공하면 `qa-reports/qa-results-날짜-고유번호.md`가 새로 생긴다. 기존 보고서·진행은 덮어쓰지 않는다.
+2. 보고서의 실제 Windows 배율·검사 앱 종류·창 상태·모니터 조합을 채운다. 자동으로 기록하는 항목은 빌드 SHA, 생성 시각, Windows/PowerShell 버전, 모니터 해상도·원점이다. `qa-handoff.json`이 있으면 실행 코드 SHA와 QA 도구 SHA를 구분한다. 환경 종류는 검사자의 선언이며 깨끗한 PC 인증이 아니다.
+3. 아래 순서로 검사하고 Pass/Fail/Not tested, 실제 시각, 재현과 이슈 ID를 적는다. **양식 생성은 수동 검사 합격이 아니다.** 앱·DPI·모니터·창 상태 조합마다 새 양식을 쓴다. 자세한 통과 조건은 `WINDOWS_GATE.md`다.
+
+정확한 배율을 넣거나 깨끗한 Windows 11 환경임을 직접 기록하려면 키트 PowerShell에서 다음을 사용한다.
 
 ```powershell
-./launch-demo.ps1 -Scenario first-launch -WindowsExport ./app -DemoSaves ./demo-saves -SessionName focus
+./prepare-qa.ps1 -Scaling '125%' -EnvironmentKind CurrentPC
+# 편집기·SDK 없는 별도 Windows 11 환경에서만:
+./prepare-qa.ps1 -Scaling '100%' -EnvironmentKind CleanWindows11
 ```
 
-창 제목의 `[Demo — isolated save]`를 확인한다. QA 시작 시 다른 DeskTown 인스턴스는 닫는다. `qa-sessions`에는 저장과 실행별 로그가 남으므로 개인 자료와 함께 업로드하지 않는다. 데모 시나리오에는 초기 상태 `first-launch`와 기존 세 가지 진행 상태가 있다. 최신 빌드는 승인된 시각 아트 38개를 모두 사용하며 음향 8개는 미배정이다. 이번 QA는 최종 시각 적용본의 기능·창·입력 검사이며 출시 승인과는 다르다. PiP에서 Town 창이 함께 나타나는 QA-PIP-001은 알려진 TODO다.
+사전 검사를 다시 하지 않고 **새** 결과 양식만 만들 때:
 
-`Start-QA.cmd`는 실행 정책을 변경하지 않는다. PowerShell 정책으로 스크립트가 차단되면 오류를 기록하고 조직의 허용 절차를 따른다. `app/DeskTown.exe`를 직접 실행하면 일반 개인 저장을 사용하므로 분리 QA에는 위 런처를 사용한다.
+```powershell
+./collect-evidence.ps1 -Scaling '150%' -OutputPath './qa-results-run2.md'
+```
 
-1. GitHub Actions 아티팩트를 빈 폴더에 압축 해제한다. 해당 폴더의 PowerShell에서 `./preflight.ps1 -RunSmoke`를 실행한다. ZIP과 압축 해제된 모든 파일을 확인한 다음 별도 헤드리스 프로세스 세 개에서 폐기 가능한 저장 데이터의 생성·복구·재읽기를 검사한다. 통과하면 실행 파일은 `./app/DeskTown.exe`에 있다.
-2. `./collect-evidence.ps1 -Scaling '100%'`를 실행하고 실제 화면 검사 중 생성된 `qa-results.md`를 채운다. 배율에는 Windows의 실제 표시 값을 넣는다. 모니터 해상도·원점과 Windows 버전은 기록하지만 앱·창 제목이나 문서 내용은 수집하지 않는다.
-3. 분리된 데모를 실행하기 전에 DeskTown을 종료한다.
+## 권장 검사 순서
 
-   ```powershell
-   ./launch-demo.ps1 -Scenario workshop-reveal-pending -WindowsExport ./app -DemoSaves ./demo-saves
-   ```
+| 단계 | 실행 / 검사 | 기대 동작 |
+| --- | --- | --- |
+| 빠른 화면·소리 | Start-Quick-Look, 이후 Start-Daily-Focus | 완성·발견이 순서대로 한 번 표시; Town 아트·개별 NPC 동선·완성된 Workshop과 Focus with Mina 표시 |
+| 설정 | 트레이 Audio·Reduced motion 변경 후 종료·같은 버튼 재실행 | 음소거/효과 감소가 즉시 반영되고 저장됨; 창 재열기에 소리 몰아 재생 없음 |
+| 실제 25분 Focus | Start-Daily-Focus → 25분·Any App·PiP → 평소 작업 | PiP만 남고 Town 창/작업 표시줄 항목 없음; 타이핑·클릭·드래그·스크롤 유지 |
+| 모드·위치 | 같은 세션에서 Minimized → Hidden → PiP, 크기·상단 드래그 | 같은 세션 유지; Minimized는 Town 작업 표시줄만, Hidden은 트레이만; 크기·위치 저장 |
+| 완료·반복 | 완료 후 트레이 Open, 다음 세션 시작 | PiP 숨김·트레이 완료 표시; Town 자동 열림 없음; 일일/총 기록 증가, Workshop 유지, 보상·지도 재등장 없음 |
+| 복구 | 새 분리 Focus → 체크포인트 15초 이상 → QA 앱만 강제 종료 → 같은 버튼 | Resume/End 선택, 종료 중 시간 제외; PiP/Minimized/Hidden 각각 확인 |
+| 수명주기·장치 | 별도 세션에서 실제 잠금·절전·복귀, 실제 스피커/헤드폰 청취 | 중단 중 시간·소리 제외; 재개 시 누락·중복·소리 폭주 없음 |
 
-   다른 시나리오는 `workshop-repairing`과 `railway-teaser`다. 실행마다 샘플 데이터를 새 임시 폴더로 복사하고 분리된 데모임을 창 제목에 표시한다. 다음 데모를 실행하기 전에 현재 데모를 정상 종료한다.
+빠른 확인과 실제 25분 완료를 구분한다. 45/60분 프리셋·세 모드의 완료·알림 on/off·100/125/150%·단일/듀얼 모니터·각 앱 입력 매트릭스는 `WINDOWS_GATE.md`에서 별도로 기록한다. QA-PIP-001은 코드 수정과 native 26개 검사를 마쳤으며 실제 Desktop/입력/DPI 재확인은 이 회차에서 수행한다. 자동 검사로 실제 입력이나 물리적 청취를 Pass로 채우지 않는다.
 
-   런처는 데모 경로를 자식 프로세스에만 전달하고 호출한 PowerShell 환경과 원본 샘플을 유지한다. 종료 코드와 오류 로그를 검사하며, 출력한 임시 폴더에 로그와 분리 저장을 보관한다. 창 조작 없이 기동을 검사하려면 `-Headless`를 추가한다. 이 경우 120프레임 뒤 종료하며 기본 45초 제한 시간을 넘으면 실패다. 헤드리스 통과는 실제 창·입력 검사 결과가 아니다.
-4. Focus·재시작·복구는 위의 이름 있는 분리 QA 세션으로 검사한다. 일반 저장 위치를 검사할 때만 런처를 종료한 뒤 `./app/DeskTown.exe`를 직접 실행한다. 일반 저장의 파괴적인 복구 검사 전에는 별도 Windows 계정을 쓰거나 기존 DeskTown 저장 데이터를 백업한다. 결과를 `qa-results.md`에 기록하고 `WINDOWS_GATE.md`의 절차를 따른다.
+## 진행 보존과 추가 회차
 
-최신 플레이 MVP의 QA-PIP-001은 루트 창 최소화·Unfocusable 처리와 26개 native 창 상태 검사로 수정했다. 사용자 Desktop/작업 표시줄 재확인은 남아 있다. 위의 알려진 TODO 설명은 이전 최종 아트 빌드 기록이다. 빠른 플레이는 `Start-Play.cmd`, 완성 연출은 `Start-Quick-Look.cmd`를 사용한다. `PLAY-README.md`를 참고한다.
+`play`, `daily`, `focus`는 서로 다른 저장이다. 같은 버튼은 같은 저장을 재개한다. 초기화하려고 폴더를 지우지 말고 새 세션 이름을 사용한다.
 
-Focus 중 PiP는 작은 Companion 창만, Minimized는 Town 작업 표시줄 항목만, Hidden은 트레이만 남는다. 세 모드를 전환해도 세션은 유지돼야 한다. Ghost는 Town에서 F10으로 켜는 QA 미리보기이며 일반 Focus에서는 선택할 수 없다. 완료 알림은 현재 기본적으로 켜져 있다. 트레이에서 끄면 알림 창 없이 완료 상태를 표시하며 `Open DeskTown` 명령은 계속 사용할 수 있다.
+```powershell
+./launch-demo.ps1 -Scenario first-launch -WindowsExport ./app -DemoSaves ./demo-saves -SessionName focus2
+```
 
-Focus 완료 시 PiP는 숨겨지고 트레이에 완료 상태를 표시한다. Minimized의 Town은 최소화 유지, Hidden의 Town은 숨김 유지이며 Town을 자동으로 열지 않는다. 다음 세션의 표시 모드 선택은 유지한다. 완료 알림 창은 `Completion notice` 설정에 따른다.
+그 밖의 fixture는 `workshop-repairing`, `workshop-reveal-pending`, `railway-teaser`다. 이름 없는 실행은 매번 새 분리 복사본을 만들고 원본 샘플을 바꾸지 않는다. `-Headless`는 기동 확인용이며 실제 UI 합격이 아니다.
 
-트레이의 `Reduced motion`은 연기·풀·반짝임·김을 끄고 모닥불을 첫 프레임에 고정하며 저장된다. 기본값은 기존 저장 설정에 따른다. 정상 종료·같은 QA 세션 재시작 후 체크와 효과 감소가 유지되는지 확인한다. 시각 미리보기 키트에는 Town/Reward/Discovery용 시작 버튼과 `art-preview/review.html`도 제공한다.
+이전 키트의 플레이를 옮기려면 앱을 모두 종료하고 새 키트의 동일 대상 폴더가 비어 있을 때만 `qa-sessions/play` 등을 복사한다. 대상에 이미 진행이 있으면 덮어쓰지 않는다. 일반 저장 위치·업데이트·롤백 검사는 별도 Windows 테스트 계정에서 진행하고 기존 저장을 먼저 백업한다. QA 런처의 분리 저장으로 일반 `user://` 검증을 대신하지 않는다.
+
+보고서에는 P0(진행 손실·입력 차단), P1(반복 포커스 탈취·화면 밖 표시·작업 중단), P2(시각·문구)를 기록한다. 작업 문서·창 제목·입력 내용·브라우저 URL·개인 저장 또는 `qa-sessions` 전체를 첨부하지 않는다.
