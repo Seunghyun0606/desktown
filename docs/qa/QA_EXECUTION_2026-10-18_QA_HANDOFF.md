@@ -17,4 +17,12 @@ Windows PowerShell 5.1에서 양식 관련 14개 검사를 통과했다. 공백�
 
 ## 전달 검증
 
-키트와 게임 파일 동일성·Prepare-QA 실제 실행의 결과는 패키징 후 이 절에 기록한다. 실제 입력/DPI·잠금/절전·물리 장치 청취·깨끗한 PC 검사는 이 도구의 합격 범위가 아니다.
+- 전달 ZIP: `build/DeskTown-QA-2026-10-18.zip` — **80,333,268 bytes**.
+- SHA-256: `882af8fbaf4e48093859fbadbdd84438c790ccfeaef7ede18718fc77273227d9` (`build/DeskTown-QA-2026-10-18.sha256`에도 기록).
+- 원본 `DeskTown-MVP-Daily-2026-10-13.zip`의 기존 SHA-256을 검증하고, 그 안의 게임 ZIP·manifest·체크섬·미리보기·데모를 재사용했다. 게임 ZIP과 manifest는 바이트 그대로이며 196개 파일의 크기·SHA-256이 기존 검증본과 일치한다. 실행 코드는 `b6f62ae8801c79702916b8f54cf4bcb541380730`, 원래 패키지 commit은 `d432c569c71c0e978287bf7dd4dd76bab3927217`, QA 도구 commit은 `2e535358a53aaa21a6b3c5acb9e67592e17d5e5b`다.
+- 새 전체 ZIP의 CRC·동일한 안쪽 게임 ZIP·갱신 도구 바이트를 확인했다. `app` 압축 해제본·`qa-sessions`·`qa-reports`는 전달 ZIP에 없다. `qa-handoff.json`에는 현재 도구 파일의 해시와 위 식별자를 기록했다.
+- 새 키트에서 **prepare-qa.ps1을 실제로 두 번 실행**했다. 매회 파일 검증과 write/recover/check 세 프로세스 smoke가 통과했다. 서로 다른 보고서 두 개가 생성됐고 첫 보고서의 SHA-256은 유지됐으며 수동 26항목은 모두 Not tested다. 개인 저장은 사용하지 않았다.
+- 기존 미추적 162개 파일의 목록과 SHA-256이 이전 보존 기록과 모두 일치한다. 기존 MVP ZIP·게임 진행은 덮어쓰지 않았다.
+- 로컬 상세 근거: `build/qa-handoff-2026-10-18-package.json`, `qa-handoff-2026-10-18-integration.json`, `qa-handoff-2026-10-18-preservation.json`.
+
+실행 파일이 같으므로 게임의 기존 .NET 269개·native 창/음향/일상 Focus 76개 검사는 이전 기록을 인용하며 이번에 다시 실행했다고 표시하지 않는다. 실제 입력/DPI·잠금/절전·물리 장치 청취·깨끗한 PC 검사는 이 도구의 합격 범위가 아니다. 다음은 이 키트로 실제 사용자 작업을 수행하고 P0/P1 문제부터 재현·수정하는 단계다.
